@@ -1,0 +1,63 @@
+# You can use a Docker image from Docker Hub or your own container registry for your build environment.
+
+image: wooyek/geodjango:ubuntu-16.04
+
+definitions:
+  caches:
+    tox: .tox
+
+pipelines:
+  default:
+    - step:
+        name: Debugging info
+        script:
+          # Pipelines overrides default docker entry point, we need to run it maually
+          - docker-entrypoint.sh
+          # Print debug information
+          - virtualenv --version
+          - easy_install --version
+          - pip --version
+          - tox --version
+          - git --version
+          - python3 -m venv -h
+          - pwd
+          - ls
+          - sudo apt-get install -y git-flow python-enchant
+          #- (cd src; ls --hide=*.* --hide=__* . | xargs pylint --rcfile=.pylintrc)
+
+    - step:
+        name: Tox
+        caches:
+          - pip
+          - tox
+        script:
+          # Pipelines overrides default docker entry point, we need to run it maually
+          - docker-entrypoint.sh
+          - tox
+
+  custom: # Pipelines that are triggered manually
+    nightly-build:
+      - step:
+          name: Debugging info
+          script:
+            # Pipelines overrides default docker entry point, we need to run it maually
+            - docker-entrypoint.sh
+            # Print debug information
+            - virtualenv --version
+            - easy_install --version
+            - pip --version
+            - tox --version
+            - git --version
+            - python3 -m venv -h
+            - pwd
+            - ls
+            #- (cd src; ls --hide=*.* --hide=__* . | xargs pylint --rcfile=.pylintrc)
+
+          name: Tox
+          caches:
+            - pip
+            - tox
+          script:
+            # Pipelines overrides default docker entry point, we need to run it maually
+            - docker-entrypoint.sh
+            - tox

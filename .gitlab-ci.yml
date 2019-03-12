@@ -1,0 +1,73 @@
+image: wooyek/geodjango
+
+stages:
+  - test
+  - deploy
+
+
+# Change pip's cache directory to be inside the project directory since we can
+# only cache local items.
+variables:
+  PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
+
+# Pip's cache doesn't store the python packages
+# https://pip.pypa.io/en/stable/reference/pip_install/#caching
+#
+# If you want to also cache the installed packages, you have to install
+# them in a virtualenv and cache it as well.
+# https://gitlab.com/help/ci/caching/index.md#caching-python-dependencies
+cache:
+  paths:
+    - .cache/pip
+    - .tox
+
+before_script:
+  - pip3 install setuptools invoke tox -U
+  - cat /usr/local/bin/invoke
+  - sudo rm /usr/bin/python
+  - sudo ln -s /usr/bin/python3 /usr/bin/python
+  - alias python=python3
+  - python -V
+
+
+Debugging info:
+  stage: test
+  script:
+    - echo "Running tests"
+    # Print debug information
+    - virtualenv --version
+    - pip --version
+    - tox --version
+    - git --version
+    - python3 -m venv -h
+    - pwd
+    - ls
+    - inv version
+    #- (cd src; ls --hide=*.* --hide=__* . | xargs pylint --rcfile=.pylintrc)
+
+Tox:
+  stage: test
+  script:
+    - mkdir -p .tmp/coverage
+    - tox --parallel auto -o
+
+Tox with newest requirements:
+  stage: test
+  only:
+    - schedules
+  script:
+    # upgrade requirements to the newest
+    - pip install pip-tools
+    - inv pip-compile
+    - mkdir -p .tmp/coverage
+    - tox
+
+Database provisioning:
+  stage: test
+  script:
+    - pip3 install -r requirements.txt
+    - env | sort
+    - invoke db
+
+
+

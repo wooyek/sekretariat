@@ -1,0 +1,42 @@
+
+{% load assets %}
+<!DOCTYPE html>
+<!--
+    (c)2018 Janusz Skonieczny
+    Author: Janusz Skonieczny @wooyek
+	Version: {{ system.website }} {{ system.revision }} {{ settings.ENVIRONMENT_NAME }}
+-->
+<html class="no-js" lang="{{ request.LANGUAGE_CODE }}"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+
+  <title>{% block page_title %}{% endblock %}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="{% block description %}{% endblock %}">
+  <meta name="keywords" content="{% block keywords %}{% endblock %}"/>
+  <meta name="author" content="{% block author %}{% endblock %}"/>
+  <link rel="canonical" href="{{ settings.BASE_URL }}/{{ request.get_full_path }}"/>
+
+  {% block assets %}
+    {% assets "css" %}
+      <link rel="stylesheet" href="{{ ASSET_URL }}" media="all">
+    {% endassets %}
+  {% endblock %}
+
+  {% block css %}{% endblock %}{% block js %}{% endblock %}
+  {% block head %}{% endblock %}
+  {% block link %}{% endblock link %}
+  {% block script %}{% endblock script %}
+
+</head>
+<body class="{{ request.resolver_match.url_name }} {% block body_class %}{% endblock %}" {% block body_attrs %}{% endblock %}
+      data-locale="{{ request.LANGUAGE_CODE }}">
+{% block body %}{% endblock %}
+<script type="text/javascript" src="{% url 'javascript-catalog' %}"></script>
+{% assets "js" %}
+  <script type="text/javascript" src="{{ ASSET_URL }}"></script>
+{% endassets %}
+{% if settings.ENVIRONMENT_NAME %}<div class="watermark">{{ settings.ENVIRONMENT_NAME }} {{ system.website }} {{ system.revision }}</div>{% endif %}
+</body>
+</html>
+

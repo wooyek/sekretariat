@@ -1,0 +1,34 @@
+// Variables
+//
+// Variables should follow the `$component-state-property-size` formula for
+// consistent naming. Ex: $nav-link-disabled-color and $modal-content-box-shadow-xs.
+
+$grid-gutter-width: 30px;
+$base-padding: 40px;
+$base-text-padding: ($base-padding - 26px) / 2;
+$table-cell-padding: $base-text-padding;
+
+// stylelint-disable value-keyword-case
+$font-family-sans-serif: "PT Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !default;
+$font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
+$font-family-base: $font-family-sans-serif !default;
+// stylelint-enable value-keyword-case
+
+//$dark: #1f1459;
+//$secondary: #eee;
+//$pink: #e6007e;
+//$body-color: #343434;
+
+$navbar-dark-color: #FFF;
+$border-radius: 0 !default;
+$card-border-color: #979797;
+
+$sizes: (
+        33: 100% / 3,
+        66: 100% / 3 * 2,
+);
+
+
+// Import default at the end
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";

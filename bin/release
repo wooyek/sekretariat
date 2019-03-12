@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+echo "[ >> ] ${BASH_SOURCE[0]}"
+echo "AUTO_MIGRATE: $AUTO_MIGRATE"
+
+if [[ "$AUTO_MIGRATE" == "True" ]]; then
+    echo "=> Performing database migrations"
+    cd /app/src
+    python /app/manage.py check
+    python /app/manage.py migrate --noinput
+fi
+echo "[ OK ] $(date) ${BASH_SOURCE[0]}"

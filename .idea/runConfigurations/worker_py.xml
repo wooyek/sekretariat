@@ -1,0 +1,29 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="worker.py" type="PythonConfigurationType" factoryName="Python" singleton="true">
+    <module name="pelikan-styles" />
+    <option name="INTERPRETER_OPTIONS" value="" />
+    <option name="PARENT_ENVS" value="true" />
+    <envs>
+      <env name="PYTHONUNBUFFERED" value="1" />
+    </envs>
+    <option name="SDK_HOME" value="$USER_HOME$/.local/venvs/example/bin/python" />
+    <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/website" />
+    <option name="IS_MODULE_SDK" value="false" />
+    <option name="ADD_CONTENT_ROOTS" value="false" />
+    <option name="ADD_SOURCE_ROOTS" value="false" />
+    <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+    <EXTENSION ID="net.ashald.envfile">
+      <option name="IS_ENABLED" value="true" />
+      <ENTRIES>
+        <ENTRY IS_ENABLED="true" PARSER="env" PATH="$PROJECT_DIR$/.env" />
+        <ENTRY IS_ENABLED="true" PARSER="env" PATH="$PROJECT_DIR$/secrets.env" />
+      </ENTRIES>
+    </EXTENSION>
+    <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/website/worker.py" />
+    <option name="PARAMETERS" value="" />
+    <option name="SHOW_COMMAND_LINE" value="false" />
+    <option name="EMULATE_TERMINAL" value="false" />
+    <option name="MODULE_MODE" value="false" />
+    <method />
+  </configuration>
+</component>

@@ -1,0 +1,49 @@
+# Base dependencies
+# Django maybe missing here if multiple versions are to be tested and installed by tox
+# For development we keep them unfreezed to work and test on newest versions as soon as they are released
+# Freezing can be performed by pip-compile or pipenv
+
+click
+click-log
+django<2.0 ; python_version < '3.5'
+django>=2.0 ; python_version >= '3.5'
+django-admin-ordering
+django-admin-relation-links
+django-assets
+django-bootstrap-form
+django-debug-toolbar
+# django-email-queue
+django-environ
+django-error-views
+django-formtools
+django-import-export
+#django-localflavor
+# django-opt-out[sparkpost]
+django-pascal-templates
+# django-polymodels
+django-powerbank
+django-pure-pagination
+django-reversion
+# easy_thumbnails
+enum34 ; python_version < '3.4'
+# html2text
+# isoweek
+# jinja2-highlight
+# markdown
+invoke
+# maya
+newrelic
+# opencage
+psycopg2-binary
+pycountry
+pytz
+pathlib ; python_version < '3.3'
+# version 2018.11.3 has installation issues
+# regex==2018.8.29
+# sorl-thumbnail
+raven
+requests
+whitenoise
+
+--find-links=local
+
