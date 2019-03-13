@@ -1,16 +1,23 @@
 # coding=utf-8
 import factory
 import faker
+from django.utils import timezone
 
-from website.misc.factories import UserFactory
 from . import models
 
 fake = faker.Faker()
 
 
-class SampleModelFactory(factory.DjangoModelFactory):
-    name = factory.Faker('name')
-    user = factory.SubFactory(UserFactory)
+class OpenOfficeGroupFactory(factory.DjangoModelFactory):
+    name = factory.Faker('catch_phrase')
 
     class Meta:
-        model = models.SampleModel
+        model = models.OpenOfficeGroup
+
+
+class OpenOfficeSlotFactory(factory.DjangoModelFactory):
+    group = factory.SubFactory(OpenOfficeGroupFactory)
+    start = factory.Faker('future_datetime', end_date='+7d', tzinfo=timezone.get_current_timezone())
+
+    class Meta:
+        model = models.OpenOfficeSlot

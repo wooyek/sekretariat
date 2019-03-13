@@ -54,16 +54,15 @@ gulp.task('css', function () {
 
 
 gulp.task('assets', function (done) {
-    var jsfiles = [
+    var scirpts = [
         './node_modules/jquery/dist/jquery.min.js',
         './node_modules/jquery-easing/jquery.easing.1.3.js',
         './node_modules/bootstrap/dist/js/bootstrap.js',
-        './node_modules/vrview/build/vrview.min.js',
-        './node_modules/vrview/build/vrview.js',
     ];
 
-    gulp.src(jsfiles)
+    gulp.src(scirpts)
         .pipe(gulp.dest(config.outputDir + 'js'));
+
     done();
 });
 

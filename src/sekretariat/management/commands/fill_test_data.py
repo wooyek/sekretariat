@@ -21,7 +21,7 @@ class Command(BaseCommand):
             return  # noqa
         logging.info("Faking test data: %s", count)
         from sekretariat import factories
-        items = factories.SampleModelFactory.create_batch(int(count))
+        items = factories.OpenOfficeSlotFactory.create_batch(int(count))
         log.info("Created: %s", items)
 
     # noinspection PyUnusedLocal
@@ -30,7 +30,7 @@ class Command(BaseCommand):
         if force:
             return True
         try:
-            assert models.SampleModel.objects.count() == 0
+            assert models.OpenOfficeSlot.objects.count() == 0
             return True
         except AssertionError as ex:
             if on_empty:

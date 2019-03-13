@@ -1,0 +1,57 @@
+/* line 6, theme/styles/screen.scss */
+html {
+  font-size: 18px;
+  position: relative;
+  min-height: 100%; }
+
+/* line 16, theme/styles/screen.scss */
+body {
+  background: #fff; }
+  /* line 18, theme/styles/screen.scss */
+  body main {
+    background: #fff;
+    padding-bottom: 3rem; }
+
+/* line 25, theme/styles/screen.scss */
+.body-header {
+  background-color: #343a40; }
+
+/* line 29, theme/styles/screen.scss */
+.body-footer {
+  position: absolute;
+  background-color: #343a40;
+  bottom: 0;
+  width: 100%;
+  height: 3rem;
+  font-size: 0.66667rem;
+  line-height: 1rem; }
+  /* line 37, theme/styles/screen.scss */
+  .body-footer ul {
+    text-transform: uppercase; }
+  /* line 40, theme/styles/screen.scss */
+  .body-footer .container {
+    background-color: #343a40; }
+
+/* line 47, theme/styles/screen.scss */
+body .watermark {
+  position: absolute;
+  top: 10px;
+  left: -5px;
+  font-size: 1em;
+  z-index: 1000;
+  -webkit-transform: rotate(-90deg) translateX(-100%) translateY(0%);
+          transform: rotate(-90deg) translateX(-100%) translateY(0%);
+  -webkit-transform-origin: 0 0;
+          transform-origin: 0 0;
+  opacity: 0.6;
+  color: #ff9300; }
+  @media (min-width: 576px) {
+    /* line 47, theme/styles/screen.scss */
+    body .watermark {
+      font-size: 2em; } }
+  @media (min-width: 992px) {
+    /* line 47, theme/styles/screen.scss */
+    body .watermark {
+      top: 0.5em;
+      left: 0;
+      font-size: 3em; } }

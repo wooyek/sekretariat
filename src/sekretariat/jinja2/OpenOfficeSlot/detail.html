@@ -1,0 +1,29 @@
+{% extends "base/layout/basic.html" %}
+{% load i18n %}
+{% block content %}
+  <div class="container">
+    <h1 class="text-center">{{ object.name }}</h1>
+
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">{% trans "Start" %}</th>
+        <th scope="col">{% trans "Student" %}</th>
+        <th scope="col">{% trans "Email" %}</th>
+      </tr>
+      </thead>
+      <tbody>
+      {% for item in object.slots.all %}
+        <tr>
+          <th scope="row">{{ forloop.counter }}</th>
+          <td>{{ item.start|date:"j E Y H:m" }}</td>
+          <td>{{ item.student }}</td>
+          <td>{{ item.email }}</td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+{% endblock %}

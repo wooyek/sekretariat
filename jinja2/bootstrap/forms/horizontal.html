@@ -1,0 +1,312 @@
+{% macro field_label(field, label_class='control-label') -%}
+    <label for="{{ field.auto_id }}" class="{{ label_class }}">{{ field.label }}
+        {% if field.field.required %}
+            <span title="{% trans %}This is required field{% endtrans %}" class="required">*</span>
+        {% endif %}
+    </label>
+{%- endmacro %}
+
+
+{% macro field_help(field) -%}
+    {% if field.help_text %}
+        <small class="form-text text-muted">{{ field.help_text|safe }}</small>
+    {% endif %}
+{%- endmacro %}
+
+
+{% macro field_errors(field) -%}
+    {% if field.errors %}
+        <ul class="help-block errors">{% for error in field.errors %}
+            <li>{{ error|e }}</li>{% endfor %}</ul>
+    {% endif %}
+{%- endmacro %}
+
+
+{% macro form_skill_tags(field, classes=None, hide_label=False) -%}
+    <div id="{{ field.auto_id }}_form_group" class="form-group{% if field.errors %} has-error{% endif -%}{%- if classes %} {{ classes }}{% endif %}">
+        {% if not hide_label %}{{ field_label(field) }}{% endif %}
+        <div class="form-widget">
+            <div class="form-control form-auto-height">
+                {{ field.as_widget()|safe }}
+            </div>
+            {{ field_help(field) }}
+        </div>
+    </div>
+    {% if field.errors %}<div class="form-group has-error">{{ field_errors(field) }}</div>{% endif -%}
+{%- endmacro %}
+
+
+{% macro form_select(field, classes=None, hide_label=False, label_class='control-label') -%}
+    <div id="{{ field.auto_id }}_form_group" class="form-group{% if field.errors %} has-error{% endif -%}{%- if classes %} {{ classes }}{% endif %}">
+        {% if not hide_label %}{{ field_label(field, label_class) }}{% endif %}
+        <div class="form-widget select-container">
+            {{ field.as_widget(attrs={"class":"form-control selectize"})|safe }}
+            {{ field_help(field) }}
+        </div>
+    </div>
+    {% if field.errors %}
+        <div class="form-group has-error">{{ field_errors(field) }}</div>
+    {% endif -%}
+{%- endmacro %}
+
+
+{% macro form_inline_field(field, classes=None, hide_label=False, label_class='control-label', placeholder=None) -%}
+    <div id="{{ field.auto_id }}_form_group" class="form-group{% if field.errors %} has-error{% endif -%}{%- if classes %} {{ classes }}{% endif %}">
+        {% if not hide_label %}{{ field_label(field, label_class) }}{% endif %}
+        <div class="form-widget">
+            {% if placeholder %}
+                {{ field.as_widget(attrs={"class":"form-control", "placeholder": placeholder})|safe }}
+            {% else %}
+                {{ field.as_widget(attrs={"class":"form-control"})|safe }}
+            {% endif %}
+        </div>
+    </div>
+{%- endmacro %}
+
+{% macro form_field(field, classes=None, hide_label=False, label_class='control-label') -%}
+    <!-- {{ field.field.widget|class_name }} -->
+    <div id="{{ field.auto_id }}_form_group" class="form-group{% if field.errors %} is-invalid{% endif -%}{%- if classes %} {{ classes }}{% endif %}">
+        {% if not hide_label %}{{ field_label(field, label_class) }}{% endif %}
+        <div class="form-widget ">
+            {{ field.as_widget(attrs={"class":"form-control"})|safe }}
+            {{ field_help(field) }}
+        </div>
+    </div>
+    {% if field.errors %}
+        <div class="form-group has-error invalid-feedback">{{ field_errors(field) }}</div>
+    {% endif -%}
+{%- endmacro %}
+
+
+{% macro form_datetime(field, classes=None, hide_label=False) -%}
+    <div id="{{ field.auto_id }}_form_group" class="form-group{% if field.errors %} has-error{% endif -%}{%- if classes %} {{ classes }}{% endif %}">
+        {% if not hide_label %}{{ field_label(field) }}{% endif %}
+        <div class="form-widget">
+            <div class="input-group widget-datetime ">
+                <span class="input-group-addon">
+                <span data-time-icon="icon-time" data-date-icon="icon-calendar" class="fa fa-fw fa-calendar"></span>
+            </span>
+                {{ field.as_widget(attrs={"class":"form-control"})|safe }}
+            </div>
+            {{ field_help(field) }}
+        </div>
+    </div>
+    {% if field.errors %}
+        <div class="form-group has-error">{{ field_errors(field) }}</div>
+    {% endif -%}
+{%- endmacro %}
+
+{% macro form_date(field, classes=None, hide_label=False) -%}
+    <div id="{{ field.auto_id }}_form_group" class="form-group{% if field.errors %} has-error{% endif -%}{%- if classes %} {{ classes }}{% endif %}">
+        {% if not hide_label %}{{ field_label(field) }}{% endif %}
+        <div class="form-widget">
+            <div class="input-group widget-date ">
+                <span class="input-group-addon">
+                <span data-time-icon="icon-time" data-date-icon="icon-calendar" class="fa fa-fw fa-calendar"></span>
+                </span>
+                {{ field.as_widget(attrs={"class":"form-control", "type":'date'})|safe }}
+            </div>
+            {{ field_help(field) }}
+        </div>
+    </div>
+    {% if field.errors %}
+        <div class="form-group has-error">{{ field_errors(field) }}</div>
+    {% endif -%}
+{%- endmacro %}
+
+{% macro field_url(field, classes=None, hide_label=False) -%}
+    <div id="{{ field.auto_id }}_form_group" class="form-group{% if field.errors %} has-error{% endif -%}{%- if classes %} {{ classes }}{% endif %}">
+        {% if not hide_label %}{{ field_label(field) }}{% endif %}
+        <div class="form-widget">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-fw fa-globe"></i></span>
+                {{ field.as_widget(attrs={"class":"form-control "})|safe }}
+            </div>
+            {{ field_help(field) }}
+        </div>
+    </div>
+    {% if field.errors %}
+        <div class="form-group has-error">{{ field_errors(field) }}</div>
+    {% endif -%}
+{%- endmacro %}
+
+{% macro field_tel(field, classes=None, hide_label=False, label_class='control-label') -%}
+    <div id="{{ field.auto_id }}_form_group" class="form-group{% if field.errors %} has-error{% endif -%}{%- if classes %} {{ classes }}{% endif %} ">
+        {% if not hide_label %}{{ field_label(field, label_class) }}{% endif %}
+        <div class="form-widget">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-fw fa-phone"></i></span>
+                {{ field.as_widget(attrs={"class":"form-control"})|safe }}
+            </div>
+            {{ field_help(field) }}
+        </div>
+    </div>
+    {% if field.errors %}
+        <div class="form-group has-error">{{ field_errors(field) }}</div>
+    {% endif -%}
+{%- endmacro %}
+
+{% macro field_email(field, classes=None, hide_label=False) -%}
+    <div id="{{ field.auto_id }}_form_group" class="form-group{% if field.errors %} has-error{% endif -%}{%- if classes %} {{ classes }}{% endif %} input-append">
+        {% if not hide_label %}{{ field_label(field) }}{% endif %}
+        <div class="input-group form-widget">
+            <div class="input-group-prepend"><div class="input-group-text"><i class="fa fa-fw fa-envelope"></i></div></div>
+            {{ field.as_widget(attrs={"class":"form-control"})|safe }}
+        </div>
+        {{ field_help(field) }}
+    </div>
+    {% if field.errors %}
+        <div class="form-group has-error invalid-feedback">{{ field_errors(field) }}</div>
+    {% endif -%}
+{%- endmacro %}
+
+{% macro field_password(field, classes=None, hide_label=False) -%}
+    <div id="{{ field.auto_id }}_form_group" class="form-group{% if field.errors %} has-error is-invalid{% endif -%}{%- if classes %} {{ classes }}{% endif %} input-append">
+        {% if not hide_label %}{{ field_label(field) }}{% endif %}
+        <div class="input-group form-widget">
+            {{ field.as_widget(attrs={"class":"form-control"})|safe }}
+            <span class="input-group-addon"><i class="fa fa-fw fa-lock"></i></span>
+        </div>
+        {{ field_help(field) }}
+    </div>
+    {% if field.errors %}
+        <div class="form-group has-error">{{ field_errors(field) }}</div>
+    {% endif -%}
+{%- endmacro %}
+
+
+{% macro form_checkbox(field, classes=None, hide_label=False, label_class='control-label') -%}
+    <div id="{{ field.auto_id }}_form_group" class="form-group{% if field.errors %} error{% endif -%}{%- if classes %} {{ classes }}{% endif %}">
+        <div class="input-group form-widget">
+            <div class="checkbox">
+            {{ field.as_widget() }}
+                {% if not hide_label %}{{ field_label(field, label_class) }}{% endif %}
+            </div>
+        </div>
+        {{ field_help(field) }}
+    </div>
+    {% if field.errors %}
+        <div class="form-group has-error">{{ field_errors(field) }}</div>
+    {% endif -%}
+{%- endmacro %}
+
+{% macro form_checkbox_list(field, classes=None, hide_label=False, label_class='control-label') -%}
+    <div id="{{ field.auto_id }}_form_group" class="form-group{% if field.errors %} error{% endif -%}{%- if classes %} {{ classes }}{% endif %} {{ field.field.widget|class_name }}">
+        <div class="input-group form-widget">
+            {% if not hide_label %}{{ field_label(field, label_class) }}{% endif %}
+            {{ field.as_widget() }}
+        </div>
+        {{ field_help(field) }}
+    </div>
+    {% if field.errors %}
+        <div class="form-group has-error">{{ field_errors(field) }}</div>
+    {% endif -%}
+{%- endmacro %}
+
+
+{% macro select2(field, classes=None, hide_label=False) -%}
+    <div id="{{ field.auto_id }}_form_group" class="form-group{% if field.errors %} has-error{% endif -%}{%- if classes %} {{ classes }}{% endif %}">
+        {% if not hide_label %}{{ field_label(field) }}{% endif %}
+        <div class="col-sm-5">
+            {{ field(style="width:100%")|safe }}
+            {{ field_help(field) }}
+        </div>
+    </div>
+    {% if field.errors %}
+        <div class="form-group has-error">{{ field_errors(field) }}</div>
+    {% endif -%}
+
+{%- endmacro %}
+
+{% macro form_error_list(errors) -%}
+    <div class="alert alert-warning form-errors">
+        <h4 class="alert-heading">{% trans %}Please correct validation errors{% endtrans %}</h4>
+        {% for field, field_errors in errors.items() %}
+            <ul>
+                <li>
+                    {% if field != '__all__' %}
+                        {% if field in form %}
+                            {{ form.get(field).label }}:
+                        {% else %}
+                            {{ _(field) }}:
+                        {% endif %}
+                    {% endif %}
+                    {% if field_errors|length < 2 %}
+                        {{ field_errors[0] }}
+                    {% else %}
+                        <ul>{% for e in field_errors %}
+                            <li>{{ e }}</li>{% endfor %}</ul>
+                    {% endif %}
+                </li>
+            </ul>
+        {% endfor %}
+    </div>
+{%- endmacro %}
+
+{% macro form_errors(form) -%}
+    {% if form.errors %}
+        {{ form_error_list(form.errors) }}
+    {% endif %}
+{% endmacro %}
+
+{% macro form_body(form, label_class="control-label", widget_class=None, no_label_offset="col-sm-offset-2") -%}
+    {% if form %}
+        {{ form_errors(form) }}
+        {% for field in form %}
+            {% with widget=field.field.widget, widget_class=field.field.widget|class_name %}
+                {% if widget_class == "Select2Widget" %}
+                    {{ select2(field) }}
+                {% elif widget_class == "CheckboxInput" %}
+                    {{ form_checkbox(field) }}
+                {% elif widget_class == "CheckboxSelectMultiple" %}
+                    {{ form_checkbox_list(field) }}
+                {% elif widget.input_type == "hidden" %}
+                    {{ field|safe }}
+                {% elif widget.input_type == "datetime" or widget_class == "DateTimeInput" %}
+                    {{ form_datetime(field) }}
+                {% elif widget.input_type == "date" or widget_class == "DateInput" %}
+                    {{ form_date(field) }}
+                {% elif widget.input_type == "url" %}
+                    {{ field_url(field) }}
+                {% elif widget.input_type == "tel" or widget_class == "PhoneInput" %}
+                    {{ field_tel(field) }}
+                {% elif widget.input_type == "email" %}
+                    {{ field_email(field) }}
+                {% elif widget.input_type == "password" %}
+                    {{ field_password(field) }}
+                {% elif widget.input_type == "submit" %}
+                {% elif widget_class in ("Select", "NullBooleanSelect") %}
+                    {{ form_select(field) }}
+                {% else %}
+                    {{ form_field(field) }}
+                {% endif %}
+            {% endwith %}
+        {% endfor %}
+    {% else %}
+        <!-- No form to render -->
+    {% endif %}
+{%- endmacro %}
+
+{% macro render_form(form, class="", action=None, submit_text="Zapisz", btn_class="btn btn-primary") -%}
+    <form class="{{ class }} {{ form|class_name }}" method="post" {% if action %}action="{{ action }}"{% endif %} role="form" enctype="multipart/form-data">
+        <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}"/>
+        {% if form.forms %}
+            {{ form.management_form }}
+            {% for form in form.forms %}
+                {{ form_body(form) }}
+            {% endfor %}
+        {% else %}
+            {{ form_body(form) }}
+        {% endif %}
+        {{ form_actions(submit_text, btn_class) }}
+    </form>
+{%- endmacro %}
+
+{% macro form_actions(submit_text="Zapisz", btn_class="btn btn-primary") -%}
+    <div class="form-group">
+        <div class="form-actions">
+            <button type="submit" class="{{ btn_class }}">{{ submit_text }}</button>
+            <a class="btn btn-cancel" href="{{ return_url|default("/", True) }}">{% trans %}Cancel{% endtrans %}</a>
+        </div>
+    </div>
+{%- endmacro %}

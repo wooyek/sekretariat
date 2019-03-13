@@ -16,11 +16,10 @@ https://docs.djangoproject.com/en/dev/ref/settings/
 
 from __future__ import absolute_import, unicode_literals
 
+import importlib
 import locale
 import logging
-# noinspection PyUnresolvedReferences
-import os
-# noinspection PyUnresolvedReferences
+import re
 from pathlib import Path
 
 logging.basicConfig(format='%(asctime)s %(levelname)-7s %(thread)-5d %(filename)s:%(lineno)s | %(funcName)s | %(message)s', datefmt='%H:%M:%S')
@@ -37,33 +36,30 @@ locale.setlocale(locale.LC_ALL, '')
 # │ We import default component settings and customise them below in this file
 # │ To disable or enable particular component just comment or uncomment a component import
 
-# noinspection PyUnresolvedReferences
-from .components.debug_toolbar import *  # noqa: F402 F403 isort:skip
-from .components.django_assets import *  # noqa: F402 F403 isort:skip
-# from .components.celery import *  # noqa: F402 F403 isort:skip
-# noinspection PyUnresolvedReferences
-from .components.import_export import *  # noqa: F402 F403 isort:skip
-from .components.pycountry import *  # noqa: F402 F403 isort:skip
-# noinspection PyUnresolvedReferences
-from .components.sentry import *  # noqa: F402 F403 isort:skip
-# noinspection PyUnresolvedReferences
-from .components.newrelic import *  # noqa: F402 F403 isort:skip
-# noinspection PyUnresolvedReferences
-from .components.django_opt_out import *  # noqa: F402 F403 isort:skip
-# from .components.django_email_queue import *  # noqa: F402 F403 isort:skip
-# noinspection PyUnresolvedReferences
-from .components.django_filer import *  # noqa: F402 F403 isort:skip
-# noinspection PyUnresolvedReferences
-# from .components.django_hunger import *  # noqa: F402 F403 isort:skip
-# from .components.oauth_toolkit import * # noqa: F402 F403 isort:skip
-# from .components.rest_framework import *  # noqa: F402 F403 isort:skip
-# from .components.gis import *  # noqa: F402 F403 isort:skip
-# from .components.intercom import *  # noqa: F402 F403 isort:skip
-# noinspection PyUnresolvedReferences
-from .components.pure_pagination import *  # noqa: F402 F403 isort:skip
+settings_components = (
+    'debug_toolbar',
+    'django_assets',
+    # 'celery',
+    'import_export',
+    'pycountry',
+    'sentry',
+    'django_opt_out',
+    'django_email_queue',
+    # 'django_filer',
+    # 'django_hunger',
+    # 'oauth_toolkit',
+    # 'rest_framework',
+    # 'gis',
+    # 'intercom',
+    'pure_pagination',
+    # 'google_cloud_storage',
+)
 
-if 'GOOGLE_STORAGE_ID' in os.environ:
-    from .components.google_cloud_storage import *  # noqa: F402 F403 isort:skip
+setting_filter = re.compile("^[A-Z]([A-Z0-9_])*$")
+
+for component in settings_components:
+    mod = importlib.import_module("." + component, 'website.settings.components')
+    globals().update({name: value for name, value in mod.__dict__.items() if setting_filter.match(name)})
 
 # Other imports can cause change in core settings
 # we should import core last
@@ -108,14 +104,15 @@ import django_error_views  # noqa F402 isort:skip
 
 LOCALE_PATHS += [  # noqa: F405
     str(Path(django_error_views.__file__).parent / 'locales'),
-    str(BASE_DIR / 'locales'),
+    str(core.BASE_DIR / 'locales'),
 ]
-
 
 SANDBOX = core.env("SANDBOX", default=True, cast=bool)
 DEFAULT_PAGE_CACHE = core.env("DEFAULT_PAGE_CACHE", default=3600, cast=bool)
 
 USER_AGENTS_CACHE = 'default'
+
+
 def filter_deprecation_warnings(record):
     warnings_to_suppress = [
         'RemovedInDjango30Warning'

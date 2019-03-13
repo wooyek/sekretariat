@@ -1,6 +1,6 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="Django server development" type="Python.DjangoServer" factoryName="Django server" singleton="true">
-    <module name="picropper" />
+    <module name="sekretariat" />
     <option name="INTERPRETER_OPTIONS" value="" />
     <option name="PARENT_ENVS" value="true" />
     <envs>
@@ -14,9 +14,13 @@
     <option name="ADD_SOURCE_ROOTS" value="true" />
     <EXTENSION ID="net.ashald.envfile">
       <option name="IS_ENABLED" value="true" />
+      <option name="IS_SUBST" value="false" />
+      <option name="IS_PATH_MACRO_SUPPORTED" value="false" />
+      <option name="IS_IGNORE_MISSING_FILES" value="false" />
       <ENTRIES>
         <ENTRY IS_ENABLED="true" PARSER="env" PATH="$PROJECT_DIR$/.env" />
         <ENTRY IS_ENABLED="true" PARSER="env" PATH="$PROJECT_DIR$/secrets.env" />
+        <ENTRY IS_ENABLED="true" PARSER="runconfig" />
       </ENTRIES>
     </EXTENSION>
     <option name="launchJavascriptDebuger" value="false" />
@@ -28,6 +32,6 @@
     <option name="runNoReload" value="false" />
     <option name="useCustomRunCommand" value="false" />
     <option name="customRunCommand" value="" />
-    <method />
+    <method v="2" />
   </configuration>
 </component>

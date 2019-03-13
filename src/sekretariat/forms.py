@@ -11,10 +11,21 @@ class TranslatedMultipleChoiceField(forms.ModelMultipleChoiceField):
         return obj.trans(get_language())
 
 
-class SampleModelForm(forms.ModelForm):
+class OpenOfficeSlotConfirm(forms.ModelForm):
     class Meta:
-        model = models.SampleModel
-        fields = ('name',)
+        model = models.OpenOfficeSlot
+        fields = ['student']
+
+
+class OpenOfficeSlotForm(forms.ModelForm):
+    class Meta:
+        model = models.OpenOfficeSlot
+        fields = ('student', 'email')
         labels = {
             'name': _('name'),
         }
+
+    def __init__(self, *args, **kwargs):
+        super(OpenOfficeSlotForm, self).__init__(*args, **kwargs)
+        for key in self.fields:
+            self.fields[key].required = True

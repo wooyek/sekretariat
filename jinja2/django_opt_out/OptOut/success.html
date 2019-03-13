@@ -1,0 +1,11 @@
+{% extends "base/dialog.html" %}
+{% block page_title %}{% trans %}Thank you for your feedback!{% endtrans %}{% endblock %}
+{% block content %}
+    {% include "django_opt_out/OptOut/success_apologies.html" %}
+{% endblock %}
+{% block footer %}
+    <a href="{{ url('django_opt_out:OptOutUpdate', object.pk, object.secret, object.email) }}" class="btn btn-primary">
+        {% trans %}Update opt-out feedback{% endtrans %}
+    </a>
+    <button type="submit" class="btn btn-link">{% trans %}Opt-in{% endtrans %}</button>
+{% endblock %}

@@ -347,13 +347,16 @@ def ship(ctx, remote='dev', branch='master'):
     ctx.run("git checkout {branch}".format(branch=branch))
     ctx.run("git push {remote} {branch}  --verbose".format(remote=remote, branch=branch))
     ctx.run("git checkout develop")
+
     # Uncomment this to show release script output
-    # ctx.run("heroku logs -r {remote}".format(remote=remote))
+    ctx.run("heroku logs -r {remote}".format(remote=remote))
+
     # Uncomment this to show docker running containers
-    print("===== Checking out free space")
-    ctx.run("ssh jsk@moniuszko.tk df -h")
-    print("===== Listing containers")
-    ctx.run("ssh jsk@moniuszko.tk docker ps")
+    # print("===== Checking out free space")
+    # ctx.run("ssh user@dev.example.com df -h")
+    # print("===== Listing containers")
+    # ctx.run("ssh user@dev.example.com docker ps")
+
     print("[ OK ] Deployed: {} v{}".format(remote, get_current_version()))
 
 

@@ -9,7 +9,6 @@ from django.utils.translation import ugettext_lazy
 
 log = logging.getLogger(__name__)
 
-
 # Text to put at the end of each page's <title>.
 admin.site.site_title = settings.ADMIN_SITE_TITLE or ugettext_lazy('Django site admin')
 

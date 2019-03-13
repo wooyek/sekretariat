@@ -1,0 +1,29 @@
+{% if is_paginated %}
+    <nav class="">
+        <div class="pagination-container">
+            {% if page_obj.has_previous() %}
+                <span class="previous">
+                <a href="{{ request.get_full_path()|append_get(page=page_obj.previous_page_number()) }}">
+                    {% trans %}Previous{% endtrans %}
+                </a>
+                </span>
+            {% endif %}
+            {% for page in page_obj.paginator.page_range %}
+                <ul>
+                    {% if page > (page_obj.number - 5) and page < (page_obj.number + 5) %}
+                        <li class="{% if page_obj.number == page %}active{% endif %}">
+                            <a href="{{ request.get_full_path()|append_get(page=page) }}">{{ page }}</a>
+                        </li>
+                    {% endif %}
+                </ul>
+            {% endfor %}
+            {% if page_obj.has_next() %}
+                <span class="next">
+                <a href="{{ request.get_full_path()|append_get(page=page_obj.next_page_number()) }}">
+                    {% trans %}Next{% endtrans %}
+                </a>
+                </span>
+            {% endif %}
+        </div>
+    </nav>
+{% endif %}

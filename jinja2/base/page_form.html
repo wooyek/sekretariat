@@ -1,0 +1,24 @@
+{% extends "base/default.html" %}
+{% block body_class %}dialog{% endblock %}
+{% block main %}
+    <header><h1 class="">{% block header %}{% endblock %}</h1></header>
+    <article>
+        {% block article_head %}{% endblock %}
+        <div class="panel {% block panel_class %}panel-default{% endblock %}">
+            <div class="panel-heading">
+                <h3 class="panel-title">{% block page_title %}{% endblock %}</h3>
+            </div>
+            <form {% block dialog_form %}class="{% block form_class %}{% endblock %}" id="{% block form_id %}{% endblock %}" action="{% block form_action %}{% endblock %}" method="post" role="form"
+                  enctype="multipart/form-data"{% endblock %}>
+                <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}"/>
+                <section class="panel-body">
+                    {% block content %}{% endblock %}
+                    <footer>
+                        {% block footer %}{% endblock %}
+                    </footer>
+                </section>
+            </form>
+        </div>
+    </article>
+    {% block extra %}{% endblock %}
+{% endblock %}

@@ -68,6 +68,9 @@ recursive-include static *.* *
 recursive-include templates *.html
 recursive-include templates *.txt
 recursive-include templates *.xml
+recursive-include jinja2 *.html
+recursive-include jinja2 *.txt
+recursive-include jinja2 *.xml
 recursive-include assets *.md
 recursive-include styles *.md
 recursive-include vendor *.md

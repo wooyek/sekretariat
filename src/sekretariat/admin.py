@@ -2,13 +2,23 @@
 from django.contrib import admin
 from import_export.admin import ImportExportMixin
 
-from . import models, resources
+from website.misc.admin import DynamicLookupMixin
+from . import models
 
 
-@admin.register(models.SampleModel)
-class SampleModelAdmin(ImportExportMixin, admin.ModelAdmin):
-    resource_class = resources.SampleModelResource
-    list_display = ('name', )
-    list_filter = ('name', )
-    readonly_fields = ('name', )
-    # date_hierarchy = 'ts'
+class OpenOfficeSlotInline(admin.TabularInline):
+    model = models.OpenOfficeSlot
+
+
+@admin.register(models.OpenOfficeGroup)
+class OpenOfficeGroupAdmin(ImportExportMixin, admin.ModelAdmin):
+    list_display = ('name',)
+    list_filter = ('name',)
+    inlines = (OpenOfficeSlotInline,)
+
+
+@admin.register(models.OpenOfficeSlot)
+class OpenOfficeSlotAdmin(ImportExportMixin, DynamicLookupMixin, admin.ModelAdmin):
+    list_display = ('start', 'student', 'email', 'group__name')
+    list_filter = ('group',)
+    date_hierarchy = 'start'

@@ -20,7 +20,6 @@ logging.disable(logging.NOTSET)
 
 logging.info('Loading %s', __name__)
 
-
 DJANGO_SETTINGS_MODULE = os.environ.setdefault("DJANGO_SETTINGS_MODULE", "website.settings")
 print("DJANGO_SETTINGS_MODULE=", DJANGO_SETTINGS_MODULE)
 from django.conf import settings  # noqa: F402 isort:skip

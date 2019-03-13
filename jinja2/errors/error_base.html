@@ -1,0 +1,48 @@
+<!DOCTYPE>
+<html class="no-js" lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>{% block title %}{% endblock %}</title>
+    {% assets "css" %}<link rel="stylesheet" href="{{ ASSET_URL }}" media="all">{% endassets %}
+</head>
+<body class="dialog confirmation">
+{% block body %}
+    <main class="o-wrapper">
+        <div class="container">
+            <header></header>
+            <article>
+                <div class="panel {% block panel_class %}panel-default{% endblock %}">
+                    <div class="panel-heading">
+                        <h1 class="panel-title text-center">{% block page_title %}{% endblock %}</h1>
+                    </div>
+                    <section class="panel-body text-center">
+                        {% block content %}{% endblock %}
+                        <footer style="margin-top: 40px;">
+                            {% block footer %}{% endblock %}
+                        </footer>
+                    </section>
+                    </form>
+                </div>
+                {% block extra %}{% endblock %}
+            </article>
+        </div>
+    </main>
+{% endblock %}
+</body>
+{% if request and request.sentry is defined %}
+    <!-- Sentry JS SDK 2.1.+ required -->
+    <script src="https://cdn.ravenjs.com/2.1.0/raven.min.js"></script>
+    <script>
+        Raven.showReportDialog({
+            {% if request.user.is_authenticated %}
+                user: {
+                    name: '{{ request.user.get_full_name() }}',
+                    email: '{{request.user.email}}'
+                },
+            {% endif %}
+            eventId: '{{ request.sentry.id }}',
+            dsn: '{{ RAVEN_PUBLIC_DSN }}',
+        });
+    </script>
+{% endif %}
+</html>

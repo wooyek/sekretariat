@@ -46,8 +46,7 @@ class SaferExceptionReporterFilter(SafeExceptionReporterFilter):
         current_frame = getattr(tb_frame, 'f_back', None)
         sensitive_variables = None
         while current_frame is not None:
-            if (current_frame.f_code.co_name == 'sensitive_variables_wrapper' and
-                    'sensitive_variables_wrapper' in current_frame.f_locals):
+            if current_frame.f_code.co_name == 'sensitive_variables_wrapper' and 'sensitive_variables_wrapper' in current_frame.f_locals:
                 # The sensitive_variables decorator was used, so we take note
                 # of the sensitive variables' names.
                 wrapper = current_frame.f_locals['sensitive_variables_wrapper']
@@ -75,8 +74,7 @@ class SaferExceptionReporterFilter(SafeExceptionReporterFilter):
             for name, value in tb_frame.f_locals.items():
                 cleansed[name] = self.cleanse_special_types(request, value)
 
-        if (tb_frame.f_code.co_name == 'sensitive_variables_wrapper' and
-                'sensitive_variables_wrapper' in tb_frame.f_locals):
+        if tb_frame.f_code.co_name == 'sensitive_variables_wrapper' and 'sensitive_variables_wrapper' in tb_frame.f_locals:
             # For good measure, obfuscate the decorated function's arguments in
             # the sensitive_variables decorator's frame, in case the variables
             # associated with those arguments were meant to be obfuscated from

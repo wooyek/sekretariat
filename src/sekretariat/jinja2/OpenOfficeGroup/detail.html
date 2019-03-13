@@ -1,0 +1,40 @@
+{% extends "base/basic.html" %}
+{% block main %}
+  <div class="container">
+    <h1 class="text-center mt-3 mb-4">{{ object.name }}</h1>
+
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">{% trans %}Start{% endtrans %}</th>
+        <th scope="col">{% trans %}Booking{% endtrans %}</th>
+        {% if user.is_staff %}
+          <th scope="col">{% trans %}Student{% endtrans %}</th>
+          <th scope="col">{% trans %}Email{% endtrans %}</th>
+        {% endif %}
+      </tr>
+      </thead>
+      <tbody>
+      {% for item in object.slots.all() %}
+        <tr>
+          <th scope="row">{{ loop.index }}</th>
+          <td>{{ item.start|datetimeformat("YYYY-MM-dd HH:mm") }} {{ item.start|natural_period }} </td>
+          <td>
+            {% if item.email %}
+              {% trans %}Booked{% endtrans %}
+            {% else %}
+              <a class="btn btn-primary" href="{{ url('sekretariat:OpenOfficeSlotBook', item.pk) }}">{% trans %}Book{% endtrans %}</a>
+            {% endif %}
+          </td>
+          {% if user.is_staff %}
+            <td>{{ item.student }}</td>
+            <td>{{ item.email }}</td>
+          {% endif %}
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+{% endblock %}

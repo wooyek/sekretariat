@@ -1,0 +1,9 @@
+{% macro no_items() -%}
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div class="no-items">
+                {{ caller() }}
+            </div>
+        </div>
+    </div>
+{% endmacro %}

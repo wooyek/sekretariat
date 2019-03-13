@@ -1,0 +1,9 @@
+{% extends "email/base.html" %}
+{% block message_body %}
+<p>{% if person %}{% trans first_name=person.first_name %}Hi {{ first_name }}{% endtrans %}{% elif first_name %}{% trans %}Hi {{ first_name }}{% endtrans %}{% else %}{% trans %}Hi{% endtrans %}{% endif %},</p>
+{% block content %}{% endblock %}
+{% block signature %}
+    <p>{% trans -%}Cheers!{% endtrans %}<br/>
+    </p>
+{% endblock %}
+{% endblock %}

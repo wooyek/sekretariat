@@ -1,0 +1,11 @@
+<section id="alerts">
+  {% if messages %}
+    {% for message in messages %}
+      <div class="alert {{ message.tags }} alert-warning alert-dismissible fade show mt-1">
+        <div>
+          {{ message|safe }}
+        </div>
+      </div>
+    {% endfor %}
+  {% endif %}
+</section>

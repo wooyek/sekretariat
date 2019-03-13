@@ -1,0 +1,14 @@
+{% macro btn_primary(body, url, link_name='btn primary') -%}
+    <a id="btn-action" href="{{ url }}" data-msys-linkname="{{ link_name }}"
+       style="text-decoration: none; background: #3071a9;color: #fff; display: inline-block;margin-bottom: 0;font-weight: normal;text-align: center;vertical-align: middle;touch-action: manipulation;cursor: pointer;background-image: none;border: 1px solid transparent;white-space: nowrap;padding: 6px 12px;font-size: 14px;line-height: 1.428571429;border-radius: 3px;-moz-user-select: -moz-none;-ms-user-select: none;-webkit-user-select: none;user-select: none;">
+        {{ body }}
+    </a>
+{%- endmacro %}
+
+{% macro btn_default(body, url, linke_name='btn secondary') -%}
+    <a id="btn-secondary" href="{{ url }}" data-msys-linkname="{{ link_name }}"
+       style="text-decoration: none; background: #f0f0f0;color: #676a6c; display: inline-block;margin-bottom: 0;font-weight: normal;text-align: center;vertical-align: middle;touch-action: manipulation;cursor: pointer;background-image: none;border: 1px solid transparent;white-space: nowrap;padding: 6px 12px;font-size: 14px;line-height: 1.428571429;border-radius: 3px;-moz-user-select: -moz-none;-ms-user-select: none;-webkit-user-select: none;user-select: none;">
+        {{ body }}
+    </a>
+{%- endmacro %}
+

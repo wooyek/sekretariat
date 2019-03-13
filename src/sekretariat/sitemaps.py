@@ -2,8 +2,6 @@ import logging
 
 from django.contrib.sitemaps import GenericSitemap
 
-from . import models
-
 log = logging.getLogger(__name__)
 
 items = (

@@ -44,6 +44,8 @@ from .base import *  # noqa: F402, F403, F401 isort:skip
 # EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 # EMAIL_BACKEND = 'django.core.mail.backends.dummy.EmailBackend'
 EMAIL_QUEUE_EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-LOGGING['handlers']['mail_admins']['email_backend'] = 'django.core.mail.backends.console.EmailBackend'  # noqa: F405
+# EMAIL_QUEUE_EMAIL_BACKEND = 'django.core.mail.backends.dummy.EmailBackend'
+# LOGGING['handlers']['mail_admins']['email_backend'] = 'django.core.mail.backends.console.EmailBackend'  # noqa: F405
+LOGGING['handlers']['mail_admins']['email_backend'] = 'django.core.mail.backends.dummy.EmailBackend'  # noqa: F405
 
 DEFAULT_FILE_STORAGE = 'django.core.files.storage.FileSystemStorage'

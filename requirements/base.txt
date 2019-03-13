@@ -5,20 +5,22 @@
 
 click
 click-log
+dinja2
 django<2.0 ; python_version < '3.5'
 django>=2.0 ; python_version >= '3.5'
 django-admin-ordering
 django-admin-relation-links
 django-assets
 django-bootstrap-form
+django-babel
 django-debug-toolbar
-# django-email-queue
+django-email-queue
 django-environ
 django-error-views
 django-formtools
 django-import-export
-#django-localflavor
-# django-opt-out[sparkpost]
+# django-localflavor
+django-opt-out[sparkpost]
 django-pascal-templates
 # django-polymodels
 django-powerbank
@@ -26,10 +28,10 @@ django-pure-pagination
 django-reversion
 # easy_thumbnails
 enum34 ; python_version < '3.4'
-# html2text
-# isoweek
-# jinja2-highlight
-# markdown
+html2text
+isoweek
+jinja2-highlight
+markdown
 invoke
 # maya
 newrelic
@@ -38,6 +40,7 @@ psycopg2-binary
 pycountry
 pytz
 pathlib ; python_version < '3.3'
+pendulum
 # version 2018.11.3 has installation issues
 # regex==2018.8.29
 # sorl-thumbnail

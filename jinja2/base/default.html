@@ -1,0 +1,29 @@
+﻿{% extends "base/layout/body.html" %}
+
+{% block body %}
+    {% block navbar %}
+        {% include "base/layout/header.html" %}
+    {% endblock %}
+    {% block fold %}{% endblock %}
+    {% block main_wrap %}
+    <main class="o-wrapper">
+        <div class="container">
+                {% block main %}{% endblock %}
+        </div>
+    </main>
+    {% endblock %}
+    {% block page_footer %}{% include "base/layout/footer.html" %}{% endblock %}
+    {% block modals %}
+        <div class="modal fade" id="DefaultModal" tabindex="-1" role="dialog" aria-labelledby="DefaultModal">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div class="text-center">
+                            <i class="fa fa-refresh fa-spin fa-5x"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endblock %}
+{% endblock %}

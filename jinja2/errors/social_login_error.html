@@ -1,0 +1,21 @@
+{% extends 'error_base.html' %}
+{% from "bootstrap/macros.html" import alert %}
+{% block page_title %}{% trans %}Social login failed{% endtrans %}{% endblock %}
+
+{% block content %}
+    <section id="alerts">
+
+        {% if messages %}
+            <p>Please review these messages and try again:</p>
+            {% for message in messages %}
+                <p class="lead">{{ message }}</p>
+            {% endfor %}
+        {% else %}
+            <p class="">No error messages where provided.</p>
+        {% endif %}
+        <p style="margin-top: 1em">Please try again If you didn't cancel authentication process or otherwise declined authentication. Please contact us if the problem still persists.</p>
+    </section>
+{% endblock %}
+{% block footer %}
+    <a href="/" class="btn btn-primary">{% trans %}Go to homepage{% endtrans %} </a>
+{% endblock %}

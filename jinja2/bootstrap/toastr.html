@@ -1,0 +1,24 @@
+{% if messages %}
+    <script>
+        toastr.options = {
+            "closeButton": true,
+            "debug": true,
+            "newestOnTop": false,
+            "progressBar": true,
+            "positionClass": "toast-top-center",
+            "preventDuplicates": false,
+            "onclick": null,
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "timeOut": "0",
+            "extendedTimeOut": "0",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        }
+        {% for message in messages %}
+            toastr['{{ message.tags }}']('{{ message|safe }}');
+        {% endfor %}
+    </script>
+{% endif %}

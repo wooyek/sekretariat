@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<!--
+    (c)2018 Janusz Skonieczny
+    Author: Janusz Skonieczny @wooyek
+	Version: {{ system.website }} {{ system.revision }} {{ settings.ENVIRONMENT_NAME }}
+-->
+<html class="no-js" lang="{{ request.LANGUAGE_CODE }}"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+
+  <title>{% block page_title %}{% endblock %}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="{% block description %}{% endblock %}">
+  <meta name="keywords" content="{% block keywords %}{% endblock %}"/>
+  <meta name="author" content="{% block author %}{% endblock %}"/>
+  <link rel="canonical" href="{{ settings.BASE_URL }}/{{ request.get_full_path }}"/>
+
+  {% block assets %}
+    {% assets "css" %}
+      <link rel="stylesheet" href="{{ ASSET_URL }}" media="all">
+    {% endassets %}
+  {% endblock %}
+
+  {% block css %}{% endblock %}{% block js %}{% endblock %}
+    <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml"/>
+  {% block head %}{% endblock %}
+  {#
+    <link rel="shortcut icon" href="{{ static("assets/icons/favicon-16x16.png") }}" />
+    <link rel="apple-touch-icon" sizes="57x57" href="{{ static("assets/icons/apple-icon-57x57.png") }}">
+    <link rel="apple-touch-icon" sizes="60x60" href="{{ static("assets/icons/apple-icon-60x60.png") }}">
+    <link rel="apple-touch-icon" sizes="72x72" href="{{ static("assets/icons/apple-icon-72x72.png") }}">
+    <link rel="apple-touch-icon" sizes="76x76" href="{{ static("assets/icons/apple-icon-76x76.png") }}">
+    <link rel="apple-touch-icon" sizes="114x114" href="{{ static("assets/icons/apple-icon-114x114.png") }}">
+    <link rel="apple-touch-icon" sizes="120x120" href="{{ static("assets/icons/apple-icon-120x120.png") }}">
+    <link rel="apple-touch-icon" sizes="144x144" href="{{ static("assets/icons/apple-icon-144x144.png") }}">
+    <link rel="apple-touch-icon" sizes="152x152" href="{{ static("assets/icons/apple-icon-152x152.png") }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ static("assets/icons/apple-icon-180x180.png") }}">
+    <link rel="icon" type="image/png" sizes="192x192" href="{{ static("assets/icons/android-icon-192x192.png") }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ static("assets/icons/favicon-32x32.png") }}">
+    <link rel="icon" type="image/png" sizes="96x96" href="{{ static("assets/icons/favicon-96x96.png") }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ static("assets/icons/favicon-16x16.png") }}">
+    <link rel="manifest" href="{{ static("assets/icons/manifest.json") }}">
+    <meta name="msapplication-TileImage" content="{{ static("assets/icons/ms-icon-144x144.png") }}">
+  #}
+  <meta name="msapplication-TileColor" content="#373737">
+  <meta name="theme-color" content="#373737">
+    <meta name="apple-mobile-web-app-title" content="Sekretariat">
+  {% block link %}{% endblock link %}
+  {% block script %}{% endblock script %}
+
+</head>
+<body class="{{ request.resolver_match.url_name }} {% block body_class %}{% endblock %}" {% block body_attrs %}{% endblock %}
+      data-locale="{{ request.LANGUAGE_CODE }}">
+{% block body %}{% endblock %}
+<script type="text/javascript" src="{{ url('javascript-catalog') }}"></script>
+{% assets "js" %}
+  <script type="text/javascript" src="{{ ASSET_URL }}"></script>
+{% endassets %}
+{% if settings.ENVIRONMENT_NAME %}<div class="watermark">{{ settings.ENVIRONMENT_NAME }} {{ system.website }} {{ system.revision }}</div>{% endif %}
+</body>
+</html>
+

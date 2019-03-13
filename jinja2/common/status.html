@@ -1,0 +1,15 @@
+{% extends "base/page.html" %}
+{% block page_title %}Service status{% endblock %}
+{% block content %}
+    <section class="meta">
+        <ul>
+            <li><a href="https://www.python.org/">Python {{ system.python }}</a></li>
+            <li><a href="https://www.djangoproject.com/">Django {{ system.django }}</a></li>
+            <li>v{{ system.website }}</li>
+            <li><a href="https://bitbucket.org/fast-rate/fast-rate/commits/{{ system.revision }}" target="_blank">@{{ system.revision[:5] }}</a></li>
+        </ul>
+    </section>
+{% endblock %}
+
+
+

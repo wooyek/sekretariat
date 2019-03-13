@@ -1,0 +1,19 @@
+{% extends 'error_base.html' %}
+{% block page_title %}{% trans %}We are sorry but we don't recognize this web page address{% endtrans %}{% endblock %}
+
+{% block content %}
+    <p>HTTP 404 Not Found</p>
+    <p class="lead text-primary">{{ request.build_absolute_uri() }}</p>
+    <hr/>
+    <p>{% trans %}Please contact us if this web page address was generated automatically.{% endtrans %}</p>
+    <p>{% trans %}If you entered this web page address by hand, please check if it was entered correctly.{% endtrans %}</p>
+{% endblock %}
+{% block footer %}
+    <a href="/" class="btn btn-primary">
+        {% trans %}Go to homepage{% endtrans %}
+    </a>
+    <a href="mailto:err+404@your.hr?subject={% trans %}Page not found! Please help.{% endtrans %} {{ message }}&body={{ message }}%20{{ request.url }}"
+       class="btn btn-default">
+        {% trans %}Ask for help{% endtrans %}
+    </a>
+{% endblock %}

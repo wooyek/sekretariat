@@ -1,0 +1,7 @@
+{% extends "base/dialog.html" %}
+{% from "bootstrap/forms/horizontal.html" import render_form with context %}
+{% block page_title %}{% trans %}Opt out from our messages{% endtrans %}{% endblock %}
+{% block content %}
+    {% include "django_opt_out/OptOut/form_apologies.html" %}
+    {{ render_form(form, submit_text=_("Confirm opt-out")) }}
+{% endblock %}

@@ -1,0 +1,12 @@
+<section id="alerts">
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert {{ message.tags }} alert-dismissable ">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <div>
+                    {{ message|safe }}
+                </div>
+            </div>
+        {% endfor %}
+    {% endif %}
+</section>

@@ -1,0 +1,15 @@
+{% extends 'error_base.html' %}
+{% block page_title %}{% trans %}Forbidden{% endtrans %}{% endblock %}
+
+{% block content %}
+    <p>HTTP 403 Forbidden</p>
+    {% if message %}
+        <div class='message'>{{ message }}</div>
+    {% endif %}
+{% endblock %}
+{% block footer %}
+    <a href="/" class="btn btn-primary">{% trans %}Go to homepage{% endtrans %} </a>
+    <a href="mailto:{{ err_email }}?subject={% trans %}Please fix the error.{% endtrans %} {{ message }}&body={{ message }}%20{{ request.url }}" class="btn btn-default">
+        {% trans %}Ask for help{% endtrans %}
+    </a>
+{% endblock %}

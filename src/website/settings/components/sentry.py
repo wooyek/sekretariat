@@ -45,7 +45,6 @@ core.LOGGING['handlers']['sentry'] = {
 root_handlers = core.LOGGING['root']['handlers']
 root_handlers.append('sentry')
 
-
 disable_mail_admins = core.env("SENTRY_CONFIG_DSN", default='').strip() != ''
 
 if core.env("SENTRY_DISABLE_MAIL_ADMINS", default=disable_mail_admins, cast=bool):
@@ -54,7 +53,6 @@ if core.env("SENTRY_DISABLE_MAIL_ADMINS", default=disable_mail_admins, cast=bool
         del core.LOGGING['loggers']['django.request']
     if 'mail_admins' in root_handlers:
         root_handlers.remove('mail_admins')
-
 
 core.MIDDLEWARE = ('raven.contrib.django.raven_compat.middleware.SentryResponseErrorIdMiddleware',) + core.MIDDLEWARE
 

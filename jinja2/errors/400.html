@@ -1,0 +1,17 @@
+{% extends 'error_base.html' %}
+{% block page_title %}{% trans %}Bad request{% endtrans %}{% endblock %}
+
+{% block content %}
+                    <h1>{% trans %}You have used a bad URL address{% endtrans %}</h1>
+                    <p>HTTP 400 Bad Request</p>
+                    <p>{{ request.path }}</p>
+                    {% if message %}
+                        <p class='message'>{{ message }}</p>
+                    {% endif %}
+{% endblock %}
+{% block footer %}
+                    <a href="/" class="btn btn-primary">{% trans %}Go to homepage{% endtrans %} </a>
+                    <a href="mailto:{{ err_email }}?subject={% trans %}Please fix the error.{% endtrans %} {{ message }}&body={{ message }}%20{{ request.url }}" class="btn btn-default">
+                        {% trans %}Ask for help{% endtrans %}
+                    </a>
+{% endblock %}

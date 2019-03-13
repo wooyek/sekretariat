@@ -4,6 +4,6 @@ from import_export import resources
 from . import models
 
 
-class SampleModelResource(resources.ModelResource):
+class OpenOfficeSlotResource(resources.ModelResource):
     class Meta:
-        model = models.SampleModel
+        model = models.OpenOfficeSlot

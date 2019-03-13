@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html style="font-weight: 300">
+<head style="font-weight: 300">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" style="font-weight: 300">
+    <title>Email template</title>
+    {% if ENVIRONMENT_NAME is not none %}<base target="_blank">{% endif %}
+
+    <style type="text/css">
+        @import url(https://fonts.googleapis.com/css?family=Lato:400,700);
+    </style>
+
+
+    <style type="text/css">
+
+        .issues-resolved .issues-resolved-column-middle {
+            border-left: 1px solid #D6DBE4;
+            border-right: 1px solid #D6DBE4;
+        }
+
+        @media only screen and (max-device-width: 480px) {
+
+            .mobile-full-width > th,
+            .mobile-full-width > td {
+                display: block;
+                width: 100%;
+            }
+
+            h4 {
+                text-align: center !important;
+            }
+
+            .header td {
+                text-align: center !important;
+            }
+
+            #events-seen .bar .all {
+                background-color: #D92530 !important;
+            }
+
+            .project-breakdown .col-filtered,
+            .project-breakdown .col-rate-limited {
+                display: none;
+            }
+
+            #events-seen .legend {
+                display: none;
+            }
+
+            #events-seen .issue-graph {
+                margin-bottom: 10px !important;
+            }
+
+            #events-by-issue-type .legend {
+                margin-bottom: 20px !important;
+                text-align: center !important;
+            }
+
+            #events-by-issue-type .quantity {
+                display: none;
+            }
+
+            .issues-resolved .issues-resolved-column-middle {
+                border-left: none;
+                border-right: none;
+            }
+
+            .issues-resolved .issues-resolved-column-middle,
+            .issues-resolved .issues-resolved-column-right {
+                text-align: center !important;
+                vertical-align: top !important;
+                padding: 0 !important;
+            }
+
+            .issues-resolved .issues-resolved-column-middle .stat,
+            .issues-resolved .issues-resolved-column-right .stat {
+                font-size: 24px !important;
+            }
+
+            .issues-resolved .issues-resolved-column-middle .stat img,
+            .issues-resolved .issues-resolved-column-right .stat img {
+                width: 16px !important;
+                height: 8px !important;
+            }
+
+            .spectrum {
+                margin: 20px 0 0 !important;
+                text-align: center !important;
+            }
+
+        }
+
+    </style>
+
+
+</head>
+<body class=""
+      style="font-size: 16px; color: #2f2936; padding: 0; font-family: 'Lato', 'Helvetica Neue', helvetica, sans-serif; -webkit-font-smoothing: antialiased; width: 100%; font-weight: 300; margin: 0; background-color: #f8f8f8">
+{% block body_top %}{% endblock %}
+<div class="preheader" style="padding: 0; font-size: 0; display: none; max-height: 0; font-weight: 300; mso-hide: all; line-height: 0"></div>
+<table class="main"
+       style="font-size: 16px; color: #2f2936; border-collapse: separate; border-spacing: 0; max-width: 700px; font-family: 'Lato', 'Helvetica Neue', helvetica, sans-serif; padding: 0; border-top: 5px solid #D92530; -webkit-font-smoothing: antialiased; width: 100%; font-weight: 300; margin: 15px auto; background-color: #fff">
+    <tr style="font-weight: 300">
+        <td style="padding: 0; font-weight: 300; margin: 0; text-align: left">
+
+
+            <div class="container" style="padding: 35px; max-width: 600px; font-weight: 300; margin: 0 auto; text-align: left">
+                {% block message_content %}
+                    <div class="project-breakdown" style="font-weight: 300; margin-bottom: 20px">
+
+                        {% if message_title %}
+                            <h4 style="font-size: 18px; font-weight: 700; margin: 20px 0">{% block message_title %}{% endblock %}</h4>
+                        {% endif %}
+
+                        {% block message_body %}{% endblock %}
+
+                    </div>
+                {% endblock %}
+            </div>
+
+        </td>
+    </tr>
+    <tr style="font-weight: 300; background-color: #E8E8E8">
+        <td style="padding: 0; font-weight: 300; margin: 0; text-align: left">
+            <div class="container" style="font-weight: 300; margin: 0 auto; text-align: center; color:#666666;font-size:13px;line-height:1.5;text-decoration:none; padding: 35px; border-top: 1px solid #AAA;">
+                {% block footer_links %}
+                    <div class="footer" style="font-weight: 300; text-align: center">
+                        {#                    <a href="{{ BASE_URL }}" style="color: #687276; font-weight: 500; text-decoration: none">Notification Settings</a>#}
+
+                    </div>
+                {% endblock %}
+                <div class="footer" style="">
+                    {% block message_footer %}
+                    <p>{% trans %}{% endtrans %}</p>
+                    {% endblock %}
+                </div>
+            </div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

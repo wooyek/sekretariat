@@ -75,6 +75,7 @@ ADMIN_SITE_HEADER_BG = env('ADMIN_SITE_HEADER_BG', default=None)
 ADMIN_INDEX_TITLE = env('ADMIN_INDEX_TITLE', default=None)
 
 DEFAULT_FROM_EMAIL = env('DEFAULT_FROM_EMAIL', default="Help <help@{domain}>".format(domain=BASE_DOMAIN))
+DEFAULT_REPLY_TO_EMAIL = env('DEFAULT_REPLY_TO_EMAIL', default="Help <help@{domain}>".format(domain=BASE_DOMAIN))
 HELP_EMAIL = env('HELP_EMAIL', default=DEFAULT_FROM_EMAIL)
 ERR_EMAIL = env('ERR_EMAIL', default="errors@{domain}".format(domain=BASE_DOMAIN))
 SERVER_EMAIL = env('SERVER_EMAIL', default="Errors <errors@{domain}>".format(domain=BASE_DOMAIN))
@@ -99,7 +100,7 @@ MIDDLEWARE = (
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.locale.LocaleMiddleware',
-    # 'django_babel.middleware.LocaleMiddleware',
+    'django_babel.middleware.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',  # https://docs.djangoproject.com/en/1.9/topics/i18n/translation/#how-django-discovers-language-preference
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -113,6 +114,30 @@ MIDDLEWARE = (
 ROOT_URLCONF = 'website.urls'
 
 TEMPLATES = [
+    {
+        # https://docs.djangoproject.com/en/1.9/topics/templates/#django.template.backends.jinja2.Jinja2
+        'BACKEND': 'dinja2.backend.Jinja2Engine',
+        'DIRS': [
+            os.path.join(BASE_DIR, 'jinja2'),
+            os.path.join(BASE_DIR, 'jinja2', "errors"),
+        ],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'environment': {
+                'website.settings.jinja2.environment': {}
+            },
+            'context_processors': [
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.template.context_processors.csrf',
+                # 'django.template.context_processors.i18n',
+                'django.template.context_processors.tz',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+                'website.misc.context_processors.website_settings',
+            ],
+        },
+    },
     {
         # https://docs.djangoproject.com/en/1.8/topics/templates/#django.template.backends.django.DjangoTemplates
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -153,7 +178,6 @@ DATABASES = {
 }
 DATABASES['default']['TEST'] = {'NAME': env("DATABASE_TEST_NAME", default=None)}
 
-
 # The email backend to use. For possible shortcuts see django.core.mail.
 # The default is to use the SMTP backend.
 # Third-party backends can be specified by providing a Python path
@@ -167,9 +191,9 @@ vars().update(EMAIL_CONFIG)
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
 
-LANGUAGE_CODE = 'en'
+LANGUAGE_CODE = 'pl'
 LANGUAGES = (
-    ('en', gettext_noop('English')),
+    # ('en', gettext_noop('English')),
     ('pl', gettext_noop('Polish')),
 )
 
@@ -366,7 +390,6 @@ if env('DISABLE_DISALLOWED_HOST_ERRORS', default=True):
     # This will limit DisallowedHost logging to the console
     # noinspection PyTypeChecker
     LOGGING['loggers']['django.security.DisallowedHost']['handlers'] = ['console']
-
 
 # Default exception reporter filter class used in case none has been
 # specifically assigned to the HttpRequest instance.
