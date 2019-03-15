@@ -26,6 +26,7 @@ django-pascal-templates
 django-powerbank
 django-pure-pagination
 django-reversion
+django-user-agents
 # easy_thumbnails
 enum34 ; python_version < '3.4'
 html2text
@@ -33,7 +34,7 @@ isoweek
 jinja2-highlight
 markdown
 invoke
-# maya
+maya
 newrelic
 # opencage
 psycopg2-binary
