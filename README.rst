@@ -2,7 +2,7 @@
 Sekretariat
 ===========
 
-Aplikacja pomagająca w organizacji pracy sektretariat szkoły
+Aplikacja pomagająca w organizacji pracy sekretariatu szkoły
 
 
 .. image:: https://img.shields.io/pypi/v/sekretariat.svg
