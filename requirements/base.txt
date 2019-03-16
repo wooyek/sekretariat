@@ -45,6 +45,7 @@ pendulum
 # version 2018.11.3 has installation issues
 # regex==2018.8.29
 # sorl-thumbnail
+sentry-sdk
 raven
 requests
 whitenoise

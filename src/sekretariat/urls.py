@@ -6,6 +6,7 @@ from . import views as v
 app_name = 'sekretariat'
 
 urlpatterns = [
+    path('oo/<int:pk>/update', v.OpenOfficeGroupSlots.as_view(), name='OpenOfficeGroupSlots'),
     path('oo/<int:pk>/', v.OpenOfficeGroupDetail.as_view(), name='OpenOfficeGroupDetail'),
     path('oo/', v.OpenOfficeGroupList.as_view(), name='OpenOfficeGroupList'),
     path('os/<int:pk>/book', v.OpenOfficeSlotBook.as_view(), name='OpenOfficeSlotBook'),

@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
-
-import maya
+import dateparser
 from django.conf import settings
 from django.db import models
 from django.shortcuts import resolve_url
@@ -18,7 +17,20 @@ def text_to_time(text):
     assert text.strip()
     tz = get_current_timezone_name()
     try:
-        return maya.when(text, timezone=tz).datetime(tz)
+        # return maya.when(text, timezone=tz).datetime(tz)
+        settings = {
+            'TIMEZONE': tz,
+            'RETURN_AS_TIMEZONE_AWARE': True,
+            'TO_TIMEZONE': tz,
+            'PREFER_DATES_FROM': 'current_period',
+        }
+        return dateparser.parse(
+            text,
+            settings=settings,
+            languages=['pl'],
+            locales=['pl'],
+            date_formats=['%d.%m.%Y\t%H:%M', '%-d.%m.%Y\t%H:%M'],
+        )
     except ValueError as ex:
         raise ValueError(text) from ex
 
@@ -52,7 +64,8 @@ class OpenOfficeGroup(BaseModel):
         return resolve_url("sekretariat:OpenOfficeGroupDetail", self.pk)
 
     def update_slots(self, text):
-        pass
+        items = [OpenOfficeSlot(start=start, group=self) for start in text_to_times(text)]
+        OpenOfficeSlot.objects.bulk_create(items)
 
 
 class OpenOfficeSlot(BaseModel):
@@ -67,6 +80,7 @@ class OpenOfficeSlot(BaseModel):
         verbose_name = _('open office slot')
         verbose_name_plural = _('open office slot')
         ordering = 'start', 'group',
+        unique_together = 'group', 'start'
         default_related_name = 'slots'
 
     def __str__(self):

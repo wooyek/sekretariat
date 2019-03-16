@@ -69,3 +69,11 @@ RAVEN_CONFIG = {
 }
 
 SENTRY_PUBLIC_DSN = core.env("SENTRY_PUBLIC_DSN")
+
+# import sentry_sdk
+# from sentry_sdk.integrations.django import DjangoIntegration
+#
+# sentry_sdk.init(
+#     dsn=SENTRY_PUBLIC_DSN,
+#     integrations=[DjangoIntegration()]
+# )

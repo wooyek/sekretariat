@@ -6,6 +6,7 @@ import pytest
 from django import test
 from django.shortcuts import resolve_url
 
+from sekretariat.tests.model_tests import times2
 from .. import factories
 
 log = logging.getLogger(__name__)
@@ -106,3 +107,29 @@ class CreateViewTests(object):
     #     })
     #     item = models.SampleModel.objects.first()
     #     self.assertRedirects(response, resolve_url('sekretariat:SampleDetail', item.pk), fetch_redirect_response=False)
+
+
+# noinspection PyUnusedLocal,PyMethodMayBeStatic,PyProtectedMember
+@pytest.mark.django_db
+class OpenOfficeGroupSlotsTests(object):
+    def test_anonymous(self):
+        item = factories.OpenOfficeGroupFactory()
+        url = resolve_url('sekretariat:OpenOfficeGroupSlots', item.pk)
+        response = test.Client().get(url)
+        assert response.status_code == 302
+        assert response.url, "?next=".join((resolve_url("login"), url))
+
+    def test_get(self, admin_client):
+        item = factories.OpenOfficeGroupFactory()
+        url = resolve_url('sekretariat:OpenOfficeGroupSlots', item.pk)
+        response = admin_client.get(url)
+        assert response.status_code == 200
+
+    def test_post(self, admin_client):
+        item = factories.OpenOfficeGroupFactory()
+        url = resolve_url('sekretariat:OpenOfficeGroupSlots', item.pk)
+        response = admin_client.post(url, data={'text': times2, 'name': 'foo'})
+        assert response.status_code == 302
+        item.refresh_from_db()
+        assert item.name == 'foo'
+        assert item.slots.count() == 4

@@ -1,9 +1,11 @@
 # -*- coding: utf-8 -*-
 from django.contrib import messages
+from django.contrib.admin.templatetags.admin_urls import admin_urlname
 from django.shortcuts import redirect, resolve_url
 from django.utils.translation import ugettext_lazy as _
 from django.views.generic import TemplateView
 from django_powerbank.views import Http403
+from django_powerbank.views.auth import StaffRequiredMixin
 from pascal_templates import ListView, UpdateView
 from pascal_templates.views import DetailView
 
@@ -21,6 +23,19 @@ class OpenOfficeGroupList(ListView):
         item = models.OpenOfficeGroup.objects.first()
         url = resolve_url("sekretariat:OpenOfficeGroupDetail", pk=item.pk)
         return redirect(url)
+
+
+class OpenOfficeGroupSlots(StaffRequiredMixin, UpdateView):
+    model = models.OpenOfficeGroup
+    form_class = forms.OpenOfficeGroupSlots
+
+    def form_valid(self, form):
+        text = form.cleaned_data['text']
+        self.object.update_slots(text)
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        return resolve_url(admin_urlname(self.model._meta, 'change'), object_id=self.object.pk)
 
 
 class OpenOfficeSlotBook(UpdateView):
