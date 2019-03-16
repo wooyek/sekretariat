@@ -9,7 +9,7 @@ __credits__ = ["""Janusz Skonieczny"""]
 __version__ = '0.1.5'
 __status__ = "Alpha"
 __license__ = "Proprietary"
-__date__ = '2019-03-16 20:47'
+__date__ = '2019-03-16 21:24'
 
 
 def get_strict_version():
