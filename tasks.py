@@ -308,7 +308,7 @@ def locales_babel(ctx):
 
 
 # noinspection PyUnusedLocal
-@task(post=[locales_django])
+@task(post=[locales_babel])
 def locales(ctx):
     """
     Collect and compile translation strings

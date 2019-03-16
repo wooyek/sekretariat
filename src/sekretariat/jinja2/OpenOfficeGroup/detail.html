@@ -19,7 +19,7 @@
       {% for item in object.slots.all() %}
         <tr>
           <th scope="row">{{ loop.index }}</th>
-          <td>{{ item.start|datetimeformat("YYYY-MM-dd HH:mm") }} {{ item.start|natural_period }} </td>
+          <td>{{ item.start|datetimeformat("YYYY-MM-dd HH:mm eeee ") }}</td>
           <td>
             {% if item.email %}
               {% trans %}Booked{% endtrans %}

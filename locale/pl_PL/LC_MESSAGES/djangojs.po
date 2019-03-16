@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-09-07 11:50+0200\n"
+"POT-Creation-Date: 2019-03-16 21:14+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,37 +16,56 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: assets/compressed/script.193b13fb.js:490
-#: assets/compressed/script.26347699.js:490
-#: assets/compressed/script.4ea46f6b.js:490 assets/js/resume.js:75
-msgid "Apply"
-msgstr "Zastosuj"
-
-#: assets/compressed/script.193b13fb.js:490
-#: assets/compressed/script.26347699.js:490
-#: assets/compressed/script.4ea46f6b.js:490 assets/js/resume.js:76
-msgid "Cancel"
-msgstr "Anuluj"
-
-#: assets/compressed/script.193b13fb.js:490
-#: assets/compressed/script.26347699.js:490
-#: assets/compressed/script.4ea46f6b.js:490 assets/js/resume.js:77
-msgid "From"
-msgstr "Od"
-
-#: assets/compressed/script.193b13fb.js:490
-#: assets/compressed/script.26347699.js:490
-#: assets/compressed/script.4ea46f6b.js:490 assets/js/resume.js:78
-msgid "To"
-msgstr "Do"
-
-#: assets/compressed/script.193b13fb.js:490
-#: assets/compressed/script.26347699.js:490
-#: assets/compressed/script.4ea46f6b.js:490 assets/js/resume.js:79
-msgid "Custom"
-msgstr "Inne"
-
-#: assets/compressed/script.193b13fb.js:490
-#: assets/compressed/script.4ea46f6b.js:490 assets/js/selectize.js:6
-msgid "Add"
+#: dist/docs/_static/doctools.js:195
+msgid "Permalink to this headline"
 msgstr ""
+
+#: dist/docs/_static/doctools.js:201
+msgid "Permalink to this definition"
+msgstr ""
+
+#: dist/docs/_static/doctools.js:234
+msgid "Hide Search Matches"
+msgstr ""
+
+#: dist/docs/_static/searchtools.js:121
+msgid "Searching"
+msgstr ""
+
+#: dist/docs/_static/searchtools.js:126
+msgid "Preparing search..."
+msgstr ""
+
+#: dist/docs/_static/searchtools.js:289
+msgid "Search Results"
+msgstr ""
+
+#: dist/docs/_static/searchtools.js:291
+msgid ""
+"Your search did not match any documents. Please make sure that all words are "
+"spelled correctly and that you've selected enough categories."
+msgstr ""
+
+#: dist/docs/_static/searchtools.js:293
+#, javascript-format
+msgid "Search finished, found %s page(s) matching the search query."
+msgstr ""
+
+#: dist/docs/_static/searchtools.js:346
+msgid ", in "
+msgstr ""
+
+#~ msgid "Apply"
+#~ msgstr "Zastosuj"
+
+#~ msgid "Cancel"
+#~ msgstr "Anuluj"
+
+#~ msgid "From"
+#~ msgstr "Od"
+
+#~ msgid "To"
+#~ msgstr "Do"
+
+#~ msgid "Custom"
+#~ msgstr "Inne"

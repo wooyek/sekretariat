@@ -2,8 +2,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2017-09-08 12:21+0200\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-03-16 21:14+0100\n"
 "PO-Revision-Date: 2016-01-19 22:56+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: pl_PL\n"
@@ -12,5 +12,271 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.5.0\n"
+"Generated-By: Babel 2.6.0\n"
+
+#: jinja2/django_opt_out/OptOut/success_apologies.html:1
+msgid ""
+"\n"
+"    <p>Again, please accept our apologies for any inconvenience that we cased you.</p>\n"
+"    <p>If you would like to change your feedback or reconsider your out out decision you can do that anytime.</p>\n"
+msgstr ""
+
+#: jinja2/django_opt_out/OptOut/form_apologies.html:1
+msgid ""
+"\n"
+"    <p>We're sorry that we overstepped and made our messages inconvenient to you. Please accept our apologies.</p>\n"
+"    <P>We're trying to make them relevant to you and improve overall process so you can benefit from our messaging.</P>\n"
+"    <p>We really want to learn from our failures and we are — us, humans here — reading every opt-out response.\n"
+"        We really appreciate all the feedback you can give us.</p>\n"
+msgstr ""
+
+#: src/sekretariat/views.py:77
+msgid "Activation authentication failed"
+msgstr ""
+
+#: jinja2/base/layout/header.html:15
+msgid "Admin"
+msgstr ""
+
+#: jinja2/errors/400.html:15 jinja2/errors/403.html:13
+#: jinja2/errors/404.html:17 jinja2/errors/500.html:14
+msgid "Ask for help"
+msgstr ""
+
+#: jinja2/errors/400.html:2
+msgid "Bad request"
+msgstr ""
+
+#: src/sekretariat/jinja2/OpenOfficeGroup/detail.html:27
+msgid "Book"
+msgstr "Zarezerwuj"
+
+#: src/sekretariat/jinja2/OpenOfficeGroup/detail.html:25
+msgid "Booked"
+msgstr "Zarezerwowany"
+
+#: src/sekretariat/jinja2/OpenOfficeGroup/detail.html:11
+msgid "Booking"
+msgstr "Rezewacja"
+
+#: jinja2/bootstrap/forms/horizontal.html:309
+msgid "Cancel"
+msgstr "Anuluj"
+
+#: jinja2/email/personal.html:6
+msgid "Cheers!"
+msgstr "Pozdrawiamy!"
+
+#: jinja2/django_opt_out/OptOut/form.html:6
+msgid "Confirm opt-out"
+msgstr ""
+
+#: jinja2/base/layout/footer.html:6
+msgid "Contact"
+msgstr ""
+
+#: src/sekretariat/jinja2/OpenOfficeGroup/detail.html:14
+msgid "Email"
+msgstr "Email"
+
+#: jinja2/errors/403.html:2
+msgid "Forbidden"
+msgstr ""
+
+#: jinja2/errors/400.html:13 jinja2/errors/403.html:11
+#: jinja2/errors/404.html:13 jinja2/errors/500.html:12
+#: jinja2/errors/social_login_error.html:20
+msgid "Go to homepage"
+msgstr ""
+
+#: jinja2/email/personal.html:3
+msgid "Hi"
+msgstr ""
+
+#: jinja2/email/personal.html:3
+#, python-format
+msgid "Hi %(first_name)s"
+msgstr ""
+
+#: jinja2/errors/404.html:9
+msgid "If you entered this web page address by hand, please check if it was entered correctly."
+msgstr ""
+
+#: jinja2/bootstrap/pagination.html:23
+msgid "Next"
+msgstr ""
+
+#: jinja2/errors/500.html:2
+msgid "Oops! An error occurred"
+msgstr ""
+
+#: jinja2/django_opt_out/OptOut/form.html:3
+msgid "Opt out from our messages"
+msgstr ""
+
+#: jinja2/django_opt_out/OptOut/success.html:10
+msgid "Opt-in"
+msgstr ""
+
+#: jinja2/errors/404.html:15
+msgid "Page not found! Please help."
+msgstr ""
+
+#: jinja2/errors/404.html:8
+msgid "Please contact us if this web page address was generated automatically."
+msgstr ""
+
+#: jinja2/bootstrap/forms/horizontal.html:223
+msgid "Please correct validation errors"
+msgstr ""
+
+#: jinja2/errors/400.html:14 jinja2/errors/403.html:12
+#: jinja2/errors/500.html:13
+msgid "Please fix the error."
+msgstr ""
+
+#: src/sekretariat/jinja2/OpenOfficeSlot/email.html:6
+msgid "Portwierdź rezerwację"
+msgstr ""
+
+#: src/sekretariat/models.py:109
+msgid "Potwierdzenie terminu"
+msgstr ""
+
+#: src/sekretariat/jinja2/OpenOfficeSlot/confirm.html:5
+msgid "Potwierdź rezerwację"
+msgstr ""
+
+#: jinja2/bootstrap/pagination.html:7
+msgid "Previous"
+msgstr ""
+
+#: jinja2/base/layout/footer.html:5
+msgid "Privacy Policy"
+msgstr ""
+
+#: src/website/misc/admin.py:45
+msgid "Save models to update auto fields"
+msgstr ""
+
+#: src/sekretariat/apps.py:18
+msgid "Sekretariat"
+msgstr ""
+
+#: jinja2/errors/social_login_error.html:3
+msgid "Social login failed"
+msgstr ""
+
+#: src/sekretariat/jinja2/OpenOfficeGroup/detail.html:10
+msgid "Start"
+msgstr "Start"
+
+#: src/sekretariat/jinja2/OpenOfficeGroup/detail.html:13
+msgid "Student"
+msgstr "Uczeń"
+
+#: jinja2/django_opt_out/OptOut/removed.html:4
+msgid "Thank you for changing your mind :)"
+msgstr ""
+
+#: jinja2/django_opt_out/OptOut/success.html:2
+msgid "Thank you for your feedback!"
+msgstr ""
+
+#: src/sekretariat/views.py:81
+msgid "This activation link was already used"
+msgstr ""
+
+#: jinja2/bootstrap/forms/horizontal.html:4
+msgid "This is required field"
+msgstr ""
+
+#: jinja2/django_opt_out/OptOut/success.html:8
+msgid "Update opt-out feedback"
+msgstr ""
+
+#: jinja2/errors/404.html:2
+msgid "We are sorry but we don't recognize this web page address"
+msgstr ""
+
+#: jinja2/errors/500.html:9
+msgid "We're sorry for the inconvenience. We should get notified of the error and we'll correct it as soon as possible"
+msgstr ""
+
+#: jinja2/django_opt_out/OptOut/removed.html:5
+msgid "You are back in!"
+msgstr ""
+
+#: jinja2/errors/400.html:5
+msgid "You have used a bad URL address"
+msgstr ""
+
+#: jinja2/django_opt_out/OptOut/removed.html:2
+msgid "Your Opt-out was removed"
+msgstr ""
+
+#: src/sekretariat/jinja2/OpenOfficeGroup/form.html:5
+msgid "Zapisz zmiany"
+msgstr ""
+
+#: src/sekretariat/jinja2/OpenOfficeSlot/form.html:5
+msgid "Zarezerwuj termin"
+msgstr ""
+
+#: src/sekretariat/models.py:75
+msgid "email"
+msgstr ""
+
+#: src/sekretariat/models.py:73
+msgid "event start"
+msgstr ""
+
+#: src/sekretariat/forms.py:34
+msgid "name"
+msgstr "nazwa"
+
+#: src/sekretariat/models.py:57
+msgid "open office group"
+msgstr ""
+
+#: src/sekretariat/models.py:58
+msgid "open office groups"
+msgstr ""
+
+#: src/sekretariat/models.py:80 src/sekretariat/models.py:81
+msgid "open office slot"
+msgstr ""
+
+#: src/sekretariat/models.py:74
+msgid "student name"
+msgstr "nazwisko i imię ucznia"
+
+#: src/website/settings/jinja2.py:127
+msgid "this week"
+msgstr ""
+
+#: src/sekretariat/models.py:54
+msgid "title"
+msgstr ""
+
+#: src/website/settings/jinja2.py:121
+msgid "today"
+msgstr ""
+
+#: src/website/settings/jinja2.py:123
+msgid "tomorrow"
+msgstr ""
+
+#: src/website/settings/jinja2.py:125
+msgid "yesterday"
+msgstr ""
+
+#~ msgid "Privacy Policy"
+#~ msgstr ""
+
+#~ msgid "Contact"
+#~ msgstr ""
+
+#~ msgid "Admin"
+#~ msgstr ""
 
