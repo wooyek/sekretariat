@@ -62,6 +62,7 @@ recursive-include fixtures *.xlsx
 recursive-include fixtures *.yml
 recursive-include locale *.cfg
 recursive-include locale *.po
+recursive-include locale *.pot
 recursive-include logs *.md
 recursive-include src *.txt
 recursive-include static *.* *
