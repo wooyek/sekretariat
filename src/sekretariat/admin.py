@@ -19,6 +19,6 @@ class OpenOfficeGroupAdmin(ImportExportMixin, admin.ModelAdmin):
 
 @admin.register(models.OpenOfficeSlot)
 class OpenOfficeSlotAdmin(ImportExportMixin, DynamicLookupMixin, admin.ModelAdmin):
-    list_display = ('start', 'student', 'email', 'group__name')
+    list_display = ('start', 'student', 'email', 'group__name', 'confirmed')
     list_filter = ('group',)
     date_hierarchy = 'start'
