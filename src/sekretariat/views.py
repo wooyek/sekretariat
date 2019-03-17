@@ -77,9 +77,9 @@ class OpenOfficeSlotBookConfirm(DetailView):
             msg = _("Activation authentication failed")
             raise Http403(msg)
 
-        if item.user.is_active and item.user.has_usable_password():
-            msg = _("This activation link was already used")
-            raise Http403(msg)
+        # if item.user.is_active and item.user.has_usable_password():
+        #     msg = _("This activation link was already used")
+        #     raise Http403(msg)
 
     def post(self, request, *args, **kwargs):
         self.get_object().confirm(self.request)

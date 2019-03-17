@@ -94,7 +94,7 @@ msgstr ""
 
 #: jinja2/email/personal.html:3
 msgid "Hi"
-msgstr ""
+msgstr "Witaj"
 
 #: jinja2/email/personal.html:3
 #, python-format
