@@ -86,4 +86,6 @@ class OpenOfficeSlotBookConfirm(DetailView):
         return redirect(self.get_success_url())
 
     def get_success_url(self):
-        return resolve_url("accounts:UserSettingsDetail", self.get_object().user_id)
+        messages.info(self.request, "Dziękujemy za potwierdzenie rezerwacji")
+        url = resolve_url("/")
+        return url
