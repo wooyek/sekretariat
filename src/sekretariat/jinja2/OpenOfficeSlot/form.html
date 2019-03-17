@@ -2,8 +2,5 @@
 {% from "bootstrap/forms/horizontal.html" import render_form with context %}
 {% block page_title %}Zarezerwuj termin spotkania{% endblock %}
 {% block content %}
-  <p>
-    <button type="submit" class="btn btn-confirm-delete">{% trans %}Potwierdź termin{% endtrans %}</button>
-    <a class="btn btn-cancel" href="{{ return_url or "/" }}">{% trans %}Cancel{% endtrans %}</a>
-  </p>
+  {{ render_form(form, submit_text=_("Zarezerwuj termin")) }}
 {% endblock %}
