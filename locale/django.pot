@@ -99,7 +99,7 @@ msgstr "Witaj"
 #: jinja2/email/personal.html:3
 #, python-format
 msgid "Hi %(first_name)s"
-msgstr ""
+msgstr "Witaj %(first_name)s"
 
 #: jinja2/errors/404.html:9
 msgid "If you entered this web page address by hand, please check if it was entered correctly."
