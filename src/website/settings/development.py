@@ -41,7 +41,7 @@ if 'DATABASE_URL' not in os.environ:
 from .base import *  # noqa: F402, F403, F401 isort:skip
 
 # https://docs.djangoproject.com/en/1.6/topics/email/#console-backend
-# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 # EMAIL_BACKEND = 'django.core.mail.backends.dummy.EmailBackend'
 EMAIL_QUEUE_EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 # EMAIL_QUEUE_EMAIL_BACKEND = 'django.core.mail.backends.dummy.EmailBackend'

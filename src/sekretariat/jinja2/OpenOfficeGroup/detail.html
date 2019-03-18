@@ -22,7 +22,12 @@
           <td>{{ item.start|datetimeformat("YYYY-MM-dd HH:mm eeee ") }}</td>
           <td>
             {% if item.email %}
+            {% if user.is_staff %}
+                <a class="btn btn-success" href="{{ url('sekretariat:OpenOfficeSlotBookConfirm', item.pk, item.confirmation_secret) }}">{% trans %}Potwierdź{% endtrans %}</a>
+                <a class="btn btn-danger" href="{{ url('sekretariat:OpenOfficeSlotBookCancel', item.pk, item.confirmation_secret) }}">{% trans %}Anuluj{% endtrans %}</a>
+              {% else %}
               {% trans %}Booked{% endtrans %}
+            {% endif %}
             {% else %}
               <a class="btn btn-primary" href="{{ url('sekretariat:OpenOfficeSlotBook', item.pk) }}">{% trans %}Book{% endtrans %}</a>
             {% endif %}

@@ -12,4 +12,5 @@ urlpatterns = [
     path('os/<int:pk>/book', v.OpenOfficeSlotBook.as_view(), name='OpenOfficeSlotBook'),
     path('os/<int:pk>/success', v.OpenOfficeSlotBookSuccess.as_view(), name='OpenOfficeSlotBookSuccess'),
     path('os/<int:pk>/confirm/<str:secret>', v.OpenOfficeSlotBookConfirm.as_view(), name='OpenOfficeSlotBookConfirm'),
+    path('os/<int:pk>/cancel/<str:secret>', v.OpenOfficeSlotBookCancel.as_view(), name='OpenOfficeSlotBookCancel'),
 ]

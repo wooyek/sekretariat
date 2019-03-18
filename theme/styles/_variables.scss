@@ -9,9 +9,6 @@ $base-text-padding: ($base-padding - 26px) / 2;
 $table-cell-padding: $base-text-padding;
 
 // stylelint-disable value-keyword-case
-$font-family-sans-serif: "PT Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !default;
-$font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
-$font-family-base: $font-family-sans-serif !default;
 // stylelint-enable value-keyword-case
 
 //$dark: #1f1459;
@@ -19,9 +16,6 @@ $font-family-base: $font-family-sans-serif !default;
 //$pink: #e6007e;
 //$body-color: #343434;
 
-$navbar-dark-color: #FFF;
-$border-radius: 0 !default;
-$card-border-color: #979797;
 
 $sizes: (
         33: 100% / 3,

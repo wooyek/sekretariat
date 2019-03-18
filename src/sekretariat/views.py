@@ -51,7 +51,7 @@ class OpenOfficeSlotBook(UpdateView):
 
     def form_valid(self, form):
         valid = super().form_valid(form)
-        self.object.send_message()
+        self.object.send_confirmation_prompt()
         return valid
 
     def get_success_url(self):
@@ -82,10 +82,39 @@ class OpenOfficeSlotBookConfirm(DetailView):
         #     raise Http403(msg)
 
     def post(self, request, *args, **kwargs):
-        self.get_object().confirm(self.request)
+        self.get_object().confirm()
         return redirect(self.get_success_url())
 
     def get_success_url(self):
         messages.info(self.request, "Dziękujemy za potwierdzenie rezerwacji")
+        url = resolve_url("/")
+        return url
+
+
+class OpenOfficeSlotBookCancel(DetailView):
+    model = models.OpenOfficeSlot
+    form_class = forms.OpenOfficeSlotConfirm
+    template_name = "OpenOfficeSlot/cancel.html"
+
+    def dispatch(self, request, *args, **kwargs):
+        self.validate_secret(request, kwargs['secret'])
+        return super().dispatch(request, *args, **kwargs)
+
+    def validate_secret(self, request, confirmation_secret):
+        item = self.get_object()
+        if item.confirmation_secret != confirmation_secret:
+            msg = _("Activation authentication failed")
+            raise Http403(msg)
+
+        # if item.user.is_active and item.user.has_usable_password():
+        #     msg = _("This activation link was already used")
+        #     raise Http403(msg)
+
+    def post(self, request, *args, **kwargs):
+        self.get_object().cancel()
+        return redirect(self.get_success_url())
+
+    def get_success_url(self):
+        messages.info(self.request, "Dziękujemy za anulowanie rezerwacji")
         url = resolve_url("/")
         return url

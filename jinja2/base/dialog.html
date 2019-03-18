@@ -1,12 +1,12 @@
 {% extends "base/basic.html" %}
 {% block body_class %}dialog{% endblock %}
 {% block main %}
-  <div class="row mt-3">
+  <div class="row mt-5">
     <div class="col-md-6 offset-md-3">
       <header></header>
       <article>
-        <div class="panel {% block panel_class %}panel-default{% endblock %}">
-          <div class="panel-heading">
+        <div class="card {% block panel_class %}panel-default{% endblock %}">
+          <div class="card-header">
             {% block panel_heading %}
               <h3 class="panel-title {% block title_class %}{% endblock %}">{% block page_title %}{% endblock %}</h3>
             {% endblock %}
@@ -15,7 +15,7 @@
                 action="{% block form_action %}{% endblock %}" method="post" role="form"
                 enctype="multipart/form-data"{% endblock %}>
             <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}"/>
-            <section class="panel-body">
+            <section class="card-body">
               {% block content %}{% endblock %}
               <footer>
                 {% block footer %}{% endblock %}

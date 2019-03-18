@@ -1,10 +1,10 @@
 {% extends "email/personal.html" %}
 {% from "email/macros.html" import btn_primary with context %}
 {% block content %}
-    <p>Prosimy o potwierdzenie rezerwacji terminu: {{ start|datetimeformat("YYYY-MM-dd HH:mm") }}.</p>
+    <p>Rezerwacja terminu {{ start|datetimeformat("YYYY-MM-dd HH:mm") }} została anulowana.</p>
+    <p>Jeśli to nie państwo anulowali termin, prawdopodobnie termin został anulowany z powodu rezerwacji więcej niż jednego terminu.</p>
+    <p>Państwa adres email jest przypisany do: {{ count }} rezerwacji</p>
 
-    <p>{{ btn_primary(_('Portwierdź rezerwację'), confirm_url) }}</p>
-    <p>{{ btn_primary(_('Anulij rezerwację'), cancel_url) }}</p>
 {% endblock %}
 {% block message_footer %}
 {% endblock %}

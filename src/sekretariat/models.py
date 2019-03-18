@@ -79,7 +79,7 @@ class OpenOfficeSlot(BaseModel):
     group = models.ForeignKey(OpenOfficeGroup, on_delete=models.CASCADE)
     start = models.DateTimeField(verbose_name=_('event start'))
     student = models.CharField(max_length=250, verbose_name=_('student name'), null=True, blank=True)
-    email = models.EmailField(max_length=250, verbose_name=_('email'), null=True, blank=True)
+    email = models.EmailField(max_length=250, verbose_name=_('email'), null=True, blank=True, unique=True)
     confirmation_secret = SecretField(max_length=200, source_field='email', null=True, blank=True)
     confirmed = models.DateTimeField(null=True, blank=True)
 
@@ -96,22 +96,47 @@ class OpenOfficeSlot(BaseModel):
     def get_absolute_url(self):
         return resolve_url("sekretariat:OpenOfficeGroupDetail", self.group_id)
 
-    def confirm(self, request):
+    def confirm(self):
         self.confirmed = timezone.now()
         self.save()
+        self.send_confirmed()
 
-    def send_message(self, url=None):
-        assert self.confirmation_secret, "Secret is missing for email '{}'".format(self.confirmation_email)
-        if url is None:
-            url = resolve_url("sekretariat:OpenOfficeSlotBookConfirm", pk=self.pk, secret=self.confirmation_secret)
-            url = '{base_url}{url}'.format(base_url=settings.BASE_URL, url=url)
-        self.confirmation_url = url
+    def cancel(self):
+        self.send_cancelled()
+        self.confirmed = None
+        self.student = None
+        self.email = None
         self.save()
+
+    def send_confirmation_prompt(self):
+        subject = _("{start:%Y-%m-%d %H:%M} Prośba o potwierdzenie terminu")
+        template = "OpenOfficeSlot/email/prompt.html"
+        self._send_message(subject, template)
+
+    def send_confirmed(self):
+        subject = _("{start:%Y-%m-%d %H:%M} Prośba o potwierdzenie terminu")
+        template = "OpenOfficeSlot/email/confirmed.html"
+        self._send_message(subject, template)
+
+    def send_cancelled(self):
+        subject = _("{start:%Y-%m-%d %H:%M} Termin anulowany")
+        template = "OpenOfficeSlot/email/cancelled.html"
+        self._send_message(subject, template)
+
+    def _send_message(self, subject=None, template=None):
+        assert self.confirmation_secret, "Secret is missing for email '{}'".format(self.confirmation_email)
+        self.save()
+        confirm_url = resolve_url("sekretariat:OpenOfficeSlotBookConfirm", pk=self.pk, secret=self.confirmation_secret)
+        confirm_url = '{base_url}{url}'.format(base_url=settings.BASE_URL, url=confirm_url)
+        cancel_url = resolve_url("sekretariat:OpenOfficeSlotBookCancel", pk=self.pk, secret=self.confirmation_secret)
+        cancel_url = '{base_url}{url}'.format(base_url=settings.BASE_URL, url=cancel_url)
         ctx = {
             'person': self.student,
             'start': self.start,
             'email': self.email,
-            'action_url': url,
+            'confirm_url': confirm_url,
+            'cancel_url': cancel_url,
+            'count': OpenOfficeSlot.objects.filter(email=self.email).count() - 1,
         }
-        subject = _("Potwierdzenie terminu").format(**ctx)
-        send_mail_template("OpenOfficeSlot/email.html", ctx, subject, to=self.email)
+        subject = subject.format(**ctx)
+        send_mail_template(template, ctx, subject, to=self.email)

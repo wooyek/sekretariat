@@ -1,9 +1,10 @@
 {% extends "email/personal.html" %}
 {% from "email/macros.html" import btn_primary with context %}
 {% block content %}
-  <p>Prosimy o potwierdzenie rezerwacji terminu: {{ start|datetimeformat("YYYY-MM-dd HH:mm") }}.</p>
-
-  <p>{{ btn_primary(_('Portwierdź rezerwację'), action_url) }}</p>
+  <div class="m-5">
+    <p>Dziękujemy za potwierdzenie rezerwacji terminu: {{ start|datetimeformat("YYYY-MM-dd HH:mm") }}.</p>
+    <p>{{ btn_primary(_('Anulij rezerwację'), cancel_url) }}</p>
+  </div>
 {% endblock %}
 {% block message_footer %}
 {% endblock %}

@@ -1,9 +1,9 @@
 {% extends "base/dialog.html" %}
 {% from "bootstrap/forms/horizontal.html" import render_form with context %}
-{% block page_title %}Potwierdzenie rezerwacji{% endblock %}
+{% block page_title %}Anulowanie rezerwacji{% endblock %}
 {% block content %}
+  <p>Termin rezerwacji: {{ object.start|datetimeformat("YYYY-MM-dd HH:mm") }}</p>
   <p>
-    <button type="submit" class="btn btn-primary">{% trans %}Potwierdź termin{% endtrans %}</button>
-    <a class="btn btn-secondary" href="{{ return_url or "/" }}">{% trans %}Cancel{% endtrans %}</a>
+    <button type="submit" class="btn btn-primary">{% trans %}Anuluj termin{% endtrans %}</button>
   </p>
 {% endblock %}
