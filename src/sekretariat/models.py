@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+import logging
+
 import dateparser
 from django.conf import settings
 from django.db import models
@@ -10,6 +12,8 @@ from django_powerbank.db.models.base import BaseModel
 from django_powerbank.db.models.fields import SecretField
 
 from website.misc.mail import send_mail_template
+
+log = logging.getLogger(__name__)
 
 
 def text_to_time(text):
@@ -39,12 +43,14 @@ def text_to_times(text):
     def parser(lines):
         last_item = None
         for line in lines.splitlines():
+            log.debug("line: %s", line)
             if not line or not line.strip():
                 continue
             line = line.replace(",", ":")
             if line.startswith("\t"):
                 line = last_item.strftime("%Y-%m-%d") + line
             last_item = text_to_time(line)
+            log.debug("last_item: %s", last_item)
             yield last_item
 
     return sorted(set(parser(text)))
