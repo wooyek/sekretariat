@@ -64,7 +64,8 @@ class OpenOfficeGroup(BaseModel):
         return resolve_url("sekretariat:OpenOfficeGroupDetail", self.pk)
 
     def update_slots(self, text):
-        items = [OpenOfficeSlot(start=start, group=self) for start in text_to_times(text)]
+        existing = OpenOfficeSlot.objects.filter(group=self).values_list('start', flat=True)
+        items = [OpenOfficeSlot(start=start, group=self) for start in text_to_times(text) if start not in existing]
         OpenOfficeSlot.objects.bulk_create(items)
 
 

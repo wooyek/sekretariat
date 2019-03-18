@@ -132,4 +132,4 @@ class OpenOfficeGroupSlotsTests(object):
         assert response.status_code == 302
         item.refresh_from_db()
         assert item.name == 'foo'
-        assert item.slots.count() == 4
+        assert item.slots.count() == 5

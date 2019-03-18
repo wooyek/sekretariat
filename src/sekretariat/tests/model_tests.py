@@ -29,6 +29,7 @@ times2 = ("\n"
           "	11,30\n"
           "21.03.2019	8,00\n"
           "	8,00\n"
+          "	8,00,01\n"
           "	8,30\n"
           "	")
 
@@ -50,7 +51,8 @@ class ToTimesTests(object):
         assert items[0] == datetime(2019, 3, 1, 10, 30).astimezone(get_current_timezone())
         assert items[1] == datetime(2019, 3, 1, 11, 30).astimezone(get_current_timezone())
         assert items[2] == datetime(2019, 3, 21, 8, 0).astimezone(get_current_timezone())
-        assert items[3] == datetime(2019, 3, 21, 8, 30).astimezone(get_current_timezone())
+        assert items[3] == datetime(2019, 3, 21, 8, 0, 1).astimezone(get_current_timezone())
+        assert items[4] == datetime(2019, 3, 21, 8, 30).astimezone(get_current_timezone())
 
 
 # noinspection PyMethodMayBeStatic
@@ -60,3 +62,10 @@ class OpenOfficeGroupTests(object):
         item = factories.OpenOfficeGroupFactory()
         item.update_slots(times)
         assert item.slots.count() == 10
+
+    def test_multi_de_dup(self):
+        item = factories.OpenOfficeGroupFactory()
+        item.update_slots(times)
+        assert item.slots.count() == 10
+        item.update_slots(times2 + times)
+        assert item.slots.count() == 15
