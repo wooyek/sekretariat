@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2019-03-16 21:14+0100\n"
+"POT-Creation-Date: 2019-03-18 12:33+0100\n"
 "PO-Revision-Date: 2016-10-11 17:27+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en_US\n"
@@ -34,12 +34,25 @@ msgid ""
 "        We really appreciate all the feedback you can give us.</p>\n"
 msgstr ""
 
-#: src/sekretariat/views.py:77
+#: src/sekretariat/views.py:77 src/sekretariat/views.py:106
 msgid "Activation authentication failed"
 msgstr ""
 
 #: jinja2/base/layout/header.html:15
 msgid "Admin"
+msgstr ""
+
+#: src/sekretariat/jinja2/OpenOfficeSlot/email/confirmed.html:6
+#: src/sekretariat/jinja2/OpenOfficeSlot/email/prompt.html:7
+msgid "Anulij rezerwację"
+msgstr ""
+
+#: src/sekretariat/jinja2/OpenOfficeGroup/detail.html:26
+msgid "Anuluj"
+msgstr ""
+
+#: src/sekretariat/jinja2/OpenOfficeSlot/cancel.html:7
+msgid "Anuluj termin"
 msgstr ""
 
 #: jinja2/errors/400.html:15 jinja2/errors/403.html:13
@@ -51,11 +64,11 @@ msgstr ""
 msgid "Bad request"
 msgstr ""
 
-#: src/sekretariat/jinja2/OpenOfficeGroup/detail.html:27
+#: src/sekretariat/jinja2/OpenOfficeGroup/detail.html:31
 msgid "Book"
 msgstr ""
 
-#: src/sekretariat/jinja2/OpenOfficeGroup/detail.html:25
+#: src/sekretariat/jinja2/OpenOfficeGroup/detail.html:28
 msgid "Booked"
 msgstr ""
 
@@ -64,6 +77,7 @@ msgid "Booking"
 msgstr ""
 
 #: jinja2/bootstrap/forms/horizontal.html:309
+#: src/sekretariat/jinja2/OpenOfficeSlot/confirm.html:8
 msgid "Cancel"
 msgstr ""
 
@@ -77,10 +91,6 @@ msgstr ""
 
 #: jinja2/base/layout/footer.html:6
 msgid "Contact"
-msgstr ""
-
-#: src/sekretariat/jinja2/OpenOfficeGroup/detail.html:14
-msgid "Email"
 msgstr ""
 
 #: jinja2/errors/403.html:2
@@ -139,16 +149,16 @@ msgstr ""
 msgid "Please fix the error."
 msgstr ""
 
-#: src/sekretariat/jinja2/OpenOfficeSlot/email.html:6
+#: src/sekretariat/jinja2/OpenOfficeSlot/email/prompt.html:6
 msgid "Portwierdź rezerwację"
 msgstr ""
 
-#: src/sekretariat/models.py:109
-msgid "Potwierdzenie terminu"
+#: src/sekretariat/jinja2/OpenOfficeGroup/detail.html:25
+msgid "Potwierdź"
 msgstr ""
 
-#: src/sekretariat/jinja2/OpenOfficeSlot/confirm.html:5
-msgid "Potwierdź rezerwację"
+#: src/sekretariat/jinja2/OpenOfficeSlot/confirm.html:7
+msgid "Potwierdź termin"
 msgstr ""
 
 #: jinja2/bootstrap/pagination.html:7
@@ -187,10 +197,6 @@ msgstr ""
 msgid "Thank you for your feedback!"
 msgstr ""
 
-#: src/sekretariat/views.py:81
-msgid "This activation link was already used"
-msgstr ""
-
 #: jinja2/bootstrap/forms/horizontal.html:4
 msgid "This is required field"
 msgstr ""
@@ -223,15 +229,15 @@ msgstr ""
 msgid "Zapisz zmiany"
 msgstr ""
 
-#: src/sekretariat/jinja2/OpenOfficeSlot/form.html:5
+#: src/sekretariat/jinja2/OpenOfficeSlot/form.html:6
 msgid "Zarezerwuj termin"
 msgstr ""
 
-#: src/sekretariat/models.py:75
+#: src/sekretariat/models.py:82
 msgid "email"
 msgstr ""
 
-#: src/sekretariat/models.py:73
+#: src/sekretariat/models.py:80
 msgid "event start"
 msgstr ""
 
@@ -239,19 +245,19 @@ msgstr ""
 msgid "name"
 msgstr ""
 
-#: src/sekretariat/models.py:57
+#: src/sekretariat/models.py:63
 msgid "open office group"
 msgstr ""
 
-#: src/sekretariat/models.py:58
+#: src/sekretariat/models.py:64
 msgid "open office groups"
 msgstr ""
 
-#: src/sekretariat/models.py:80 src/sekretariat/models.py:81
+#: src/sekretariat/models.py:87 src/sekretariat/models.py:88
 msgid "open office slot"
 msgstr ""
 
-#: src/sekretariat/models.py:74
+#: src/sekretariat/models.py:81
 msgid "student name"
 msgstr ""
 
@@ -259,7 +265,7 @@ msgstr ""
 msgid "this week"
 msgstr ""
 
-#: src/sekretariat/models.py:54
+#: src/sekretariat/models.py:60
 msgid "title"
 msgstr ""
 
@@ -274,4 +280,26 @@ msgstr ""
 #: src/website/settings/jinja2.py:125
 msgid "yesterday"
 msgstr ""
+
+#: src/sekretariat/models.py:112 src/sekretariat/models.py:117
+#, python-format
+msgid "{start:%Y-%m-%d %H:%M} Prośba o potwierdzenie terminu"
+msgstr ""
+
+#: src/sekretariat/models.py:122
+#, python-format
+msgid "{start:%Y-%m-%d %H:%M} Termin anulowany"
+msgstr ""
+
+#~ msgid "Email"
+#~ msgstr ""
+
+#~ msgid "Potwierdzenie terminu"
+#~ msgstr ""
+
+#~ msgid "Potwierdź rezerwację"
+#~ msgstr ""
+
+#~ msgid "This activation link was already used"
+#~ msgstr ""
 
