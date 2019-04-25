@@ -5,6 +5,8 @@
 
 click
 click-log
+colorlog
+crayons
 dinja2
 django<2.0 ; python_version < '3.5'
 django>=2.0 ; python_version >= '3.5'

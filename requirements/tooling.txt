@@ -10,6 +10,7 @@ flake8
 invoke
 isort
 pygments
+pip-tools
 readme-renderer
 setuptools
 tox

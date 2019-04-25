@@ -268,7 +268,8 @@ LOGGING = {
     'disable_existing_loggers': False,
     'formatters': {
         'short': {
-            'format': '%(asctime)s %(levelname)-7s %(thread)-5d %(message)s',
+            '()': 'colorlog.ColoredFormatter',
+            'format': '%(log_color)s%(asctime)s %(levelname)-7s %(thread)-5d %(message)s',
             'datefmt': '%H:%M:%S',
         },
         'tracing': {
@@ -277,11 +278,13 @@ LOGGING = {
         },
         # this may slow down the app a little, due to
         'verbose': {
-            'format': '%(asctime)s %(levelname)-7s %(thread)-5d %(name)s %(filename)s:%(lineno)s | %(funcName)s | %(message)s',
+            '()': 'colorlog.ColoredFormatter',
+            'format': '%(log_color)s%(asctime)s %(levelname)-7s %(thread)-5d %(name)s %(filename)s:%(lineno)s | %(funcName)s | %(message)s',
             'datefmt': '%Y-%m-%d %H:%M:%S',
         },
         'heroku': {
-            'format': '%(levelname)-7s %(thread)-5d %(name)s %(filename)s:%(lineno)s | %(funcName)s | %(message)s',
+            '()': 'colorlog.ColoredFormatter',
+            'format': '%(log_color)s%(levelname)-7s %(thread)-5d %(name)s %(filename)s:%(lineno)s | %(funcName)s | %(message)s',
             'datefmt': '%Y-%m-%d %H:%M:%S',
         },
         'simple': {
