@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block body_class %}centered nomenu nologin{% endblock %}
+{% block title %}Brak zaproszenia{% endblock %}
+{% block content %}
+
+<h1>Nie znalazłem wskazanego zaproszenia</h1>
+
+<p>Niestety nie możesz użyć tego linku zaproszenia - link nie jest poprawny lub już nie jest ważny.</p>
+<p>Najczęstszą przyczyną tego problemu jest wcześniejsze wykorzystanie linku (można go użyć tylko raz).</p>
+<p><a class="button default" href="/">Przejdź do strony logowania</a></p>
+<p>Skontaktuj się z <a href="mailto:pomoc@dziennik.edu.pl">pomocą techniczną</a> jeśli próbujesz użyć tego linku po raz pierwszy i nie możesz się zalogować.</p>
+
+{% endblock %}

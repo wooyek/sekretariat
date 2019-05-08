@@ -8,6 +8,7 @@
 
 from datetime import date, datetime
 
+from avatar.templatetags.avatar_tags import avatar, avatar_url
 from babel.support import Translations
 from dinja2.filters import do_append_get, do_class_name
 from django.conf import settings
@@ -37,6 +38,7 @@ def environment(**options):
         'get_available_languages': get_available_languages,
         'get_language_info_list': get_language_info_list,
         # 'switch': gargoyle.is_active,
+        'avatar_url': avatar_url
     })
 
     env.filters.update(

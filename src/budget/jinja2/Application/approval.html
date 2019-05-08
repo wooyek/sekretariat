@@ -1,0 +1,7 @@
+{% if approval %}
+  <i class="far fa-fw fa-check-circle text-success"></i>
+{% elif approval == False %}
+  <i class="far fa-fw fa-minus-circle text-warning"></i>
+{% else %}
+  <i class="far fa-fw fa-question"></i>
+{% endif %}

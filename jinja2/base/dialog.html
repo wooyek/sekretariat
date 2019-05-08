@@ -1,30 +1,33 @@
-{% extends "base/basic.html" %}
+{% extends "base/default.html" %}
 {% block body_class %}dialog{% endblock %}
+{% block modals %}{% endblock %}
 {% block main %}
-  <div class="row mt-5">
-    <div class="col-md-6 offset-md-3">
-      <header></header>
-      <article>
-        <div class="card {% block panel_class %}panel-default{% endblock %}">
-          <div class="card-header">
+  <div class="container">
+    <div class="row mt-5 mb-5">
+      <div class="{% block panel_col_class %}col-md-6 offset-md-3{% endblock %}">
+        <header></header>
+        <article>
+          <div class="card {% block panel_class %}border-default shadow-lg{% endblock %} ">
             {% block panel_heading %}
-              <h3 class="panel-title {% block title_class %}{% endblock %}">{% block page_title %}{% endblock %}</h3>
+              <div class="card-header {% block title_class %}{% endblock %}">{% block page_title %}{% endblock %}</div>
+            {% endblock %}
+            {% block dialog_body %}
+              <form {% block dialog_form %}class="{% block form_class %}{% endblock %}" id="{% block form_id %}{% endblock %}"
+                    action="{% block form_action %}{% endblock %}" method="post" role="form"
+                    enctype="multipart/form-data"{% endblock %}>
+                <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}"/>
+                <section class="card-body">
+                  {% block content %}{% endblock %}
+                  <footer>
+                    {% block footer %}{% endblock %}
+                  </footer>
+                </section>
+              </form>
             {% endblock %}
           </div>
-          <form {% block dialog_form %}class="{% block form_class %}{% endblock %}" id="{% block form_id %}{% endblock %}"
-                action="{% block form_action %}{% endblock %}" method="post" role="form"
-                enctype="multipart/form-data"{% endblock %}>
-            <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}"/>
-            <section class="card-body">
-              {% block content %}{% endblock %}
-              <footer>
-                {% block footer %}{% endblock %}
-              </footer>
-            </section>
-          </form>
-        </div>
-        {% block extra %}{% endblock %}
-      </article>
+          {% block extra %}{% endblock %}
+        </article>
+      </div>
     </div>
   </div>
 {% endblock %}

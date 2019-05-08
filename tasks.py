@@ -206,7 +206,7 @@ def bump(ctx, minor=False):
     text = re.sub(r"__date__ = .*", new_date, text)
     version_file.write_text(text)
     ctx.run('git add '+str(version_file))
-    ctx.run('git commit -m "Update __date__" --allow-empty')
+    ctx.run('git commit -m "Update website.{}" --allow-empty'.format(new_date))
 
 
 @task()
@@ -339,7 +339,7 @@ def trigger_tests(ctx):
     ctx.run("git push origin develop", env=env)
 
 
-@task(iterable=['remote'], help={'remote': "Git remote used to ship local repository"})
+@task(iterable=['remote'], help={'remote': "Git remote used to ship local repository"}, post=[])
 def ship(ctx, remote='dev', branch='master'):
     """
     Ship current version to a remote environment
@@ -397,7 +397,6 @@ def vagrant(ctx):
     """
     ctx.run("git checkout develop")
     ctx.run("git push vagrant develop --verbose")
-
 
 
 @task

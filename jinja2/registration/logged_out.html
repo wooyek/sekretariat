@@ -1,0 +1,15 @@
+{% extends "base/confirmation.html" %}
+{% block page_title %}{% trans %}Logged out{% endtrans %}{% endblock %}
+{% block content %}
+    <p>{% trans %}Thanks for spending some quality time with the us today{% endtrans %}</p>
+{% endblock %}
+{% block footer %}
+    <p>
+        {% if return_url %}
+            <a class="btn btn-primary" href="{{ return_url }}">{% trans %}Go back{% endtrans %}</a>
+        {% else %}
+            <a class="btn btn-primary" href="/">{% trans %}Go to homepage{% endtrans %}</a>
+        {% endif %}
+        <a class="btn btn-primary" href="{{ url('login') }}">{% trans %}Login again{% endtrans %}</a>
+    </p>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends "base/confirmation.html" %}
+{% block page_title %}{% trans %}Activation message was send{% endtrans %}{% endblock %}
+{% block content %}
+    <p>{% trans %}Thank you, and one last thing. We need to verify that you have control over email address you have provided{% endtrans %}
+        {%- if activation_email %} {{ activation_email }}{% endif %}.</p>
+    {% trans -%}
+        <p>We have send a message with activation link to the email you provided</p>
+        <p>Please open the message and click the link to activate your account.</p>
+        <h2>No message?</h2>
+        <p>If you cannot find our message in the inbox, please check your spam folder as well.</p>
+        <p> Or maybe you have some filters that blocked or move it somewhere else?</p>
+    {%- endtrans %}
+{% endblock %}

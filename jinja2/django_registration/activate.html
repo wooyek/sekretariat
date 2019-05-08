@@ -1,0 +1,10 @@
+{% extends 'base/confirmation.html' %}
+
+{% block page_title %}{% trans %}Account Activation Error{% endtrans %}{% endblock %}
+{% block content %}
+    <p>
+        {% trans -%}
+            There was a problem activating your account. For more information please go to our <a href="/help/">help center</a>. Your activation key was: {{ activation_key }}
+        {%- endtrans %}
+    </p>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% from "bootstrap/forms/horizontal.html" import render_form %}
+
+{% block title %}{% if object %}Aktualizacja{% else %}Nowy{% endif %}{% endblock %}
+{% block content %}
+
+    <div class="page-header">
+        <p class="lead">
+            {% if object %}
+                Aktualizacja użytkownika
+            {% else %}
+                Nowy użytkownik
+            {% endif %}
+        </p>
+    </div>
+    {{ render_form(form, submit_text='Zapisz') }}
+{% endblock %}

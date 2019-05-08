@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}Zaproszenie wysłane {% endblock %}
+{% block content %}
+    <div class="group">
+
+        <div>
+            <h1>Wiadomość aktywacyjna wysłana.</h1>
+            <p>Na poniższy adres email wysłaliśmy{% if invitation %} <strong>{{ invitation.timestamp|datetimeformat }}</strong>{% endif %} wiadomość z odnośnikiem aktywującym konto.</p>
+            <div class='invite-email'><p>{{ email }}</p></div>
+                <p>Jeśli jej nie możesz znaleźć, prosimy sprawdź folder przeznaczony na spam, lub</p>
+                <form action="{{ url_for(".OpenId:re_invite") }}" method="post" style="padding: 0 8px;">
+                <input name="resend" type="hidden" value="1"/>
+                <button id="resend">Wyślij ponownie</button>
+            </form>
+            <h2>Dlaczego?</h2>
+            <p>Dla bezpieczeństwa sprawdzamy czy adres email którego użyłeś/aś podczas logowania jest Twoją własnością.</p>
+        </div>
+    </div>
+{% endblock %}

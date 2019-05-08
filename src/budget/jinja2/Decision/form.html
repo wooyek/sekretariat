@@ -1,0 +1,25 @@
+{% extends "Application/detail.html" %}
+{% from "bootstrap/forms/horizontal.html" import form_body with context %}
+{% block content %}
+  {{ super() }}
+  <div class="row mt-5 mb-5">
+    <div class="col-md-6 offset-md-3">
+      <div class="card border-default shadow-lg">
+        <div class="card-header">{% trans %}Sign off{% endtrans %}</div>
+        <section class="card-body">
+          <form method="post" role="form" enctype="multipart/form-data">
+            <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}"/>
+            {{ form_body(form) }}
+            <div class="form-group">
+              <div class="form-actions">
+                <button type="submit" name="approval" value="approve" class="btn btn-success">{% trans %}Approve{% endtrans %}</button>
+                <button type="submit" name="approval" value="reject" class="btn btn-warning">{% trans %}Reject{% endtrans %}</button>
+                <a class="btn btn-cancel" href="{{ return_url|default("/", True) }}">{% trans %}Cancel{% endtrans %}</a>
+              </div>
+            </div>
+          </form>
+        </section>
+      </div>
+    </div>
+  </div>
+{% endblock %}

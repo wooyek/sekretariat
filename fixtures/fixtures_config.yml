@@ -3,7 +3,13 @@
 auth:
   - auth.Group
   - auth.User
+
 #contenttypes:
 #  - contenttypes
-#filer:
-#  - filer
+
+budget:
+  - budget.AccountGroup
+  - budget.Account
+  - budget.Budget
+  - budget.Application
+  - budget.Decision

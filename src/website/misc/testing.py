@@ -11,6 +11,7 @@ import sys
 from collections import OrderedDict
 
 import django
+import pytest
 from django.apps import apps
 from django.conf import settings
 from django.utils.functional import empty
@@ -80,6 +81,21 @@ def model_to_request_data_dict(model):
     return data
 
 
+def assert_no_form_errors(response, form_context_key='form'):
+    if not hasattr(response, 'context_data'):
+        return
+    forms = response.context_data.get(form_context_key)
+    if forms is None:
+        return
+    if not isinstance(forms, list):
+        forms = [forms]
+    for form in forms:
+        if isinstance(form.errors, dict):
+            assert form.errors == {}, form.errors
+        else:
+            assert form.errors == [], form.errors
+
+
 class AdminUserTestCase(TestCase):
     def setUp(self):
         self.client = Client()
@@ -101,18 +117,6 @@ class UserTestCase(TestCase, AssertionsMx):
         self.client.force_login(self.user, settings.AUTHENTICATION_BACKENDS[0])
 
 
-def staff_client():
-    staff = UserFactory.create(is_superuser=False, is_staff=True)
-    client = django.test.Client()
-    client.force_login(staff, settings.AUTHENTICATION_BACKENDS[0])
-    return client
-
-
-def authenticated_client(user=None):
-    user = user or UserFactory.create(is_superuser=False, is_staff=False)
-    client = django.test.Client()
-    client.force_login(user, settings.AUTHENTICATION_BACKENDS[0])
-    return client
 
 
 class KeepDbTestRunner(DiscoverRunner):

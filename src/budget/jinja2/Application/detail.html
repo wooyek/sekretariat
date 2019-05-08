@@ -1,0 +1,63 @@
+{% extends "base/default.html" %}
+{% block content %}
+  <div class="row mt-5">
+    <div class="col-xl-8 offset-xl-2 ">
+      <div class="card shadow-lg {% if object.approval == True %}border-success{% elif object.approval == False %}border-danger{% endif %}">
+        <div class="card-header">{% trans %}Expenditure details{% endtrans %}
+          <a class="btn btn-outline-dark btn-sm float-right" href="{{ url("budget:ApplicationUpdate", object.pk) }}"><i
+            class="fa fa-fw fa-pencil"></i></a>
+        </div>
+        <table class="table table-striped table-hover mb-0">
+          <tbody>
+          {% for field_name in ['date', 'requester', 'description', 'amount', ] %}
+            <tr>
+              <th scope="row">{{ object.get_field_name(field_name) }}</th>
+              <td>{{ object[field_name] }}</td>
+            </tr>
+          {% endfor %}
+          <tr>
+            <th scope="row">{{ object.get_field_name('budget') }}</th>
+            <td>
+              {% if object.budget %}
+                {% if perms.buget.can_view_budget %}
+                  <span class="{% if object.amount_available > 0 %}text-success{% else %}text-danger{% endif %}">
+                  {{ object.amount_available }}
+                  </span>
+                  {% else %}
+                  <i class="far fa-eye-slash"></i>
+                {% endif %}
+              {% else %}
+                  -
+              {% endif %}
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">{{ object.get_field_name('account') }}</th>
+            <td>
+              {{ object.account|default("-", True) }}
+            </td>
+          </tr>
+          <tbody>
+        </table>
+      </div>
+
+      <div class="card mt-5 shadow-lg {% if object.approval == True %}border-success{% elif object.approval == False %}border-danger{% endif %}">
+        <div class="card-header">{% trans %}Approvals{% endtrans %}</div>
+        <table class="table table-striped mb-0 table-hover">
+          {% for kind, name in decision_kinds %}
+            {% with signoff = object.get_decision(kind) %}
+              <tr class="{% if signoff.approval == True %}table-success{% elif signoff.approval == False %}table-warning{% endif %}">
+                <th scope="row">{{ name }}</th>
+                <td>
+                  {% include "Application/signonff.html" %}
+                  {{ object.manager|default("-", True) }}
+                </td>
+              </tr>
+            {% endwith %}
+          {% endfor %}
+          <tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+{% endblock %}

@@ -1,1 +1,50 @@
-{% extends "base/page.html" %}
+{% extends "base/default.html" %}
+{% block content %}
+  <div class="row text-center mt-5 justify-content-md-center">
+    {% if perms.buget.can_create_application %}
+      <div class="col-3">
+        <div class="card ">
+          <h5 class="card-header">{% trans %}Expenditures{% endtrans %}</h5>
+          <div class="card-body">
+            <p>
+              <i class="fal fa-5x fa-shopping-cart"></i>
+            </p>
+            <p>
+              <a href="{{ url('budget:ApplicationList') }}" class="btn btn-secondary">{% trans %}List{% endtrans %}</a>
+              <a href="{{ url('budget:ApplicationCreate') }}" class="btn btn-secondary">{% trans %}Create{% endtrans %}</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    {% endif %}
+    <div class="col-3">
+      <div class="card ">
+        <h5 class="card-header">{% trans %}Open Office{% endtrans %}</h5>
+        <div class="card-body">
+          <p>
+            <i class="fal fa-5x fa-door-open"></i>
+          </p>
+          <p>
+            <a href="#" class="btn btn-secondary">{% trans %}List{% endtrans %}</a>
+            <a href="#" class="btn btn-secondary">{% trans %}Create{% endtrans %}</a>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="col-3">
+      <div class="card ">
+        <h5 class="card-header">{% trans %}PT Conference{% endtrans %}</h5>
+        <div class="card-body">
+          <p>
+            <i class="fal fa-5x fa-users-class"></i>
+          </p>
+          <p>
+            <a href="#" class="btn btn-secondary">{% trans %}List{% endtrans %}</a>
+            <a href="#" class="btn btn-secondary">{% trans %}Create{% endtrans %}</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+

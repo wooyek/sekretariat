@@ -1,0 +1,7 @@
+{% if signoff %}
+  {% with approval = signoff.approval %}
+    {% include "Application/approval.html" %}
+  {% endwith %}
+{% else %}
+  <i class="far fa-fw fa-question"></i>
+{% endif %}

@@ -1,0 +1,26 @@
+{% extends "email/personal.html" %}
+{% from "email/macros.html" import btn_primary with context %}
+{% block content %}
+  <p>Zapotrzebowanie zostało
+    {% if object.approval == true %}
+      <em>przyjęte</em>
+    {% else %}
+      <em>odrzucone</em>
+    {% endif %}
+  </p>
+
+  <table class="table table-striped table-hover mb-0">
+    <tbody>
+    {% for field_name in ['date', 'requester', 'description', 'amount', ] %}
+      <tr>
+        <th scope="row">{{ object.get_field_name(field_name) }}</th>
+        <td>{{ object[field_name] }}</td>
+      </tr>
+    {% endfor %}
+    <tbody>
+  </table>
+  {{ btn_primary("Szczegóły", url) }}
+
+{% endblock %}
+{% block message_footer %}
+{% endblock %}

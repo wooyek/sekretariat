@@ -52,6 +52,7 @@ settings_components = (
     # 'gis',
     # 'intercom',
     'pure_pagination',
+    'python_social_auth',
     # 'google_cloud_storage',
 )
 
@@ -84,6 +85,7 @@ INSTALLED_APPS += (  # noqa: F405
     # 'django_babel',
     # 'guardian',
     'reversion',
+    'avatar',
     'django_user_agents',
     # 'django_filters',
     'django_powerbank.apps.DjangoPowerbankConfig',
@@ -92,7 +94,12 @@ INSTALLED_APPS += (  # noqa: F405
     # 'django_gravatar',
     # 'misc.choose_language',
     'sekretariat.apps.SekretariatConfig',
+    'budget.apps.BudgetConfig',
 )
+
+core.TEMPLATES[0]['OPTIONS']['context_processors'] += [
+    'budget.context_processors.budget',
+]
 
 # AUTH_USER_MODEL = 'sekretariat.CustomUser'
 
@@ -124,3 +131,4 @@ def filter_deprecation_warnings(record):
 
 
 logging.getLogger('py.warnings').addFilter(filter_deprecation_warnings)
+

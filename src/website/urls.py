@@ -25,12 +25,19 @@ urlpatterns = [
     path('jsi18n/', JavaScriptCatalog.as_view(), name='javascript-catalog'),
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps}),
     path('robots.txt', TemplateView.as_view(template_name='robots.txt', content_type='text/plain')),
-    path('accounts/', include('django.contrib.auth.urls')),
     path('admin/password_reset/', PasswordResetView.as_view(), name='admin_password_reset'),
+    path('accounts/', include('django.contrib.auth.urls')),
+    # path('accounts/registration/register/', RedirectView.as_view(pattern_name='introduce:register_user'), name='registration_register'),  # hide defatult view,
+    path('accounts/registration/', include('django_registration.backends.activation.urls')),
+    # path('accounts/introduce/', include('introduce.urls')),
+    path('accounts/social/', include('social_django.urls', namespace='social')),
+    path('accounts/social/login-error', TemplateView.as_view(template_name='errors/social_login_error.html')),
     path('unsubscribe/', include('django_opt_out.urls')),
+    path('avatar/', include('avatar.urls')),
     path('', include('sekretariat.urls')),
-    # path('', TemplateView.as_view(template_name="home.html")),
-    path('', RedirectView.as_view(url='/oo')),
+    path('', include('budget.urls')),
+    path('', TemplateView.as_view(template_name="home.html")),
+    # path('', RedirectView.as_view(url='/oo')),
 ]
 
 # urlpatterns = i18n_patterns(*urlpatterns)

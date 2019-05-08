@@ -1,0 +1,15 @@
+Aktywuj konto w Nuntio
+Witaj{%if person.first_name%} {{person.first_name}}{%endif%},
+
+Kliknij w poniższy link by aktywować konto użytkownika:
+
+{{ invite_url }}
+
+Jeżeli ten e-mail dotarł do Ciebie przez pomyłkę, prawdopodobnie inny użytkownik omyłkowo wpisał Twój adres e-mail podczas rejestracji w naszym serwisie.
+
+Jeżeli ta wiadomość Cię nie dotyczy, nie musisz podejmować żadnych działań i możesz ją zignorować.
+
+
+Pozdrawiamy :)
+Nuntio CMS
+

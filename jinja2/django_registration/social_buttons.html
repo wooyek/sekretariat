@@ -1,0 +1,23 @@
+<div class="social-login-buttons">
+  <a href="{{ url('social:begin', backend='google-oauth2') }}?next={{ next|default("/") }}&wizard={{ wizard|default('') }}" class="btn-outline-dark btn">
+    <i class="fa fa-google-plus"></i> {% trans %}Google{% endtrans %}
+  </a>
+{#
+  <a href="{{ url('social:begin', backend='twitter') }}?next={{ next|default("/") }}&wizard={{ wizard|default('') }}" class="btn-twitter btn">
+    <i class="fa fa-twitter"></i> {% trans %}Twitter{% endtrans %}
+  </a>
+  <a href="{{ url('social:begin', backend='linkedin-oauth2') }}?next={{ next|default("/") }}&wizard={{ wizard|default('') }}" class="btn-linkedin btn ">
+    <i class="fa fa-linkedin-square"></i> {% trans %}LinkedIn{% endtrans %}
+  </a>
+  <a href="{{ url('social:begin', backend='github') }}?next={{ next|default("/") }}&wizard={{ wizard|default('') }}" class="btn-github btn">
+    <i class="fa fa-github"></i> {% trans %}Github{% endtrans %}
+  </a>
+  <a href="{{ url('social:begin', backend='stackoverflow') }}?next={{ next|default("/") }}&wizard={{ wizard|default('') }}" class="btn-so btn">
+    <i class="fa fa-stack-overflow"></i> {% trans %}Stack Overflow{% endtrans %}
+  </a>
+  <a href="{{ url('social:begin', backend='facebook') }}?next={{ next|default("/") }}&wizard={{ wizard|default('') }}" class="btn-fb btn">
+    <i class="fa fa-facebook-square"></i> {% trans %}Facebook{% endtrans %}
+  </a>
+#}
+
+</div>

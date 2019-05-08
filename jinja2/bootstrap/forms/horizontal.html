@@ -97,21 +97,23 @@
 {%- endmacro %}
 
 {% macro form_date(field, classes=None, hide_label=False) -%}
-    <div id="{{ field.auto_id }}_form_group" class="form-group{% if field.errors %} has-error{% endif -%}{%- if classes %} {{ classes }}{% endif %}">
-        {% if not hide_label %}{{ field_label(field) }}{% endif %}
-        <div class="form-widget">
-            <div class="input-group widget-date ">
-                <span class="input-group-addon">
-                <span data-time-icon="icon-time" data-date-icon="icon-calendar" class="fa fa-fw fa-calendar"></span>
-                </span>
-                {{ field.as_widget(attrs={"class":"form-control", "type":'date'})|safe }}
-            </div>
-            {{ field_help(field) }}
+  <div id="{{ field.auto_id }}_form_group" class="form-group{% if field.errors %} has-error{% endif -%}{%- if classes %} {{ classes }}{% endif %}">
+    {% if not hide_label %}{{ field_label(field) }}{% endif %}
+    <div class="form-widget">
+      <div class="input-group widget-date ">
+        <div class="input-group-prepend">
+          <span class="input-group-text">
+            <span data-time-icon="icon-time" data-date-icon="icon-calendar" class="fa fa-fw fa-calendar"></span>
+          </span>
         </div>
+        {{ field.as_widget(attrs={"class":"form-control", "type":'date'})|safe }}
+      </div>
+      {{ field_help(field) }}
     </div>
-    {% if field.errors %}
-        <div class="form-group has-error">{{ field_errors(field) }}</div>
-    {% endif -%}
+  </div>
+  {% if field.errors %}
+    <div class="form-group has-error">{{ field_errors(field) }}</div>
+  {% endif -%}
 {%- endmacro %}
 
 {% macro field_url(field, classes=None, hide_label=False) -%}
@@ -150,7 +152,9 @@
     <div id="{{ field.auto_id }}_form_group" class="form-group{% if field.errors %} has-error{% endif -%}{%- if classes %} {{ classes }}{% endif %} input-append">
         {% if not hide_label %}{{ field_label(field) }}{% endif %}
         <div class="input-group form-widget">
-            <div class="input-group-prepend"><div class="input-group-text"><i class="fa fa-fw fa-envelope"></i></div></div>
+            <div class="input-group-prepend">
+              <span class="input-group-text"><i class="fa fa-fw fa-envelope"></i></span>
+            </div>
             {{ field.as_widget(attrs={"class":"form-control"})|safe }}
         </div>
         {{ field_help(field) }}
@@ -165,7 +169,9 @@
         {% if not hide_label %}{{ field_label(field) }}{% endif %}
         <div class="input-group form-widget">
             {{ field.as_widget(attrs={"class":"form-control"})|safe }}
-            <span class="input-group-addon"><i class="fa fa-fw fa-lock"></i></span>
+          <div class="input-group-append">
+            <span class="input-group-text"><i class="fa fa-fw fa-lock"></i></span>
+          </div>
         </div>
         {{ field_help(field) }}
     </div>

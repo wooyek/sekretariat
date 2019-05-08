@@ -1,20 +1,65 @@
 <header class="body-header">
   <div class="container bordered">
     <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-  <a class="navbar-brand" href="/">Sekretariat</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"
-              aria-label="Toggle navigation">
+      <a class="navbar-brand" href="/">Sekretariat</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#header-nav-bar" aria-controls="header-nav-bar"
+              aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarCollapse">
+
+      <div class="collapse navbar-collapse" id="header-nav-bar">
+
         <ul class="navbar-nav mr-auto">
+
+          {% if perms.buget.can_create_application %}
+          <li class="nav-item active">
+            <a class="nav-link" href="{{ url('budget:ApplicationList') }}">{% trans %}Expenditures{% endtrans %}</a>
+          </li>
+          {% endif %}
         </ul>
-        <ul class="navbar-nav mt-2 mt-md-0">
-            <li>
-              <a class="nav-link" href="{{ url('admin:index') }}">
-                <i class="fa fa-cog"></i> {% trans %}Admin{% endtrans %}
+
+        <ul class="navbar-nav">
+          {% if user.is_staff %}
+            <li class="nav-item dropdown">
+              <a class="nav-link" href="#" id="diagnostics" role="button" data-toggle="dropdown"
+                 aria-haspopup="true" aria-expanded="false">
+                <i class="fa fa-fw fa-cog"></i>
               </a>
+              <div class="dropdown-menu" aria-labelledby="diagnostics">
+                <a class="dropdown-item" href="{{ url("admin:index") }}">
+                  <i class="fa fa-fw fa-dashboard fa-w"></i>
+                  {% trans %}Admin{% endtrans %}
+                </a>
+              </div>
             </li>
+          {% endif %}
+          {% if user.is_authenticated %}
+            <li class="nav-item dropdown">
+              <a href="#" class="" role="button" data-toggle="dropdown" aria-haspopup="true"
+                 aria-expanded="false"><span class="sr-only">{{ user.username }}</span>
+                <img src="{{ avatar_url(user, 36) }}"/>
+              </a>
+
+              <div class="dropdown-menu" aria-labelledby="avatar">
+                <a class="dropdown-item" href="{{ url("logout") }}">
+                  <i class="glyphicon glyphicon-off"></i> {% trans %}Logout{% endtrans %} {{ user.username }}
+                </a>
+{#
+                <div class="dropdown-divider"></div>
+                <a href="{{ url('avatar_change') }}" class="dropdown-item">
+                  <i class="fa fa-fw fa-user-md"></i> {% trans %}Change avatar{% endtrans %}
+                </a>
+#}
+                {#
+                                <li><a href="{{ url_for("auth.profile") }}"><i class="glyphicon glyphicon-user"></i> User account</a></li>
+#}
+              </div>
+            </li>
+          {% else %}
+            <li class="nav-item"><a class="nav-link" href="{{ url("login") }}"><i class="fa fa-sign-in"></i> {% trans %}Log in{% endtrans %}</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{ url("django_registration_register") }}"><i class="fa fa-user-edit"></i> {% trans %}Register{% endtrans %}
+            </a></li>
+          {% endif %}
         </ul>
       </div>
     </nav>

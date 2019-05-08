@@ -17,7 +17,7 @@ CSS = (
 
 JS = (
     # assets_js / "jquery.js",
-    # assets_js / "jquery.min.js",
+    assets_js / "jquery.min.js",
     assets_js / "bootstrap.js",
     # assets_js / "moment-with-locales.js",
     # assets_js / "bootstrap-datetimepicker.js",

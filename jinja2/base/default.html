@@ -1,29 +1,42 @@
 ﻿{% extends "base/layout/body.html" %}
 
 {% block body %}
-    {% block navbar %}
-        {% include "base/layout/header.html" %}
-    {% endblock %}
-    {% block fold %}{% endblock %}
-    {% block main_wrap %}
-    <main class="o-wrapper">
+  {% block navbar %}
+    {% include "base/layout/header.html" %}
+  {% endblock %}
+  {% block fold %}{% endblock %}
+  {% block main_wrap %}
+    <main role="main" class="">
+      {% block alerts %}
         <div class="container">
-                {% block main %}{% endblock %}
+          {% include "base/layout/alerts.html" %}
         </div>
-    </main>
-    {% endblock %}
-    {% block page_footer %}{% include "base/layout/footer.html" %}{% endblock %}
-    {% block modals %}
-        <div class="modal fade" id="DefaultModal" tabindex="-1" role="dialog" aria-labelledby="DefaultModal">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-body">
-                        <div class="text-center">
-                            <i class="fa fa-refresh fa-spin fa-5x"></i>
-                        </div>
-                    </div>
-                </div>
+      {% endblock %}
+      {% block main %}
+        <div class="container">
+          {% block content %}
+            <div class="jumbotron mb-5 mt-5">
+              <h1>Lorem ipsum!</h1>
+              <p class="lead">You are looking at a sample text in your website template `jinja2/base/layout/default.html`</p>
+              <p>Override 'content' or wider 'main' block</p>
             </div>
+          {% endblock %}
         </div>
-    {% endblock %}
+      {% endblock %}
+    </main>
+  {% endblock %}
+  {% block page_footer %}{% include "base/layout/footer.html" %}{% endblock %}
+  {% block modals %}
+    <div class="modal fade" id="DefaultModal" tabindex="-1" role="dialog" aria-labelledby="DefaultModal">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-body">
+            <div class="text-center">
+              <i class="fa fa-refresh fa-spin fa-5x"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endblock %}
 {% endblock %}

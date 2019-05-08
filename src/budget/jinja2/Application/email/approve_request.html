@@ -1,0 +1,20 @@
+{% extends "email/personal.html" %}
+{% from "email/macros.html" import btn_primary with context %}
+{% block content %}
+  <p>Zapotrzebowanie potrzebuje twojej decyzji o akceptacji lub odrzuceniu:</p>
+
+  <table class="table table-striped table-hover mb-0">
+    <tbody>
+    {% for field_name in ['date', 'requester', 'description', 'amount', ] %}
+      <tr>
+        <th scope="row">{{ object.get_field_name(field_name) }}</th>
+        <td>{{ object[field_name] }}</td>
+      </tr>
+    {% endfor %}
+    <tbody>
+  </table>
+  {{ btn_primary("Podejmij decyzję", url) }}
+
+{% endblock %}
+{% block message_footer %}
+{% endblock %}

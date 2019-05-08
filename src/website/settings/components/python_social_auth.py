@@ -18,11 +18,11 @@ core.INSTALLED_APPS += (
 
 AUTHENTICATION_BACKENDS = (
     'social_core.backends.google.GoogleOAuth2',
-    'social_core.backends.twitter.TwitterOAuth',
-    'social_core.backends.linkedin.LinkedinOAuth2',
-    'social_core.backends.github.GithubOAuth2',
-    'social_core.backends.facebook.FacebookOAuth2',
-    'social_core.backends.stackoverflow.StackoverflowOAuth2',
+    # 'social_core.backends.twitter.TwitterOAuth',
+    # 'social_core.backends.linkedin.LinkedinOAuth2',
+    # 'social_core.backends.github.GithubOAuth2',
+    # 'social_core.backends.facebook.FacebookOAuth2',
+    # 'social_core.backends.stackoverflow.StackoverflowOAuth2',
 )
 AUTHENTICATION_BACKENDS += core.AUTHENTICATION_BACKENDS
 
@@ -39,15 +39,17 @@ core.MIDDLEWARE += (
 
 SOCIAL_AUTH_AUTHENTICATION_BACKENDS = (
     'social_core.backends.google.GoogleOAuth2',
-    'social_core.backends.twitter.TwitterOAuth',
-    'social_core.backends.linkedin.LinkedinOAuth2',
-    'social_core.backends.github.e91b58ee4334d2ef34ba',
-    'social_core.backends.facebook.FacebookOAuth2',
-    'social_core.backends.stackoverflow.StackoverflowOAuth2',
+    # 'social_core.backends.twitter.TwitterOAuth',
+    # 'social_core.backends.linkedin.LinkedinOAuth2',
+    # 'social_core.backends.github.e91b58ee4334d2ef34ba',
+    # 'social_core.backends.facebook.FacebookOAuth2',
+    # 'social_core.backends.stackoverflow.StackoverflowOAuth2',
 )
 
-SOCIAL_AUTH_SLUGIFY_USERNAMES = True
+SOCIAL_AUTH_SLUGIFY_USERNAMES = core.env("SOCIAL_AUTH_SLUGIFY_USERNAMES", default=False)
+SOCIAL_AUTH_USERNAME_IS_FULL_EMAIL = core.env("SOCIAL_AUTH_USERNAME_IS_FULL_EMAIL", default=True)
 SOCIAL_AUTH_FIELDS_STORED_IN_SESSION = ['wizard', ]
+ACCOUNT_ACTIVATION_DAYS = 7
 
 # http://psa.matiasaguirre.net/docs/pipeline.html#authentication-pipeline
 SOCIAL_AUTH_PIPELINE = (
@@ -68,27 +70,27 @@ SOCIAL_AUTH_PIPELINE = (
     'social_core.pipeline.social_auth.auth_allowed',
 
     # Checks if the current social-account is already associated in the site.
-    # 'social_core.pipeline.social_auth.social_user',
-    'introduce.pipeline.social_user',
+    'social_core.pipeline.social_auth.social_user',
+    # 'introduce.pipeline.social_user',
 
     # 'introduce.pipeline.load_extra_data',
-    'introduce.pipeline.registration_wizard',
+    # 'introduce.pipeline.registration_wizard',
 
     # Make up a username for this person, appends a random string at the end if
     # there's any collision.
-    # 'social.pipeline.user.get_username',
+    'social_core.pipeline.user.get_username',
 
     # Send a validation email to the user to verify its email address.
     # Disabled by default.
-    # 'social.pipeline.mail.mail_validation',
+    'social_core.pipeline.mail.mail_validation',
 
     # Associates the current social details with another user account with
     # a similar email address. Disabled by default.
-    # 'social.pipeline.social_auth.associate_by_email',
+    'social_core.pipeline.social_auth.associate_by_email',
     # 'introduce.pipeline.force_login_for_existing_email',
 
     # Create a user account if we haven't found one yet.
-    # 'social.pipeline.user.create_user',
+    'social_core.pipeline.user.create_user',
 
     # Create the record that associated the social account with this user.
     'social_core.pipeline.social_auth.associate_user',
@@ -105,27 +107,27 @@ SOCIAL_AUTH_STACKOVERFLOW_EXTRA_DATA = ["access_token"]
 SOCIAL_AUTH_LOGIN_ERROR_URL = "/accounts/social/login-error"
 SOCIAL_AUTH_RAISE_EXCEPTIONS = core.env("SOCIAL_AUTH_RAISE_EXCEPTIONS", default=False)
 
-# https://developers.facebook.com/apps/
-SOCIAL_AUTH_FACEBOOK_KEY = core.env("SOCIAL_AUTH_FACEBOOK_KEY")
-SOCIAL_AUTH_FACEBOOK_SECRET = core.env("SOCIAL_AUTH_FACEBOOK_SECRET")
-
-# https://apps.twitter.com/app/new
-SOCIAL_AUTH_TWITTER_KEY = core.env("SOCIAL_AUTH_TWITTER_KEY")
-SOCIAL_AUTH_TWITTER_SECRET = core.env("SOCIAL_AUTH_TWITTER_SECRET")
+# # https://developers.facebook.com/apps/
+# SOCIAL_AUTH_FACEBOOK_KEY = core.env("SOCIAL_AUTH_FACEBOOK_KEY")
+# SOCIAL_AUTH_FACEBOOK_SECRET = core.env("SOCIAL_AUTH_FACEBOOK_SECRET")
+#
+# # https://apps.twitter.com/app/new
+# SOCIAL_AUTH_TWITTER_KEY = core.env("SOCIAL_AUTH_TWITTER_KEY")
+# SOCIAL_AUTH_TWITTER_SECRET = core.env("SOCIAL_AUTH_TWITTER_SECRET")
 
 # https://console.developers.google.com/project
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = core.env("SOCIAL_AUTH_GOOGLE_OAUTH2_KEY")
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = core.env("SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET")
 
-# https://github.com/settings/applications/new
-SOCIAL_AUTH_GITHUB_KEY = core.env("SOCIAL_AUTH_GITHUB_KEY")
-SOCIAL_AUTH_GITHUB_SECRET = core.env("SOCIAL_AUTH_GITHUB_SECRET")
-
-# https://www.linkedin.com/developer/apps/new
-SOCIAL_AUTH_LINKEDIN_OAUTH2_KEY = core.env("SOCIAL_AUTH_LINKEDIN_OAUTH2_KEY")
-SOCIAL_AUTH_LINKEDIN_OAUTH2_SECRET = core.env("SOCIAL_AUTH_LINKEDIN_OAUTH2_SECRET")
-
-# http://stackapps.com/apps/oauth/register
-SOCIAL_AUTH_STACKOVERFLOW_KEY = core.env("SOCIAL_AUTH_STACKOVERFLOW_KEY", int)
-SOCIAL_AUTH_STACKOVERFLOW_API_KEY = core.env("SOCIAL_AUTH_STACKOVERFLOW_API_KEY")
-SOCIAL_AUTH_STACKOVERFLOW_SECRET = core.env("SOCIAL_AUTH_STACKOVERFLOW_SECRET")
+# # https://github.com/settings/applications/new
+# SOCIAL_AUTH_GITHUB_KEY = core.env("SOCIAL_AUTH_GITHUB_KEY")
+# SOCIAL_AUTH_GITHUB_SECRET = core.env("SOCIAL_AUTH_GITHUB_SECRET")
+#
+# # https://www.linkedin.com/developer/apps/new
+# SOCIAL_AUTH_LINKEDIN_OAUTH2_KEY = core.env("SOCIAL_AUTH_LINKEDIN_OAUTH2_KEY")
+# SOCIAL_AUTH_LINKEDIN_OAUTH2_SECRET = core.env("SOCIAL_AUTH_LINKEDIN_OAUTH2_SECRET")
+#
+# # http://stackapps.com/apps/oauth/register
+# SOCIAL_AUTH_STACKOVERFLOW_KEY = core.env("SOCIAL_AUTH_STACKOVERFLOW_KEY", int)
+# SOCIAL_AUTH_STACKOVERFLOW_API_KEY = core.env("SOCIAL_AUTH_STACKOVERFLOW_API_KEY")
+# SOCIAL_AUTH_STACKOVERFLOW_SECRET = core.env("SOCIAL_AUTH_STACKOVERFLOW_SECRET")

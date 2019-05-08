@@ -1,0 +1,62 @@
+{% extends "base/default.html" %}
+{% block main %}
+  <div class="container-fluid">
+    <h1 class="text-center mt-3 mb-4">{% trans %}Expenditures{% endtrans %}</h1>
+
+    <div class="card">
+      <table class="table table-striped mb-0">
+        <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">{% trans %}Date{% endtrans %}</th>
+          <th scope="col">{% trans %}Title{% endtrans %}</th>
+          <th scope="col">{% trans %}Amount{% endtrans %}</th>
+          <th scope="col">{% trans %}Requester{% endtrans %}</th>
+          <th scope="col">{% trans %}Submitted{% endtrans %}</th>
+          <th scope="col">{% trans %}Manager{% endtrans %}</th>
+          <th scope="col">{% trans %}Account{% endtrans %}</th>
+          <th scope="col">{% trans %}Approval{% endtrans %}</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for item in object_list %}
+          <tr>
+            <th scope="row" rowspan="1">{{ loop.index }}</th>
+            <td>
+              <a href="{{ url("budget:ApplicationDetail", item.pk) }}">
+                {{ item.date|datetimeformat("YYYY-MM-dd") }}
+              </a>
+            </td>
+            <td>{{ item.title }}</td>
+            <td>{{ item.amount }}</td>
+            <td>{{ item.requester }}</td>
+            <td>{{ item.submitted|datetimeformat("YYYY-MM-dd") }}</td>
+            <td>{{ item.manager|default("-", True) }}</td>
+            <td>{{ item.account|default("-", True) }}</td>
+            <td>
+              {% for kind, name in decision_kinds %}
+                {% with approval = item.get_decision(kind).approval %}
+                  <span title="{{ name }}">
+                  {% include "Application/approval.html" %}
+                  </span>
+                {% endwith %}
+              {% endfor %}
+              {% with approval = item.approval %}
+                {% include "Application/approval.html" %}
+              {% endwith %}
+            </td>
+            <td>
+            </td>
+          </tr>
+{#
+          <tr>
+            <td>{{ item.description }}</td>
+          </tr>
+#}
+        {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+{% endblock %}

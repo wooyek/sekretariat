@@ -1,0 +1,22 @@
+{% extends "sidebarred.html" %}
+{% block title %}{{ object.title }}{% endblock %}
+{% block main %}
+
+    <div class="page-header">
+        <p class="lead">Użytkownik</p>
+
+        <div class="pull-right">
+            <a class="btn btn-default" href="{{ url_for('.User:update', id=object.id) }}">
+                <i class="fa fa-pencil"></i> Aktualizuj użytkownika
+            </a>
+        </div>
+    </div>
+
+<table class="table table-striped">
+  <tr><th>{% trans %}First name{% endtrans %}</th><td>{{ object.first_name }}</td></tr>
+  <tr><th>{% trans %}Last name{% endtrans %}</th><td>{{ object.last_name }}</td></tr>
+  <tr><th>{% trans %}Email{% endtrans %}</th><td>{{ object.email }}</td></tr>
+</table>
+
+
+{% endblock %}

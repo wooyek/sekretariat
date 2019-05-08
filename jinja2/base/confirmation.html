@@ -1,0 +1,30 @@
+{% extends "base/default.html" %}
+{% block body_class %}dialog confirmation{% endblock %}
+{% block main %}
+  <div class="row mt-5">
+    <div class="col-md-6 offset-md-3">
+      <header></header>
+      <article>
+        <div class="card {% block panel_class %}shadow-lg text-center {% endblock %}">
+          <div class="card-header">
+            {% block page_title %}{% endblock %}
+            <div class="commands">{% block commands %}{% endblock %}</div>
+          </div>
+          <section class="card-body">
+            {% block content %}{% endblock %}
+            <footer>
+              {% block footer %}
+                {% if return_url %}
+                  <a class="btn btn-secondary" href="{{ return_url }}">{% trans %}Go back{% endtrans %}</a>
+                {% else %}
+                  <a class="btn btn-secondary" href="/">{% trans %}Go to homepage{% endtrans %}</a>
+                {% endif %}
+              {% endblock %}
+            </footer>
+          </section>
+        </div>
+      </article>
+      {% block extra %}{% endblock %}
+    </div>
+  </div>
+{% endblock %}

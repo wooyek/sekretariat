@@ -1,0 +1,16 @@
+{% extends "base/dialog_basic.html" %}
+{% from "bootstrap/forms/horizontal.html" import render_form with context %}
+
+{% block page_title %}{% trans %}User registration{% endtrans %}{% endblock %}
+{% block panel_col_class %}col-md-8 offset-md-2{% endblock %}
+
+{% block dialog_body %}
+  <div class="p-4">
+    {{ render_form(form, submit_text=_("Register"), action=url('django_registration_register'), class='') }}
+  </div>
+  <div class="card-footer p-3">
+
+    <p>{% trans %}You can also register with a social account{% endtrans %}</p>
+    {% include "django_registration/social_buttons.html" %}
+  </div>
+{% endblock %}

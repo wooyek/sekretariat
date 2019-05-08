@@ -1,0 +1,13 @@
+{% if person %}{% trans first_name=person.first_name%}Hi {{ first_name }}{% endtrans %}{%else%}{% trans %}Hi{% endtrans %}{% endif %}
+
+{% trans %}Kliknij link poniżej by aktywować konto użytkownika:{% endtrans %}
+
+http://{{ site }}{{ url("django_registration_activate", activation_key=activation_key) }}
+
+{% trans -%}
+Jeżeli ten e-mail dotarł do Ciebie przez pomyłkę, prawdopodobnie inny użytkownik omyłkowo wpisał Twój adres e-mail podczas rejestracji w naszym serwisie.
+
+Jeżeli ta wiadomość Cię nie dotyczy, nie musisz podejmować żadnych działań i możesz ją zignorować.
+
+Pozdrawiamy
+{%- endtrans %}

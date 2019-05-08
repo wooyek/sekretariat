@@ -3,9 +3,11 @@
     <div class="alert
                 {%- if alert_header %} alert-block{% endif -%}
                 {%- if type %} alert-{{ type }}{% endif -%}
-                {%- if close_button %} fade in{% endif %}">
+                {%- if close_button %} fade show{% endif %}">
         {% if close_button -%}
-            <a class="close" data-dismiss="alert">&times;</a>
+            <button type="button" class="close" data-dismiss="alert" aria-label="{% trans %}Close{% endtrans %}">
+                <span aria-hidden="true">&times;</span>
+            </button>
         {%- endif %}
         {% if alert_header -%}
             <h4 class="alert-heading">{{ alert_header|safe }}</h4>

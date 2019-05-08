@@ -1,0 +1,8 @@
+{% extends "base/confirmation.html" %}
+{% block page_title %}{% trans %}Your account has been activated{% endtrans %} {% endblock %}
+{% block content %}
+    <p>{% trans %}Your account is ready to use{% endtrans %}</p>
+{% endblock %}
+{% block footer %}
+    <a class="btn btn-primary" href="{{ url("login") }}">{% trans %}Sign in{% endtrans %}</a>
+{% endblock %}

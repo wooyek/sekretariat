@@ -13,6 +13,7 @@ django>=2.0 ; python_version >= '3.5'
 django-admin-ordering
 django-admin-relation-links
 django-assets
+django-avatar
 django-bootstrap-form
 django-babel
 django-debug-toolbar
@@ -27,9 +28,14 @@ django-pascal-templates
 # django-polymodels
 django-powerbank
 django-pure-pagination
+django-registration
+
 django-reversion
+django2-babel
 django-user-agents
 # easy_thumbnails
+djangorestframework
+djangorestframework-jsonapi
 enum34 ; python_version < '3.4'
 html2text
 isoweek
@@ -50,6 +56,8 @@ pendulum
 sentry-sdk
 raven
 requests
+social-auth-app-django
+social-auth-core
 whitenoise
 
 --find-links=local
