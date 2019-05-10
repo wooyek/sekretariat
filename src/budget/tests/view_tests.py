@@ -10,8 +10,8 @@ from django.shortcuts import resolve_url
 
 from website.misc.factories import UserFactory
 from website.misc.testing import assert_no_form_errors, model_to_request_data_dict
-from . import factories
 from .. import models
+from . import factories
 
 log = logging.getLogger(__name__)
 fake = faker.Faker()
