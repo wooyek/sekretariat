@@ -125,7 +125,8 @@ def isort(ctx):
 @task
 def tox(ctx):
     """Run tox in paralel"""
-    ctx.run("tox --parallel auto -o", pty=True)
+    # ctx.run("tox --parallel auto -o", pty=True)
+    ctx.run("tox", pty=True)
 
 
 @task
