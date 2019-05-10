@@ -177,7 +177,7 @@ def manager_client():
 
 # noinspection PyMethodMayBeStatic
 @pytest.mark.django_db
-class SignOffCreateViewTests(object):
+class DecisionCreateViewTests(object):
     def test_anonymous(self, client):
         item = factories.ApplicationFactory()
         url = resolve_url("budget:DecisionCreate", item.pk, int(models.DecisionKind.manager))

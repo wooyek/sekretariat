@@ -8,7 +8,7 @@ from django.conf.urls import include
 from django.contrib.auth.views import PasswordResetView
 from django.contrib.sitemaps.views import sitemap
 from django.urls import path
-from django.views.generic import RedirectView, TemplateView
+from django.views.generic import TemplateView
 from django.views.i18n import JavaScriptCatalog
 from django_error_views.handlers import *  # noqa F401
 
@@ -37,7 +37,6 @@ urlpatterns = [
     path('', include('sekretariat.urls')),
     path('', include('budget.urls')),
     path('', TemplateView.as_view(template_name="home.html")),
-    # path('', RedirectView.as_view(url='/oo')),
 ]
 
 # urlpatterns = i18n_patterns(*urlpatterns)

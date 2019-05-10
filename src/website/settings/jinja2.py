@@ -8,7 +8,7 @@
 
 from datetime import date, datetime
 
-from avatar.templatetags.avatar_tags import avatar, avatar_url
+from avatar.templatetags.avatar_tags import avatar_url
 from babel.support import Translations
 from dinja2.filters import do_append_get, do_class_name
 from django.conf import settings

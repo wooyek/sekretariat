@@ -1,5 +1,5 @@
-{% if signoff %}
-  {% with approval = signoff.approval %}
+{% if decision %}
+  {% with approval = decision.approval %}
     {% include "Application/approval.html" %}
   {% endwith %}
 {% else %}

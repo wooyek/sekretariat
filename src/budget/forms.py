@@ -5,12 +5,12 @@ import logging
 
 from django import forms
 
-from . import  models
+from . import models
 
 log = logging.getLogger(__name__)
 
 
-class SignOffForm(forms.ModelForm):
+class DecisionForm(forms.ModelForm):
     class Meta:
         model = models.Decision
         fields = 'notes',

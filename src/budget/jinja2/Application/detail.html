@@ -45,8 +45,8 @@
         <div class="card-header">{% trans %}Approvals{% endtrans %}</div>
         <table class="table table-striped mb-0 table-hover">
           {% for kind, name in decision_kinds %}
-            {% with signoff = object.get_decision(kind) %}
-              <tr class="{% if signoff.approval == True %}table-success{% elif signoff.approval == False %}table-warning{% endif %}">
+            {% with decision = object.get_decision(kind) %}
+              <tr class="{% if decision.approval == True %}table-success{% elif decision.approval == False %}table-warning{% endif %}">
                 <th scope="row">{{ name }}</th>
                 <td>
                   {% include "Application/signonff.html" %}

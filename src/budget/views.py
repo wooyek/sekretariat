@@ -158,7 +158,7 @@ class ApplicationAccount(OperationsRequired, UpdateView):
 
 class DecisionBase(AbstractAuthorizedView):
     model = models.Decision
-    form_class = forms.SignOffForm
+    form_class = forms.DecisionForm
 
     # noinspection PyAttributeOutsideInit
     def is_authorized(self, *args, **kwargs):

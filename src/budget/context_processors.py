@@ -1,7 +1,7 @@
 # coding=utf-8
 # Copyright (c) 2018 Janusz Skonieczny
 
-import logging, sys, os, pathlib
+import logging
 
 from budget.models import DecisionKind
 

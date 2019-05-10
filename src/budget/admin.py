@@ -1,9 +1,8 @@
 # coding=utf-8
 # Copyright (c) 2018 Janusz Skonieczny
 
-import logging, sys, os, pathlib
+import logging
 
-log = logging.getLogger(__name__)
 # coding=utf-8
 from django.contrib import admin
 from import_export.admin import ImportExportMixin
@@ -11,8 +10,10 @@ from import_export.admin import ImportExportMixin
 from website.misc.admin import DynamicLookupMixin
 from . import models, resources
 
+log = logging.getLogger(__name__)
 
-class SignOffInline(admin.TabularInline):
+
+class DecisionInline(admin.TabularInline):
     model = models.Decision
 
 
@@ -20,7 +21,7 @@ class SignOffInline(admin.TabularInline):
 class ApplicationAdmin(ImportExportMixin, DynamicLookupMixin, admin.ModelAdmin):
     list_display = ('amount', 'description', 'budget', 'requester', 'manager',)
     list_filter = ('budget__account',)
-    inlines = [SignOffInline]
+    inlines = [DecisionInline]
 
 
 @admin.register(models.Budget)
@@ -42,8 +43,7 @@ class AccountGroupAdmin(ImportExportMixin, admin.ModelAdmin):
 
 
 @admin.register(models.Decision)
-class SignOffAdmin(ImportExportMixin, admin.ModelAdmin):
+class DecisionAdmin(ImportExportMixin, admin.ModelAdmin):
     list_display = ('ts', 'request', 'user', 'kind', 'approval')
     list_filter = ('user', 'kind', 'approval')
     date_hierarchy = 'ts'
-

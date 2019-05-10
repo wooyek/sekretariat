@@ -1,7 +1,6 @@
 # coding=utf-8
 
 from django.conf import settings
-
 # This is an example
 from environ import environ
 

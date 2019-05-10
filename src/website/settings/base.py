@@ -131,4 +131,3 @@ def filter_deprecation_warnings(record):
 
 
 logging.getLogger('py.warnings').addFilter(filter_deprecation_warnings)
-

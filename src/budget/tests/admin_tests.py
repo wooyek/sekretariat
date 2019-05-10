@@ -7,7 +7,6 @@ import pytest
 from django.contrib.admin.templatetags.admin_urls import admin_urlname
 from django.shortcuts import resolve_url
 
-from website.misc.testing import AdminUserTestCase
 from . import factories
 
 log = logging.getLogger(__name__)

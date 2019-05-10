@@ -11,7 +11,6 @@ import sys
 from collections import OrderedDict
 
 import django
-import pytest
 from django.apps import apps
 from django.conf import settings
 from django.utils.functional import empty
@@ -115,8 +114,6 @@ class UserTestCase(TestCase, AssertionsMx):
         self.client = Client()
         self.user = UserFactory.create()
         self.client.force_login(self.user, settings.AUTHENTICATION_BACKENDS[0])
-
-
 
 
 class KeepDbTestRunner(DiscoverRunner):

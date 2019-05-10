@@ -28,4 +28,3 @@ class TestAdminAvailable(TestCase):
         url = resolve_url("admin:index")
         response = self.client.get(url)
         self.assertEqual(200, response.status_code)
-
