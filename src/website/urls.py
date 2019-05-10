@@ -11,10 +11,22 @@ from django.urls import path
 from django.views.generic import TemplateView
 from django.views.i18n import JavaScriptCatalog
 from django_error_views.handlers import *  # noqa F401
+from django_error_views.views import ErrorView
 
 from .admin import custom_admin_site
 from .misc import debug
 from .sitemaps import sitemaps
+
+if not settings.DEBUG:
+    view = ErrorView.as_view(template_name="errors/500.html")
+
+    def handler500wrap(request):
+        return view(request)
+
+    handler500 = handler500wrap
+
+handler400 = ErrorView.as_view(template_name="errors/400.html", status_code=400)
+handler403 = ErrorView.as_view(template_name="errors/403.html", status_code=403)
 
 urlpatterns = [
     path('admin/doc/', include('django.contrib.admindocs.urls')),
