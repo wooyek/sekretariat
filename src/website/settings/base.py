@@ -103,7 +103,7 @@ core.TEMPLATES[0]['OPTIONS']['context_processors'] += [
 
 # AUTH_USER_MODEL = 'sekretariat.CustomUser'
 
-LANGUAGE_CODE = 'pl'
+LANGUAGE_CODE = 'en'
 TIME_ZONE = 'Europe/Warsaw'
 
 # https://docs.djangoproject.com/en/1.9/topics/i18n/translation/#how-django-discovers-language-preference

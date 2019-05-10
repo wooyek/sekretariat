@@ -38,7 +38,11 @@ def requirements(path):
 
 
 tests_require = requirements(os.path.join(os.path.dirname(__file__), "requirements", "testing.txt"))
-install_requires = requirements(os.path.join(os.path.dirname(__file__), "requirements", "lock", "production.txt"))
+if os.environ.get('VIRTUAL_ENV', '').endswith('unfreezed'):
+    # hack to use unfreezed requirements in TOX installs
+    install_requires = requirements(os.path.join(os.path.dirname(__file__), "requirements", "production.txt"))
+else:
+    install_requires = requirements(os.path.join(os.path.dirname(__file__), "requirements", "lock", "production.txt"))
 
 
 def get_version(*file_paths):
@@ -54,10 +58,10 @@ def get_version(*file_paths):
 
 version = get_version("src", "website", "__init__.py")
 
-
 if sys.argv[-1] == 'publish':
     try:
         import wheel
+
         print("Wheel version: ", wheel.__version__)
     except ImportError:
         print('Wheel library missing. Please run "pip install wheel"')

@@ -1,15 +1,30 @@
 # coding=utf-8
+import pytest
 from django.conf import settings
 from django.contrib.auth import get_user_model
 from django.shortcuts import resolve_url
 from django.test import TestCase
-from django_powerbank.testing.base import MigrationsCheckMx
 
 from website.misc import factories
 
 
-class MigrationsCheckTests(MigrationsCheckMx, TestCase):
-    pass
+class MigrationsCheckTests(object):
+    # noinspection PyUnusedLocal
+    @pytest.mark.django_db
+    def test_missing_migrations(self, deactivate_locale):
+        from django.db import connection
+        from django.apps.registry import apps
+        from django.db.migrations.executor import MigrationExecutor
+        executor = MigrationExecutor(connection)
+        from django.db.migrations.autodetector import MigrationAutodetector
+        from django.db.migrations.state import ProjectState
+        autodetector = MigrationAutodetector(
+            executor.loader.project_state(),
+            ProjectState.from_apps(apps),
+        )
+        changes = autodetector.changes(graph=executor.loader.graph)
+        # noinspection PyUnresolvedReferences
+        assert changes == {}
 
 
 class UserTests(TestCase):

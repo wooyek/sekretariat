@@ -193,7 +193,7 @@ vars().update(EMAIL_CONFIG)
 
 LANGUAGE_CODE = 'pl'
 LANGUAGES = (
-    # ('en', gettext_noop('English')),
+    ('en', gettext_noop('English')),
     ('pl', gettext_noop('Polish')),
 )
 
