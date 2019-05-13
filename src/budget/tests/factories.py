@@ -41,7 +41,9 @@ class ApplicationFactory(factory.DjangoModelFactory):
     date = factory.Faker('future_date', end_date="+30d")
     amount = Decimal('13')
     requester = factory.SubFactory(UserFactory)
+    title = factory.Faker('catch_phrase')
     description = factory.Faker('catch_phrase')
+    manager = factory.SubFactory(UserFactory)
 
     class Meta:
         model = models.Application

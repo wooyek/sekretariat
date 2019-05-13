@@ -126,10 +126,11 @@ class CreateViewTests(object):
 @pytest.mark.django_db
 class ExpenditureCreateViewTests(object):
 
-    def test_post(self, team_client):
-        item = factories.ApplicationFactory()
+    def test_post(self, team_client, manager):
+        item = factories.ApplicationFactory(manager=manager)
         url = resolve_url("budget:ApplicationCreate")
         data = model_to_request_data_dict(item)
+        data['manager'] = item.manager_id
         response = team_client.post(url, data=data)
         assert_no_form_errors(response)
         assert response.status_code == 302
@@ -180,13 +181,18 @@ def control_client(can_add_application):
 
 
 @pytest.fixture
-def manager_client(can_add_application):
+def manager(can_add_application):
     user = UserFactory.create(is_superuser=False, is_staff=False)
-    team, new = Group.objects.get_or_create(name=settings.BUDGET_CONTROL_GROUP)
+    team, new = Group.objects.get_or_create(name=settings.BUDGET_MANAGERS_GROUP)
     team.permissions.add(can_add_application)
     team.user_set.add(user)
+    return user
+
+
+@pytest.fixture
+def manager_client(manager):
     client = test.Client()
-    client.force_login(user, settings.AUTHENTICATION_BACKENDS[0])
+    client.force_login(manager, settings.AUTHENTICATION_BACKENDS[0])
     return client
 
 

@@ -94,8 +94,7 @@ class Application(BaseModel):
     description = models.TextField(_('description'), help_text=_('Please describe and justify this expenditure.'))
     requester = models.ForeignKey(get_user_model(), on_delete=models.PROTECT)
     manager = models.ForeignKey(
-        get_user_model(), on_delete=models.PROTECT, null=True, blank=True,
-        related_name='+', limit_choices_to=Q(groups__name='Managers')
+        get_user_model(), on_delete=models.PROTECT, related_name='+', limit_choices_to=Q(groups__name='Managers')
     )
     submitted = models.DateField(_('submission date'), null=True, blank=True)
     # accountant = models.ForeignKey(
@@ -160,7 +159,7 @@ class Application(BaseModel):
         decisions = sorted((i.value for i in DecisionKind))
         first, decisions = decisions[0], decisions[1:]
 
-        if not self.get_decision(first):
+        if not self.get_decision(first) and self.manager:
             self.send_approval_request(self.manager)
             return
 
