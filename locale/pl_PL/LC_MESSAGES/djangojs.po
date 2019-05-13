@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-03-18 12:33+0100\n"
+"POT-Creation-Date: 2019-05-13 11:04+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,42 +16,42 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: dist/docs/_static/doctools.js:195
+#: dist/docs/_static/doctools.js:194
 msgid "Permalink to this headline"
 msgstr ""
 
-#: dist/docs/_static/doctools.js:201
+#: dist/docs/_static/doctools.js:200
 msgid "Permalink to this definition"
 msgstr ""
 
-#: dist/docs/_static/doctools.js:234
+#: dist/docs/_static/doctools.js:233
 msgid "Hide Search Matches"
 msgstr ""
 
-#: dist/docs/_static/searchtools.js:121
+#: dist/docs/_static/searchtools.js:131
 msgid "Searching"
 msgstr ""
 
-#: dist/docs/_static/searchtools.js:126
+#: dist/docs/_static/searchtools.js:136
 msgid "Preparing search..."
 msgstr ""
 
-#: dist/docs/_static/searchtools.js:289
+#: dist/docs/_static/searchtools.js:295
 msgid "Search Results"
 msgstr ""
 
-#: dist/docs/_static/searchtools.js:291
+#: dist/docs/_static/searchtools.js:297
 msgid ""
 "Your search did not match any documents. Please make sure that all words are "
 "spelled correctly and that you've selected enough categories."
 msgstr ""
 
-#: dist/docs/_static/searchtools.js:293
+#: dist/docs/_static/searchtools.js:299
 #, javascript-format
 msgid "Search finished, found %s page(s) matching the search query."
 msgstr ""
 
-#: dist/docs/_static/searchtools.js:346
+#: dist/docs/_static/searchtools.js:352
 msgid ", in "
 msgstr ""
 

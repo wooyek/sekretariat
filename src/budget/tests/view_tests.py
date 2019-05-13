@@ -7,6 +7,7 @@ from django import test
 from django.conf import settings
 from django.contrib.auth.models import Group
 from django.shortcuts import resolve_url
+from pytest_lazyfixture import lazy_fixture
 
 from website.misc.factories import UserFactory
 from website.misc.testing import assert_no_form_errors, model_to_request_data_dict
@@ -136,9 +137,20 @@ class ExpenditureCreateViewTests(object):
 
 # noinspection PyUnusedLocal
 @pytest.fixture
-def team_client():
+def can_add_application():
+    from django.contrib.contenttypes.models import ContentType
+    from budget.models import Application
+    content_type = ContentType.objects.get_for_model(Application)
+    from django.contrib.auth.models import Permission
+    permission, created = Permission.objects.get_or_create(codename='add_application', content_type=content_type)
+    return permission
+
+
+@pytest.fixture
+def team_client(can_add_application):
     user = UserFactory.create(is_superuser=False, is_staff=False)
     team, new = Group.objects.get_or_create(name=settings.BUDGET_TEAM_GROUP)
+    team.permissions.add(can_add_application)
     team.user_set.add(user)
     client = test.Client()
     client.force_login(user, settings.AUTHENTICATION_BACKENDS[0])
@@ -146,9 +158,10 @@ def team_client():
 
 
 @pytest.fixture
-def accountant_client():
+def accountant_client(can_add_application):
     user = UserFactory.create(is_superuser=False, is_staff=False)
     team, new = Group.objects.get_or_create(name=settings.BUDGET_ACCOUNTANTS_GROUP)
+    team.permissions.add(can_add_application)
     team.user_set.add(user)
     client = test.Client()
     client.force_login(user, settings.AUTHENTICATION_BACKENDS[0])
@@ -156,9 +169,10 @@ def accountant_client():
 
 
 @pytest.fixture
-def control_client():
+def control_client(can_add_application):
     user = UserFactory.create(is_superuser=False, is_staff=False)
     team, new = Group.objects.get_or_create(name=settings.BUDGET_CONTROL_GROUP)
+    team.permissions.add(can_add_application)
     team.user_set.add(user)
     client = test.Client()
     client.force_login(user, settings.AUTHENTICATION_BACKENDS[0])
@@ -166,9 +180,10 @@ def control_client():
 
 
 @pytest.fixture
-def manager_client():
+def manager_client(can_add_application):
     user = UserFactory.create(is_superuser=False, is_staff=False)
     team, new = Group.objects.get_or_create(name=settings.BUDGET_CONTROL_GROUP)
+    team.permissions.add(can_add_application)
     team.user_set.add(user)
     client = test.Client()
     client.force_login(user, settings.AUTHENTICATION_BACKENDS[0])
@@ -233,3 +248,21 @@ class DecisionCreateViewTests(object):
         decission = item.request.get_decision(control)
         assert decission is not None
         assert decission.approval is False
+
+
+@pytest.mark.django_db
+@pytest.mark.parametrize(
+    "client", [
+        lazy_fixture('admin_client'),
+        lazy_fixture('team_client'),
+        lazy_fixture('accountant_client'),
+        lazy_fixture('control_client'),
+    ]
+)
+class HomeViewTest(object):
+    # noinspection PyMethodMayBeStatic
+    def test_applications_visible(self, client):
+        url = resolve_url("HomeView")
+        response = client.get(url)
+        assert response.status_code == 200
+        assert "Expenditures" in str(response.content)

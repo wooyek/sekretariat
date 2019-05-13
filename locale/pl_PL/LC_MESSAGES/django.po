@@ -2,8 +2,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-03-18 12:33+0100\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2019-05-13 11:04+0200\n"
 "PO-Revision-Date: 2016-01-19 22:56+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: pl_PL\n"
@@ -20,6 +20,9 @@ msgid ""
 "    <p>Again, please accept our apologies for any inconvenience that we cased you.</p>\n"
 "    <p>If you would like to change your feedback or reconsider your out out decision you can do that anytime.</p>\n"
 msgstr ""
+"\n"
+"    <p>Jeszcze raz przepraszamy za kłopoty jakie Tobie sprawiliśmy.</p>\n"
+"    <p>W dowolnym momencie możesz zmienić swoją informację zwrotną lub przywrócić nasze wiadomości.</p>\n"
 
 #: jinja2/django_opt_out/OptOut/form_apologies.html:1
 msgid ""
@@ -29,14 +32,60 @@ msgid ""
 "    <p>We really want to learn from our failures and we are — us, humans here — reading every opt-out response.\n"
 "        We really appreciate all the feedback you can give us.</p>\n"
 msgstr ""
+"\n"
+"    <p>Bardzo nam przykro, że sprawiliśmy że nasze wiadomości stały się dla Ciebie niewygodne. Przyjmij nasze przeprosiny.</p>\n"
+"    <P>Staramy się cały czas poprawiać naszą usługę i chcemy by nasze wiadomości były dla Ciebie interesujące i korzystne.</P>\n"
+"    <p>Naprawdę chcemy uczyć się na naszych błędach i czytamy - my, żywi ludzie po drugiej stronie - każdy komentarz do rezygnacji.Naprawdę doceniamy każdą informację zwrotną.</p>\n"
+
+#: jinja2/django_registration/registration_complete.html:6
+msgid ""
+"<p>We have send a message with activation link to the email you provided</p>\n"
+"        <p>Please open the message and click the link to activate your account.</p>\n"
+"        <h2>No message?</h2>\n"
+"        <p>If you cannot find our message in the inbox, please check your spam folder as well.</p>\n"
+"        <p> Or maybe you have some filters that blocked or move it somewhere else?</p>"
+msgstr ""
+"<p>Wysłaliśmy wiadomość z linkiem aktywacyjnym na wskazany przez ciebie adres</p>\n"
+"        <p>Otwórz tą wiadomość i otwórz link by aktywować swoje konto.</p>\n"
+"        <h2>Brak wiadomości?</h2>\n"
+"        <p>Jeśli nie możesz znaleźć naszej wiadomości sprawdź folder przeznaczony na spam.</p>\n"
+"        <p>Sprawdź też czy jakiś filtr nie blokuje wiadomości i czy nie została automatycznie przeniesiona w inne miejsce.</p>"
+
+#: jinja2/django_registration/password_reset_done.html:4
+msgid ""
+"<p>We've emailed you instructions for setting your password, if an account exists with the email you entered. You should receive them shortly.</p>\n"
+"        <p>If you don't receive an email, please make sure you've entered the address you registered with, and check your spam folder.</p>"
+msgstr ""
+"<p>Jeśli podany email jest poprawny i istnieje powiązane z nim konto, to otrzymasz wiadomość z instrukcją dla ustawienia nowego hasła.</p>\n"
+"        <p>Jeśli wiadomość nie dotarła, upewnij się, że podany adres jest poprany i przy jego pomocy zarejestrowane zostało konto użytkownika.</p>"
+
+#: jinja2/django_registration/password_change_done.html:4
+msgid "<p>Your password was changed.</p>"
+msgstr "<p>Twoje hasło zostało zmienione.</p>"
+
+#: src/budget/jinja2/Application/list.html:17
+msgid "Account"
+msgstr "Konto"
+
+#: jinja2/django_registration/activate.html:3
+msgid "Account Activation Error"
+msgstr "Błąd aktywacji konta"
 
 #: src/sekretariat/views.py:77 src/sekretariat/views.py:106
 msgid "Activation authentication failed"
-msgstr ""
+msgstr "Nie udało się uwierzytelnić aktywacji"
 
-#: jinja2/base/layout/header.html:15
+#: jinja2/django_registration/registration_complete.html:2
+msgid "Activation message was send"
+msgstr "Wiadomość aktywacyjna została wysłana"
+
+#: jinja2/base/layout/header.html:31
 msgid "Admin"
-msgstr ""
+msgstr "Administracja"
+
+#: src/budget/jinja2/Application/list.html:13
+msgid "Amount"
+msgstr "Kwota"
 
 #: src/sekretariat/jinja2/OpenOfficeSlot/email/confirmed.html:6
 #: src/sekretariat/jinja2/OpenOfficeSlot/email/prompt.html:7
@@ -51,14 +100,34 @@ msgstr ""
 msgid "Anuluj termin"
 msgstr ""
 
+#: src/budget/jinja2/Application/list.html:18
+msgid "Approval"
+msgstr "Akceptacja"
+
+#: src/budget/jinja2/Application/detail.html:45
+msgid "Approvals"
+msgstr "Akceptacje"
+
+#: src/budget/jinja2/Decision/form.html:15
+msgid "Approve"
+msgstr "Zatwierdź"
+
+#: src/budget/models.py:199
+msgid "Approved"
+msgstr "Zatwierdzony"
+
+#: src/budget/models.py:91
+msgid "Approximate payment due date"
+msgstr "Przybliżony termin płatności"
+
 #: jinja2/errors/400.html:15 jinja2/errors/403.html:13
 #: jinja2/errors/404.html:17 jinja2/errors/500.html:14
 msgid "Ask for help"
-msgstr ""
+msgstr "Poproś o pomoc"
 
 #: jinja2/errors/400.html:2
 msgid "Bad request"
-msgstr ""
+msgstr "Błędne zapytanie"
 
 #: src/sekretariat/jinja2/OpenOfficeGroup/detail.html:31
 msgid "Book"
@@ -70,34 +139,101 @@ msgstr "Zarezerwowany"
 
 #: src/sekretariat/jinja2/OpenOfficeGroup/detail.html:11
 msgid "Booking"
-msgstr "Rezewacja"
+msgstr "Rezerwacja"
 
-#: jinja2/bootstrap/forms/horizontal.html:309
+#: src/budget/apps.py:18
+msgid "Budget"
+msgstr "Budżet"
+
+#: jinja2/bootstrap/forms/horizontal.html:315
+#: jinja2/django_registration/password_change_form.html:13
+#: jinja2/django_registration/password_reset_confirm.html:18
+#: jinja2/django_registration/password_reset_form.html:16
+#: src/budget/jinja2/Decision/form.html:17
 #: src/sekretariat/jinja2/OpenOfficeSlot/confirm.html:8
 msgid "Cancel"
 msgstr "Anuluj"
+
+#: jinja2/django_registration/password_change_form.html:12
+#: jinja2/django_registration/password_reset_confirm.html:17
+msgid "Change my password"
+msgstr "Zmień moje hasło"
 
 #: jinja2/email/personal.html:6
 msgid "Cheers!"
 msgstr "Pozdrawiamy!"
 
+#: jinja2/bootstrap/macros.html:8
+msgid "Close"
+msgstr "Zamknij"
+
 #: jinja2/django_opt_out/OptOut/form.html:6
 msgid "Confirm opt-out"
-msgstr ""
+msgstr "Potwierdź rezygnację"
 
 #: jinja2/base/layout/footer.html:6
 msgid "Contact"
-msgstr ""
+msgstr "Kontakt"
+
+#: jinja2/home.html:14 jinja2/home.html:29 jinja2/home.html:43
+msgid "Create"
+msgstr "Utwórz"
+
+#: src/budget/jinja2/Application/list.html:11
+msgid "Date"
+msgstr "Data"
+
+#: jinja2/django_registration/User/detail.html:18
+msgid "Email"
+msgstr "Email"
+
+#: jinja2/django_registration/password_change_form.html:6
+msgid "Enter new password"
+msgstr "Wpisz nowe hasło"
+
+#: jinja2/django_registration/password_reset_form.html:11
+msgid "Enter your email address below, and we'll email instructions for setting a new one."
+msgstr "Wpisz swój adres email, a my wyślemy Ci instrukcję ustawiania nowego hasła"
+
+#: src/budget/models.py:93
+msgid "Expenditure"
+msgstr "Wydatek"
+
+#: src/budget/jinja2/Application/detail.html:6
+msgid "Expenditure details"
+msgstr "Szczegóły wydatku"
+
+#: jinja2/base/layout/header.html:16 jinja2/home.html:7
+#: src/budget/jinja2/Application/list.html:4
+msgid "Expenditures"
+msgstr "Wydatki"
+
+#: jinja2/django_registration/User/detail.html:16
+msgid "First name"
+msgstr "Imię"
 
 #: jinja2/errors/403.html:2
 msgid "Forbidden"
-msgstr ""
+msgstr "Zabroniony"
 
-#: jinja2/errors/400.html:13 jinja2/errors/403.html:11
-#: jinja2/errors/404.html:13 jinja2/errors/500.html:12
-#: jinja2/errors/social_login_error.html:20
+#: jinja2/registration/login.html:28
+msgid "Forgot your password?"
+msgstr "Zapomniałeś hasła?"
+
+#: jinja2/base/confirmation.html:18 jinja2/registration/logged_out.html:9
+msgid "Go back"
+msgstr "Wróć"
+
+#: jinja2/base/confirmation.html:20 jinja2/errors/400.html:13
+#: jinja2/errors/403.html:11 jinja2/errors/404.html:13
+#: jinja2/errors/500.html:12 jinja2/errors/social_login_error.html:20
+#: jinja2/registration/logged_out.html:11
 msgid "Go to homepage"
-msgstr ""
+msgstr "Idź na stronę główną"
+
+#: jinja2/django_registration/social_buttons.html:3
+msgid "Google"
+msgstr "Google"
 
 #: jinja2/email/personal.html:3
 msgid "Hi"
@@ -110,39 +246,116 @@ msgstr "Witaj %(first_name)s"
 
 #: jinja2/errors/404.html:9
 msgid "If you entered this web page address by hand, please check if it was entered correctly."
-msgstr ""
+msgstr "Jeśli adres strony został wprowadzony ręcznie, to sprawdź czy jest podany poprawnie."
+
+#: jinja2/django_registration/User/detail.html:17
+msgid "Last name"
+msgstr "Nazwisko"
+
+#: jinja2/home.html:13 jinja2/home.html:28 jinja2/home.html:42
+msgid "List"
+msgstr "Lista"
+
+#: jinja2/base/layout/header.html:59
+msgid "Log in"
+msgstr "Zaloguj"
+
+#: jinja2/registration/logged_out.html:2
+msgid "Logged out"
+msgstr "Wylogowano"
+
+#: jinja2/django_registration/password_reset_complete.html:7
+msgid "Login"
+msgstr "Login"
+
+#: jinja2/registration/logged_out.html:13
+msgid "Login again"
+msgstr "Zaloguj się ponownie"
+
+#: jinja2/base/layout/header.html:45
+msgid "Logout"
+msgstr "Wyloguj"
+
+#: src/budget/jinja2/Application/list.html:16
+msgid "Manager"
+msgstr "Przełożony"
 
 #: jinja2/bootstrap/pagination.html:23
 msgid "Next"
-msgstr ""
+msgstr "Następny"
+
+#: jinja2/django_registration/password_reset_confirm.html:20
+msgid "OK"
+msgstr "OK"
 
 #: jinja2/errors/500.html:2
 msgid "Oops! An error occurred"
+msgstr "Ups! Wystąpił błąd"
+
+#: jinja2/home.html:22
+msgid "Open Office"
 msgstr ""
 
 #: jinja2/django_opt_out/OptOut/form.html:3
 msgid "Opt out from our messages"
-msgstr ""
+msgstr "Zrezygnuj z naszych wiadomości"
 
 #: jinja2/django_opt_out/OptOut/success.html:10
 msgid "Opt-in"
+msgstr "Usuń rezygnację"
+
+#: jinja2/home.html:36
+msgid "PT Conference"
 msgstr ""
 
 #: jinja2/errors/404.html:15
 msgid "Page not found! Please help."
-msgstr ""
+msgstr "Strona nie znaleziona! Proszę o pomoc"
+
+#: jinja2/django_registration/password_change_done.html:2
+msgid "Password change successful"
+msgstr "Zmiana hasła powiodła się"
+
+#: jinja2/django_registration/password_reset_form.html:7
+msgid "Password reset"
+msgstr "Reset hasła"
+
+#: jinja2/django_registration/password_reset_confirm.html:12
+msgid "Password reset link is invalid or expired."
+msgstr "Link do resetu hasła, stracił ważność lub jest niewłaściwy"
+
+#: jinja2/django_registration/password_reset_done.html:2
+msgid "Password reset sent"
+msgstr "Wysłano reset hasła"
 
 #: jinja2/errors/404.html:8
 msgid "Please contact us if this web page address was generated automatically."
+msgstr "Skontaktuj się z nami jeśli adres tej strony został wygenerowany automatycznie."
+
+#: jinja2/bootstrap/forms/horizontal.html:229
+msgid "Please correct validation errors"
+msgstr "Proszę sprawdź poprawność danych"
+
+#: src/budget/models.py:94
+msgid "Please describe and justify this expenditure."
 msgstr ""
 
-#: jinja2/bootstrap/forms/horizontal.html:223
-msgid "Please correct validation errors"
-msgstr ""
+#: jinja2/django_registration/password_change_form.html:8
+#: jinja2/django_registration/password_reset_confirm.html:9
+msgid "Please enter your new password twice so we can verify you typed it in correctly."
+msgstr "Wpisz proszę nowe hasło dwukrotnie abyśmy mogli zweryfikować czy wpisujesz je poprawnie"
 
 #: jinja2/errors/400.html:14 jinja2/errors/403.html:12
 #: jinja2/errors/500.html:13
 msgid "Please fix the error."
+msgstr "Proszę naprawić błąd"
+
+#: jinja2/django_registration/password_reset_email_pretty.html:6
+msgid "Please go to the following page and choose a new password:"
+msgstr "Aby wprowadzić nowe hasło, proszę przejść na stronę, której adres widnieje poniżej:"
+
+#: src/budget/models.py:107 src/budget/models.py:110
+msgid "Please select a budget that need to be decreased"
 msgstr ""
 
 #: src/sekretariat/jinja2/OpenOfficeSlot/email/prompt.html:6
@@ -159,23 +372,65 @@ msgstr ""
 
 #: jinja2/bootstrap/pagination.html:7
 msgid "Previous"
-msgstr ""
+msgstr "Poprzedni"
 
 #: jinja2/base/layout/footer.html:5
 msgid "Privacy Policy"
-msgstr ""
+msgstr "Polityka prywatności"
+
+#: jinja2/base/layout/header.html:60
+#: jinja2/django_registration/registration_form.html:9
+msgid "Register"
+msgstr "Rejestruj"
+
+#: jinja2/django_registration/registration_prompt.html:2
+msgid "Register user"
+msgstr "Zarejestruj użytkownika"
+
+#: src/budget/jinja2/Decision/form.html:16
+msgid "Reject"
+msgstr "Odrzuć"
+
+#: src/budget/models.py:199
+msgid "Rejected"
+msgstr "Odrzucony"
+
+#: src/budget/jinja2/Application/list.html:14
+msgid "Requester"
+msgstr "Wnioskujący"
+
+#: jinja2/django_registration/password_reset_form.html:15
+msgid "Reset my password"
+msgstr "Resetuj moje hasło"
 
 #: src/website/misc/admin.py:45
 msgid "Save models to update auto fields"
-msgstr ""
+msgstr "Zapisz model aby automatycznie aktualizować pola"
 
 #: src/sekretariat/apps.py:18
 msgid "Sekretariat"
-msgstr ""
+msgstr "Sekretariat"
+
+#: jinja2/django_registration/password_reset_email_pretty.html:11
+msgid "Set new password"
+msgstr "Ustaw nowe hasło"
+
+#: src/budget/models.py:93
+msgid "Short distinguishing name for this expenditure"
+msgstr "Krótka nazwa wyróżniająca ten wydatek"
+
+#: jinja2/django_registration/activation_complete.html:7
+#: jinja2/registration/login.html:27
+msgid "Sign in"
+msgstr "Zaloguj się"
+
+#: src/budget/jinja2/Decision/form.html:8
+msgid "Sign off"
+msgstr "Decyzja"
 
 #: jinja2/errors/social_login_error.html:3
 msgid "Social login failed"
-msgstr ""
+msgstr "Logowanie społecznościowe nie powiodło się"
 
 #: src/sekretariat/jinja2/OpenOfficeGroup/detail.html:10
 msgid "Start"
@@ -185,42 +440,102 @@ msgstr "Start"
 msgid "Student"
 msgstr "Uczeń"
 
+#: src/budget/jinja2/Application/list.html:15
+msgid "Submitted"
+msgstr "Złożony"
+
 #: jinja2/django_opt_out/OptOut/removed.html:4
 msgid "Thank you for changing your mind :)"
-msgstr ""
+msgstr "Dziękujemy za zmianę zdania!"
 
 #: jinja2/django_opt_out/OptOut/success.html:2
 msgid "Thank you for your feedback!"
-msgstr ""
+msgstr "Dziękujemy za Twoją opinię!"
+
+#: jinja2/django_registration/registration_complete.html:4
+msgid "Thank you, and one last thing. We need to verify that you have control over email address you have provided"
+msgstr "Dziękujmy. Zanim przejdziemy dalej, musimy jeszcze zweryfikować, że jesteś właścicielem podanego przez Ciebie adresu email."
+
+#: jinja2/registration/logged_out.html:4
+msgid "Thanks for spending some quality time with the us today"
+msgstr "Dziękujemy za odwiedziny"
+
+#: jinja2/django_registration/activate.html:6
+#, python-format
+msgid "There was a problem activating your account. For more information please go to our <a href=\"/help/\">help center</a>. Your activation key was: %(activation_key)s"
+msgstr "Wystąpił problem z aktywacją Twojego konta. Po więcej informacji przejść do naszego <a href=\"/help/\">centrum pomocy</a> Twój klucz aktywacyjny to: %(activation_key)s"
 
 #: jinja2/bootstrap/forms/horizontal.html:4
 msgid "This is required field"
-msgstr ""
+msgstr "To pole jest wymagane"
+
+#: src/budget/jinja2/Application/list.html:12
+msgid "Title"
+msgstr "Tytuł"
 
 #: jinja2/django_opt_out/OptOut/success.html:8
 msgid "Update opt-out feedback"
-msgstr ""
+msgstr "Aktualizuj informację zwrotną"
+
+#: jinja2/django_registration/registration_form.html:4
+msgid "User registration"
+msgstr "Rejestracja użytkownika"
 
 #: jinja2/errors/404.html:2
 msgid "We are sorry but we don't recognize this web page address"
-msgstr ""
+msgstr "Przepraszamy, nie znamy takiego adresu"
 
 #: jinja2/errors/500.html:9
 msgid "We're sorry for the inconvenience. We should get notified of the error and we'll correct it as soon as possible"
-msgstr ""
+msgstr "Przepraszamy za utrudnienia. Otrzymaliśmy informację o błędzie i dokonamy poprawek niezwłocznie"
+
+#: src/budget/models.py:92
+msgid "What is the total cost?"
+msgstr "Jako jest całkowity koszt?"
 
 #: jinja2/django_opt_out/OptOut/removed.html:5
 msgid "You are back in!"
-msgstr ""
+msgstr "Jesteś z powrotem!"
+
+#: jinja2/django_registration/registration_form.html:13
+msgid "You can also register with a social account"
+msgstr "Możesz się również zarejestrować kontem social"
+
+#: jinja2/django_registration/registration_prompt.html:1
+msgid "You don't have an account yet?"
+msgstr "Nie masz jeszcze konta?"
 
 #: jinja2/errors/400.html:5
 msgid "You have used a bad URL address"
-msgstr ""
+msgstr "Użyłeś błędnego adresu strony"
+
+#: jinja2/django_registration/password_reset_email_pretty.html:4
+#, python-format
+msgid "You're receiving this email because you requested a password reset for your user account at %(site_name)s."
+msgstr "Otrzymujesz tę wiadomość, gdyż skorzystano z opcji resetu hasła dla Twojego konta na stronie  %(site_name)s."
 
 #: jinja2/django_opt_out/OptOut/removed.html:2
 msgid "Your Opt-out was removed"
-msgstr ""
+msgstr "Twoja rezygnacja została anulowana"
 
+#: jinja2/django_registration/activation_complete.html:2
+msgid "Your account has been activated"
+msgstr "Twoje konto zostało aktywowane"
+
+#: jinja2/django_registration/activation_complete.html:4
+msgid "Your account is ready to use"
+msgstr "Twoje konto jest gotowe do użycia"
+
+#: jinja2/django_registration/password_reset_complete.html:4
+msgid "Your password has been set.  You may go ahead and log in now."
+msgstr "Hasło zostało ustawione. Możesz się zalogować."
+
+#: jinja2/django_registration/password_reset_email_pretty.html:16
+msgid "Your username, in case you've forgotten:"
+msgstr "Twoja nazwa użytkownika, na wypadek, gdybyś zapomniał(a):"
+
+#: src/budget/jinja2/Application/account.html:5
+#: src/budget/jinja2/Application/form.html:5
 #: src/sekretariat/jinja2/OpenOfficeGroup/form.html:5
 msgid "Zapisz zmiany"
 msgstr ""
@@ -229,17 +544,101 @@ msgstr ""
 msgid "Zarezerwuj termin"
 msgstr ""
 
+#: src/budget/models.py:49
+msgid "account"
+msgstr "konto"
+
+#: src/budget/models.py:30
+msgid "account group"
+msgstr "grupa kont"
+
+#: src/budget/models.py:31
+msgid "account groups"
+msgstr "grupy kont"
+
+#: src/budget/models.py:50
+msgid "accounts"
+msgstr "konta"
+
+#: src/budget/models.py:62 src/budget/models.py:92
+msgid "amount"
+msgstr "kwota"
+
+#: src/budget/models.py:115 src/budget/models.py:220
+msgid "approval"
+msgstr "akceptacja"
+
+#: src/budget/models.py:219
+msgid "approval step"
+msgstr "krok akceptacji"
+
+#: src/budget/models.py:69
+msgid "budget"
+msgstr "budżet"
+
+#: src/budget/models.py:70
+msgid "budgets"
+msgstr "budżety"
+
+#: src/budget/models.py:91
+msgid "date"
+msgstr "data"
+
+#: src/budget/models.py:224
+msgid "decision"
+msgstr "decyzja"
+
+#: src/budget/models.py:225
+msgid "decisions"
+msgstr "decyzje"
+
+#: src/budget/models.py:27 src/budget/models.py:46 src/budget/models.py:94
+msgid "description"
+msgstr "opis"
+
 #: src/sekretariat/models.py:82
 msgid "email"
-msgstr ""
+msgstr "email"
 
 #: src/sekretariat/models.py:80
 msgid "event start"
 msgstr ""
 
-#: src/sekretariat/forms.py:34
+#: src/budget/models.py:118
+msgid "expenditure request"
+msgstr "zapotrzebowanie"
+
+#: src/budget/models.py:119
+msgid "expenditure requests"
+msgstr "zapotrzebowania"
+
+#: src/budget/models.py:44
+msgid "group"
+msgstr "grupa"
+
+#: src/budget/models.py:64
+msgid "money available"
+msgstr "dostępna kwota"
+
+#: src/budget/models.py:63
+msgid "money spent"
+msgstr "wydana kwota"
+
+#: src/budget/models.py:66
+msgid "month"
+msgstr "miesiąc"
+
+#: src/budget/models.py:25 src/budget/models.py:42 src/sekretariat/forms.py:34
 msgid "name"
 msgstr "nazwa"
+
+#: src/budget/models.py:221
+msgid "notes"
+msgstr "notatka"
+
+#: src/budget/models.py:26 src/budget/models.py:45
+msgid "number"
+msgstr "liczba"
 
 #: src/sekretariat/models.py:63
 msgid "open office group"
@@ -257,25 +656,37 @@ msgstr ""
 msgid "student name"
 msgstr "nazwisko i imię ucznia"
 
-#: src/website/settings/jinja2.py:127
+#: src/budget/models.py:100
+msgid "submission date"
+msgstr "data złożenia"
+
+#: src/website/settings/jinja2.py:129
 msgid "this week"
-msgstr ""
+msgstr "ten tydzień"
 
-#: src/sekretariat/models.py:60
+#: src/budget/models.py:218
+msgid "time stamp"
+msgstr "znacznik czasowy"
+
+#: src/budget/models.py:93 src/sekretariat/models.py:60
 msgid "title"
-msgstr ""
-
-#: src/website/settings/jinja2.py:121
-msgid "today"
-msgstr ""
+msgstr "tytuł"
 
 #: src/website/settings/jinja2.py:123
-msgid "tomorrow"
-msgstr ""
+msgid "today"
+msgstr "dzisiaj"
 
 #: src/website/settings/jinja2.py:125
+msgid "tomorrow"
+msgstr "jutro"
+
+#: src/budget/models.py:65
+msgid "year"
+msgstr "rok"
+
+#: src/website/settings/jinja2.py:127
 msgid "yesterday"
-msgstr ""
+msgstr "wczoraj"
 
 #: src/sekretariat/models.py:112 src/sekretariat/models.py:117
 #, python-format
@@ -287,24 +698,11 @@ msgstr ""
 msgid "{start:%Y-%m-%d %H:%M} Termin anulowany"
 msgstr ""
 
-#~ msgid "Privacy Policy"
-#~ msgstr ""
+#: src/budget/models.py:155
+msgid "{status}: {title}"
+msgstr "{status}: {title}"
 
-#~ msgid "Contact"
-#~ msgstr ""
-
-#~ msgid "Admin"
-#~ msgstr ""
-
-#~ msgid "Email"
-#~ msgstr "Email"
-
-#~ msgid "Potwierdzenie terminu"
-#~ msgstr ""
-
-#~ msgid "Potwierdź rezerwację"
-#~ msgstr ""
-
-#~ msgid "This activation link was already used"
-#~ msgstr ""
+#: src/budget/models.py:188
+msgid "{title} - expenditure for {amount} requires approval"
+msgstr "{title} - wydatek na kwotę {amount} wymaga podjęcia decyzji"
 

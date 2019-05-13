@@ -90,7 +90,7 @@ class Budget(BaseModel):
 class Application(BaseModel):
     date = models.DateField(_('date'), help_text=_('Approximate payment due date'))
     amount = models.DecimalField(_('amount'), decimal_places=0, max_digits=6, help_text=_('What is the total cost?'))
-    title = models.CharField(_('title'), max_length=150, help_text=_('Short distinguishing name for this expenditure'), default=_('Expenditure'))
+    title = models.CharField(_('title'), max_length=150, help_text=_('Short distinguishing name for this expenditure'))
     description = models.TextField(_('description'), help_text=_('Please describe and justify this expenditure.'))
     requester = models.ForeignKey(get_user_model(), on_delete=models.PROTECT)
     manager = models.ForeignKey(
@@ -117,7 +117,7 @@ class Application(BaseModel):
     class Meta:
         verbose_name = _('expenditure request')
         verbose_name_plural = _('expenditure requests')
-        ordering = 'date', 'amount',
+        ordering = '-date', 'amount',
 
     def __str__(self):
         return '{:%Y-%m-%d %H:%M}-{} {:03}'.format(self.date, self.requester, self.amount)
@@ -242,8 +242,8 @@ def team_membership(sender, instance=None, **kwargs):
 # noinspection PyUnusedLocal
 @receiver(signals.post_save, sender=Application)
 def budget_update(sender, instance=None, **kwargs):
+    instance.send_notifications()
     if instance.budget_id is None:
         return
 
     instance.budget.update_available()
-    instance.send_notifications()

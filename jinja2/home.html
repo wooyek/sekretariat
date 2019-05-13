@@ -1,7 +1,7 @@
 {% extends "base/default.html" %}
 {% block content %}
   <div class="row text-center mt-5 justify-content-md-center">
-    {% if perms.buget.can_create_application %}
+    {% if perms.budget.add_application %}
       <div class="col-3">
         <div class="card ">
           <h5 class="card-header">{% trans %}Expenditures{% endtrans %}</h5>

@@ -48,7 +48,7 @@ urlpatterns = [
     path('avatar/', include('avatar.urls')),
     path('', include('sekretariat.urls')),
     path('', include('budget.urls')),
-    path('', TemplateView.as_view(template_name="home.html")),
+    path('', TemplateView.as_view(template_name="home.html"), name='HomeView'),
 ]
 
 # urlpatterns = i18n_patterns(*urlpatterns)

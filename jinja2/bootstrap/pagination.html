@@ -1,28 +1,28 @@
 {% if is_paginated %}
     <nav class="">
-        <div class="pagination-container">
-            {% if page_obj.has_previous() %}
-                <span class="previous">
-                <a href="{{ request.get_full_path()|append_get(page=page_obj.previous_page_number()) }}">
+        <div class="pagination-container ">
+          <ul class="pagination justify-content-center">
+          {% if page_obj.has_previous() %}
+                <li class="page-item previous">
+                <a class="page-link" href="{{ request.get_full_path()|append_get(page=page_obj.previous_page_number()) }}">
                     {% trans %}Previous{% endtrans %}
                 </a>
-                </span>
+                </li>
             {% endif %}
             {% for page in page_obj.paginator.page_range %}
-                <ul>
                     {% if page > (page_obj.number - 5) and page < (page_obj.number + 5) %}
-                        <li class="{% if page_obj.number == page %}active{% endif %}">
-                            <a href="{{ request.get_full_path()|append_get(page=page) }}">{{ page }}</a>
+                        <li class="page-item {% if page_obj.number == page %}active{% endif %}">
+                            <a class="page-link" href="{{ request.get_full_path()|append_get(page=page) }}">{{ page }}</a>
                         </li>
                     {% endif %}
-                </ul>
             {% endfor %}
             {% if page_obj.has_next() %}
-                <span class="next">
-                <a href="{{ request.get_full_path()|append_get(page=page_obj.next_page_number()) }}">
+                <li class="page-item next">
+                <a class="page-link" href="{{ request.get_full_path()|append_get(page=page_obj.next_page_number()) }}">
                     {% trans %}Next{% endtrans %}
                 </a>
-                </span>
+                </li>
+              </ul>
             {% endif %}
         </div>
     </nav>

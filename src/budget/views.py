@@ -10,6 +10,7 @@ from django_powerbank.views import Http400
 from django_powerbank.views.auth import AbstractAuthorizedView
 from pascal_templates import CreateView, ListView, UpdateView
 from pascal_templates.views import DetailView
+from pure_pagination import PaginationMixin
 
 from . import forms, models
 
@@ -60,8 +61,9 @@ class BudgetUpdate(OperationsRequired, UpdateView):
     model = models.Budget
 
 
-class ApplicationListUser(AbstractAuthorizedView, ListView):
+class ApplicationListUser(AbstractAuthorizedView, PaginationMixin, ListView):
     model = models.Application
+    paginate_by = 25
 
     def is_authorized(self, *args, **kwargs):
         user = self.request.user
@@ -72,8 +74,9 @@ class ApplicationListUser(AbstractAuthorizedView, ListView):
         return queryset
 
 
-class ApplicationList(OperationsRequired, ListView):
+class ApplicationList(OperationsRequired, PaginationMixin, ListView):
     model = models.Application
+    paginate_by = 1
 
     def handle_forbidden(self):
         if self.request.user.has_perms('can_create_application'):
