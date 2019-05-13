@@ -16,6 +16,8 @@ core.INSTALLED_APPS += (
     'social_django',
 )
 
+core.LOGIN_URL = '/accounts/login/'
+
 AUTHENTICATION_BACKENDS = (
     'social_core.backends.google.GoogleOAuth2',
     # 'social_core.backends.twitter.TwitterOAuth',

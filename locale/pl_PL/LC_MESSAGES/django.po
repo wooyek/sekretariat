@@ -491,7 +491,7 @@ msgstr "Przepraszamy za utrudnienia. Otrzymaliśmy informację o błędzie i dok
 
 #: src/budget/models.py:92
 msgid "What is the total cost?"
-msgstr "Jako jest całkowity koszt?"
+msgstr "Jaki jest całkowity koszt?"
 
 #: jinja2/django_opt_out/OptOut/removed.html:5
 msgid "You are back in!"
