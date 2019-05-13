@@ -50,7 +50,7 @@
                 <th scope="row">{{ name }}</th>
                 <td>
                   {% include "Application/signonff.html" %}
-                  {{ object.manager|default("-", True) }}
+                  {{ decision.user|default("-", True) }}
                 </td>
               </tr>
             {% endwith %}
