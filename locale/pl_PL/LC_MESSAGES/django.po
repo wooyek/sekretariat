@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2019-05-13 11:04+0200\n"
+"POT-Creation-Date: 2019-05-13 17:28+0200\n"
 "PO-Revision-Date: 2016-01-19 22:56+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: pl_PL\n"
@@ -63,7 +63,7 @@ msgstr ""
 msgid "<p>Your password was changed.</p>"
 msgstr "<p>Twoje hasło zostało zmienione.</p>"
 
-#: src/budget/jinja2/Application/list.html:17
+#: src/budget/jinja2/Application/list.html:19
 msgid "Account"
 msgstr "Konto"
 
@@ -83,7 +83,7 @@ msgstr "Wiadomość aktywacyjna została wysłana"
 msgid "Admin"
 msgstr "Administracja"
 
-#: src/budget/jinja2/Application/list.html:13
+#: src/budget/jinja2/Application/list.html:15
 msgid "Amount"
 msgstr "Kwota"
 
@@ -100,7 +100,7 @@ msgstr ""
 msgid "Anuluj termin"
 msgstr ""
 
-#: src/budget/jinja2/Application/list.html:18
+#: src/budget/jinja2/Application/list.html:20
 msgid "Approval"
 msgstr "Akceptacja"
 
@@ -112,7 +112,7 @@ msgstr "Akceptacje"
 msgid "Approve"
 msgstr "Zatwierdź"
 
-#: src/budget/models.py:199
+#: src/budget/models.py:198
 msgid "Approved"
 msgstr "Zatwierdzony"
 
@@ -176,10 +176,11 @@ msgid "Contact"
 msgstr "Kontakt"
 
 #: jinja2/home.html:14 jinja2/home.html:29 jinja2/home.html:43
+#: src/budget/jinja2/Application/list.html:6
 msgid "Create"
 msgstr "Utwórz"
 
-#: src/budget/jinja2/Application/list.html:11
+#: src/budget/jinja2/Application/list.html:13
 msgid "Date"
 msgstr "Data"
 
@@ -194,10 +195,6 @@ msgstr "Wpisz nowe hasło"
 #: jinja2/django_registration/password_reset_form.html:11
 msgid "Enter your email address below, and we'll email instructions for setting a new one."
 msgstr "Wpisz swój adres email, a my wyślemy Ci instrukcję ustawiania nowego hasła"
-
-#: src/budget/models.py:93
-msgid "Expenditure"
-msgstr "Wydatek"
 
 #: src/budget/jinja2/Application/detail.html:6
 msgid "Expenditure details"
@@ -276,11 +273,11 @@ msgstr "Zaloguj się ponownie"
 msgid "Logout"
 msgstr "Wyloguj"
 
-#: src/budget/jinja2/Application/list.html:16
+#: src/budget/jinja2/Application/list.html:18
 msgid "Manager"
 msgstr "Przełożony"
 
-#: jinja2/bootstrap/pagination.html:23
+#: jinja2/bootstrap/pagination.html:22
 msgid "Next"
 msgstr "Następny"
 
@@ -354,7 +351,7 @@ msgstr "Proszę naprawić błąd"
 msgid "Please go to the following page and choose a new password:"
 msgstr "Aby wprowadzić nowe hasło, proszę przejść na stronę, której adres widnieje poniżej:"
 
-#: src/budget/models.py:107 src/budget/models.py:110
+#: src/budget/models.py:106 src/budget/models.py:109
 msgid "Please select a budget that need to be decreased"
 msgstr ""
 
@@ -370,7 +367,7 @@ msgstr ""
 msgid "Potwierdź termin"
 msgstr ""
 
-#: jinja2/bootstrap/pagination.html:7
+#: jinja2/bootstrap/pagination.html:8
 msgid "Previous"
 msgstr "Poprzedni"
 
@@ -391,11 +388,11 @@ msgstr "Zarejestruj użytkownika"
 msgid "Reject"
 msgstr "Odrzuć"
 
-#: src/budget/models.py:199
+#: src/budget/models.py:198
 msgid "Rejected"
 msgstr "Odrzucony"
 
-#: src/budget/jinja2/Application/list.html:14
+#: src/budget/jinja2/Application/list.html:16
 msgid "Requester"
 msgstr "Wnioskujący"
 
@@ -440,7 +437,7 @@ msgstr "Start"
 msgid "Student"
 msgstr "Uczeń"
 
-#: src/budget/jinja2/Application/list.html:15
+#: src/budget/jinja2/Application/list.html:17
 msgid "Submitted"
 msgstr "Złożony"
 
@@ -469,7 +466,7 @@ msgstr "Wystąpił problem z aktywacją Twojego konta. Po więcej informacji prz
 msgid "This is required field"
 msgstr "To pole jest wymagane"
 
-#: src/budget/jinja2/Application/list.html:12
+#: src/budget/jinja2/Application/list.html:14
 msgid "Title"
 msgstr "Tytuł"
 
@@ -564,11 +561,11 @@ msgstr "konta"
 msgid "amount"
 msgstr "kwota"
 
-#: src/budget/models.py:115 src/budget/models.py:220
+#: src/budget/models.py:114 src/budget/models.py:219
 msgid "approval"
 msgstr "akceptacja"
 
-#: src/budget/models.py:219
+#: src/budget/models.py:218
 msgid "approval step"
 msgstr "krok akceptacji"
 
@@ -584,11 +581,11 @@ msgstr "budżety"
 msgid "date"
 msgstr "data"
 
-#: src/budget/models.py:224
+#: src/budget/models.py:223
 msgid "decision"
 msgstr "decyzja"
 
-#: src/budget/models.py:225
+#: src/budget/models.py:224
 msgid "decisions"
 msgstr "decyzje"
 
@@ -604,11 +601,11 @@ msgstr "email"
 msgid "event start"
 msgstr ""
 
-#: src/budget/models.py:118
+#: src/budget/models.py:117
 msgid "expenditure request"
 msgstr "zapotrzebowanie"
 
-#: src/budget/models.py:119
+#: src/budget/models.py:118
 msgid "expenditure requests"
 msgstr "zapotrzebowania"
 
@@ -632,7 +629,7 @@ msgstr "miesiąc"
 msgid "name"
 msgstr "nazwa"
 
-#: src/budget/models.py:221
+#: src/budget/models.py:220
 msgid "notes"
 msgstr "notatka"
 
@@ -656,7 +653,7 @@ msgstr ""
 msgid "student name"
 msgstr "nazwisko i imię ucznia"
 
-#: src/budget/models.py:100
+#: src/budget/models.py:99
 msgid "submission date"
 msgstr "data złożenia"
 
@@ -664,7 +661,7 @@ msgstr "data złożenia"
 msgid "this week"
 msgstr "ten tydzień"
 
-#: src/budget/models.py:218
+#: src/budget/models.py:217
 msgid "time stamp"
 msgstr "znacznik czasowy"
 
@@ -698,11 +695,14 @@ msgstr ""
 msgid "{start:%Y-%m-%d %H:%M} Termin anulowany"
 msgstr ""
 
-#: src/budget/models.py:155
+#: src/budget/models.py:154
 msgid "{status}: {title}"
 msgstr "{status}: {title}"
 
-#: src/budget/models.py:188
+#: src/budget/models.py:187
 msgid "{title} - expenditure for {amount} requires approval"
 msgstr "{title} - wydatek na kwotę {amount} wymaga podjęcia decyzji"
+
+#~ msgid "Expenditure"
+#~ msgstr "Wydatek"
 
