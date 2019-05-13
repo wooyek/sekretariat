@@ -50,7 +50,9 @@
                 <th scope="row">{{ name }}</th>
                 <td>
                   {% include "Application/signonff.html" %}
-                  {{ decision.user|default("-", True) }}
+                  {% if decision %}
+                    {{ decision.user.get_full_name() or decision.user|default("-", True) }}
+                  {% endif %}
                 </td>
               </tr>
             {% endwith %}

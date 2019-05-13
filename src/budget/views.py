@@ -76,7 +76,7 @@ class ApplicationListUser(AbstractAuthorizedView, PaginationMixin, ListView):
 
 class ApplicationList(OperationsRequired, PaginationMixin, ListView):
     model = models.Application
-    paginate_by = 1
+    paginate_by = 25
 
     def handle_forbidden(self):
         if self.request.user.has_perms('can_create_application'):
