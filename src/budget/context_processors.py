@@ -3,12 +3,12 @@
 
 import logging
 
-from budget.models import DecisionKind
+from . import models
 
 log = logging.getLogger(__name__)
 
 
 def budget(request):
     return {
-        'decision_kinds': DecisionKind.choices()
+        'decision_kinds':  models.CHOICES
     }

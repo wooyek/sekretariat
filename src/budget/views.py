@@ -2,6 +2,7 @@
 from datetime import timedelta
 
 from django.conf import settings
+from django.contrib import messages
 from django.db import transaction
 from django.db.models import Q
 from django.shortcuts import redirect, resolve_url
@@ -142,21 +143,32 @@ class ApplicationUpdate(AbstractAuthorizedView, UpdateView):
     def get_form(self, form_class=None):
         form = super().get_form(form_class)
         form.fields['account'].readonly = True
+        self.clean_decisions(form)
         return form
 
+    def clean_decisions(self, form):
+        if form.instance.account:
+            # noinspection PyAttributeOutsideInit
+            self.clean_decisions = True
+
+    def get_form_kwargs(self):
+
+        return super().get_form_kwargs()
+
     def form_valid(self, form):
-        models.Decision.objects.filter(request=form.instance).update(approval=None)
+        if self.clean_decisions:
+            models.Decision.clean_decisions(form.instance)
         form.instance.approval = None
         return super().form_valid(form)
 
-
-class ApplicationAccount(OperationsRequired, UpdateView):
-    model = models.Application
-    fields = 'amount', 'date', 'description', 'manager', 'account'
-
-    def is_authorized(self, *args, **kwargs):
-        if self.request.user.groups.filter(name=settings.BUDGET_ACCOUNTANTS_GROUP).exists():
-            return True
+    def get(self, request, *args, **kwargs):
+        r = super().get(request, *args, **kwargs)
+        if self.object.decisions.exists():
+            messages.warning(request, "Zmiana zapotrzebowania skutkuje anulowaniem wszystkich decyzji. "
+                                      "Prośby o podjęcie decyzji zostaną wysłane ponownie. "
+                                      "Cofnij w przeglądarce by anulować operację."
+                             )
+        return r
 
 
 class DecisionBase(AbstractAuthorizedView):

@@ -20,10 +20,13 @@
             <td>
               {% if object.budget %}
                 {% if perms.buget.can_view_budget %}
-                  <span class="{% if object.amount_available > 0 %}text-success{% else %}text-danger{% endif %}">
-                  {{ object.amount_available }}
-                  </span>
+                  {% if object.amount_available > 0 %}
+                    <span class="text-success">{{ object.amount_available }}</span>
                   {% else %}
+                    <span class="text-danger">{{ object.amount_available }}</span>
+                    <a class="btn btn-warning btn-sm" href="{{ url("budget:ApplicationUpdate", object.pk) }}">{% trans %}Change account or date{% endtrans %}
+                  {% endif %}
+                {% else %}
                   <i class="far fa-eye-slash"></i>
                 {% endif %}
               {% else %}
@@ -34,13 +37,20 @@
           <tr>
             <th scope="row">{{ object.get_field_name('account') }}</th>
             <td>
-              {{ object.account|default("-", True) }}
+                {% if object.account %}
+                  {{ object.account|default("-", True) }}
+                {% else %}
+                  <a class="btn btn-primary btn-sm" href="{{ url("budget:ApplicationUpdate", object.pk) }}">{% trans %}Set account{% endtrans %}
+                {% endif %}
+              </a>
+
             </td>
           </tr>
           <tbody>
         </table>
       </div>
 
+      {% if object.account %}
       <div class="card mt-5 shadow-lg {% if object.approval == True %}border-success{% elif object.approval == False %}border-danger{% endif %}">
         <div class="card-header">{% trans %}Approvals{% endtrans %}</div>
         <table class="table table-striped mb-0 table-hover">
@@ -52,6 +62,7 @@
                   {% include "Application/signonff.html" %}
                   {% if decision %}
                     {{ decision.user.get_full_name() or decision.user|default("-", True) }}
+                    <div class="ml-4">{{ decision.notes }}</div>
                   {% endif %}
                 </td>
               </tr>
@@ -60,6 +71,11 @@
           <tbody>
         </table>
       </div>
+        {% else %}
+        <div class="alert alert-info mt-5 shadow-lg">
+          {% trans %}Decision making is disabled until an account is set{% endtrans %}
+        </div>
+        {% endif %}
     </div>
   </div>
 {% endblock %}

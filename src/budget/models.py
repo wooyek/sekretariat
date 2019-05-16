@@ -2,6 +2,7 @@
 # Copyright (c) 2018 Janusz Skonieczny
 
 import logging
+from collections import OrderedDict
 from datetime import datetime
 
 from django.conf import settings
@@ -12,6 +13,7 @@ from django.db import models
 from django.db.models import Q, Sum, signals
 from django.dispatch import receiver
 from django.shortcuts import resolve_url
+from django.utils.functional import SimpleLazyObject
 from django.utils.translation import ugettext_lazy as _
 from django_powerbank.db.models.base import BaseModel
 from django_powerbank.db.models.fields import ChoicesIntEnum
@@ -85,6 +87,19 @@ class Budget(BaseModel):
         spent = Application.objects.filter(budget=self, approval=True).aggregate(Sum('amount'))['amount__sum']
         self.spent = spent or 0
         self.save()
+
+
+def get_workflow():
+    return OrderedDict((
+        (DecisionKind.accountant, settings.BUDGET_ACCOUNTANTS_GROUP),
+        (DecisionKind.manager, settings.BUDGET_CONTROL_GROUP),
+        (DecisionKind.control, settings.BUDGET_MANAGERS_GROUP),
+    ))
+
+
+DECISION_GROUPS = SimpleLazyObject(get_workflow)
+WORKFLOW = SimpleLazyObject(lambda: tuple((kind for kind, group in DECISION_GROUPS.items())))
+CHOICES = SimpleLazyObject(lambda: tuple((item.value, _(ChoicesIntEnum.capitalize(item))) for item in WORKFLOW))
 
 
 class Application(BaseModel):
@@ -170,11 +185,6 @@ class Application(BaseModel):
 
     def send_to_group(self, kind):
 
-        DECISION_GROUPS = {
-            DecisionKind.accountant: settings.BUDGET_ACCOUNTANTS_GROUP,
-            DecisionKind.control: settings.BUDGET_MANAGERS_GROUP,
-            DecisionKind.manager: settings.BUDGET_CONTROL_GROUP,
-        }
 
         group = DECISION_GROUPS[kind]
         log.debug("To group: %s", group)
@@ -228,6 +238,9 @@ class Decision(BaseModel):
     def __str__(self):
         return '{} ({}): {}'.format(self.user, self.kind, self.approval)
 
+    @classmethod
+    def clean_decisions(cls, application):
+        cls.objects.filter(request=application).update(approval=None)
 
 # noinspection PyUnusedLocal
 @receiver(signals.post_save, sender=get_user_model())

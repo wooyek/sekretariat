@@ -94,7 +94,10 @@ def check(ctx):
     """Check project codebase cleanness"""
     ctx.run("flake8 src tests setup.py manage.py")
     ctx.run("isort --check-only --diff --recursive src tests setup.py")
-    ctx.run("python setup.py check --strict --metadata --restructuredtext")
+    # ctx.run("python setup.py check --strict --metadata --restructuredtext")
+    ctx.run("python setup.py sdist")
+    ctx.run("python setup.py bdist_wheel")
+    ctx.run("twine check dist/*")
     ctx.run("check-manifest  --ignore .idea,.idea/* .")
     ctx.run("pytest --cov=src --cov=tests --cov-fail-under=5 -n auto --html="+str(PROJ_TMP_DIR / 'pytest.html'))
 
@@ -207,7 +210,7 @@ def bump(ctx, minor=False):
     text = re.sub(r"__date__ = .*", new_date, text)
     version_file.write_text(text)
     ctx.run('git add '+str(version_file))
-    ctx.run('git commit -m "Update website.{}" --allow-empty'.format(new_date))
+    ctx.run('git commit --allow-empty --amend --no-edit')
 
 
 @task()
