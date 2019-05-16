@@ -10,5 +10,5 @@ log = logging.getLogger(__name__)
 
 def budget(request):
     return {
-        'decision_kinds':  models.CHOICES
+        'decision_kinds': models.CHOICES,
     }
