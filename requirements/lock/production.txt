@@ -74,7 +74,7 @@ pytzdata==2019.1          # via pendulum
 pyyaml==5.1               # via tablib
 raven==6.10.0
 regex==2019.4.14          # via dateparser
-requests==2.21.0
+requests==2.22.0
 requests-oauthlib==1.2.0  # via social-auth-core
 sentry-sdk==0.7.14
 six==1.12.0               # via django-appconf, djangorestframework-jsonapi, python-dateutil, social-auth-app-django, social-auth-core
@@ -88,7 +88,7 @@ tablib==0.13.0            # via django-import-export
 # To update, run:
 tzlocal==1.5.1            # via dateparser, maya
 ua-parser==0.8.0          # via user-agents
-urllib3==1.24.3           # via requests, sentry-sdk
+urllib3==1.25.2           # via requests, sentry-sdk
 user-agents==2.0          # via django-user-agents
 webassets==0.12.1         # via django-assets
 whitenoise==4.1.2
