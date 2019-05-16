@@ -184,8 +184,6 @@ class Application(BaseModel):
                 break
 
     def send_to_group(self, kind):
-
-
         group = DECISION_GROUPS[kind]
         log.debug("To group: %s", group)
         group, x = Group.objects.get_or_create(name=group)
@@ -241,6 +239,7 @@ class Decision(BaseModel):
     @classmethod
     def clean_decisions(cls, application):
         cls.objects.filter(request=application).update(approval=None)
+
 
 # noinspection PyUnusedLocal
 @receiver(signals.post_save, sender=get_user_model())
