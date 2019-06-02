@@ -92,8 +92,8 @@ class Budget(BaseModel):
 def get_workflow():
     return OrderedDict((
         (DecisionKind.accountant, settings.BUDGET_ACCOUNTANTS_GROUP),
-        (DecisionKind.manager, settings.BUDGET_CONTROL_GROUP),
-        (DecisionKind.control, settings.BUDGET_MANAGERS_GROUP),
+        (DecisionKind.manager, settings.BUDGET_MANAGERS_GROUP),
+        (DecisionKind.control, settings.BUDGET_CONTROL_GROUP),
     ))
 
 
@@ -103,13 +103,13 @@ CHOICES = SimpleLazyObject(lambda: tuple((item.value, _(ChoicesIntEnum.capitaliz
 
 
 class Application(BaseModel):
-    date = models.DateField(_('date'), help_text=_('Approximate payment due date'))
+    date = models.DateField(_('date'), help_text=_('Approximate payment due date that will determine the monthly budget.'))
     amount = models.DecimalField(_('amount'), decimal_places=0, max_digits=6, help_text=_('What is the total cost?'))
     title = models.CharField(_('title'), max_length=150, help_text=_('Short distinguishing name for this expenditure'))
     description = models.TextField(_('description'), help_text=_('Please describe and justify this expenditure.'))
-    requester = models.ForeignKey(get_user_model(), on_delete=models.PROTECT)
+    requester = models.ForeignKey(get_user_model(), verbose_name=_('requester'), on_delete=models.PROTECT)
     manager = models.ForeignKey(
-        get_user_model(), on_delete=models.PROTECT, related_name='+', limit_choices_to=Q(groups__name='Managers')
+        get_user_model(), verbose_name=_('manager'), on_delete=models.PROTECT, related_name='+', limit_choices_to=Q(groups__name='Managers')
     )
     submitted = models.DateField(_('submission date'), null=True, blank=True)
     # accountant = models.ForeignKey(
@@ -117,10 +117,10 @@ class Application(BaseModel):
     #     related_name='+', limit_choices_to=Q(groups__name='Accountants')
     # )
     account = models.ForeignKey(
-        Account, on_delete=models.CASCADE, null=True, blank=True,
+        Account, verbose_name=_('account'), on_delete=models.CASCADE, null=True, blank=True,
         help_text=_('Please select a budget that need to be decreased'))
     budget = models.ForeignKey(
-        Budget, on_delete=models.CASCADE, null=True, blank=True,
+        Budget, verbose_name=_('budget'), on_delete=models.CASCADE, null=True, blank=True,
         help_text=_('Please select a budget that need to be decreased'))
     # control = models.ForeignKey(
     #     get_user_model(), on_delete=models.PROTECT, null=True, blank=True,
@@ -171,25 +171,25 @@ class Application(BaseModel):
             self.send_notification(self.requester, subject, template)
             return
 
-        decisions = sorted((i.value for i in DecisionKind))
-        first, decisions = decisions[0], decisions[1:]
-
-        if not self.get_decision(first) and self.manager:
-            self.send_approval_request(self.manager)
-            return
-
-        for kind in decisions:
+        for kind in WORKFLOW:
             if not self.get_decision(kind):
                 self.send_to_group(kind)
                 break
 
     def send_to_group(self, kind):
+        users = self.get_users(kind)
+        assert users
+        for user in users:
+            self.send_approval_request(user)
+
+    def get_users(self, kind):
+        if kind == DecisionKind.manager:
+            return [self.manager]
+
         group = DECISION_GROUPS[kind]
         log.debug("To group: %s", group)
         group, x = Group.objects.get_or_create(name=group)
-        users = group.user_set.all()
-        for user in users:
-            self.send_approval_request(user)
+        return group.user_set.all()
 
     def send_approval_request(self, user):
         subject = _("{title} - expenditure for {amount} requires approval")
@@ -221,7 +221,7 @@ class DecisionKind(ChoicesIntEnum):
 
 class Decision(BaseModel):
     user = models.ForeignKey(get_user_model(), on_delete=models.PROTECT)
-    request = models.ForeignKey(Application, on_delete=models.CASCADE)
+    application = models.ForeignKey(Application, on_delete=models.CASCADE)
     ts = models.DateTimeField(_('time stamp'), default=datetime.now)
     kind = models.PositiveSmallIntegerField(_('approval step'), choices=DecisionKind.choices())
     approval = models.NullBooleanField(_('approval'))
@@ -231,14 +231,14 @@ class Decision(BaseModel):
         verbose_name = _('decision')
         verbose_name_plural = _('decisions')
         default_related_name = 'decisions'
-        unique_together = ('request', 'kind')
+        unique_together = ('application', 'kind')
 
     def __str__(self):
         return '{} ({}): {}'.format(self.user, self.kind, self.approval)
 
     @classmethod
     def clean_decisions(cls, application):
-        cls.objects.filter(request=application).update(approval=None)
+        cls.objects.filter(application=application).update(approval=None)
 
 
 # noinspection PyUnusedLocal
@@ -252,9 +252,7 @@ def team_membership(sender, instance=None, **kwargs):
 
 # noinspection PyUnusedLocal
 @receiver(signals.post_save, sender=Application)
-def budget_update(sender, instance=None, **kwargs):
-    instance.send_notifications()
+def application_update(sender, instance=None, **kwargs):
     if instance.budget_id is None:
         return
-
     instance.budget.update_available()

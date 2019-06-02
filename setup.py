@@ -32,6 +32,7 @@ with open('HISTORY.rst') as history_file:
 def requirements(path):
     items = parse_requirements(path, session=uuid.uuid1())
     items = [";".join((str(r.req), str(r.markers))) if r.markers else str(r.req) for r in items]
+    print("Requirements from ", path)
     import pprint
     pprint.pprint(items)
     return items

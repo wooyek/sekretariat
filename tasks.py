@@ -97,7 +97,8 @@ def check(ctx):
     # ctx.run("python setup.py check --strict --metadata --restructuredtext")
     ctx.run("python setup.py sdist")
     ctx.run("python setup.py bdist_wheel")
-    ctx.run("twine check dist/*")
+    ctx.run("twine check dist/*.whl")
+    ctx.run("twine check dist/*.tar.gz")
     ctx.run("check-manifest  --ignore .idea,.idea/* .")
     ctx.run("pytest --cov=src --cov=tests --cov-fail-under=5 -n auto --html="+str(PROJ_TMP_DIR / 'pytest.html'))
 

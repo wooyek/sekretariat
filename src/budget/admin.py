@@ -44,6 +44,6 @@ class AccountGroupAdmin(ImportExportMixin, admin.ModelAdmin):
 
 @admin.register(models.Decision)
 class DecisionAdmin(ImportExportMixin, admin.ModelAdmin):
-    list_display = ('ts', 'request', 'user', 'kind', 'approval')
+    list_display = ('ts', 'application', 'user', 'kind', 'approval')
     list_filter = ('user', 'kind', 'approval')
     date_hierarchy = 'ts'

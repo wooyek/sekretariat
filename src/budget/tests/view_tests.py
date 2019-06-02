@@ -4,15 +4,14 @@ import logging
 import faker
 import pytest
 from django import test
-from django.conf import settings
-from django.contrib.auth.models import Group
 from django.shortcuts import resolve_url
+from mock import patch
 from pytest_lazyfixture import lazy_fixture
 
-from website.misc.factories import UserFactory
+from budget.tests.conftest import get_client
 from website.misc.testing import assert_no_form_errors, model_to_request_data_dict
-from .. import models
 from . import factories
+from .. import models
 
 log = logging.getLogger(__name__)
 fake = faker.Faker()
@@ -123,6 +122,28 @@ class CreateViewTests(object):
         assert response.status_code == 403
 
 
+# noinspection PyUnusedLocal,PyMethodMayBeStatic,PyProtectedMember
+@pytest.mark.django_db
+@pytest.mark.parametrize(
+    "factory", LIST_FACTORIES
+)
+class UpdateViewTests(object):
+
+    def test_anonymous(self, factory):
+        item = factory()
+        model_name = factory._meta.model.__name__
+        url = resolve_url("budget:{}Update".format(model_name), item.pk)
+        response = test.Client().get(url)
+        assert response.status_code == 302
+
+    def test_get(self, factory, admin_client):
+        item = factory()
+        model_name = factory._meta.model.__name__
+        url = resolve_url("budget:{}Update".format(model_name), item.pk)
+        response = admin_client.get(url)
+        assert response.status_code == 403
+
+
 @pytest.mark.django_db
 class ExpenditureCreateViewTests(object):
 
@@ -136,64 +157,23 @@ class ExpenditureCreateViewTests(object):
         assert response.status_code == 302
 
 
-# noinspection PyUnusedLocal
-@pytest.fixture
-def can_add_application():
-    from django.contrib.contenttypes.models import ContentType
-    from budget.models import Application
-    content_type = ContentType.objects.get_for_model(Application)
-    from django.contrib.auth.models import Permission
-    permission, created = Permission.objects.get_or_create(codename='add_application', content_type=content_type)
-    return permission
+@pytest.mark.django_db
+class ApplicationUpdateViewTests(object):
 
+    @patch("budget.models.Application.send_approval_request")
+    def test_post(self, send_approval_request, accountant, manager):
+        item = factories.ApplicationFactory(manager=manager)
+        url = resolve_url("budget:ApplicationUpdate", item.pk)
+        data = model_to_request_data_dict(item)
+        data['manager'] = item.manager_id
+        response = get_client(item.requester).post(url, data=data)
+        assert_no_form_errors(response)
+        assert response.status_code == 302
 
-@pytest.fixture
-def team_client(can_add_application):
-    user = UserFactory.create(is_superuser=False, is_staff=False)
-    team, new = Group.objects.get_or_create(name=settings.BUDGET_TEAM_GROUP)
-    team.permissions.add(can_add_application)
-    team.user_set.add(user)
-    client = test.Client()
-    client.force_login(user, settings.AUTHENTICATION_BACKENDS[0])
-    return client
-
-
-@pytest.fixture
-def accountant_client(can_add_application):
-    user = UserFactory.create(is_superuser=False, is_staff=False)
-    team, new = Group.objects.get_or_create(name=settings.BUDGET_ACCOUNTANTS_GROUP)
-    team.permissions.add(can_add_application)
-    team.user_set.add(user)
-    client = test.Client()
-    client.force_login(user, settings.AUTHENTICATION_BACKENDS[0])
-    return client
-
-
-@pytest.fixture
-def control_client(can_add_application):
-    user = UserFactory.create(is_superuser=False, is_staff=False)
-    team, new = Group.objects.get_or_create(name=settings.BUDGET_CONTROL_GROUP)
-    team.permissions.add(can_add_application)
-    team.user_set.add(user)
-    client = test.Client()
-    client.force_login(user, settings.AUTHENTICATION_BACKENDS[0])
-    return client
-
-
-@pytest.fixture
-def manager(can_add_application):
-    user = UserFactory.create(is_superuser=False, is_staff=False)
-    team, new = Group.objects.get_or_create(name=settings.BUDGET_MANAGERS_GROUP)
-    team.permissions.add(can_add_application)
-    team.user_set.add(user)
-    return user
-
-
-@pytest.fixture
-def manager_client(manager):
-    client = test.Client()
-    client.force_login(manager, settings.AUTHENTICATION_BACKENDS[0])
-    return client
+        assert send_approval_request.called
+        assert send_approval_request.call_count == 1
+        args, kwargs = send_approval_request.call_args
+        assert accountant == args[0]
 
 
 # noinspection PyMethodMayBeStatic
@@ -238,7 +218,7 @@ class DecisionCreateViewTests(object):
         item = models.Decision.objects.first()
         assert response.status_code == 302
         assert resolve_url("budget:DecisionUpdate", control, item.pk) == response.url
-        decission = item.request.get_decision(control)
+        decission = item.application.get_decision(control)
         assert decission is not None
         assert decission.approval is True
 
@@ -251,7 +231,7 @@ class DecisionCreateViewTests(object):
         item = models.Decision.objects.first()
         assert response.status_code == 302
         assert resolve_url("budget:DecisionUpdate", control, item.pk) == response.url
-        decission = item.request.get_decision(control)
+        decission = item.application.get_decision(control)
         assert decission is not None
         assert decission.approval is False
 

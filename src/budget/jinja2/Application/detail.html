@@ -39,8 +39,9 @@
             <td>
                 {% if object.account %}
                   {{ object.account|default("-", True) }}
+                  <a class="btn btn-secondary btn-sm float-right" href="{{ url("budget:ApplicationAccount", object.pk) }}">{% trans %}Change account{% endtrans %}
                 {% else %}
-                  <a class="btn btn-primary btn-sm" href="{{ url("budget:ApplicationUpdate", object.pk) }}">{% trans %}Set account{% endtrans %}
+                  <a class="btn btn-primary btn-sm" href="{{ url("budget:ApplicationAccount", object.pk) }}">{% trans %}Set account{% endtrans %}
                 {% endif %}
               </a>
 
@@ -51,7 +52,7 @@
       </div>
 
       {% if object.account %}
-      <div class="card mt-5 shadow-lg {% if object.approval == True %}border-success{% elif object.approval == False %}border-danger{% endif %}">
+      <div class="card mt-5 mb-5 shadow-lg {% if object.approval == True %}border-success{% elif object.approval == False %}border-danger{% endif %}">
         <div class="card-header">{% trans %}Approvals{% endtrans %}</div>
         <table class="table table-striped mb-0 table-hover">
           {% for kind, name in decision_kinds %}

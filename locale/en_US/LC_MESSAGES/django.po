@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2019-05-16 17:45+0200\n"
+"POT-Creation-Date: 2019-06-02 23:26+0200\n"
 "PO-Revision-Date: 2016-10-11 17:27+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en_US\n"
@@ -94,7 +94,7 @@ msgstr ""
 msgid "Approval"
 msgstr ""
 
-#: src/budget/jinja2/Application/detail.html:55
+#: src/budget/jinja2/Application/detail.html:56
 msgid "Approvals"
 msgstr ""
 
@@ -102,12 +102,12 @@ msgstr ""
 msgid "Approve"
 msgstr ""
 
-#: src/budget/models.py:208
+#: src/budget/models.py:206
 msgid "Approved"
 msgstr ""
 
 #: src/budget/models.py:106
-msgid "Approximate payment due date"
+msgid "Approximate payment due date that will determine the monthly budget."
 msgstr ""
 
 #: jinja2/errors/400.html:15 jinja2/errors/403.html:13
@@ -144,6 +144,10 @@ msgstr ""
 msgid "Cancel"
 msgstr ""
 
+#: src/budget/jinja2/Application/detail.html:42
+msgid "Change account"
+msgstr ""
+
 #: src/budget/jinja2/Application/detail.html:27
 msgid "Change account or date"
 msgstr ""
@@ -169,8 +173,7 @@ msgstr ""
 msgid "Contact"
 msgstr ""
 
-#: jinja2/home.html:14 jinja2/home.html:29 jinja2/home.html:43
-#: src/budget/jinja2/Application/list.html:6
+#: jinja2/home.html:14 src/budget/jinja2/Application/list.html:6
 msgid "Create"
 msgstr ""
 
@@ -178,7 +181,7 @@ msgstr ""
 msgid "Date"
 msgstr ""
 
-#: src/budget/jinja2/Application/detail.html:75
+#: src/budget/jinja2/Application/detail.html:77
 msgid "Decision making is disabled until an account is set"
 msgstr ""
 
@@ -247,7 +250,7 @@ msgstr ""
 msgid "Last name"
 msgstr ""
 
-#: jinja2/home.html:13 jinja2/home.html:28 jinja2/home.html:42
+#: jinja2/home.html:13
 msgid "List"
 msgstr ""
 
@@ -287,20 +290,12 @@ msgstr ""
 msgid "Oops! An error occurred"
 msgstr ""
 
-#: jinja2/home.html:22
-msgid "Open Office"
-msgstr ""
-
 #: jinja2/django_opt_out/OptOut/form.html:3
 msgid "Opt out from our messages"
 msgstr ""
 
 #: jinja2/django_opt_out/OptOut/success.html:10
 msgid "Opt-in"
-msgstr ""
-
-#: jinja2/home.html:36
-msgid "PT Conference"
 msgstr ""
 
 #: jinja2/errors/404.html:15
@@ -386,7 +381,7 @@ msgstr ""
 msgid "Reject"
 msgstr ""
 
-#: src/budget/models.py:208
+#: src/budget/models.py:206
 msgid "Rejected"
 msgstr ""
 
@@ -406,7 +401,7 @@ msgstr ""
 msgid "Sekretariat"
 msgstr ""
 
-#: src/budget/jinja2/Application/detail.html:43
+#: src/budget/jinja2/Application/detail.html:44
 msgid "Set account"
 msgstr ""
 
@@ -543,7 +538,7 @@ msgstr ""
 msgid "Zarezerwuj termin"
 msgstr ""
 
-#: src/budget/models.py:51
+#: src/budget/models.py:51 src/budget/models.py:120
 msgid "account"
 msgstr ""
 
@@ -563,15 +558,15 @@ msgstr ""
 msgid "amount"
 msgstr ""
 
-#: src/budget/models.py:129 src/budget/models.py:229
+#: src/budget/models.py:129 src/budget/models.py:227
 msgid "approval"
 msgstr ""
 
-#: src/budget/models.py:228
+#: src/budget/models.py:226
 msgid "approval step"
 msgstr ""
 
-#: src/budget/models.py:71
+#: src/budget/models.py:71 src/budget/models.py:123
 msgid "budget"
 msgstr ""
 
@@ -583,11 +578,11 @@ msgstr ""
 msgid "date"
 msgstr ""
 
-#: src/budget/models.py:233
+#: src/budget/models.py:231
 msgid "decision"
 msgstr ""
 
-#: src/budget/models.py:234
+#: src/budget/models.py:232
 msgid "decisions"
 msgstr ""
 
@@ -615,6 +610,10 @@ msgstr ""
 msgid "group"
 msgstr ""
 
+#: src/budget/models.py:112
+msgid "manager"
+msgstr ""
+
 #: src/budget/models.py:66
 msgid "money available"
 msgstr ""
@@ -631,7 +630,7 @@ msgstr ""
 msgid "name"
 msgstr ""
 
-#: src/budget/models.py:230
+#: src/budget/models.py:228
 msgid "notes"
 msgstr ""
 
@@ -651,6 +650,10 @@ msgstr ""
 msgid "open office slot"
 msgstr ""
 
+#: src/budget/models.py:110
+msgid "requester"
+msgstr ""
+
 #: src/sekretariat/models.py:81
 msgid "student name"
 msgstr ""
@@ -663,7 +666,7 @@ msgstr ""
 msgid "this week"
 msgstr ""
 
-#: src/budget/models.py:227
+#: src/budget/models.py:225
 msgid "time stamp"
 msgstr ""
 
@@ -701,7 +704,7 @@ msgstr ""
 msgid "{status}: {title}"
 msgstr ""
 
-#: src/budget/models.py:197
+#: src/budget/models.py:195
 msgid "{title} - expenditure for {amount} requires approval"
 msgstr ""
 
@@ -718,5 +721,14 @@ msgstr ""
 #~ msgstr ""
 
 #~ msgid "Expenditure"
+#~ msgstr ""
+
+#~ msgid "Approximate payment due date"
+#~ msgstr ""
+
+#~ msgid "Open Office"
+#~ msgstr ""
+
+#~ msgid "PT Conference"
 #~ msgstr ""
 

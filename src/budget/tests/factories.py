@@ -47,3 +47,13 @@ class ApplicationFactory(factory.DjangoModelFactory):
 
     class Meta:
         model = models.Application
+
+
+class DecisionFactory(factory.DjangoModelFactory):
+    user = factory.SubFactory(UserFactory)
+    application = factory.SubFactory(ApplicationFactory)
+    kind = models.DecisionKind.accountant
+    approval = True
+
+    class Meta:
+        model = models.Decision

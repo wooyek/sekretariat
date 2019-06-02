@@ -5,6 +5,7 @@ The `urlpatterns` list routes URLs to views. For more information please see:
 """
 from django.conf import settings
 from django.conf.urls import include
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import PasswordResetView
 from django.contrib.sitemaps.views import sitemap
 from django.urls import path
@@ -48,7 +49,7 @@ urlpatterns = [
     path('avatar/', include('avatar.urls')),
     path('', include('sekretariat.urls')),
     path('', include('budget.urls')),
-    path('', TemplateView.as_view(template_name="home.html"), name='HomeView'),
+    path('',  login_required(TemplateView.as_view(template_name="home.html")), name='HomeView'),
 ]
 
 # urlpatterns = i18n_patterns(*urlpatterns)

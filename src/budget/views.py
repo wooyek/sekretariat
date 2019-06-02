@@ -132,9 +132,8 @@ class ApplicationCreate(TeamRequiredMixin, CreateView):
         return super().form_valid(form)
 
 
-class ApplicationUpdate(AbstractAuthorizedView, UpdateView):
+class ApplicationUpdateBase(AbstractAuthorizedView, UpdateView):
     model = models.Application
-    fields = 'amount', 'date', 'title', 'description', 'manager', 'account'
 
     def is_authorized(self, *args, **kwargs):
         user = self.request.user
@@ -152,14 +151,7 @@ class ApplicationUpdate(AbstractAuthorizedView, UpdateView):
             self.clean_decisions = True
 
     def get_form_kwargs(self):
-
         return super().get_form_kwargs()
-
-    def form_valid(self, form):
-        if self.clean_decisions:
-            models.Decision.clean_decisions(form.instance)
-        form.instance.approval = None
-        return super().form_valid(form)
 
     def get(self, request, *args, **kwargs):
         r = super().get(request, *args, **kwargs)
@@ -169,6 +161,27 @@ class ApplicationUpdate(AbstractAuthorizedView, UpdateView):
                                       "Cofnij w przeglądarce by anulować operację."
                              )
         return r
+
+    def form_valid(self, form):
+        item = form.instance
+        if self.clean_decisions:
+            models.Decision.clean_decisions(item)
+        item.approval = None
+        return super().form_valid(form)
+
+
+class ApplicationAccount(ApplicationUpdateBase):
+    fields = 'account', 'date',
+
+
+class ApplicationUpdate(ApplicationUpdateBase):
+    fields = 'amount', 'date', 'title', 'description', 'manager', 'account'
+
+    def form_valid(self, form):
+        try:
+            return super().form_valid(form)
+        finally:
+            form.instance.send_notifications()
 
 
 class DecisionBase(AbstractAuthorizedView):
@@ -180,7 +193,7 @@ class DecisionBase(AbstractAuthorizedView):
         self.setup_expenditure()
 
         self.kind = self.kwargs['kind']
-        if self.kind == models.DecisionKind.manager and self.request.user == self.expenditure.manager:
+        if self.kind == models.DecisionKind.manager and self.request.user == self.application.manager:
             return True
         if self.kind == models.DecisionKind.accountant and self.request.user.groups.filter(name=settings.BUDGET_ACCOUNTANTS_GROUP).exists():
             return True
@@ -191,13 +204,14 @@ class DecisionBase(AbstractAuthorizedView):
     def setup_expenditure(self):
         pk = self.kwargs['pk']
         # noinspection PyAttributeOutsideInit
-        self.expenditure = models.Application.objects.filter(pk=pk).first()
-        if not self.expenditure:
+        self.application = models.Application.objects.filter(pk=pk).first()
+        if not self.application:
             raise Http400("No expenditure for : {}".format(pk))
 
     def form_valid(self, form):
         form.instance.user = self.request.user
-        form.instance.request = self.expenditure
+        application = self.application
+        form.instance.application = application
         form.instance.kind = self.kind
         if self.request.POST['approval'] == 'approve':
             form.instance.approval = True
@@ -205,16 +219,17 @@ class DecisionBase(AbstractAuthorizedView):
             form.instance.approval = False
 
         if self.kind == models.DecisionKind.control:
-            self.expenditure.approval = form.instance.approval
+            application.approval = form.instance.approval
 
         with transaction.atomic():
             try:
                 return super().form_valid(form)
             finally:
-                self.expenditure.save()
+                application.save()
+                application.send_notifications()
 
     def get_context_data(self, **kwargs):
-        kwargs['object'] = self.expenditure
+        kwargs['object'] = self.application
         return super().get_context_data(**kwargs)
 
     def get_success_url(self):
