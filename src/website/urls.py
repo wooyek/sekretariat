@@ -49,7 +49,7 @@ urlpatterns = [
     path('avatar/', include('avatar.urls')),
     path('', include('sekretariat.urls')),
     path('', include('budget.urls')),
-    path('',  login_required(TemplateView.as_view(template_name="home.html")), name='HomeView'),
+    path('', login_required(TemplateView.as_view(template_name="home.html")), name='HomeView'),
 ]
 
 # urlpatterns = i18n_patterns(*urlpatterns)

@@ -18,6 +18,7 @@ def get_client(user):
     client.force_login(user, settings.AUTHENTICATION_BACKENDS[0])
     return client
 
+
 # noinspection PyUnusedLocal
 @pytest.fixture
 def can_add_application():

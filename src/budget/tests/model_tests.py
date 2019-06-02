@@ -6,8 +6,8 @@ import logging
 import pytest
 from mock import patch
 
-from . import factories
 from .. import models
+from . import factories
 
 log = logging.getLogger(__name__)
 
