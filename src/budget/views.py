@@ -245,7 +245,7 @@ class DecisionUpdate(DecisionBase, UpdateView):
     # noinspection PyAttributeOutsideInit
     def setup_expenditure(self):
         self.object = self.get_object()
-        self.expenditure = self.object.request
+        self.application = self.object.application
 
     def get_success_url(self):
         return resolve_url("budget:DecisionUpdate", self.kind, self.object.pk)

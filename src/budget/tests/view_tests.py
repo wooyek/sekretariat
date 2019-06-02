@@ -178,6 +178,39 @@ class ApplicationUpdateViewTests(object):
 
 # noinspection PyMethodMayBeStatic
 @pytest.mark.django_db
+class DecisionUpdateViewTests(object):
+    def test_anonymous(self, client):
+        item = factories.DecisionFactory()
+        url = resolve_url("budget:DecisionUpdate", int(models.DecisionKind.control), item.pk)
+        response = client.get(url)
+        assert response.status_code == 302
+
+    def test_admin(self, admin_client):
+        item = factories.DecisionFactory()
+        url = resolve_url("budget:DecisionUpdate", int(models.DecisionKind.control), item.pk)
+        response = admin_client.get(url)
+        assert response.status_code == 403
+
+    def test_team(self, team_client):
+        item = factories.DecisionFactory()
+        url = resolve_url("budget:DecisionUpdate", int(models.DecisionKind.control), item.pk)
+        response = team_client.get(url)
+        assert response.status_code == 403
+
+    def test_accountant(self, accountant_client):
+        item = factories.DecisionFactory()
+        url = resolve_url("budget:DecisionUpdate", int(models.DecisionKind.accountant), item.pk)
+        response = accountant_client.get(url)
+        assert response.status_code == 200
+
+    def test_control(self, control_client):
+        item = factories.DecisionFactory()
+        url = resolve_url("budget:DecisionUpdate", int(models.DecisionKind.control), item.pk)
+        response = control_client.get(url)
+        assert response.status_code == 200
+
+# noinspection PyMethodMayBeStatic
+@pytest.mark.django_db
 class DecisionCreateViewTests(object):
     def test_anonymous(self, client):
         item = factories.ApplicationFactory()
