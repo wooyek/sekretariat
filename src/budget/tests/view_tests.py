@@ -209,6 +209,7 @@ class DecisionUpdateViewTests(object):
         response = control_client.get(url)
         assert response.status_code == 200
 
+
 # noinspection PyMethodMayBeStatic
 @pytest.mark.django_db
 class DecisionCreateViewTests(object):
