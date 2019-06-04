@@ -15,7 +15,7 @@ dateparser==0.7.1         # via maya
 defusedxml==0.6.0         # via odfpy, python3-openid, social-auth-core
 diff-match-patch==20181111  # via django-import-export
 dinja2==0.1.0
-django==2.2.1 ; python_version >= "3.5"
+django==2.2.2 ; python_version >= "3.5"
 django2-babel==0.6.3
 django-admin-ordering==0.11.0
 django-admin-relation-links==0.2.0
@@ -76,7 +76,7 @@ raven==6.10.0
 regex==2019.6.2           # via dateparser
 requests==2.22.0
 requests-oauthlib==1.2.0  # via social-auth-core
-sentry-sdk==0.8.1
+sentry-sdk==0.9.0
 six==1.12.0               # via django-appconf, djangorestframework-jsonapi, python-dateutil, social-auth-app-django, social-auth-core
 snaptime==0.2.4           # via maya
 social-auth-app-django==3.1.0
