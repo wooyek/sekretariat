@@ -61,6 +61,7 @@ install:
   - pip --version
   - tox --version
   - git --version
+  - inv --version
 
 script:
   - tox
@@ -74,19 +75,18 @@ jobs:
           - tox --version
           - pwd
           - ls -la
-          - make
-          - make bump
-          - make lint
-          - make test
-          - make tox
-          - make detox
-          - make coverage
-          - make dist
-          - make install
-          - make docs
+          - inv
+          - inv bump
+          - inv lint
+          - inv test
+          - inv tox
+          - inv coverage
+          - inv dist
+          - inv install
+          - inv docs
           # Lint again after docs generation
-          - make lint
-          - make clean
+          - inv lint
+          - inv clean
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)

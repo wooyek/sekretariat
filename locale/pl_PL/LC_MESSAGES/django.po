@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2019-06-02 23:26+0200\n"
+"POT-Creation-Date: 2019-06-04 09:44+0200\n"
 "PO-Revision-Date: 2016-01-19 22:56+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: pl_PL\n"
@@ -224,10 +224,6 @@ msgstr "Imię"
 msgid "Forbidden"
 msgstr "Zabroniony"
 
-#: jinja2/registration/login.html:28
-msgid "Forgot your password?"
-msgstr "Zapomniałeś hasła?"
-
 #: jinja2/base/confirmation.html:18 jinja2/registration/logged_out.html:9
 msgid "Go back"
 msgstr "Wróć"
@@ -424,7 +420,6 @@ msgid "Short distinguishing name for this expenditure"
 msgstr "Krótka nazwa wyróżniająca ten wydatek"
 
 #: jinja2/django_registration/activation_complete.html:7
-#: jinja2/registration/login.html:27
 msgid "Sign in"
 msgstr "Zaloguj się"
 
@@ -492,6 +487,10 @@ msgstr "Przepraszamy, nie znamy takiego adresu"
 #: jinja2/errors/500.html:9
 msgid "We're sorry for the inconvenience. We should get notified of the error and we'll correct it as soon as possible"
 msgstr "Przepraszamy za utrudnienia. Otrzymaliśmy informację o błędzie i dokonamy poprawek niezwłocznie"
+
+#: jinja2/registration/login.html:3
+msgid "Welcome! Please sign in."
+msgstr "Witaj! Proszę zaloguj się."
 
 #: src/budget/models.py:107
 msgid "What is the total cost?"
@@ -729,4 +728,7 @@ msgstr "{title} - wydatek na kwotę {amount} wymaga podjęcia decyzji"
 
 #~ msgid "PT Conference"
 #~ msgstr ""
+
+#~ msgid "Forgot your password?"
+#~ msgstr "Zapomniałeś hasła?"
 

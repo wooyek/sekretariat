@@ -1,37 +1,17 @@
 {% extends "base/dialog.html" %}
 {% from "bootstrap/forms/horizontal.html" import form_body with context %}
-{% block page_title %}Welcome! Please sign in.{% endblock %}
+{% block page_title %}{% trans %}Welcome! Please sign in.{% endtrans %}{% endblock %}
+{% block title_class %}text-center{% endblock %}
 {% block body_class %}dialog sign-in{% endblock %}
 {% block panel_col_class %}col-lg-10 offset-lg-1 col-xl-8 offset-xl-2 text-center text-md-left{% endblock %}
 
 
 {% block dialog_body %}
-{#  <div class="p-5 text-center">
-    <a href="{{ url('social:begin', backend='google-oauth2') }}?next={{ next|default("/") }}&wizard={{ wizard|default('') }}"
-       class="btn-outline-dark btn btn-lg">
-      <i class="fa fa-google-plus"></i> {% trans %}Login with Google{% endtrans %}
-    </a>
-  </div>#}
   <div class="row">
-    <aside class="col-md-4">
+    <aside class="col text-center">
       <div class="p-3">
         {% include "django_registration/social_buttons.html" %}
       </div>
     </aside>
-    <article class="col-md-8">
-      <form class="form-signin p-4" method="post" action="{{ url('login') }}?next={{ next }}" role="form" enctype="multipart/form-data">
-        <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}"/>
-        {{ form_body(form) }}
-        <div class="form-group">
-          <div class="form-actions">
-            <button class="btn btn-primary" type="submit">{% trans %}Sign in{% endtrans %}</button>
-            <a class="btn btn-link" href="{{ url('password_reset') }}">{% trans %}Forgot your password?{% endtrans %}</a>
-          </div>
-        </div>
-      </form>
-    </article>
-  </div>
-  <div class="card-footer">
-    {% include "django_registration/registration_prompt.html" %}
   </div>
 {% endblock %}
