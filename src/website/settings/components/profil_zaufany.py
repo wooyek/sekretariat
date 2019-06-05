@@ -1,4 +1,5 @@
 import logging
+from email.utils import getaddresses
 
 from . import core
 from . import python_social_auth as psa
@@ -25,7 +26,6 @@ SOCIAL_AUTH_SAML_ORG_INFO = {
     }
 }
 
-from email.utils import getaddresses
 
 technical = getaddresses([core.env("SOCIAL_AUTH_SAML_TECHNICAL_CONTACT", default=None)])
 support = getaddresses([core.env("SOCIAL_AUTH_SAML_SUPPORT_CONTACT", default=None)])
