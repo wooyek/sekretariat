@@ -1,0 +1,22 @@
+{% extends "base/dialog.html" %}
+{% from "bootstrap/forms/horizontal.html" import form_body with context %}
+{% block page_title %}{% trans %}Welcome! Please sign in.{% endtrans %}{% endblock %}
+{% block title_class %}text-center{% endblock %}
+{% block body_class %}dialog sign-in{% endblock %}
+{% block panel_col_class %}col-lg-10 offset-lg-1 col-xl-8 offset-xl-2 text-center text-md-left{% endblock %}
+
+
+{% block dialog_body %}
+  <div class="row">
+    <aside class="col text-center">
+      <div class="p-3">
+        <form method="POST" action="https://pz.gov.pl/dt/SingleSignOnService">
+          <input type="hidden" name="SAMLRequest" value="{{ SAMLRequest }}">
+          <button class="btn btn-primary" type="submit">Login</button>
+        </form>
+      </div>
+    </aside>
+  </div>
+{% endblock %}
+
+

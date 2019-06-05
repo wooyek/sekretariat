@@ -31,6 +31,10 @@ environment_config = Path(__file__).with_suffix('.env')
 if environment_config.exists():
     environ.Env.read_env(str(environment_config))
 
+environment_config = Path(__file__).with_suffix('.secrets')
+if environment_config.exists():
+    environ.Env.read_env(str(environment_config))
+
 if 'DATABASE_URL' not in os.environ:
     # This a default fallback for local development and testing
     BASE_DIR = Path(__file__).parents[3]

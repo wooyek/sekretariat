@@ -53,6 +53,7 @@ settings_components = (
     # 'intercom',
     'pure_pagination',
     'python_social_auth',
+    'profil_zaufany',
     # 'google_cloud_storage',
 )
 
@@ -95,6 +96,7 @@ INSTALLED_APPS += (  # noqa: F405
     # 'misc.choose_language',
     'sekretariat.apps.SekretariatConfig',
     'budget.apps.BudgetConfig',
+    'profil_zaufany',
 )
 
 core.TEMPLATES[0]['OPTIONS']['context_processors'] += [

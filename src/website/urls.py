@@ -47,6 +47,7 @@ urlpatterns = [
     path('accounts/social/login-error', TemplateView.as_view(template_name='errors/social_login_error.html')),
     path('unsubscribe/', include('django_opt_out.urls')),
     path('avatar/', include('avatar.urls')),
+    path('pz/', include('profil_zaufany.urls')),
     path('', include('sekretariat.urls')),
     path('', include('budget.urls')),
     path('', login_required(TemplateView.as_view(template_name="home.html")), name='HomeView'),

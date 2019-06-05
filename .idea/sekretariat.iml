@@ -39,6 +39,7 @@
         <option value="$MODULE_DIR$/jinja2" />
         <option value="$MODULE_DIR$/src/sekretariat/jinja2" />
         <option value="$MODULE_DIR$/src/budget/jinja2" />
+        <option value="$MODULE_DIR$/src/profil_zaufany/jinja2" />
       </list>
     </option>
   </component>
