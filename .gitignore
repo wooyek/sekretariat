@@ -98,3 +98,6 @@ src/website/settings/production.env
 data/db.dev.sqlite3
 node_modules
 secrets.env
+*.secrets.env
+saml.crt
+saml.key

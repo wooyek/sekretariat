@@ -65,6 +65,7 @@ recursive-include locale *.po
 recursive-include locale *.pot
 recursive-include logs *.md
 recursive-include src *.txt
+recursive-exclude src *.secrets.env
 recursive-include static *.* *
 recursive-include templates *.html
 recursive-include templates *.txt
@@ -116,3 +117,5 @@ recursive-include example_project *.cfg
 
 exclude src/website/settings/production.env
 exclude data/db.dev.sqlite3
+exclude saml.crt
+exclude saml.key
