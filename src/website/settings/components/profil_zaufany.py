@@ -13,22 +13,22 @@ psa.SOCIAL_AUTH_AUTHENTICATION_BACKENDS += (
     'social_core.backends.saml.SAMLAuth',
 )
 
-SOCIAL_AUTH_SAML_SP_ENTITY_ID = core.env("SOCIAL_AUTH_SAML_SP_ENTITY_ID")
-SOCIAL_AUTH_SAML_SP_PRIVATE_KEY = core.env("SOCIAL_AUTH_SAML_SP_PRIVATE_KEY")
-SOCIAL_AUTH_SAML_SP_PUBLIC_CERT = core.env("SOCIAL_AUTH_SAML_SP_PUBLIC_CERT")
+SOCIAL_AUTH_SAML_SP_ENTITY_ID = core.env("SOCIAL_AUTH_SAML_SP_ENTITY_ID", default=None)
+SOCIAL_AUTH_SAML_SP_PRIVATE_KEY = core.env("SOCIAL_AUTH_SAML_SP_PRIVATE_KEY", default=None)
+SOCIAL_AUTH_SAML_SP_PUBLIC_CERT = core.env("SOCIAL_AUTH_SAML_SP_PUBLIC_CERT", default=None)
 
 SOCIAL_AUTH_SAML_ORG_INFO = {
     "pl-PL": {
-        "name": core.env("SOCIAL_AUTH_SAML_ORG_INFO_NAME"),
-        "displayname": core.env("SOCIAL_AUTH_SAML_ORG_INFO_DISPLAYNAME"),
-        "url": core.env("SOCIAL_AUTH_SAML_ORG_INFO_URL"),
+        "name": core.env("SOCIAL_AUTH_SAML_ORG_INFO_NAME", default=None),
+        "displayname": core.env("SOCIAL_AUTH_SAML_ORG_INFO_DISPLAYNAME", default=None),
+        "url": core.env("SOCIAL_AUTH_SAML_ORG_INFO_URL", default=None),
     }
 }
 
 from email.utils import getaddresses
 
-technical = getaddresses([core.env("SOCIAL_AUTH_SAML_TECHNICAL_CONTACT")])
-support = getaddresses([core.env("SOCIAL_AUTH_SAML_SUPPORT_CONTACT")])
+technical = getaddresses([core.env("SOCIAL_AUTH_SAML_TECHNICAL_CONTACT", default=None)])
+support = getaddresses([core.env("SOCIAL_AUTH_SAML_SUPPORT_CONTACT", default=None)])
 
 SOCIAL_AUTH_SAML_TECHNICAL_CONTACT = {
     "givenName": technical[0][0],
