@@ -73,7 +73,7 @@ pytz==2019.1
 pytzdata==2019.1          # via pendulum
 pyyaml==5.1               # via tablib
 raven==6.10.0
-regex==2019.6.2           # via dateparser
+regex==2019.6.5           # via dateparser
 requests==2.22.0
 requests-oauthlib==1.2.0  # via social-auth-core
 sentry-sdk==0.9.0
