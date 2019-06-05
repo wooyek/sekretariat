@@ -1,2 +1,4 @@
 libxml2-dev
 libxmlsec1-dev
+zlib1g-dev
+libxmlsec1-openssl
