@@ -47,6 +47,7 @@ newrelic
 # opencage
 psycopg2-binary
 pycountry
+python3-saml
 pytz
 pathlib ; python_version < '3.3'
 pendulum
