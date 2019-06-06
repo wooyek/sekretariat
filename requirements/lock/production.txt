@@ -98,4 +98,4 @@ webassets==0.12.1         # via django-assets
 whitenoise==4.1.2
 xlrd==1.2.0               # via tablib
 xlwt==1.3.0               # via tablib
-xmlsec==1.3.3
+xmlsec==1.3.3             # via python3-saml
