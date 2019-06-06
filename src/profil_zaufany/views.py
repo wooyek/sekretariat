@@ -21,6 +21,7 @@ def saml_metadata_view(request):
         redirect_uri=complete_url,
     )
     metadata, errors = saml_backend.generate_metadata_xml()
+    log.debug("errors: %s", errors)
     if not errors:
         return HttpResponse(content=metadata, content_type='text/xml')
 
