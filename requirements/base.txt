@@ -39,6 +39,7 @@ djangorestframework-jsonapi
 enum34 ; python_version < '3.4'
 html2text
 isoweek
+isodate
 jinja2-highlight
 markdown
 invoke
@@ -60,7 +61,7 @@ requests
 social-auth-app-django
 social-auth-core
 whitenoise
-#xmlsec
+xmlsec
 
 --find-links=local
 
