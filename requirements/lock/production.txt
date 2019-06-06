@@ -1,3 +1,4 @@
+
 #
 #
 #
@@ -42,6 +43,7 @@ djangorestframework-jsonapi==2.7.0
 django-reversion==3.0.4
 django-user-agents==0.3.2
 et-xmlfile==1.0.1         # via openpyxl
+--find-links /data/work/wooyek/sekretariat/requirements/local
 gunicorn==19.9.0
 html2text==2018.1.9
 humanize==0.5.1           # via maya
@@ -63,7 +65,7 @@ odfpy==1.4.0              # via tablib
 openpyxl==2.6.2           # via tablib
 pendulum==2.0.4
 pillow==6.0.0             # via django-avatar
-#    pip-compile --output-file requirements/lock/production.txt requirements/production.txt
+#    pip-compile --output-file=requirements/lock/production.txt requirements/production.txt
 pkgconfig==1.5.1          # via xmlsec
 psycopg2-binary==2.8.2
 pycountry==18.12.8
@@ -71,6 +73,7 @@ pygments==2.4.2           # via jinja2-highlight
 pyjwt==1.7.1              # via social-auth-core
 python3-openid==3.1.0     # via social-auth-core
 python-dateutil==2.8.0    # via dateparser, pendulum, snaptime
+python-dotenv==0.10.3
 python-stdnum==1.11       # via django-localflavor
 pytz==2019.1
 pytzdata==2019.1          # via pendulum
