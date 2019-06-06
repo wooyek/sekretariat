@@ -60,7 +60,7 @@ requests
 social-auth-app-django
 social-auth-core
 whitenoise
-xmlsec
+#xmlsec
 
 --find-links=local
 
