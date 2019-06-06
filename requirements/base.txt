@@ -52,6 +52,7 @@ pycountry
 pytz
 pathlib ; python_version < '3.3'
 pendulum
+python-dotenv
 # version 2018.11.3 has installation issues
 # regex==2018.8.29
 # sorl-thumbnail
@@ -61,7 +62,7 @@ requests
 social-auth-app-django
 social-auth-core
 whitenoise
-xmlsec
+#xmlsec
 
 --find-links=local
 
