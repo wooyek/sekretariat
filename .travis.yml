@@ -2,8 +2,8 @@ language: python
 sudo: false
 
 python:
-    - "3.6"
     - "3.7"
+    - "3.6"
 #    - "3.5"
 #    - "3.4"
 #    - "2.7"
@@ -36,22 +36,27 @@ matrix:
       - { python: "3.6", env: DJANGO=1.8 }
       - { python: "3.6", env: DJANGO=1.9 }
       - { python: "3.6", env: DJANGO=1.10 }
+      - { python: "3.7", env: DJANGO=1.8 }
+      - { python: "3.7", env: DJANGO=1.9 }
+      - { python: "3.7", env: DJANGO=1.10 }
 
     allow_failures:
+      - python: "2.7"
       - python: "3.4"
       - python: "3.5"
-      - python: "2.7"
+      - python: "3.7" 
       - env: DJANGO=1.8
       - env: DJANGO=1.9
       - env: DJANGO=1.10
       - env: DJANGO=2.1
+      - env: DJANGO=2.2
       - env: DJANGO=master
 
 before_install:
   - python --version
   - uname -a
   - lsb_release -a
-  - sudo apt-get install -y git-flow python-enchant
+  - sudo apt-get install -y git-flow python-enchant libxmlsec1-dev
 
 install:
   - pip install -r requirements/development.txt coveralls tox-travis
@@ -84,6 +89,7 @@ jobs:
           - inv dist
           - inv install
           - inv docs
+          - inv pip-compile
           # Lint again after docs generation
           - inv lint
           - inv clean

@@ -297,6 +297,7 @@ def locales_babel(ctx):
     """
     Collect and compile translation strings
     """
+    # https://docs.djangoproject.com/en/dev/ref/django-admin/#django-admin-makemessages
     # http://babel.edgewall.org/wiki/BabelDjango
     pybabel = str('pybabel')
     ctx.run(pybabel + " extract -F locale/babel.cfg -o locale/django.pot --no-wrap --sort-output .")

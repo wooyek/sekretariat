@@ -8,8 +8,10 @@ click-log
 colorlog
 crayons
 dinja2
-django<2.0 ; python_version < '3.5'
-django>=2.0 ; python_version >= '3.5'
+# https://docs.djangoproject.com/en/dev/faq/install/#faq-python-version-support
+django<2.0 ; python_version < '3.4'
+django<2.1 ; python_version == '3.4'
+django     ; python_version >= '3.5'
 django-admin-ordering
 django-admin-relation-links
 django-assets

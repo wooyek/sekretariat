@@ -8,11 +8,11 @@ coverage
 flake8
 invoke
 isort
-pygments
 pip-tools
+pygments
+pyyaml
 readme-renderer
 setuptools
 tox
 wheel
-pyyaml
 yuicompressor

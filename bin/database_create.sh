@@ -19,6 +19,9 @@ echo "------> Creating databases ${DATABASE_NAME} and ${DATABASE_TEST_NAME}"
 sudo -u postgres -E sh -c 'createdb ${DATABASE_NAME}'
 sudo -u postgres -E sh -c 'createdb ${DATABASE_TEST_NAME}'
 
+echo "------> Making ${USER} a superuser"
+sudo -u postgres -E psql -c "CREATE ROLE ${USER};"
+sudo -u postgres -E psql -c "ALTER USER ${USER} WITH LOGIN SUPERUSER INHERIT CREATEDB CREATEROLE REPLICATION;"
 
 echo "[ OK ] ${BASH_SOURCE[0]}"
 
