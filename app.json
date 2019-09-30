@@ -10,6 +10,14 @@
   "addons": [
     "heroku-postgresql:hobby-dev"
   ],
+  "buildpacks": [
+    {
+      "url": "https://github.com/heroku/heroku-buildpack-apt"
+    },
+    {
+      "url": "heroku/python"
+    }
+  ],
   "env": {
     "AUTO_MIGRATE": {
       "description": "Allows to run migrate on every deploy or a release.",
