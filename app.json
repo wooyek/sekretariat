@@ -39,7 +39,7 @@
     },
     "UPGRADE_REQUIREMENTS": {
       "description": "We need to workaround some heroku limitations and install example_project requirements",
-      "value": "True"
+      "value": "False"
     },
     "DISABLE_COLLECTSTATIC": {
       "description": "Controls if Heroku should collect any static files. This won't work with example_project.",
@@ -58,7 +58,33 @@
       "description": "Provide this key if you want to test SparkPost integration.",
       "value": "",
       "required": false
+    },
+    "DEFAULT_FROM_EMAIL": {
+      "description": "Default email address to use for various automated correspondence from the site manager(s). This doesn’t include error messages sent to ADMINS and MANAGERS; for that, see SERVER_EMAIL.\n\n https://docs.djangoproject.com/en/2.2/ref/settings/#default-from-email",
+      "value": "No reply <no-reply@example.com>",
+      "required": true
+    },
+    "DEFAULT_REPLY_TO_EMAIL": {
+      "description": "Default email your users should reply to when looking for help",
+      "value": "Help <help@example.com>",
+      "required": true
+    },
+    "SERVER_EMAIL": {
+      "description": "Default email your users should reply to when looking for help",
+      "value": "Errors <errors@example.com>",
+      "required": true
+    },
+    "EMAIL_QUEUE_EAGER": {
+      "description": "Do not queue emails, send them immediately",
+      "value": true,
+      "required": false
+    },
+    "EMAIL_SUBJECT_PREFIX": {
+      "description": "Subject-line prefix for email messages sent with django.core.mail.mail_admins or django.core.mail.mail_managers. You’ll probably want to include the trailing space. https://docs.djangoproject.com/en/2.2/ref/settings/#email-subject-prefix",
+      "value": "[Sekretariat]",
+      "required": false
     }
+
   },
   "scripts": {
     "postdeploy": "bin/post_deploy",
