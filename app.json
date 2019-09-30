@@ -18,6 +18,19 @@
       "url": "heroku/python"
     }
   ],
+  "scripts": {
+    "postdeploy": "bin/post_deploy",
+    "dokku": {
+      "predeploy": "chmod +x bin/post_deploy && bin/post_deploy",
+      "postdeploy": "chmod +x bin/post_deploy && bin/post_deploy"
+    }
+  },
+  "formation": {
+    "web": {
+      "quantity": 1,
+      "size": "free"
+    }
+  },
   "env": {
     "AUTO_MIGRATE": {
       "description": "Allows to run migrate on every deploy or a release.",
@@ -91,19 +104,17 @@
       "description": "Subject-line prefix for email messages sent with django.core.mail.mail_admins or django.core.mail.mail_managers. You’ll probably want to include the trailing space. https://docs.djangoproject.com/en/2.2/ref/settings/#email-subject-prefix",
       "value": "[Sekretariat]",
       "required": false
+    },
+    "SENTRY_CONFIG_DSN": {
+      "required": true
     }
   },
-  "scripts": {
-    "postdeploy": "bin/post_deploy",
-    "dokku": {
-      "predeploy": "chmod +x bin/post_deploy && bin/post_deploy",
-      "postdeploy": "chmod +x bin/post_deploy && bin/post_deploy"
-    }
-  },
-  "formation": {
-    "web": {
-      "quantity": 1,
-      "size": "free"
+  "environments": {
+    "test": {
+      "env": {
+        "SECRET_KEY": "test-secret"
+      }
     }
   }
+
 }
