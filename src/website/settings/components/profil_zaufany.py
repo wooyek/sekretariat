@@ -27,8 +27,8 @@ SOCIAL_AUTH_SAML_ORG_INFO = {
 }
 
 
-technical = getaddresses([core.env("SOCIAL_AUTH_SAML_TECHNICAL_CONTACT", default=None)])
-support = getaddresses([core.env("SOCIAL_AUTH_SAML_SUPPORT_CONTACT", default=None)])
+technical = getaddresses([core.env("SOCIAL_AUTH_SAML_TECHNICAL_CONTACT", default="")])
+support = getaddresses([core.env("SOCIAL_AUTH_SAML_SUPPORT_CONTACT", default="")])
 
 SOCIAL_AUTH_SAML_TECHNICAL_CONTACT = {
     "givenName": technical[0][0],

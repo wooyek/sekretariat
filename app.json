@@ -107,6 +107,9 @@
     },
     "SENTRY_CONFIG_DSN": {
       "required": true
+    },
+    "SENTRY_PUBLIC_DSN": {
+      "required": true
     }
   },
   "environments": {
