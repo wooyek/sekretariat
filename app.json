@@ -84,7 +84,6 @@
       "value": "[Sekretariat]",
       "required": false
     }
-
   },
   "scripts": {
     "postdeploy": "bin/post_deploy",
