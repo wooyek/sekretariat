@@ -105,6 +105,12 @@
       "value": "[Sekretariat]",
       "required": false
     },
+    "SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET": {
+      "required": true
+    },
+    "SOCIAL_AUTH_GOOGLE_OAUTH2_KEY": {
+      "required": true
+    },
     "SENTRY_CONFIG_DSN": {
       "required": true
     },
