@@ -76,7 +76,7 @@
     },
     "EMAIL_QUEUE_EAGER": {
       "description": "Do not queue emails, send them immediately",
-      "value": true,
+      "value": "True",
       "required": false
     },
     "EMAIL_SUBJECT_PREFIX": {
