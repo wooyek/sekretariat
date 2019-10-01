@@ -66,6 +66,7 @@ odfpy==1.4.0              # via tablib
 openpyxl==3.0.0           # via tablib
 pendulum==2.0.5
 pillow==6.1.0             # via django-avatar
+# pip==19.2.3
 #    pip-compile --output-file=requirements/lock/production.txt requirements/production.txt
 pkgconfig==1.5.1          # via xmlsec
 psycopg2-binary==2.8.3
