@@ -67,8 +67,8 @@
       "value": "1"
     },
     "APP_COLLECTSTATIC": {
-      "description": "Make example project collect statics on it'sown.",
-      "value": "1",
+      "description": "Make project collect statics on it'sown.",
+      "value": "0",
       "required": false
     },
     "DJANGO_SETTINGS_MODULE": {
