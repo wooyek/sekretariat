@@ -209,12 +209,12 @@ msgstr "Wpisz swój adres email, a my wyślemy Ci instrukcję ustawiania nowego 
 
 #: src/budget/jinja2/Application/detail.html:6
 msgid "Expenditure details"
-msgstr "Szczegóły wydatku"
+msgstr "Szczegóły zapotrzebowania"
 
 #: jinja2/base/layout/header.html:16 jinja2/home.html:7
 #: src/budget/jinja2/Application/list.html:4
 msgid "Expenditures"
-msgstr "Wydatki"
+msgstr "Zapotrzebowania"
 
 #: jinja2/django_registration/User/detail.html:16
 msgid "First name"

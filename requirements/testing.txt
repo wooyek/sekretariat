@@ -1,7 +1,7 @@
 -r optional.txt
 coveralls
 django-environ
-enum34 ; python_version < '3.4'
+# enum34 ; python_version < '3.4'
 factory-boy
 mock
 pathlib ; python_version < '3.3'

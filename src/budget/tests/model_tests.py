@@ -17,8 +17,8 @@ log = logging.getLogger(__name__)
 class ApplicationTest(object):
     @patch("budget.models.Application.send_approval_request")
     def test_send_to_accountant(self, send_approval_request, accountant):
-        item = factories.ApplicationFactory()
-        item.send_notifications()
+        item = factories.DecisionFactory(kind=models.DecisionKind.manager)
+        item.application.send_notifications()
         assert send_approval_request.called
         assert send_approval_request.call_count == 1
         args, kwargs = send_approval_request.call_args
@@ -26,7 +26,7 @@ class ApplicationTest(object):
 
     @patch("budget.models.Application.send_approval_request")
     def test_send_to_manager(self, send_approval_request, accountant):
-        item = factories.DecisionFactory()
+        item = factories.DecisionFactory(kind=models.DecisionKind.accountant)
         item.application.send_notifications()
         assert send_approval_request.called
         assert send_approval_request.call_count == 1
