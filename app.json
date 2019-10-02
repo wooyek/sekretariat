@@ -51,7 +51,7 @@
     },
     "ALLOWED_HOSTS": {
       "description": "Domain names this is working under, first one will be used as a base for emails used in settings",
-      "value": "sekretariat.example.com .herokuapp.com"
+      "value": "sekretariat.herokuapp.com .herokuapp.com"
     },
     "EMAIL_URL": {
       "description": "SMTP setting in the form of smtp+tls://user:password@example.com:587",
