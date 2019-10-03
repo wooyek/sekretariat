@@ -28,12 +28,18 @@ def text_to_time(text):
             'TO_TIMEZONE': tz,
             'PREFER_DATES_FROM': 'current_period',
         }
+        log.debug("text: %s", text)
         return dateparser.parse(
             text,
             settings=settings,
             languages=['pl'],
             locales=['pl'],
-            date_formats=['%d.%m.%Y\t%H:%M', '%-d.%m.%Y\t%H:%M'],
+            date_formats=[
+                '%Y-%m-%d\t%H:%M',
+                '%Y-%m-%d\t%H:%M:%S',
+                '%d.%m.%Y\t%H:%M',
+                '%-d.%m.%Y\t%H:%M',
+            ],
         )
     except ValueError as ex:
         raise ValueError(text) from ex

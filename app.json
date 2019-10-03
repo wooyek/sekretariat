@@ -10,6 +10,27 @@
   "addons": [
     "heroku-postgresql:hobby-dev"
   ],
+  "buildpacks": [
+    {
+      "url": "https://github.com/heroku/heroku-buildpack-apt"
+    },
+    {
+      "url": "heroku/python"
+    }
+  ],
+  "scripts": {
+    "postdeploy": "bin/post_deploy",
+    "dokku": {
+      "predeploy": "chmod +x bin/post_deploy && bin/post_deploy",
+      "postdeploy": "chmod +x bin/post_deploy && bin/post_deploy"
+    }
+  },
+  "formation": {
+    "web": {
+      "quantity": 1,
+      "size": "free"
+    }
+  },
   "env": {
     "AUTO_MIGRATE": {
       "description": "Allows to run migrate on every deploy or a release.",
@@ -30,7 +51,7 @@
     },
     "ALLOWED_HOSTS": {
       "description": "Domain names this is working under, first one will be used as a base for emails used in settings",
-      "value": "sekretariat.example.com .herokuapp.com"
+      "value": "sekretariat.herokuapp.com .herokuapp.com"
     },
     "EMAIL_URL": {
       "description": "SMTP setting in the form of smtp+tls://user:password@example.com:587",
@@ -46,8 +67,8 @@
       "value": "1"
     },
     "APP_COLLECTSTATIC": {
-      "description": "Make example project collect statics on it'sown.",
-      "value": "1",
+      "description": "Make project collect statics on it'sown.",
+      "value": "False",
       "required": false
     },
     "DJANGO_SETTINGS_MODULE": {
@@ -76,27 +97,33 @@
     },
     "EMAIL_QUEUE_EAGER": {
       "description": "Do not queue emails, send them immediately",
-      "value": true,
+      "value": "True",
       "required": false
     },
     "EMAIL_SUBJECT_PREFIX": {
       "description": "Subject-line prefix for email messages sent with django.core.mail.mail_admins or django.core.mail.mail_managers. You’ll probably want to include the trailing space. https://docs.djangoproject.com/en/2.2/ref/settings/#email-subject-prefix",
       "value": "[Sekretariat]",
       "required": false
+    },
+    "SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET": {
+      "required": true
+    },
+    "SOCIAL_AUTH_GOOGLE_OAUTH2_KEY": {
+      "required": true
+    },
+    "SENTRY_CONFIG_DSN": {
+      "required": true
+    },
+    "SENTRY_PUBLIC_DSN": {
+      "required": true
     }
-
   },
-  "scripts": {
-    "postdeploy": "bin/post_deploy",
-    "dokku": {
-      "predeploy": "chmod +x bin/post_deploy && bin/post_deploy",
-      "postdeploy": "chmod +x bin/post_deploy && bin/post_deploy"
-    }
-  },
-  "formation": {
-    "web": {
-      "quantity": 1,
-      "size": "free"
+  "environments": {
+    "test": {
+      "env": {
+        "SECRET_KEY": "test-secret"
+      }
     }
   }
+
 }

@@ -173,7 +173,7 @@ class ApplicationUpdateViewTests(object):
         assert send_approval_request.called
         assert send_approval_request.call_count == 1
         args, kwargs = send_approval_request.call_args
-        assert accountant == args[0]
+        assert manager == args[0]
 
 
 # noinspection PyMethodMayBeStatic

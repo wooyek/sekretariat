@@ -31,14 +31,13 @@ django-pascal-templates
 django-powerbank
 django-pure-pagination
 django-registration
-
 django-reversion
 django2-babel
 django-user-agents
 # easy_thumbnails
 djangorestframework
 djangorestframework-jsonapi
-enum34 ; python_version < '3.4'
+# enum34 ; python_version < '3.4'
 html2text
 isoweek
 isodate
@@ -48,6 +47,7 @@ invoke
 maya
 newrelic
 # opencage
+pip
 psycopg2-binary
 pycountry
 python3-saml
