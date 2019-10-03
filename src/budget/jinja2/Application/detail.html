@@ -51,7 +51,7 @@
         </table>
       </div>
 
-      {% if object.account %}
+      {% if object.account or 1 %}
       <div class="card mt-5 mb-5 shadow-lg {% if object.approval == True %}border-success{% elif object.approval == False %}border-danger{% endif %}">
         <div class="card-header">{% trans %}Approvals{% endtrans %}</div>
         <table class="table table-striped mb-0 table-hover">
