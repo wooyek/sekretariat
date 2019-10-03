@@ -53,7 +53,7 @@ settings_components = (
     # 'intercom',
     'pure_pagination',
     'python_social_auth',
-    'profil_zaufany',
+    # 'profil_zaufany',
     # 'google_cloud_storage',
 )
 

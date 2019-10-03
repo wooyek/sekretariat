@@ -101,3 +101,4 @@ secrets.env
 *.secrets.env
 saml.crt
 saml.key
+pip-wheel-metadata

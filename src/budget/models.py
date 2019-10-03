@@ -91,8 +91,8 @@ class Budget(BaseModel):
 
 def get_workflow():
     return OrderedDict((
-        (DecisionKind.accountant, settings.BUDGET_ACCOUNTANTS_GROUP),
         (DecisionKind.manager, settings.BUDGET_MANAGERS_GROUP),
+        (DecisionKind.accountant, settings.BUDGET_ACCOUNTANTS_GROUP),
         (DecisionKind.control, settings.BUDGET_CONTROL_GROUP),
     ))
 
