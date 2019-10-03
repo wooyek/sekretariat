@@ -60,12 +60,12 @@ lxml==4.4.1               # via xmlsec
 markdown==3.1.1
 markupsafe==1.1.1         # via jinja2
 maya==0.6.1
-newrelic==5.0.2.126
+newrelic==5.2.0.127
 oauthlib==3.1.0           # via requests-oauthlib, social-auth-core
 odfpy==1.4.0              # via tablib
 openpyxl==3.0.0           # via tablib
 pendulum==2.0.5
-pillow==6.1.0             # via django-avatar
+pillow==6.2.0             # via django-avatar
 # pip==19.2.3
 #    pip-compile --output-file=requirements/lock/production.txt requirements/production.txt
 pkgconfig==1.5.1          # via xmlsec
@@ -85,7 +85,7 @@ raven==6.10.0
 regex==2019.8.19          # via dateparser
 requests==2.22.0
 requests-oauthlib==1.2.0  # via social-auth-core
-sentry-sdk==0.12.2
+sentry-sdk==0.12.3
 # setuptools==41.2.0        # via markdown
 six==1.12.0               # via django-appconf, djangorestframework-jsonapi, isodate, python-dateutil, social-auth-app-django, social-auth-core
 snaptime==0.2.4           # via maya
