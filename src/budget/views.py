@@ -120,7 +120,7 @@ class ApplicationDetail(AbstractAuthorizedView, DetailView):
 
 class ApplicationCreate(TeamRequiredMixin, CreateView):
     model = models.Application
-    fields = 'amount', 'date', 'title', 'description', 'manager', 'account'
+    fields = 'amount', 'date', 'title', 'description', 'manager',
 
     def get_initial(self):
         return {
