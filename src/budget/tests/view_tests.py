@@ -3,15 +3,15 @@ import logging
 
 import faker
 import pytest
+from budget.tests.conftest import get_client
 from django import test
 from django.shortcuts import resolve_url
 from mock import patch
 from pytest_lazyfixture import lazy_fixture
 
-from budget.tests.conftest import get_client
 from website.misc.testing import assert_no_form_errors, model_to_request_data_dict
-from . import factories
 from .. import models, views
+from . import factories
 
 log = logging.getLogger(__name__)
 fake = faker.Faker()

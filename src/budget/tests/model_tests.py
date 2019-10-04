@@ -6,8 +6,8 @@ import logging
 import pytest
 from mock import patch
 
-from . import factories
 from .. import models
+from . import factories
 
 log = logging.getLogger(__name__)
 
@@ -90,6 +90,6 @@ class ApplicationTest(object):
             (models.DecisionKind.control, None, True),
         ]
     )
-    def test_account_change_available(self, kind, approval, ok):
+    def test_update_possible(self, kind, approval, ok):
         decision = factories.DecisionFactory(kind=kind, approval=approval)
         assert decision.application.can_update() == ok
