@@ -4,8 +4,8 @@ auth:
   - auth.Group
   - auth.User
 
-#contenttypes:
-#  - contenttypes
+contenttypes:
+  - contenttypes
 
 budget:
   - budget.AccountGroup
