@@ -129,7 +129,10 @@ class ApplicationCreate(TeamRequiredMixin, CreateView):
 
     def form_valid(self, form):
         form.instance.requester = self.request.user
-        return super().form_valid(form)
+        try:
+            return super().form_valid(form)
+        finally:
+            form.instance.send_notifications()
 
 
 class ApplicationUpdateBase(AbstractAuthorizedView, UpdateView):
