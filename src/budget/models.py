@@ -143,7 +143,8 @@ class Application(BaseModel):
         if self.account:
             budget = Budget.objects.filter(year=self.date.year, month=self.date.month, account=self.account).first()
             if not budget:
-                amount = Budget.objects.filter(account=self.account).first().amount
+                last_budget = Budget.objects.filter(account=self.account).first()
+                amount = last_budget.amount if last_budget else 0
                 budget, x = Budget.objects.get_or_create(
                     year=self.date.year,
                     month=self.date.month,

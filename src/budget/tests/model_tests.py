@@ -57,3 +57,9 @@ class ApplicationTest(object):
         item = factories.ApplicationFactory()
         users = item.get_users(models.DecisionKind.control)
         assert list(users) == [control]
+
+    def test_empty_budget_lists(self, manager):
+        item = factories.ApplicationFactory()
+        account = factories.AccountFactory()
+        item.account = account
+        item.save()
