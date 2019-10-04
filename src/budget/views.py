@@ -80,7 +80,7 @@ class ApplicationList(OperationsRequired, PaginationMixin, ListView):
     paginate_by = 25
 
     def handle_forbidden(self):
-        if self.request.user.has_perms('can_create_application'):
+        if self.request.user.has_perms(['budget.add_application']):
             return redirect("budget:ApplicationListUser", self.request.user.pk)
         return super(ApplicationList, self).handle_forbidden()
 
