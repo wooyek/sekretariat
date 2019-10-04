@@ -62,7 +62,6 @@ version = get_version("src", "website", "__init__.py")
 if sys.argv[-1] == 'publish':
     try:
         import wheel
-
         print("Wheel version: ", wheel.__version__)
     except ImportError:
         print('Wheel library missing. Please run "pip install wheel"')

@@ -199,11 +199,10 @@ def sync_master(ctx):
 @task()
 def bump(ctx, minor=False):
     """Increment version number"""
-    # ctx.run("bumpversion patch --no-tag")
-    if minor:
-        ctx.run("bumpversion minor")
+    if minor: 
+        ctx.run("bumpversion minor --allow-dirty --no-tag")
     else:	
-        ctx.run("bumpversion patch --allow-dirty")
+        ctx.run("bumpversion patch --allow-dirty --no-tag")
     import re
     version_file = ROOT_DIR / "src" / "website" / "__init__.py"
     text = version_file.read_text()
@@ -225,7 +224,7 @@ def pip_compile(ctx):
 
 
 @task()
-def pipenv(ctx):
+def pipenv(ctx):  # Experimental
     """Upgrade frozen requirements to the latest version"""
     ctx.run('pipenv install -r requirements/production.txt')
     ctx.run('pipenv install --dev -r requirements/development.txt')
