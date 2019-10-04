@@ -31,12 +31,17 @@ def can_add_application():
 
 
 @pytest.fixture
-def team_client(can_add_application):
+def team_user(can_add_application):
     user = UserFactory.create(is_superuser=False, is_staff=False)
     team, new = Group.objects.get_or_create(name=settings.BUDGET_TEAM_GROUP)
     team.permissions.add(can_add_application)
     team.user_set.add(user)
-    return get_client(user)
+    return user
+
+
+@pytest.fixture
+def team_client(team_user):
+    return get_client(team_user)
 
 
 @pytest.fixture

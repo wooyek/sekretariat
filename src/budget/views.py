@@ -142,23 +142,12 @@ class ApplicationUpdateBase(AbstractAuthorizedView, UpdateView):
         user = self.request.user
         return user == self.get_object().requester or is_operations(user)
 
-    def get_form(self, form_class=None):
-        form = super().get_form(form_class)
-        form.fields['account'].readonly = True
-        self.clean_decisions(form)
-        return form
-
-    def clean_decisions(self, form):
-        if form.instance.account:
-            # noinspection PyAttributeOutsideInit
-            self.clean_decisions = True
-
-    def get_form_kwargs(self):
-        return super().get_form_kwargs()
+    def decisions_clean_required(self, item):
+        return not item.can_update()
 
     def get(self, request, *args, **kwargs):
         r = super().get(request, *args, **kwargs)
-        if self.object.decisions.exists():
+        if self.decisions_clean_required(self.object):
             messages.warning(request, "Zmiana zapotrzebowania skutkuje anulowaniem wszystkich decyzji. "
                                       "Prośby o podjęcie decyzji zostaną wysłane ponownie. "
                                       "Cofnij w przeglądarce by anulować operację."
@@ -167,24 +156,27 @@ class ApplicationUpdateBase(AbstractAuthorizedView, UpdateView):
 
     def form_valid(self, form):
         item = form.instance
-        if self.clean_decisions:
+        self.process_decisions(item)
+        try:
+            return super().form_valid(form)
+        finally:
+            form.instance.send_notifications()
+
+    def process_decisions(self, item):
+        if self.decisions_clean_required(item):
             models.Decision.clean_decisions(item)
         item.approval = None
-        return super().form_valid(form)
 
 
 class ApplicationAccount(ApplicationUpdateBase):
     fields = 'account', 'date',
 
+    def decisions_clean_required(self, item):
+        return not item.can_change_account()
+
 
 class ApplicationUpdate(ApplicationUpdateBase):
-    fields = 'amount', 'date', 'title', 'description', 'manager', 'account'
-
-    def form_valid(self, form):
-        try:
-            return super().form_valid(form)
-        finally:
-            form.instance.send_notifications()
+    fields = 'amount', 'date', 'title', 'description', 'manager',
 
 
 class DecisionBase(AbstractAuthorizedView):

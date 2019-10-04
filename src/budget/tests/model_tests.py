@@ -6,8 +6,8 @@ import logging
 import pytest
 from mock import patch
 
-from .. import models
 from . import factories
+from .. import models
 
 log = logging.getLogger(__name__)
 
@@ -63,3 +63,33 @@ class ApplicationTest(object):
         account = factories.AccountFactory()
         item.account = account
         item.save()
+
+    @pytest.mark.parametrize(
+        "kind, approval, ok", [
+            (models.DecisionKind.manager, True, True),
+            (models.DecisionKind.accountant, True, True),
+            (models.DecisionKind.control, True, False),
+            (models.DecisionKind.control, False, False),
+            (models.DecisionKind.control, None, True),
+        ]
+    )
+    def test_account_change_available(self, kind, approval, ok):
+        decision = factories.DecisionFactory(kind=kind, approval=approval)
+        assert decision.application.can_change_account() == ok
+
+    @pytest.mark.parametrize(
+        "kind, approval, ok", [
+            (models.DecisionKind.manager, True, False),
+            (models.DecisionKind.manager, False, False),
+            (models.DecisionKind.manager, None, True),
+            (models.DecisionKind.accountant, True, False),
+            (models.DecisionKind.accountant, False, False),
+            (models.DecisionKind.accountant, None, True),
+            (models.DecisionKind.control, True, False),
+            (models.DecisionKind.control, False, False),
+            (models.DecisionKind.control, None, True),
+        ]
+    )
+    def test_account_change_available(self, kind, approval, ok):
+        decision = factories.DecisionFactory(kind=kind, approval=approval)
+        assert decision.application.can_update() == ok

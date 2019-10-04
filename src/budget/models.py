@@ -155,6 +155,14 @@ class Application(BaseModel):
 
         super().save(force_insert, force_update, using, update_fields)
 
+    def can_update(self):
+        return not self.decisions.filter(approval__isnull=False).exists()
+
+    def can_change_account(self):
+        # After last decision account change is not available
+        decision = self.get_decision(WORKFLOW[-1])
+        return decision is None or decision.approval is None
+
     def get_decision(self, kind):
         return self.decisions.filter(kind=kind).first()
 

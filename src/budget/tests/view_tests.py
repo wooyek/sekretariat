@@ -3,15 +3,15 @@ import logging
 
 import faker
 import pytest
-from budget.tests.conftest import get_client
 from django import test
 from django.shortcuts import resolve_url
 from mock import patch
 from pytest_lazyfixture import lazy_fixture
 
+from budget.tests.conftest import get_client
 from website.misc.testing import assert_no_form_errors, model_to_request_data_dict
-from .. import models
 from . import factories
+from .. import models, views
 
 log = logging.getLogger(__name__)
 fake = faker.Faker()
@@ -157,8 +157,74 @@ class ExpenditureCreateViewTests(object):
         assert response.status_code == 302
 
 
+# noinspection PyMethodMayBeStatic
 @pytest.mark.django_db
-class ApplicationUpdateViewTests(object):
+class ApplicationAccountViewTests(object):
+    def test_get(self, team_user):
+        item = factories.ApplicationFactory(requester=team_user)
+        url = resolve_url("budget:ApplicationAccount", item.pk)
+        response = get_client(team_user).get(url)
+        assert response.status_code == 200
+        assert len(response.context_data['messages']) == 0
+
+    @pytest.mark.parametrize(
+        "kind, approval, ok", [
+            (models.DecisionKind.manager, True, False),
+            (models.DecisionKind.manager, False, False),
+            (models.DecisionKind.manager, None, True),
+            (models.DecisionKind.accountant, True, False),
+            (models.DecisionKind.accountant, False, False),
+            (models.DecisionKind.accountant, None, True),
+        ]
+    )
+    def test_with_decissions(self, kind, approval, ok, team_user):
+        decission = factories.DecisionFactory(
+            kind=kind, approval=approval, application__requester=team_user,
+        )
+        url = resolve_url("budget:ApplicationAccount", decission.application.pk)
+        response = get_client(team_user).get(url)
+        assert response.status_code == 200
+        assert len(response.context_data['messages']) == 0
+
+    def test_with_decisions(self, team_user):
+        decission = factories.DecisionFactory(
+            kind=models.DecisionKind.control,
+            application__requester=team_user,
+        )
+        url = resolve_url("budget:ApplicationAccount", decission.application.pk)
+        response = get_client(team_user).get(url)
+        assert response.status_code == 200
+        messages = [m.message for m in response.context_data['messages']]
+        msg = messages[0]
+        log.debug("msg: %s", msg)
+        assert msg.startswith('Zmiana zapotrzebowania skutkuje')
+
+    @pytest.mark.parametrize(
+        "kind, approval, result", [
+            (models.DecisionKind.manager, True, True),
+            (models.DecisionKind.manager, False, False),
+            (models.DecisionKind.manager, None, None),
+            (models.DecisionKind.accountant, True, True),
+            (models.DecisionKind.accountant, False, False),
+            (models.DecisionKind.accountant, None, None),
+            (models.DecisionKind.control, True, None),
+            (models.DecisionKind.control, False, None),
+            (models.DecisionKind.control, None, None),
+        ]
+    )
+    def test_process_decisions(self, kind, approval, result):
+        decision = factories.DecisionFactory(
+            kind=kind, approval=approval
+        )
+        view = views.ApplicationAccount()
+        view.process_decisions(decision.application)
+        decision.refresh_from_db()
+        assert decision.approval is result
+
+
+# noinspection PyMethodMayBeStatic
+@pytest.mark.django_db
+class ApplicationUpdateViewTest(object):
 
     @patch("budget.models.Application.send_approval_request")
     def test_post(self, send_approval_request, accountant, manager):
@@ -174,6 +240,110 @@ class ApplicationUpdateViewTests(object):
         assert send_approval_request.call_count == 1
         args, kwargs = send_approval_request.call_args
         assert manager == args[0]
+
+    @pytest.mark.parametrize(
+        "kind, approval, result", [
+            (models.DecisionKind.manager, True, None),
+            (models.DecisionKind.manager, False, None),
+            (models.DecisionKind.manager, None, None),
+            (models.DecisionKind.accountant, True, None),
+            (models.DecisionKind.accountant, False, None),
+            (models.DecisionKind.accountant, None, None),
+            (models.DecisionKind.control, True, None),
+            (models.DecisionKind.control, False, None),
+            (models.DecisionKind.control, None, None),
+        ]
+    )
+    def test_process_decisions(self, kind, approval, result):
+        decision = factories.DecisionFactory(
+            kind=kind, approval=approval
+        )
+        view = views.ApplicationUpdate()
+        view.process_decisions(decision.application)
+        decision.refresh_from_db()
+        assert decision.approval is result
+
+    def test_get(self, team_user):
+        item = factories.ApplicationFactory(requester=team_user)
+        url = resolve_url("budget:ApplicationUpdate", item.pk)
+        response = get_client(team_user).get(url)
+        assert response.status_code == 200
+        assert len(response.context_data['messages']) == 0
+
+    def test_with_decisions(self, team_user):
+        decission = factories.DecisionFactory(
+            kind=models.DecisionKind.manager,
+            application__requester=team_user,
+        )
+        url = resolve_url("budget:ApplicationUpdate", decission.application.pk)
+        response = get_client(team_user).get(url)
+        assert response.status_code == 200
+        messages = [m.message for m in response.context_data['messages']]
+        msg = messages[0]
+        log.debug("msg: %s", msg)
+        assert msg.startswith('Zmiana zapotrzebowania skutkuje')
+
+    def test_anonymous(self):
+        item = factories.ApplicationFactory()
+        url = resolve_url("budget:ApplicationUpdate", item.pk)
+        response = test.Client().get(url)
+        assert response.status_code == 302
+
+    def test_forbidden(self, authenticated_client):
+        item = factories.ApplicationFactory()
+        url = resolve_url("budget:ApplicationUpdate", item.pk)
+        response = authenticated_client.get(url)
+        assert response.status_code == 403
+
+    def test_staff_get(self, staff_client):
+        item = factories.ApplicationFactory()
+        url = resolve_url("budget:ApplicationUpdate", item.pk)
+        response = staff_client.get(url)
+        assert response.status_code == 403
+
+    def test_control_get(self, control):
+        item = factories.ApplicationFactory()
+        url = resolve_url("budget:ApplicationUpdate", item.pk)
+        response = get_client(control).get(url)
+        assert response.status_code == 200
+
+    def test_accountant_get(self, accountant):
+        item = factories.ApplicationFactory()
+        url = resolve_url("budget:ApplicationUpdate", item.pk)
+        response = get_client(accountant).get(url)
+        assert response.status_code == 200
+
+
+# noinspection PyMethodMayBeStatic
+@pytest.mark.django_db
+class ApplicationListUserTests(object):
+
+    def test_redirect_to_user_list(self, team_user):
+        url = resolve_url("budget:ApplicationList")
+        response = get_client(team_user).get(url)
+        assert_no_form_errors(response)
+        assert response.status_code == 302
+        assert response.url == resolve_url("budget:ApplicationListUser", team_user.pk)
+
+    def test_get(self, team_user):
+        url = resolve_url("budget:ApplicationListUser", team_user.pk)
+        response = get_client(team_user).get(url)
+        assert response.status_code == 200
+
+    def test_anonymous(self):
+        url = resolve_url("budget:ApplicationListUser", 666)
+        response = test.Client().get(url)
+        assert response.status_code == 302
+
+    def test_forbidden(self, authenticated_client):
+        url = resolve_url("budget:ApplicationListUser", 666)
+        response = authenticated_client.get(url)
+        assert response.status_code == 403
+
+    def test_staff_get(self, staff_client):
+        url = resolve_url("budget:ApplicationListUser", 666)
+        response = staff_client.get(url)
+        assert response.status_code == 200
 
 
 # noinspection PyMethodMayBeStatic
