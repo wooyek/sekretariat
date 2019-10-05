@@ -425,10 +425,12 @@ class DecisionUpdateViewTests(object):
         assert response.status_code == 403
 
     def test_accountant2(self, accountant_client):
-        item = factories.DecisionFactory()
+        account = factories.AccountFactory()
+        item = factories.DecisionFactory(application__account=account)
         url = resolve_url("budget:DecisionUpdate", item.pk, int(models.DecisionKind.accountant))
         response = accountant_client.get(url)
         assert response.status_code == 200
+        assert 'Change account or date' in str(response.content)
 
     def test_control(self, control_client):
         item = factories.DecisionFactory()

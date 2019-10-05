@@ -21,7 +21,7 @@ def get_client(user):
 
 # noinspection PyUnusedLocal
 @pytest.fixture
-def can_add_application():
+def add_application():
     from django.contrib.contenttypes.models import ContentType
     from budget.models import Application
     content_type = ContentType.objects.get_for_model(Application)
@@ -29,12 +29,22 @@ def can_add_application():
     permission, created = Permission.objects.get_or_create(codename='add_application', content_type=content_type)
     return permission
 
+# noinspection PyUnusedLocal
+@pytest.fixture
+def view_budget():
+    from django.contrib.contenttypes.models import ContentType
+    from budget.models import Budget
+    content_type = ContentType.objects.get_for_model(Budget)
+    from django.contrib.auth.models import Permission
+    permission, created = Permission.objects.get_or_create(codename='view_budget', content_type=content_type)
+    return permission
+
 
 @pytest.fixture
-def team_user(can_add_application):
+def team_user(add_application):
     user = UserFactory.create(is_superuser=False, is_staff=False)
     team, new = Group.objects.get_or_create(name=settings.BUDGET_TEAM_GROUP)
-    team.permissions.add(can_add_application)
+    team.permissions.add(add_application)
     team.user_set.add(user)
     return user
 
@@ -45,19 +55,21 @@ def team_client(team_user):
 
 
 @pytest.fixture
-def accountant(can_add_application):
+def accountant(add_application, view_budget):
     user = UserFactory.create(is_superuser=False, is_staff=False)
     team, new = Group.objects.get_or_create(name=settings.BUDGET_ACCOUNTANTS_GROUP)
-    team.permissions.add(can_add_application)
+    team.permissions.add(add_application)
+    team.permissions.add(view_budget)
     team.user_set.add(user)
     return user
 
 
 @pytest.fixture
-def control(can_add_application):
+def control(add_application, view_budget):
     user = UserFactory.create(is_superuser=False, is_staff=False)
     team, new = Group.objects.get_or_create(name=settings.BUDGET_CONTROL_GROUP)
-    team.permissions.add(can_add_application)
+    team.permissions.add(add_application)
+    team.permissions.add(view_budget)
     team.user_set.add(user)
     return user
 
