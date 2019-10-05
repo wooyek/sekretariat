@@ -18,7 +18,6 @@
           <tr>
             <th scope="row">{{ object.get_field_name('budget') }}</th>
             <td>
-                {{ perms.budget }}
               {% if object.budget %}
                 {% if perms.budget.view_budget %}
                   {% if object.amount_available > 0 %}
