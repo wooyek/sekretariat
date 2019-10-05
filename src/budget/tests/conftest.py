@@ -89,10 +89,10 @@ def control_client(control):
 
 
 @pytest.fixture
-def manager(can_add_application):
+def manager(add_application):
     user = UserFactory.create(is_superuser=False, is_staff=False)
     team, new = Group.objects.get_or_create(name=settings.BUDGET_MANAGERS_GROUP)
-    team.permissions.add(can_add_application)
+    team.permissions.add(add_application)
     team.user_set.add(user)
     return user
 
