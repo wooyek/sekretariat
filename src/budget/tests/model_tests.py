@@ -111,4 +111,3 @@ class ApplicationTest(object):
         factories.DecisionFactory(kind=models.DecisionKind.accountant, application__date=pendulum.today())
         item = models.Application.get_next_waiting_application(kind=models.DecisionKind.accountant)
         assert item is None
-
