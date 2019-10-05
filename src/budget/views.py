@@ -248,6 +248,3 @@ class DecisionUpdate(DecisionBase, UpdateView):
     def setup_expenditure(self):
         self.object = self.get_object()
         self.application = self.object.application
-
-    def get_success_url(self):
-        return resolve_url("budget:DecisionUpdate", self.kind, self.object.pk)

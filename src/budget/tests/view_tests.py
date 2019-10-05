@@ -351,31 +351,31 @@ class ApplicationListUserTests(object):
 class DecisionUpdateViewTests(object):
     def test_anonymous(self, client):
         item = factories.DecisionFactory()
-        url = resolve_url("budget:DecisionUpdate", int(models.DecisionKind.control), item.pk)
+        url = resolve_url("budget:DecisionUpdate", item.pk, int(models.DecisionKind.control))
         response = client.get(url)
         assert response.status_code == 302
 
     def test_admin(self, admin_client):
         item = factories.DecisionFactory()
-        url = resolve_url("budget:DecisionUpdate", int(models.DecisionKind.control), item.pk)
+        url = resolve_url("budget:DecisionUpdate", item.pk, int(models.DecisionKind.control))
         response = admin_client.get(url)
         assert response.status_code == 403
 
     def test_team(self, team_client):
         item = factories.DecisionFactory()
-        url = resolve_url("budget:DecisionUpdate", int(models.DecisionKind.control), item.pk)
+        url = resolve_url("budget:DecisionUpdate", item.pk, int(models.DecisionKind.control))
         response = team_client.get(url)
         assert response.status_code == 403
 
     def test_accountant(self, accountant_client):
         item = factories.DecisionFactory()
-        url = resolve_url("budget:DecisionUpdate", int(models.DecisionKind.accountant), item.pk)
+        url = resolve_url("budget:DecisionUpdate", item.pk, int(models.DecisionKind.control))
         response = accountant_client.get(url)
         assert response.status_code == 200
 
     def test_control(self, control_client):
         item = factories.DecisionFactory()
-        url = resolve_url("budget:DecisionUpdate", int(models.DecisionKind.control), item.pk)
+        url = resolve_url("budget:DecisionUpdate", item.pk, int(models.DecisionKind.control))
         response = control_client.get(url)
         assert response.status_code == 200
 
@@ -459,17 +459,18 @@ class DecisionCreateViewTests(object):
 
 @pytest.mark.django_db
 @pytest.mark.parametrize(
-    "client", [
-        lazy_fixture('admin_client'),
-        lazy_fixture('team_client'),
-        lazy_fixture('accountant_client'),
-        lazy_fixture('control_client'),
+    'client, expenditures', [
+        (lazy_fixture('admin_client'), True),
+        (lazy_fixture('team_client'), True),
+        (lazy_fixture('accountant_client'), True),
+        (lazy_fixture('control_client'), True),
     ]
 )
 class HomeViewTest(object):
     # noinspection PyMethodMayBeStatic
-    def test_applications_visible(self, client):
+    def test_applications_visible(self, client, expenditures):
         url = resolve_url("HomeView")
         response = client.get(url)
         assert response.status_code == 200
-        assert "Expenditures" in str(response.content)
+        assert ('<h5 class="card-header">Expenditures</h5>' in str(response.content)) is expenditures
+        assert ('Expenditures</a>' in str(response.content)) is expenditures

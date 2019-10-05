@@ -11,7 +11,7 @@
 
         <ul class="navbar-nav mr-auto">
 
-          {% if perms.budget.can_create_application %}
+          {% if perms.budget.add_application %}
           <li class="nav-item active">
             <a class="nav-link" href="{{ url('budget:ApplicationList') }}">{% trans %}Expenditures{% endtrans %}</a>
           </li>
