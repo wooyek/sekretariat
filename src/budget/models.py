@@ -221,6 +221,10 @@ class Application(BaseModel):
         subject = subject.format(**ctx)
         send_mail_template(template, ctx, subject, to=user.email)
 
+    @classmethod
+    def get_next_waiting_application(cls, kind):
+        return cls.objects.all().exclude(decisions__kind=kind, decisions__approval__isnull=False).order_by("-date").first()
+
 
 class DecisionKind(ChoicesIntEnum):
     manager = 100

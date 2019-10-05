@@ -15,5 +15,5 @@ urlpatterns = [
     path('expenditure/<int:pk>/account', v.ApplicationAccount.as_view(), name='ApplicationAccount'),
     path('expenditure/<int:pk>/', v.ApplicationDetail.as_view(), name='ApplicationDetail'),
     path('expenditure/<int:pk>/<int:kind>/create', v.DecisionCreate.as_view(), name='DecisionCreate'),
-    path('expenditure/sign-off/<int:kind>/<int:pk>/update', v.DecisionUpdate.as_view(), name='DecisionUpdate'),
+    path('decision/<int:pk>/update/<int:kind>/', v.DecisionUpdate.as_view(), name='DecisionUpdate'),
 ]

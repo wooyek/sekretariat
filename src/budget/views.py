@@ -228,7 +228,14 @@ class DecisionBase(AbstractAuthorizedView):
         return super().get_context_data(**kwargs)
 
     def get_success_url(self):
-        return resolve_url("budget:DecisionUpdate", self.kind, self.object.pk)
+        next = models.Application.get_next_waiting_application(self.kind)
+        if next is None:
+            return resolve_url("budget:ApplicationList")
+
+        decision = next.decisions.filter(kind=self.kind).first()
+        if decision:
+            return resolve_url("budget:DecisionUpdate", decision.pk, self.kind)
+        return resolve_url("budget:DecisionCreate", next.pk, self.kind)
 
 
 class DecisionCreate(DecisionBase, CreateView):

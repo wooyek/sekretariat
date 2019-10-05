@@ -3,6 +3,7 @@
 
 import logging
 
+import pendulum
 import pytest
 from mock import patch
 
@@ -93,3 +94,21 @@ class ApplicationTest(object):
     def test_update_possible(self, kind, approval, ok):
         decision = factories.DecisionFactory(kind=kind, approval=approval)
         assert decision.application.can_update() == ok
+
+    def test_next(self):
+        factories.DecisionFactory(kind=models.DecisionKind.accountant, application__date=pendulum.today())
+        decision = factories.DecisionFactory(kind=models.DecisionKind.manager, application__date=pendulum.yesterday())
+        item = models.Application.get_next_waiting_application(kind=models.DecisionKind.accountant)
+        assert item == decision.application
+
+    def test_next2(self):
+        factories.DecisionFactory(kind=models.DecisionKind.accountant, application__date=pendulum.today())
+        decision = factories.DecisionFactory(kind=models.DecisionKind.accountant, approval=None, application__date=pendulum.yesterday())
+        item = models.Application.get_next_waiting_application(kind=models.DecisionKind.accountant)
+        assert item == decision.application
+
+    def test_no_next(self):
+        factories.DecisionFactory(kind=models.DecisionKind.accountant, application__date=pendulum.today())
+        item = models.Application.get_next_waiting_application(kind=models.DecisionKind.accountant)
+        assert item is None
+
