@@ -371,9 +371,21 @@ class DecisionUpdateViewTests(object):
         item = factories.DecisionFactory()
         url = resolve_url("budget:DecisionUpdate", item.pk, int(models.DecisionKind.control))
         response = accountant_client.get(url)
+        assert response.status_code == 403
+
+    def test_accountant2(self, accountant_client):
+        item = factories.DecisionFactory()
+        url = resolve_url("budget:DecisionUpdate", item.pk, int(models.DecisionKind.accountant))
+        response = accountant_client.get(url)
         assert response.status_code == 200
 
     def test_control(self, control_client):
+        item = factories.DecisionFactory()
+        url = resolve_url("budget:DecisionUpdate", item.pk, int(models.DecisionKind.accountant))
+        response = control_client.get(url)
+        assert response.status_code == 403
+
+    def test_control2(self, control_client):
         item = factories.DecisionFactory()
         url = resolve_url("budget:DecisionUpdate", item.pk, int(models.DecisionKind.control))
         response = control_client.get(url)
