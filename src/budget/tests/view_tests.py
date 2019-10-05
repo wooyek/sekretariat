@@ -178,7 +178,7 @@ class ApplicationAccountViewTests(object):
         ]
     )
     def test_with_decissions(self, kind, approval, ok, team_user):
-        decission = factories.DecisionFactory(
+        decission = factories.ApplicationFactory(
             kind=kind, approval=approval, application__requester=team_user,
         )
         url = resolve_url("budget:ApplicationAccount", decission.application.pk)
@@ -187,7 +187,7 @@ class ApplicationAccountViewTests(object):
         assert len(response.context_data['messages']) == 0
 
     def test_with_decisions(self, team_user):
-        decission = factories.DecisionFactory(
+        decission = factories.ApplicationFactory(
             kind=models.DecisionKind.control,
             application__requester=team_user,
         )
@@ -213,7 +213,7 @@ class ApplicationAccountViewTests(object):
         ]
     )
     def test_process_decisions(self, kind, approval, result):
-        decision = factories.DecisionFactory(
+        decision = factories.ApplicationFactory(
             kind=kind, approval=approval
         )
         view = views.ApplicationAccount()
@@ -255,7 +255,7 @@ class ApplicationUpdateViewTest(object):
         ]
     )
     def test_process_decisions(self, kind, approval, result):
-        decision = factories.DecisionFactory(
+        decision = factories.ApplicationFactory(
             kind=kind, approval=approval
         )
         view = views.ApplicationUpdate()
@@ -271,7 +271,7 @@ class ApplicationUpdateViewTest(object):
         assert len(response.context_data['messages']) == 0
 
     def test_with_decisions(self, team_user):
-        decission = factories.DecisionFactory(
+        decission = factories.ApplicationFactory(
             kind=models.DecisionKind.manager,
             application__requester=team_user,
         )
@@ -348,46 +348,97 @@ class ApplicationListUserTests(object):
 
 # noinspection PyMethodMayBeStatic
 @pytest.mark.django_db
-class DecisionUpdateViewTests(object):
+class ApplicationDetailTest(object):
+
     def test_anonymous(self, client):
-        item = factories.DecisionFactory()
-        url = resolve_url("budget:DecisionUpdate", item.pk, int(models.DecisionKind.control))
+        item = factories.ApplicationFactory()
+        url = resolve_url("budget:ApplicationDetail", item.pk)
         response = client.get(url)
         assert response.status_code == 302
 
     def test_admin(self, admin_client):
-        item = factories.DecisionFactory()
-        url = resolve_url("budget:DecisionUpdate", item.pk, int(models.DecisionKind.control))
+        item = factories.ApplicationFactory()
+        url = resolve_url("budget:ApplicationDetail", item.pk)
         response = admin_client.get(url)
-        assert response.status_code == 403
+        assert response.status_code == 200
 
     def test_team(self, team_client):
-        item = factories.DecisionFactory()
-        url = resolve_url("budget:DecisionUpdate", item.pk, int(models.DecisionKind.control))
+        item = factories.ApplicationFactory()
+        url = resolve_url("budget:ApplicationDetail", item.pk)
         response = team_client.get(url)
         assert response.status_code == 403
 
     def test_accountant(self, accountant_client):
-        item = factories.DecisionFactory()
-        url = resolve_url("budget:DecisionUpdate", item.pk, int(models.DecisionKind.control))
+        item = factories.ApplicationFactory()
+        url = resolve_url("budget:ApplicationDetail", item.pk)
+        response = accountant_client.get(url)
+        assert response.status_code == 302
+        assert response.url == resolve_url("budget:DecisionCreate", item.pk, int(models.DecisionKind.accountant))
+
+    def test_control(self, control_client):
+        item = factories.ApplicationFactory()
+        url = resolve_url("budget:ApplicationDetail", item.pk)
+        response = control_client.get(url)
+        assert response.status_code == 302
+        assert response.url == resolve_url("budget:DecisionCreate", item.pk, int(models.DecisionKind.control))
+
+    def test_accountant_update(self, accountant_client):
+        item = factories.DecisionFactory(kind=models.DecisionKind.accountant)
+        url = resolve_url("budget:ApplicationDetail", item.application_id)
+        response = accountant_client.get(url)
+        assert response.status_code == 302
+        assert response.url == resolve_url("budget:DecisionUpdate", item.pk, int(models.DecisionKind.accountant))
+
+    def test_control_update(self, control_client):
+        item = factories.DecisionFactory(kind=models.DecisionKind.control)
+        url = resolve_url("budget:ApplicationDetail", item.application_id)
+        response = control_client.get(url)
+        assert response.status_code == 302
+        assert response.url == resolve_url("budget:DecisionUpdate", item.pk, int(models.DecisionKind.control))
+
+
+# noinspection PyMethodMayBeStatic
+@pytest.mark.django_db
+class DecisionUpdateViewTests(object):
+    def test_anonymous(self, client):
+        item = factories.ApplicationFactory()
+        url = resolve_url("budget:DecisionUpdate", item.pk)
+        response = client.get(url)
+        assert response.status_code == 302
+
+    def test_admin(self, admin_client):
+        item = factories.ApplicationFactory()
+        url = resolve_url("budget:DecisionUpdate", item.pk)
+        response = admin_client.get(url)
+        assert response.status_code == 403
+
+    def test_team(self, team_client):
+        item = factories.ApplicationFactory()
+        url = resolve_url("budget:DecisionUpdate", item.pk)
+        response = team_client.get(url)
+        assert response.status_code == 403
+
+    def test_accountant(self, accountant_client):
+        item = factories.ApplicationFactory()
+        url = resolve_url("budget:DecisionUpdate", item.pk)
         response = accountant_client.get(url)
         assert response.status_code == 403
 
     def test_accountant2(self, accountant_client):
-        item = factories.DecisionFactory()
+        item = factories.ApplicationFactory()
         url = resolve_url("budget:DecisionUpdate", item.pk, int(models.DecisionKind.accountant))
         response = accountant_client.get(url)
         assert response.status_code == 200
 
     def test_control(self, control_client):
-        item = factories.DecisionFactory()
+        item = factories.ApplicationFactory()
         url = resolve_url("budget:DecisionUpdate", item.pk, int(models.DecisionKind.accountant))
         response = control_client.get(url)
         assert response.status_code == 403
 
     def test_control2(self, control_client):
-        item = factories.DecisionFactory()
-        url = resolve_url("budget:DecisionUpdate", item.pk, int(models.DecisionKind.control))
+        item = factories.ApplicationFactory()
+        url = resolve_url("budget:DecisionUpdate", item.pk)
         response = control_client.get(url)
         assert response.status_code == 200
 
@@ -421,12 +472,12 @@ class DecisionCreateViewTests(object):
 
     def test_control(self, control_client):
         item = factories.ApplicationFactory()
-        url = resolve_url("budget:DecisionCreate", item.pk, int(models.DecisionKind.control))
+        url = resolve_url("budget:DecisionCreate", item.pk)
         response = control_client.get(url)
         assert response.status_code == 200
 
     def test_approve(self, control_client):
-        next = factories.DecisionFactory(kind=models.DecisionKind.accountant).application
+        next = factories.ApplicationFactory(kind=models.DecisionKind.accountant).application
         item = factories.ApplicationFactory()
         control = int(models.DecisionKind.control)
         url = resolve_url("budget:DecisionCreate", item.pk, control)
@@ -452,13 +503,13 @@ class DecisionCreateViewTests(object):
         assert decission.approval is False
 
     def test_success_url_create_next(self):
-        item = factories.DecisionFactory(kind=models.DecisionKind.manager).application
+        item = factories.ApplicationFactory(kind=models.DecisionKind.manager).application
         view = views.DecisionBase()
         view.kind = int(models.DecisionKind.accountant)
         assert view.get_success_url() == resolve_url("budget:DecisionCreate", item.pk, int(models.DecisionKind.accountant))
 
     def test_success_url_update_next(self):
-        item = factories.DecisionFactory(kind=models.DecisionKind.accountant, approval=None)
+        item = factories.ApplicationFactory(kind=models.DecisionKind.accountant, approval=None)
         view = views.DecisionBase()
         view.kind = int(models.DecisionKind.accountant)
         assert view.get_success_url() == resolve_url("budget:DecisionUpdate", item.pk, int(models.DecisionKind.accountant))

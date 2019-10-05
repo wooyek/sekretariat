@@ -98,7 +98,7 @@ class ApplicationDetail(AbstractAuthorizedView, DetailView):
         kind = self.get_decision_kind()
         if kind:
             sign_off = self.object.get_decision(kind)
-            return self.to_sign_off(sign_off, int(kind))
+            return self.to_decision(sign_off, int(kind))
 
         if not self.request.user.is_staff:
             return super(ApplicationDetail, self).handle_forbidden()
@@ -111,9 +111,9 @@ class ApplicationDetail(AbstractAuthorizedView, DetailView):
         if self.request.user == self.object.manager:
             return models.DecisionKind.manager
 
-    def to_sign_off(self, sign_off, kind):
-        if sign_off:
-            return redirect('budget:DecisionUpdate', kind, sign_off.pk)
+    def to_decision(self, decision, kind):
+        if decision:
+            return redirect('budget:DecisionUpdate', decision.pk, kind)
         else:
             return redirect('budget:DecisionCreate', self.object.pk, kind)
 
