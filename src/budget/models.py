@@ -238,7 +238,7 @@ class Decision(BaseModel):
     ts = models.DateTimeField(_('time stamp'), default=datetime.now)
     kind = models.PositiveSmallIntegerField(_('approval step'), choices=DecisionKind.choices())
     approval = models.NullBooleanField(_('approval'))
-    notes = models.TextField(_('notes'), null=True, blank=True)
+    notes = models.TextField(_('notes'), null=True, blank=True, help_text="Notatka nie jest wymagana do podjęcia decyzji.")
 
     class Meta:
         verbose_name = _('decision')

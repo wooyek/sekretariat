@@ -1,7 +1,7 @@
 <section id="alerts pt-2">
   {% if messages %}
     {% for message in messages %}
-      <div class="alert {{ message.tags }} alert-warning alert-dismissible fade show mt-1">
+      <div class="alert {{ message.tags }} alert-{{ message.level_tag }} alert-dismissible fade show mt-1">
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
         <div>
           {{ message|safe }}

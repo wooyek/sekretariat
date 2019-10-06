@@ -2,14 +2,14 @@
 {% block content %}
   <div class="row mt-5">
     <div class="col-xl-8 offset-xl-2 ">
-      <div class="card shadow-lg {% if object.approval == True %}border-success{% elif object.approval == False %}border-danger{% endif %}">
+      <div class="card shadow {% if object.approval == True %}border-success{% elif object.approval == False %}border-danger{% endif %}">
         <div class="card-header">{% trans %}Expenditure details{% endtrans %}
           <a class="btn btn-outline-dark btn-sm float-right" href="{{ url("budget:ApplicationUpdate", object.pk) }}"><i
             class="fa fa-fw fa-pencil"></i></a>
         </div>
         <table class="table table-striped table-hover mb-0">
           <tbody>
-          {% for field_name in ['date', 'requester', 'description', 'amount', ] %}
+          {% for field_name in ['date', 'requester', 'title', 'description', 'amount', ] %}
             <tr>
               <th scope="row">{{ object.get_field_name(field_name) }}</th>
               <td>{{ object[field_name] }}</td>
@@ -52,7 +52,7 @@
       </div>
 
       {% if object.account or 1 %}
-      <div class="card mt-5 mb-5 shadow-lg {% if object.approval == True %}border-success{% elif object.approval == False %}border-danger{% endif %}">
+      <div class="card mt-4 shadow {% if object.approval == True %}border-success{% elif object.approval == False %}border-danger{% endif %}">
         <div class="card-header">{% trans %}Approvals{% endtrans %}</div>
         <table class="table table-striped mb-0 table-hover">
           {% for kind, name in decision_kinds %}

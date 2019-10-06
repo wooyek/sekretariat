@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from datetime import timedelta
 
+import reversion
 from django.conf import settings
 from django.contrib import messages
 from django.db import transaction
@@ -129,10 +130,14 @@ class ApplicationCreate(TeamRequiredMixin, CreateView):
 
     def form_valid(self, form):
         form.instance.requester = self.request.user
-        try:
-            return super().form_valid(form)
-        finally:
-            form.instance.send_notifications()
+        with reversion.create_revision():
+            valid = super().form_valid(form)
+            reversion.set_user(self.request.user)
+            reversion.set_comment("Application created")
+        form.instance.send_notifications()
+        msg = 'Zapotrzebowanie "{}" zostało zapisane.'.format(self.object.title)
+        messages.success(self.request, msg)
+        return valid
 
 
 class ApplicationUpdateBase(AbstractAuthorizedView, UpdateView):
@@ -157,10 +162,14 @@ class ApplicationUpdateBase(AbstractAuthorizedView, UpdateView):
     def form_valid(self, form):
         item = form.instance
         self.process_decisions(item)
-        try:
-            return super().form_valid(form)
-        finally:
-            form.instance.send_notifications()
+        with reversion.create_revision():
+            valid = super().form_valid(form)
+            reversion.set_user(self.request.user)
+            reversion.set_comment("Application updated")
+        form.instance.send_notifications()
+        msg = 'Zapotrzebowanie "{}" zostało zaktualizowane.'.format(self.object.title)
+        messages.success(self.request, msg)
+        return valid
 
     def process_decisions(self, item):
         if self.decisions_clean_required(item):
@@ -230,8 +239,12 @@ class DecisionBase(AbstractAuthorizedView):
     def get_success_url(self):
         next = models.Application.get_next_waiting_application(self.kind)
         if next is None:
+            msg = 'Nie ma więcej decyzji do podjęcia.'
+            messages.success(self.request, msg)
             return resolve_url("budget:ApplicationList")
 
+        msg = 'Podejmij następną decyzję.'
+        messages.info(self.request, msg)
         decision = next.decisions.filter(kind=self.kind).first()
         if decision:
             return resolve_url("budget:DecisionUpdate", decision.pk, self.kind)
@@ -239,10 +252,27 @@ class DecisionBase(AbstractAuthorizedView):
 
 
 class DecisionCreate(DecisionBase, CreateView):
-    pass
+
+    def form_valid(self, form):
+        with reversion.create_revision():
+            valid = super().form_valid(form)
+            reversion.set_user(self.request.user)
+            reversion.set_comment("Decision created")
+            msg = 'Decyzja dla "{}" została dodana.'.format(self.application.title)
+            messages.success(self.request, msg)
+            return valid
 
 
 class DecisionUpdate(DecisionBase, UpdateView):
+
+    def form_valid(self, form):
+        with reversion.create_revision():
+            valid = super().form_valid(form)
+            reversion.set_user(self.request.user)
+            reversion.set_comment("Decision updated")
+            msg = 'Decyzja dla "{}" została zaktualizowana.'.format(self.application.title)
+            messages.success(self.request, msg)
+            return valid
 
     # noinspection PyAttributeOutsideInit
     def setup_expenditure(self):
