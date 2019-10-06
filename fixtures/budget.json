@@ -1,2 +1,98 @@
 [
+{
+  "model": "budget.application",
+  "pk": 1,
+  "fields": {
+    "date": "2019-10-13",
+    "amount": "177",
+    "title": "Uk\u0142ad taneczny do Poloneza koncertowego A-dur",
+    "description": "testasa",
+    "requester": [
+      "js@pspo.edu.pl"
+    ],
+    "manager": [
+      "test_manager"
+    ],
+    "submitted": null,
+    "account": null,
+    "budget": null,
+    "approval": null
+  }
+},
+{
+  "model": "budget.application",
+  "pk": 2,
+  "fields": {
+    "date": "2019-10-13",
+    "amount": "177",
+    "title": "Uk\u0142ad taneczny do Poloneza koncertowego A-dur",
+    "description": "testasa",
+    "requester": [
+      "js@pspo.edu.pl"
+    ],
+    "manager": [
+      "test_manager"
+    ],
+    "submitted": null,
+    "account": null,
+    "budget": null,
+    "approval": null
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 1,
+  "fields": {
+    "user": [
+      "test_manager"
+    ],
+    "application": 1,
+    "ts": "2019-10-06T06:14:52.785Z",
+    "kind": 100,
+    "approval": true,
+    "notes": ""
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 2,
+  "fields": {
+    "user": [
+      "test_manager"
+    ],
+    "application": 2,
+    "ts": "2019-10-06T06:15:03.609Z",
+    "kind": 100,
+    "approval": true,
+    "notes": ""
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 3,
+  "fields": {
+    "user": [
+      "test_ksiegowa"
+    ],
+    "application": 1,
+    "ts": "2019-10-06T06:27:35.877Z",
+    "kind": 200,
+    "approval": true,
+    "notes": ""
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 4,
+  "fields": {
+    "user": [
+      "test_ksiegowa"
+    ],
+    "application": 2,
+    "ts": "2019-10-06T06:27:43.768Z",
+    "kind": 200,
+    "approval": true,
+    "notes": ""
+  }
+}
 ]

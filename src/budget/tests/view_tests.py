@@ -3,10 +3,13 @@ import logging
 
 import faker
 import pytest
+from django.http import HttpRequest
+from django.test import RequestFactory
+
 from budget.tests.conftest import get_client
 from django import test
 from django.shortcuts import resolve_url
-from mock import patch
+from mock import patch, MagicMock
 from pytest_lazyfixture import lazy_fixture
 
 from website.misc.testing import assert_no_form_errors, model_to_request_data_dict
@@ -507,18 +510,24 @@ class DecisionCreateViewTests(object):
     def test_success_url_create_next(self):
         item = factories.DecisionFactory(kind=models.DecisionKind.manager).application
         view = views.DecisionBase()
+        view.request = MagicMock(HttpRequest())
+        view.request._messages = MagicMock()
         view.kind = int(models.DecisionKind.accountant)
         assert view.get_success_url() == resolve_url("budget:DecisionCreate", item.pk, int(models.DecisionKind.accountant))
 
     def test_success_url_update_next(self):
         item = factories.DecisionFactory(kind=models.DecisionKind.accountant, approval=None)
         view = views.DecisionBase()
+        view.request = MagicMock(HttpRequest())
+        view.request._messages = MagicMock()
         view.kind = int(models.DecisionKind.accountant)
         assert view.get_success_url() == resolve_url("budget:DecisionUpdate", item.pk, int(models.DecisionKind.accountant))
 
     def test_success_url_list(self):
         view = views.DecisionBase()
         view.kind = int(models.DecisionKind.accountant)
+        view.request = MagicMock(HttpRequest())
+        view.request._messages = MagicMock()
         assert view.get_success_url() == resolve_url("budget:ApplicationList")
 
 
