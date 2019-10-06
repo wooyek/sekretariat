@@ -3,13 +3,11 @@ import logging
 
 import faker
 import pytest
-from django.http import HttpRequest
-from django.test import RequestFactory
-
 from budget.tests.conftest import get_client
 from django import test
+from django.http import HttpRequest
 from django.shortcuts import resolve_url
-from mock import patch, MagicMock
+from mock import MagicMock, patch
 from pytest_lazyfixture import lazy_fixture
 
 from website.misc.testing import assert_no_form_errors, model_to_request_data_dict
