@@ -20,9 +20,10 @@ class DecisionInline(admin.TabularInline):
 
 @admin.register(models.Application)
 class ApplicationAdmin(ImportExportMixin, DynamicLookupMixin, VersionAdmin):
-    list_display = ('amount', 'description', 'budget', 'requester', 'manager',)
-    list_filter = ('budget__account',)
+    list_display = ('date', 'approval', 'pk', 'title', 'amount', 'budget', 'requester', )
+    list_filter = ('approval', 'budget__account', 'requester')
     inlines = [DecisionInline]
+    date_hierarchy = 'date'
 
 
 @admin.register(models.Budget)
