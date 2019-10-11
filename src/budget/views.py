@@ -11,7 +11,7 @@ from django.db.models import Q
 from django.shortcuts import redirect, resolve_url
 from django.utils import timezone
 from django.views.generic.base import ContextMixin
-from django_filters.views import BaseFilterView, FilterMixin
+from django_filters.views import FilterMixin
 from django_powerbank.views import Http400
 from django_powerbank.views.auth import AbstractAuthorizedView
 from pascal_templates import CreateView, ListView, UpdateView
