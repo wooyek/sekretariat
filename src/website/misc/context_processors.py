@@ -76,6 +76,7 @@ class SystemInfoMiddleware(MiddlewareMixin):
 
     def process_template_response(self, request, response):
         # https://docs.djangoproject.com/en/1.10/topics/http/middleware/#process-template-response
-        if hasattr(response, 'context_data'):
-            response.context_data.update(system_info(request))
+        ctx = getattr(response, 'context_data', None)
+        if ctx:
+            ctx.update(system_info(request))
         return response
