@@ -12,7 +12,7 @@ click-log==0.3.2
 colorama==0.4.1           # via crayons
 colorlog==4.0.2
 confusable-homoglyphs==3.2.0  # via django-registration
-crayons==0.2.0
+crayons==0.3.0
 dateparser==0.7.2         # via maya
 defusedxml==0.6.0         # via odfpy, python3-openid, python3-saml, social-auth-core
 diff-match-patch==20181111  # via django-import-export
@@ -30,6 +30,7 @@ django-debug-toolbar==2.0
 django-email-queue==0.23.0
 django-environ==0.4.5
 django-error-views==0.5.1
+django-filters==0.2.1
 django-formtools==2.1
 django-import-export==1.2.0
 django-js-asset==1.2.2    # via django-admin-ordering
@@ -60,7 +61,7 @@ lxml==4.4.1               # via xmlsec
 markdown==3.1.1
 markupsafe==1.1.1         # via jinja2
 maya==0.6.1
-newrelic==5.2.0.127
+newrelic==5.2.1.129
 oauthlib==3.1.0           # via requests-oauthlib, social-auth-core
 odfpy==1.4.0              # via tablib
 openpyxl==3.0.0           # via tablib
