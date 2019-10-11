@@ -157,6 +157,10 @@ class ApplicationList(PermissionRequiredView, FilterViewMixin, PaginationMixin, 
         kwargs['filter'] = ApplicationFilter(self.request.GET, queryset=models.Application.objects.all())
         return super().get_context_data(object_list=object_list, **kwargs)
 
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        return queryset.prefetch_related('decisions', 'requester', 'manager', )
+
 
 class ApplicationDetail(AbstractAuthorizedView, DetailView):
     model = models.Application

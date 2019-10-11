@@ -13,7 +13,7 @@ from django.db import models
 from django.db.models import Q, Sum, signals
 from django.dispatch import receiver
 from django.shortcuts import resolve_url
-from django.utils.functional import SimpleLazyObject
+from django.utils.functional import SimpleLazyObject, cached_property
 from django.utils.translation import ugettext_lazy as _
 from django_powerbank.db.models.base import BaseModel
 from django_powerbank.db.models.fields import ChoicesIntEnum
@@ -164,7 +164,12 @@ class Application(BaseModel):
         return decision is None or decision.approval is None
 
     def get_decision(self, kind):
-        return self.decisions.filter(kind=kind).first()
+        decisions = {i.kind: i for i in self.all_decisions}
+        return decisions.get(kind, None)
+
+    @cached_property
+    def all_decisions(self):
+        return self.decisions.all()
 
     @property
     def amount_available(self):
