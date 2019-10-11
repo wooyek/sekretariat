@@ -30,7 +30,7 @@ django-debug-toolbar==2.0
 django-email-queue==0.23.0
 django-environ==0.4.5
 django-error-views==0.5.1
-django-filters==0.2.1
+django-filter==2.2.0
 django-formtools==2.1
 django-import-export==1.2.0
 django-js-asset==1.2.2    # via django-admin-ordering
