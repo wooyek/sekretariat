@@ -1,13 +1,17 @@
 # -*- coding: utf-8 -*-
 from datetime import timedelta
 
+import django_filters
 import reversion
 from django.conf import settings
 from django.contrib import messages
+from django.core.exceptions import ImproperlyConfigured
 from django.db import transaction
 from django.db.models import Q
 from django.shortcuts import redirect, resolve_url
 from django.utils import timezone
+from django.views.generic.base import ContextMixin
+from django_filters.views import BaseFilterView, FilterMixin
 from django_powerbank.views import Http400
 from django_powerbank.views.auth import AbstractAuthorizedView
 from pascal_templates import CreateView, ListView, UpdateView
@@ -63,7 +67,62 @@ class BudgetUpdate(OperationsRequired, UpdateView):
     model = models.Budget
 
 
-class ApplicationListUser(AbstractAuthorizedView, PaginationMixin, ListView):
+class PermissionRequiredView(AbstractAuthorizedView):
+    """Verify that the current user has all specified permissions."""
+    permission_required = None
+
+    def get_permission_required(self):
+        """
+        Override this method to override the permission_required attribute.
+        Must return an iterable.
+        """
+        if self.permission_required is None:
+            raise ImproperlyConfigured(
+                '{0} is missing the permission_required attribute. Define {0}.permission_required, or override '
+                '{0}.get_permission_required().'.format(self.__class__.__name__)
+            )
+        if isinstance(self.permission_required, str):
+            perms = (self.permission_required,)
+        else:
+            perms = self.permission_required
+        return perms
+
+    def is_authorized(self, *args, **kwargs):
+        """
+        Override this method to customize the way permissions are checked.
+        """
+        perms = self.get_permission_required()
+        return self.request.user.has_perms(perms)
+
+
+class ApplicationFilter(django_filters.FilterSet):
+    class Meta:
+        model = models.Application
+        fields = ['approval', ]  # 'decisions__approval']
+        # fields = {
+        #     'approval': ['isnull', ],
+        #     'decisions__approval': ['exact', 'year__gt'],
+        # }
+
+
+class FilterViewMixin(FilterMixin, ContextMixin):
+
+    def get_context_data(self, **kwargs):
+        filterset_class = self.get_filterset_class()
+        # noinspection PyAttributeOutsideInit
+        self.filter = self.get_filterset(filterset_class)
+
+        if not self.filter.is_bound or self.filter.is_valid() or not self.get_strict():
+            kwargs['object_list'] = self.filter.qs
+        else:
+            # noinspection PyAttributeOutsideInit
+            kwargs['object_list'] = self.filter.queryset.none()
+
+        kwargs['filter'] = self.filter
+        return super().get_context_data(**kwargs)
+
+
+class ApplicationListUser(AbstractAuthorizedView, FilterViewMixin, PaginationMixin, ListView):
     model = models.Application
     paginate_by = 25
 
@@ -75,15 +134,28 @@ class ApplicationListUser(AbstractAuthorizedView, PaginationMixin, ListView):
         queryset = super().get_queryset().filter(Q(requester_id=self.kwargs['pk']) | Q(manager_id=self.kwargs['pk']))
         return queryset
 
+    # def get_context_data(self, *, object_list=None, **kwargs):
+    #     kwargs['filter'] = ApplicationFilter(self.request.GET, queryset=models.Application.objects.all())
+    #     return super().get_context_data(object_list=object_list, **kwargs)
 
-class ApplicationList(OperationsRequired, PaginationMixin, ListView):
+
+class ApplicationList(PermissionRequiredView, FilterViewMixin, PaginationMixin, ListView):
     model = models.Application
+    ordering = 'date'
     paginate_by = 25
+    permission_required = 'budget.view_application'
+
+    def is_authorized(self, *args, **kwargs):
+        return is_operations(self.request.user)
 
     def handle_forbidden(self):
         if self.request.user.has_perms(['budget.add_application']):
             return redirect("budget:ApplicationListUser", self.request.user.pk)
         return super(ApplicationList, self).handle_forbidden()
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        kwargs['filter'] = ApplicationFilter(self.request.GET, queryset=models.Application.objects.all())
+        return super().get_context_data(object_list=object_list, **kwargs)
 
 
 class ApplicationDetail(AbstractAuthorizedView, DetailView):

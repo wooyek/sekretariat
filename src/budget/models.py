@@ -129,8 +129,8 @@ class Application(BaseModel):
     approval = models.NullBooleanField(_('approval'))
 
     class Meta:
-        verbose_name = _('expenditure request')
-        verbose_name_plural = _('expenditure requests')
+        verbose_name = _('application')
+        verbose_name_plural = _('applications')
         ordering = '-date', 'amount',
 
     def __str__(self):

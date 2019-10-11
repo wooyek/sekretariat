@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2019-06-04 09:44+0200\n"
+"POT-Creation-Date: 2019-10-11 17:24+0200\n"
 "PO-Revision-Date: 2016-10-11 17:27+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en_US\n"
@@ -16,7 +16,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.6.0\n"
+"Generated-By: Babel 2.7.0\n"
 
 #: jinja2/django_opt_out/OptOut/success_apologies.html:1
 msgid ""
@@ -53,7 +53,7 @@ msgstr ""
 msgid "<p>Your password was changed.</p>"
 msgstr ""
 
-#: src/budget/jinja2/Application/list.html:19
+#: src/budget/jinja2/Application/list.html:22
 msgid "Account"
 msgstr ""
 
@@ -73,7 +73,7 @@ msgstr ""
 msgid "Admin"
 msgstr ""
 
-#: src/budget/jinja2/Application/list.html:15
+#: src/budget/jinja2/Application/list.html:18
 msgid "Amount"
 msgstr ""
 
@@ -90,7 +90,7 @@ msgstr ""
 msgid "Anuluj termin"
 msgstr ""
 
-#: src/budget/jinja2/Application/list.html:20
+#: src/budget/jinja2/Application/list.html:23
 msgid "Approval"
 msgstr ""
 
@@ -102,7 +102,7 @@ msgstr ""
 msgid "Approve"
 msgstr ""
 
-#: src/budget/models.py:206
+#: src/budget/jinja2/Application/list.html:8 src/budget/models.py:215
 msgid "Approved"
 msgstr ""
 
@@ -173,11 +173,11 @@ msgstr ""
 msgid "Contact"
 msgstr ""
 
-#: jinja2/home.html:14 src/budget/jinja2/Application/list.html:6
+#: jinja2/home.html:14 src/budget/jinja2/Application/list.html:7
 msgid "Create"
 msgstr ""
 
-#: src/budget/jinja2/Application/list.html:13
+#: src/budget/jinja2/Application/list.html:16
 msgid "Date"
 msgstr ""
 
@@ -202,7 +202,7 @@ msgid "Expenditure details"
 msgstr ""
 
 #: jinja2/base/layout/header.html:16 jinja2/home.html:7
-#: src/budget/jinja2/Application/list.html:4
+#: src/budget/jinja2/Application/list.html:5
 msgid "Expenditures"
 msgstr ""
 
@@ -270,7 +270,7 @@ msgstr ""
 msgid "Logout"
 msgstr ""
 
-#: src/budget/jinja2/Application/list.html:18
+#: src/budget/jinja2/Application/list.html:21
 msgid "Manager"
 msgstr ""
 
@@ -377,11 +377,11 @@ msgstr ""
 msgid "Reject"
 msgstr ""
 
-#: src/budget/models.py:206
+#: src/budget/models.py:215
 msgid "Rejected"
 msgstr ""
 
-#: src/budget/jinja2/Application/list.html:16
+#: src/budget/jinja2/Application/list.html:19
 msgid "Requester"
 msgstr ""
 
@@ -429,7 +429,7 @@ msgstr ""
 msgid "Student"
 msgstr ""
 
-#: src/budget/jinja2/Application/list.html:17
+#: src/budget/jinja2/Application/list.html:20
 msgid "Submitted"
 msgstr ""
 
@@ -458,7 +458,7 @@ msgstr ""
 msgid "This is required field"
 msgstr ""
 
-#: src/budget/jinja2/Application/list.html:14
+#: src/budget/jinja2/Application/list.html:17
 msgid "Title"
 msgstr ""
 
@@ -478,7 +478,7 @@ msgstr ""
 msgid "We're sorry for the inconvenience. We should get notified of the error and we'll correct it as soon as possible"
 msgstr ""
 
-#: jinja2/registration/login.html:3
+#: jinja2/registration/login.html:3 src/profil_zaufany/jinja2/pz_login.html:3
 msgid "Welcome! Please sign in."
 msgstr ""
 
@@ -557,11 +557,19 @@ msgstr ""
 msgid "amount"
 msgstr ""
 
-#: src/budget/models.py:129 src/budget/models.py:227
+#: src/budget/models.py:132
+msgid "application"
+msgstr ""
+
+#: src/budget/models.py:133
+msgid "applications"
+msgstr ""
+
+#: src/budget/models.py:129 src/budget/models.py:240
 msgid "approval"
 msgstr ""
 
-#: src/budget/models.py:226
+#: src/budget/models.py:239
 msgid "approval step"
 msgstr ""
 
@@ -577,11 +585,11 @@ msgstr ""
 msgid "date"
 msgstr ""
 
-#: src/budget/models.py:231
+#: src/budget/models.py:244
 msgid "decision"
 msgstr ""
 
-#: src/budget/models.py:232
+#: src/budget/models.py:245
 msgid "decisions"
 msgstr ""
 
@@ -589,20 +597,12 @@ msgstr ""
 msgid "description"
 msgstr ""
 
-#: src/sekretariat/models.py:82
+#: src/sekretariat/models.py:88
 msgid "email"
 msgstr ""
 
-#: src/sekretariat/models.py:80
+#: src/sekretariat/models.py:86
 msgid "event start"
-msgstr ""
-
-#: src/budget/models.py:132
-msgid "expenditure request"
-msgstr ""
-
-#: src/budget/models.py:133
-msgid "expenditure requests"
 msgstr ""
 
 #: src/budget/models.py:46
@@ -629,7 +629,7 @@ msgstr ""
 msgid "name"
 msgstr ""
 
-#: src/budget/models.py:228
+#: src/budget/models.py:241
 msgid "notes"
 msgstr ""
 
@@ -637,15 +637,15 @@ msgstr ""
 msgid "number"
 msgstr ""
 
-#: src/sekretariat/models.py:63
+#: src/sekretariat/models.py:69
 msgid "open office group"
 msgstr ""
 
-#: src/sekretariat/models.py:64
+#: src/sekretariat/models.py:70
 msgid "open office groups"
 msgstr ""
 
-#: src/sekretariat/models.py:87 src/sekretariat/models.py:88
+#: src/sekretariat/models.py:93 src/sekretariat/models.py:94
 msgid "open office slot"
 msgstr ""
 
@@ -653,7 +653,7 @@ msgstr ""
 msgid "requester"
 msgstr ""
 
-#: src/sekretariat/models.py:81
+#: src/sekretariat/models.py:87
 msgid "student name"
 msgstr ""
 
@@ -665,11 +665,11 @@ msgstr ""
 msgid "this week"
 msgstr ""
 
-#: src/budget/models.py:225
+#: src/budget/models.py:238
 msgid "time stamp"
 msgstr ""
 
-#: src/budget/models.py:108 src/sekretariat/models.py:60
+#: src/budget/models.py:108 src/sekretariat/models.py:66
 msgid "title"
 msgstr ""
 
@@ -689,21 +689,21 @@ msgstr ""
 msgid "yesterday"
 msgstr ""
 
-#: src/sekretariat/models.py:112 src/sekretariat/models.py:117
+#: src/sekretariat/models.py:118 src/sekretariat/models.py:123
 #, python-format
 msgid "{start:%Y-%m-%d %H:%M} Prośba o potwierdzenie terminu"
 msgstr ""
 
-#: src/sekretariat/models.py:122
+#: src/sekretariat/models.py:128
 #, python-format
 msgid "{start:%Y-%m-%d %H:%M} Termin anulowany"
 msgstr ""
 
-#: src/budget/models.py:169
+#: src/budget/models.py:178
 msgid "{status}: {title}"
 msgstr ""
 
-#: src/budget/models.py:195
+#: src/budget/models.py:204
 msgid "{title} - expenditure for {amount} requires approval"
 msgstr ""
 
@@ -732,5 +732,14 @@ msgstr ""
 #~ msgstr ""
 
 #~ msgid "Forgot your password?"
+#~ msgstr ""
+
+#~ msgid "expenditure request"
+#~ msgstr ""
+
+#~ msgid "expenditure requests"
+#~ msgstr ""
+
+#~ msgid "Zaakcetowane"
 #~ msgstr ""
 

@@ -1,9 +1,12 @@
 {% extends "base/default.html" %}
+{% from "bootstrap/forms/horizontal.html" import render_form with context %}
 {% block main %}
   <div class="container-fluid">
     <h1 class="text-center mt-3 mb-4">{% trans %}Expenditures{% endtrans %}</h1>
     <p>
       <a href="{{ url('budget:ApplicationCreate') }}" class="btn btn-secondary">{% trans %}Create{% endtrans %}</a>
+      <a href="?approval=true" class="btn btn-secondary">{% trans %}Approved{% endtrans %}</a>
+
     </p>
     <div class="card">
       <table class="table table-striped mb-0">
@@ -23,7 +26,7 @@
         <tbody>
         {% for item in object_list %}
           <tr>
-            <th scope="row" rowspan="1">{{ loop.index }}</th>
+            <th scope="row" rowspan="1">{{ item.pk }}</th>
             <td>
               <a href="{{ url("budget:ApplicationDetail", item.pk) }}">
                 {{ item.date|datetimeformat("YYYY-MM-dd") }}

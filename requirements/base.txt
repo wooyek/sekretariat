@@ -22,6 +22,7 @@ django-debug-toolbar
 django-email-queue
 django-environ
 django-error-views
+django-filters
 django-formtools
 django-import-export
 # django-localflavor
