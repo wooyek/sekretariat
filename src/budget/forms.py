@@ -29,4 +29,3 @@ class ApplicationStatusForm(forms.ModelForm):
         widgets = {
             # 'status': widgets.RadioSelect(),
         }
-
