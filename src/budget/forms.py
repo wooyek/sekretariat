@@ -17,3 +17,16 @@ class DecisionForm(forms.ModelForm):
         widgets = {
             'notes': forms.Textarea(attrs={'cols': 80, 'rows': 3}),
         }
+
+
+class ApplicationStatusForm(forms.ModelForm):
+    # date = forms.DateField(disabled=True)
+    # title = forms.CharField(disabled=True)
+
+    class Meta:
+        model = models.Application
+        fields = 'status',
+        widgets = {
+            # 'status': widgets.RadioSelect(),
+        }
+

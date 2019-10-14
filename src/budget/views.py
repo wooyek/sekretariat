@@ -260,6 +260,17 @@ class ApplicationAccount(ApplicationUpdateBase):
         return not item.can_change_account()
 
 
+class ApplicationStatus(PermissionRequiredView, ApplicationUpdateBase):
+    form_class = forms.ApplicationStatusForm
+    permission_required = 'budget.change_application_status'
+
+    def decisions_clean_required(self, item):
+        return False
+
+    def get_success_url(self):
+        return resolve_url("budget:ApplicationList") + "?approval=true"
+
+
 class ApplicationUpdate(ApplicationUpdateBase):
     fields = 'amount', 'date', 'title', 'description', 'manager',
 

@@ -34,10 +34,20 @@
             </td>
             <td>{{ item.title }}</td>
             <td>{{ item.amount }}</td>
-            <td>{{ item.requester }}</td>
+            <td>{{ item.requester.last_name }} {{ item.requester.first_name.0 }}.</td>
             <td>{{ item.submitted|datetimeformat("YYYY-MM-dd") }}</td>
-            <td>{{ item.manager|default("-", True) }}</td>
-            <td>{{ item.account|default("-", True) }}</td>
+            <td>
+              {% if item.manager %}
+                {{ item.manager.last_name }} {{ item.manager.first_name.0 }}.
+              {% endif %}
+            </td>
+            <td>
+              {% if item.account %}
+              <span title="{{ item.account|default("-", True) }}">{{ item.account.full_no }}</span>
+                {% else %}
+                -
+              {% endif %}
+            </td>
             <td>
               {% for kind, name in decision_kinds %}
                 {% with approval = item.get_decision(kind).approval %}
@@ -49,6 +59,11 @@
               {% with approval = item.approval %}
                 {% include "Application/approval.html" %}
               {% endwith %}
+                <a href="{{ url("budget:ApplicationStatus", item.pk) }}" class="">
+                {% with status = item.status %}
+                    {% include "Application/status.html" %}
+                {% endwith %}
+                </a>
             </td>
             <td>
             </td>

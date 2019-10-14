@@ -6,10 +6,13 @@
         <div class="card-header">{% trans %}Expenditure details{% endtrans %}
           <a class="btn btn-outline-dark btn-sm float-right" href="{{ url("budget:ApplicationUpdate", object.pk) }}"><i
             class="fa fa-fw fa-pencil"></i></a>
+          <a class="btn mr-1 btn-secondary btn-sm float-right" href="{{ url("budget:ApplicationStatus", object.pk) }}">
+              {{ object.get_status_display() }}
+          </a>
         </div>
         <table class="table table-striped table-hover mb-0">
           <tbody>
-          {% for field_name in ['id', 'date', 'requester', 'title', 'description', 'amount', ] %}
+            {% for field_name in ['id', 'date', 'requester', 'title', 'description', 'amount', ] %}
             <tr>
               <th scope="row">{{ object.get_field_name(field_name) }}</th>
               <td>{{ object[field_name] }}</td>

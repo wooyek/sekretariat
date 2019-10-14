@@ -3,16 +3,16 @@ import logging
 
 import faker
 import pytest
-from budget.tests.conftest import get_client
 from django import test
 from django.http import HttpRequest
 from django.shortcuts import resolve_url
 from mock import MagicMock, patch
 from pytest_lazyfixture import lazy_fixture
 
+from budget.tests.conftest import get_client
 from website.misc.testing import assert_no_form_errors, model_to_request_data_dict
-from .. import models, views
 from . import factories
+from .. import models, views
 
 log = logging.getLogger(__name__)
 fake = faker.Faker()
@@ -313,6 +313,48 @@ class ApplicationUpdateViewTest(object):
         url = resolve_url("budget:ApplicationUpdate", item.pk)
         response = get_client(accountant).get(url)
         assert response.status_code == 200
+
+
+# noinspection PyMethodMayBeStatic
+@pytest.mark.django_db
+class ApplicationStatusViewTest(object):
+
+    @pytest.mark.parametrize(
+        "status", [
+            models.ApplicationStatus.open,
+            models.ApplicationStatus.placed,
+            models.ApplicationStatus.completed,
+        ]
+    )
+    def test_post(self, procurement, status):
+        item = factories.ApplicationFactory()
+        url = resolve_url("budget:ApplicationStatus", item.pk)
+        response = get_client(procurement).post(url, data={'status': int(status)})
+        assert_no_form_errors(response)
+        assert response.status_code == 302
+        assert response.url == resolve_url("budget:ApplicationList") + "?approval=true"
+        item.refresh_from_db()
+        assert item.status == status
+
+    def test_get(self, team_user):
+        url = resolve_url("budget:ApplicationStatus", 666)
+        response = get_client(team_user).get(url)
+        assert response.status_code == 403
+
+    def test_anonymous(self):
+        url = resolve_url("budget:ApplicationStatus", 666)
+        response = test.Client().get(url)
+        assert response.status_code == 302
+
+    def test_forbidden(self, authenticated_client):
+        url = resolve_url("budget:ApplicationStatus", 666)
+        response = authenticated_client.get(url)
+        assert response.status_code == 403
+
+    def test_staff_get(self, staff_client):
+        url = resolve_url("budget:ApplicationStatus", 666)
+        response = staff_client.get(url)
+        assert response.status_code == 403
 
 
 # noinspection PyMethodMayBeStatic

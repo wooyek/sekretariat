@@ -55,6 +55,9 @@ class Account(BaseModel):
     def __str__(self):
         return '{}-{:02} {}'.format(self.group.number, self.number, self.name)
 
+    def full_no(self):
+        return '{}-{:02}'.format(self.group.number, self.number)
+
     def get_absolute_url(self):
         return resolve_url("budget:AccountDetail", self.pk)
 
@@ -102,6 +105,16 @@ WORKFLOW = SimpleLazyObject(lambda: tuple((kind for kind, group in DECISION_GROU
 CHOICES = SimpleLazyObject(lambda: tuple((item.value, _(ChoicesIntEnum.capitalize(item))) for item in WORKFLOW))
 
 
+class ApplicationStatus(ChoicesIntEnum):
+    open = 100
+    placed = 200
+    completed = 1000
+
+
+# A hack to force django to localize enum names
+_('Open'), _('Placed'), _('Completed')
+
+
 class Application(BaseModel):
     date = models.DateField(_('date'), help_text=_('Approximate payment due date that will determine the monthly budget.'))
     amount = models.DecimalField(_('amount'), decimal_places=0, max_digits=6, help_text=_('What is the total cost?'))
@@ -127,11 +140,18 @@ class Application(BaseModel):
     #     related_name='+', limit_choices_to=Q(groups__name='Controllers')
     # )
     approval = models.NullBooleanField(_('approval'))
+    status = models.PositiveSmallIntegerField(
+        _('application status'), help_text=_("Processing status for procurement"),
+        choices=ApplicationStatus.choices(), default=int(ApplicationStatus.open)
+    )
 
     class Meta:
         verbose_name = _('application')
         verbose_name_plural = _('applications')
         ordering = '-date', 'amount',
+        permissions = (
+            ('change_application_status', _("Can change the application status")),
+        )
 
     def __str__(self):
         return '{:%Y-%m-%d %H:%M}-{} {:03}'.format(self.date, self.requester, self.amount)

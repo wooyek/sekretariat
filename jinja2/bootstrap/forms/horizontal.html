@@ -49,6 +49,32 @@
     {% endif -%}
 {%- endmacro %}
 
+{#
+{% macro form_radio(field, classes=None, hide_label=False, label_class='control-label') -%}
+
+    <div id="{{ field.auto_id }}_form_group" class="form-group{% if field.errors %} has-error{% endif -%}{%- if classes %} {{ classes }}{% endif %}">
+        {% if not hide_label %}{{ field_label(field, label_class) }}{% endif %}
+        <div class="form-widget ">
+            {% for group, options, index in field.field.widget.optgroups() %}
+              {% for option in options %}
+                <div class="custom-control custom-radio">
+                  <input type="radio" id="{{ option.attrs.id }}" name="{{ option.name }}" class="custom-control-input">
+                  <label class="custom-control-label" for="{{ option.attrs.id }}">{{ widget.label }}</label>
+                </div>
+                {% endfor %}
+            {% endfor %}
+#}
+{#            {{ field.as_widget(attrs={"class":"custom-control custom-radio"})|safe }}#}{#
+
+            {{ field_help(field) }}
+        </div>
+    </div>
+    {% if field.errors %}
+        <div class="form-group has-error">{{ field_errors(field) }}</div>
+    {% endif -%}
+{%- endmacro %}
+#}
+
 
 {% macro form_inline_field(field, classes=None, hide_label=False, label_class='control-label', placeholder=None) -%}
     <div id="{{ field.auto_id }}_form_group" class="form-group{% if field.errors %} has-error{% endif -%}{%- if classes %} {{ classes }}{% endif %}">
@@ -280,6 +306,8 @@
                     {{ field_email(field) }}
                 {% elif widget.input_type == "password" %}
                     {{ field_password(field) }}
+                {% elif widget.input_type == "radio" %}
+                    {{ form_radio(field) }}
                 {% elif widget.input_type == "submit" %}
                 {% elif widget_class in ("Select", "NullBooleanSelect") %}
                     {{ form_select(field) }}

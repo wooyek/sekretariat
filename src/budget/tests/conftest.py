@@ -31,6 +31,16 @@ def add_application():
 
 # noinspection PyUnusedLocal
 @pytest.fixture
+def change_application_status():
+    from django.contrib.contenttypes.models import ContentType
+    from budget.models import Application
+    content_type = ContentType.objects.get_for_model(Application)
+    from django.contrib.auth.models import Permission
+    permission, created = Permission.objects.get_or_create(codename='change_application_status', content_type=content_type)
+    return permission
+
+# noinspection PyUnusedLocal
+@pytest.fixture
 def view_budget():
     from django.contrib.contenttypes.models import ContentType
     from budget.models import Budget
@@ -71,6 +81,13 @@ def control(add_application, view_budget):
     team.permissions.add(add_application)
     team.permissions.add(view_budget)
     team.user_set.add(user)
+    return user
+
+
+@pytest.fixture
+def procurement(change_application_status):
+    user = UserFactory.create(is_superuser=False, is_staff=False)
+    user.user_permissions.add(change_application_status)
     return user
 
 
