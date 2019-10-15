@@ -125,7 +125,7 @@ class Application(BaseModel):
     manager = models.ForeignKey(
         get_user_model(), verbose_name=_('manager'), on_delete=models.PROTECT, related_name='+', limit_choices_to=Q(groups__name='Managers')
     )
-    submitted = models.DateField(_('submission date'), null=True, blank=True)
+    submitted = models.DateField(_('submission date'), auto_now_add=True)
     # accountant = models.ForeignKey(
     #     get_user_model(), on_delete=models.PROTECT, null=True, blank=True,
     #     related_name='+', limit_choices_to=Q(groups__name='Accountants')
