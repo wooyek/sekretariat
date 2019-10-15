@@ -6,10 +6,10 @@ __email__ = 'js+pypi@bravelabs.pl'
 __copyright__ = "Copyright 2018, Janusz Skonieczny"
 __maintainer__ = """Janusz Skonieczny"""
 __credits__ = ["""Janusz Skonieczny"""]
-__version__ = '0.1.65'
+__version__ = '0.1.66'
 __status__ = "Alpha"
 __license__ = "Proprietary"
-__date__ = '2019-10-15 16:57'
+__date__ = '2019-10-15 17:36'
 
 
 def get_strict_version():
