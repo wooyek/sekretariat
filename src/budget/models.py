@@ -55,6 +55,7 @@ class Account(BaseModel):
     def __str__(self):
         return '{}-{:02} {}'.format(self.group.number, self.number, self.name)
 
+    @property
     def full_no(self):
         return '{}-{:02}'.format(self.group.number, self.number)
 
