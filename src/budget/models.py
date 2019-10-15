@@ -153,7 +153,7 @@ class Application(BaseModel):
         permissions = (
             ('change_application_status', _("Can change the application status")),
         )
-        index_together = '-submitted, date'
+        index_together = 'submitted', 'date'
 
     def __str__(self):
         return '{:%Y-%m-%d %H:%M}-{} {:03}'.format(self.date, self.requester, self.amount)
