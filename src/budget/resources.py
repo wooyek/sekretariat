@@ -36,8 +36,18 @@ class DecimalWidget(widgets.DecimalWidget):
         return super().clean(value, row, *args, **kwargs)
 
 
+class AccountWidget(widgets.Widget):
+    def clean(self, value, row=None, *args, **kwargs):
+        return models.Account.by_full_no(value)
+
+    def render(self, value, obj=None):
+        if isinstance(value, str):
+            return value
+        return value.full_no
+
+
 class BudgetResource(resources.ModelResource):
-    account = fields.Field(column_name='account no', attribute='account', widget=widgets.ForeignKeyWidget(models.Account, 'no'))
+    account = fields.Field(column_name='account no', attribute='account', widget=AccountWidget())
     amount = fields.Field(column_name='amount', attribute='amount', widget=DecimalWidget())
 
     class Meta:
@@ -49,7 +59,7 @@ class BudgetResource(resources.ModelResource):
     def get_or_init_instance(self, instance_loader, row):
         instance, new = super().get_or_init_instance(instance_loader, row)
         if instance.account_id is None:
-            account, new = models.Account.objects.get_or_create(no=row['account no'])
+            account = models.Account.by_full_no(row['account no'])
             instance.account = account
         return instance, new
 

@@ -1,5 +1,1110 @@
 [
 {
+  "model": "budget.accountgroup",
+  "pk": 1,
+  "fields": {
+    "name": "",
+    "number": 400,
+    "description": "Amortyzacja"
+  }
+},
+{
+  "model": "budget.accountgroup",
+  "pk": 2,
+  "fields": {
+    "name": "",
+    "number": 401,
+    "description": "Zu\u017cycie materia\u0142\u00f3w i energii"
+  }
+},
+{
+  "model": "budget.accountgroup",
+  "pk": 3,
+  "fields": {
+    "name": "",
+    "number": 402,
+    "description": "Us\u0142ugi obce"
+  }
+},
+{
+  "model": "budget.accountgroup",
+  "pk": 4,
+  "fields": {
+    "name": "",
+    "number": 403,
+    "description": "Podatki i op\u0142aty"
+  }
+},
+{
+  "model": "budget.accountgroup",
+  "pk": 5,
+  "fields": {
+    "name": "",
+    "number": 404,
+    "description": "Wynagrodzenia"
+  }
+},
+{
+  "model": "budget.accountgroup",
+  "pk": 6,
+  "fields": {
+    "name": "",
+    "number": 405,
+    "description": "Pozosta\u0142e koszty pracownicze"
+  }
+},
+{
+  "model": "budget.accountgroup",
+  "pk": 7,
+  "fields": {
+    "name": "",
+    "number": 406,
+    "description": "Imprezy"
+  }
+},
+{
+  "model": "budget.accountgroup",
+  "pk": 8,
+  "fields": {
+    "name": "",
+    "number": 407,
+    "description": "Wycieczki"
+  }
+},
+{
+  "model": "budget.accountgroup",
+  "pk": 9,
+  "fields": {
+    "name": "",
+    "number": 408,
+    "description": "Zaj\u0119cia dodatkowe (us\u0142ugi)"
+  }
+},
+{
+  "model": "budget.accountgroup",
+  "pk": 10,
+  "fields": {
+    "name": "",
+    "number": 409,
+    "description": "Podr\u0119czniki"
+  }
+},
+{
+  "model": "budget.accountgroup",
+  "pk": 11,
+  "fields": {
+    "name": "",
+    "number": 410,
+    "description": "Pozosta\u0142e koszty"
+  }
+},
+{
+  "model": "budget.accountgroup",
+  "pk": 12,
+  "fields": {
+    "name": "",
+    "number": 411,
+    "description": "Wy\u017cywienie dla uczni\u00f3w"
+  }
+},
+{
+  "model": "budget.accountgroup",
+  "pk": 13,
+  "fields": {
+    "name": "",
+    "number": 425,
+    "description": "Koszty dzia\u0142alno\u015bci po\u017cytku publicznego OPP"
+  }
+},
+{
+  "model": "budget.accountgroup",
+  "pk": 14,
+  "fields": {
+    "name": "",
+    "number": 426,
+    "description": "Koszty pozosta\u0142ej dzia\u0142ano\u015bci po\u017cytku publicznego"
+  }
+},
+{
+  "model": "budget.accountgroup",
+  "pk": 15,
+  "fields": {
+    "name": "",
+    "number": 490,
+    "description": "Rozliczenie koszt\u00f3w"
+  }
+},
+{
+  "model": "budget.accountgroup",
+  "pk": 17,
+  "fields": {
+    "name": "TYMCZASOWA",
+    "number": 0,
+    "description": "Do skasowania"
+  }
+},
+{
+  "model": "budget.account",
+  "pk": 325,
+  "fields": {
+    "name": "Amortyzacja gr.I ",
+    "group": 1,
+    "group_no": 400,
+    "number": 1,
+    "description": ""
+  }
+},
+{
+  "model": "budget.account",
+  "pk": 326,
+  "fields": {
+    "name": "Amortyzacja gr.IV",
+    "group": 1,
+    "group_no": 400,
+    "number": 4,
+    "description": ""
+  }
+},
+{
+  "model": "budget.account",
+  "pk": 327,
+  "fields": {
+    "name": "Amortyzacja gr.VI",
+    "group": 1,
+    "group_no": 400,
+    "number": 6,
+    "description": ""
+  }
+},
+{
+  "model": "budget.account",
+  "pk": 328,
+  "fields": {
+    "name": "Amortyzacja gr.VIII",
+    "group": 1,
+    "group_no": 400,
+    "number": 8,
+    "description": ""
+  }
+},
+{
+  "model": "budget.account",
+  "pk": 329,
+  "fields": {
+    "name": "Energia elektryczna ",
+    "group": 2,
+    "group_no": 401,
+    "number": 1,
+    "description": ""
+  }
+},
+{
+  "model": "budget.account",
+  "pk": 330,
+  "fields": {
+    "name": "Woda, \u015bcieki",
+    "group": 2,
+    "group_no": 401,
+    "number": 2,
+    "description": ""
+  }
+},
+{
+  "model": "budget.account",
+  "pk": 331,
+  "fields": {
+    "name": "Ogrzewanie",
+    "group": 2,
+    "group_no": 401,
+    "number": 3,
+    "description": ""
+  }
+},
+{
+  "model": "budget.account",
+  "pk": 332,
+  "fields": {
+    "name": "Licencje, prenumeraty",
+    "group": 2,
+    "group_no": 401,
+    "number": 4,
+    "description": ""
+  }
+},
+{
+  "model": "budget.account",
+  "pk": 333,
+  "fields": {
+    "name": "Materia\u0142y eksploatacjyjne bie\u017c\u0105ce",
+    "group": 2,
+    "group_no": 401,
+    "number": 5,
+    "description": ""
+  }
+},
+{
+  "model": "budget.account",
+  "pk": 334,
+  "fields": {
+    "name": "Materia\u0142y eksploatacyjne basen",
+    "group": 2,
+    "group_no": 401,
+    "number": 6,
+    "description": ""
+  }
+},
+{
+  "model": "budget.account",
+  "pk": 335,
+  "fields": {
+    "name": "\u015arodki czysto\u015bci",
+    "group": 2,
+    "group_no": 401,
+    "number": 7,
+    "description": ""
+  }
+},
+{
+  "model": "budget.account",
+  "pk": 336,
+  "fields": {
+    "name": "Art.spo\u017cywcze",
+    "group": 2,
+    "group_no": 401,
+    "number": 8,
+    "description": ""
+  }
+},
+{
+  "model": "budget.account",
+  "pk": 337,
+  "fields": {
+    "name": "Art. biurowe",
+    "group": 2,
+    "group_no": 401,
+    "number": 9,
+    "description": ""
+  }
+},
+{
+  "model": "budget.account",
+  "pk": 338,
+  "fields": {
+    "name": "Materia\u0142y dydaktyczne",
+    "group": 2,
+    "group_no": 401,
+    "number": 10,
+    "description": ""
+  }
+},
+{
+  "model": "budget.account",
+  "pk": 339,
+  "fields": {
+    "name": "Materia\u0142y naprawy, konserwacje, remonty",
+    "group": 2,
+    "group_no": 401,
+    "number": 11,
+    "description": ""
+  }
+},
+{
+  "model": "budget.account",
+  "pk": 340,
+  "fields": {
+    "name": "Art.medyczne, leki",
+    "group": 2,
+    "group_no": 401,
+    "number": 12,
+    "description": ""
+  }
+},
+{
+  "model": "budget.account",
+  "pk": 341,
+  "fields": {
+    "name": "Wyposa\u017cenie",
+    "group": 2,
+    "group_no": 401,
+    "number": 13,
+    "description": ""
+  }
+},
+{
+  "model": "budget.account",
+  "pk": 342,
+  "fields": {
+    "name": "Najem, czynsz",
+    "group": 3,
+    "group_no": 402,
+    "number": 1,
+    "description": ""
+  }
+},
+{
+  "model": "budget.account",
+  "pk": 343,
+  "fields": {
+    "name": "Us\u0142ugi telekomunikacyjne, internet",
+    "group": 3,
+    "group_no": 402,
+    "number": 2,
+    "description": ""
+  }
+},
+{
+  "model": "budget.account",
+  "pk": 344,
+  "fields": {
+    "name": "Us\u0142ugi pocztowe",
+    "group": 3,
+    "group_no": 402,
+    "number": 3,
+    "description": ""
+  }
+},
+{
+  "model": "budget.account",
+  "pk": 345,
+  "fields": {
+    "name": "Us\u0142ugi sprz\u0105tania",
+    "group": 3,
+    "group_no": 402,
+    "number": 4,
+    "description": ""
+  }
+},
+{
+  "model": "budget.account",
+  "pk": 346,
+  "fields": {
+    "name": "Us\u0142ugi eksploatacyjne pozosta\u0142e",
+    "group": 3,
+    "group_no": 402,
+    "number": 5,
+    "description": ""
+  }
+},
+{
+  "model": "budget.account",
+  "pk": 347,
+  "fields": {
+    "name": "Us\u0142ugi ekspolatacyjne basen",
+    "group": 3,
+    "group_no": 402,
+    "number": 6,
+    "description": ""
+  }
+},
+{
+  "model": "budget.account",
+  "pk": 348,
+  "fields": {
+    "name": "Us\u0142ugi najmu - basen, boisko,, si\u0142ownia",
+    "group": 3,
+    "group_no": 402,
+    "number": 7,
+    "description": ""
+  }
+},
+{
+  "model": "budget.account",
+  "pk": 349,
+  "fields": {
+    "name": "Us\u0142ugi transpotowe - zaj\u0119cia sportowe",
+    "group": 3,
+    "group_no": 402,
+    "number": 8,
+    "description": ""
+  }
+},
+{
+  "model": "budget.account",
+  "pk": 350,
+  "fields": {
+    "name": "Prowizje, op\u0142aty bankowe",
+    "group": 3,
+    "group_no": 402,
+    "number": 9,
+    "description": ""
+  }
+},
+{
+  "model": "budget.account",
+  "pk": 351,
+  "fields": {
+    "name": "Us\u0142ugi nauczania/dydaktyczne",
+    "group": 3,
+    "group_no": 402,
+    "number": 10,
+    "description": ""
+  }
+},
+{
+  "model": "budget.account",
+  "pk": 352,
+  "fields": {
+    "name": "Us\u0142ugi remontowe, konserwacje, naprawy",
+    "group": 3,
+    "group_no": 402,
+    "number": 11,
+    "description": ""
+  }
+},
+{
+  "model": "budget.account",
+  "pk": 353,
+  "fields": {
+    "name": "Us\u0142ugi prawne,ksi\u0119gowe, doradcze",
+    "group": 3,
+    "group_no": 402,
+    "number": 12,
+    "description": ""
+  }
+},
+{
+  "model": "budget.account",
+  "pk": 354,
+  "fields": {
+    "name": "Ochrona i monitoring",
+    "group": 3,
+    "group_no": 402,
+    "number": 13,
+    "description": ""
+  }
+},
+{
+  "model": "budget.account",
+  "pk": 355,
+  "fields": {
+    "name": "Serwis teleinformatyczny",
+    "group": 3,
+    "group_no": 402,
+    "number": 14,
+    "description": ""
+  }
+},
+{
+  "model": "budget.account",
+  "pk": 356,
+  "fields": {
+    "name": "Op\u0142aty notarialne, skarbowe, notarialne, inne",
+    "group": 4,
+    "group_no": 403,
+    "number": 1,
+    "description": ""
+  }
+},
+{
+  "model": "budget.account",
+  "pk": 357,
+  "fields": {
+    "name": "Wynagrodzenia osobowe",
+    "group": 5,
+    "group_no": 404,
+    "number": 1,
+    "description": ""
+  }
+},
+{
+  "model": "budget.account",
+  "pk": 358,
+  "fields": {
+    "name": "Wynagrodzenia bezosobowe",
+    "group": 5,
+    "group_no": 404,
+    "number": 2,
+    "description": ""
+  }
+},
+{
+  "model": "budget.account",
+  "pk": 359,
+  "fields": {
+    "name": "ZUS narzuty",
+    "group": 6,
+    "group_no": 405,
+    "number": 1,
+    "description": ""
+  }
+},
+{
+  "model": "budget.account",
+  "pk": 360,
+  "fields": {
+    "name": "PFRON",
+    "group": 6,
+    "group_no": 405,
+    "number": 2,
+    "description": ""
+  }
+},
+{
+  "model": "budget.account",
+  "pk": 361,
+  "fields": {
+    "name": "Badania lekarskie",
+    "group": 6,
+    "group_no": 405,
+    "number": 3,
+    "description": ""
+  }
+},
+{
+  "model": "budget.account",
+  "pk": 362,
+  "fields": {
+    "name": "Szkolenia",
+    "group": 6,
+    "group_no": 405,
+    "number": 4,
+    "description": ""
+  }
+},
+{
+  "model": "budget.account",
+  "pk": 363,
+  "fields": {
+    "name": "Doradztwo BHP",
+    "group": 6,
+    "group_no": 405,
+    "number": 5,
+    "description": ""
+  }
+},
+{
+  "model": "budget.account",
+  "pk": 364,
+  "fields": {
+    "name": "Delegacje",
+    "group": 6,
+    "group_no": 405,
+    "number": 6,
+    "description": ""
+  }
+},
+{
+  "model": "budget.account",
+  "pk": 365,
+  "fields": {
+    "name": "Pozosta\u0142e koszty ",
+    "group": 6,
+    "group_no": 405,
+    "number": 7,
+    "description": ""
+  }
+},
+{
+  "model": "budget.account",
+  "pk": 366,
+  "fields": {
+    "name": "Materia\u0142y ",
+    "group": 7,
+    "group_no": 406,
+    "number": 1,
+    "description": ""
+  }
+},
+{
+  "model": "budget.account",
+  "pk": 367,
+  "fields": {
+    "name": "Us\u0142ugi",
+    "group": 7,
+    "group_no": 406,
+    "number": 2,
+    "description": ""
+  }
+},
+{
+  "model": "budget.account",
+  "pk": 368,
+  "fields": {
+    "name": "Pozosta\u0142e",
+    "group": 7,
+    "group_no": 406,
+    "number": 3,
+    "description": ""
+  }
+},
+{
+  "model": "budget.account",
+  "pk": 369,
+  "fields": {
+    "name": "Wymiana m\u0142odzie\u017cy",
+    "group": 8,
+    "group_no": 407,
+    "number": 1,
+    "description": ""
+  }
+},
+{
+  "model": "budget.account",
+  "pk": 370,
+  "fields": {
+    "name": "Wycieczki krajowe",
+    "group": 8,
+    "group_no": 407,
+    "number": 2,
+    "description": ""
+  }
+},
+{
+  "model": "budget.account",
+  "pk": 371,
+  "fields": {
+    "name": "Wycieczki zagraniczne",
+    "group": 8,
+    "group_no": 407,
+    "number": 3,
+    "description": ""
+  }
+},
+{
+  "model": "budget.account",
+  "pk": 372,
+  "fields": {
+    "name": "Kino, teatr, bilety, inne",
+    "group": 8,
+    "group_no": 407,
+    "number": 4,
+    "description": ""
+  }
+},
+{
+  "model": "budget.account",
+  "pk": 373,
+  "fields": {
+    "name": "Ferie w szkole",
+    "group": 8,
+    "group_no": 407,
+    "number": 5,
+    "description": ""
+  }
+},
+{
+  "model": "budget.account",
+  "pk": 374,
+  "fields": {
+    "name": "Warsztaty artystyczne",
+    "group": 9,
+    "group_no": 408,
+    "number": 1,
+    "description": ""
+  }
+},
+{
+  "model": "budget.account",
+  "pk": 375,
+  "fields": {
+    "name": "Szachy",
+    "group": 9,
+    "group_no": 408,
+    "number": 2,
+    "description": ""
+  }
+},
+{
+  "model": "budget.account",
+  "pk": 376,
+  "fields": {
+    "name": "Tenis",
+    "group": 9,
+    "group_no": 408,
+    "number": 3,
+    "description": ""
+  }
+},
+{
+  "model": "budget.account",
+  "pk": 377,
+  "fields": {
+    "name": "Zumba",
+    "group": 9,
+    "group_no": 408,
+    "number": 4,
+    "description": ""
+  }
+},
+{
+  "model": "budget.account",
+  "pk": 378,
+  "fields": {
+    "name": "Taniec",
+    "group": 9,
+    "group_no": 408,
+    "number": 5,
+    "description": ""
+  }
+},
+{
+  "model": "budget.account",
+  "pk": 379,
+  "fields": {
+    "name": "Ceramika",
+    "group": 9,
+    "group_no": 408,
+    "number": 6,
+    "description": ""
+  }
+},
+{
+  "model": "budget.account",
+  "pk": 380,
+  "fields": {
+    "name": "Robotyka",
+    "group": 9,
+    "group_no": 408,
+    "number": 7,
+    "description": ""
+  }
+},
+{
+  "model": "budget.account",
+  "pk": 381,
+  "fields": {
+    "name": "Korektywa, zaj.sportowe",
+    "group": 9,
+    "group_no": 408,
+    "number": 8,
+    "description": ""
+  }
+},
+{
+  "model": "budget.account",
+  "pk": 382,
+  "fields": {
+    "name": "Ko\u0142o j\u0119zykowe",
+    "group": 9,
+    "group_no": 408,
+    "number": 9,
+    "description": ""
+  }
+},
+{
+  "model": "budget.account",
+  "pk": 383,
+  "fields": {
+    "name": "Judo",
+    "group": 9,
+    "group_no": 408,
+    "number": 10,
+    "description": ""
+  }
+},
+{
+  "model": "budget.account",
+  "pk": 384,
+  "fields": {
+    "name": "Warsztaty psychologiczne",
+    "group": 9,
+    "group_no": 408,
+    "number": 11,
+    "description": ""
+  }
+},
+{
+  "model": "budget.account",
+  "pk": 385,
+  "fields": {
+    "name": "Sensoryka",
+    "group": 9,
+    "group_no": 408,
+    "number": 12,
+    "description": ""
+  }
+},
+{
+  "model": "budget.account",
+  "pk": 386,
+  "fields": {
+    "name": "Zakup dofinansowany - dotacja ",
+    "group": 10,
+    "group_no": 409,
+    "number": 1,
+    "description": ""
+  }
+},
+{
+  "model": "budget.account",
+  "pk": 387,
+  "fields": {
+    "name": "Pozosta\u0142e podr\u0119czniki",
+    "group": 10,
+    "group_no": 409,
+    "number": 2,
+    "description": ""
+  }
+},
+{
+  "model": "budget.account",
+  "pk": 388,
+  "fields": {
+    "name": "Ubezpieczenia",
+    "group": 11,
+    "group_no": 410,
+    "number": 1,
+    "description": ""
+  }
+},
+{
+  "model": "budget.account",
+  "pk": 389,
+  "fields": {
+    "name": "Reklama",
+    "group": 11,
+    "group_no": 410,
+    "number": 2,
+    "description": ""
+  }
+},
+{
+  "model": "budget.account",
+  "pk": 390,
+  "fields": {
+    "name": "Uczniowie Motylki",
+    "group": 12,
+    "group_no": 411,
+    "number": 1,
+    "description": ""
+  }
+},
+{
+  "model": "budget.account",
+  "pk": 391,
+  "fields": {
+    "name": "Finansowane z 1%",
+    "group": 13,
+    "group_no": 425,
+    "number": 1,
+    "description": ""
+  }
+},
+{
+  "model": "budget.account",
+  "pk": 392,
+  "fields": {
+    "name": "Wolontariat",
+    "group": 14,
+    "group_no": 426,
+    "number": 1,
+    "description": ""
+  }
+},
+{
+  "model": "budget.account",
+  "pk": 393,
+  "fields": {
+    "name": "Roboty, urz\u0105dzenia edukacyjne - dotacja",
+    "group": 14,
+    "group_no": 426,
+    "number": 2,
+    "description": ""
+  }
+},
+{
+  "model": "budget.account",
+  "pk": 394,
+  "fields": {
+    "name": "Pozosta\u0142e",
+    "group": 14,
+    "group_no": 426,
+    "number": 3,
+    "description": ""
+  }
+},
+{
+  "model": "budget.account",
+  "pk": 395,
+  "fields": {
+    "name": "Niskocenne \u015brodki trwa\u0142e",
+    "group": 2,
+    "group_no": 401,
+    "number": 14,
+    "description": "Niskocenne \u015brodki trwa\u0142e"
+  }
+},
+{
+  "model": "budget.budget",
+  "pk": 559,
+  "fields": {
+    "account": 394,
+    "amount": "2220",
+    "spent": "3",
+    "available": "2217",
+    "year": 2019,
+    "month": 10
+  }
+},
+{
+  "model": "budget.budget",
+  "pk": 560,
+  "fields": {
+    "account": 356,
+    "amount": "0",
+    "spent": "1039",
+    "available": "-1039",
+    "year": 2019,
+    "month": 10
+  }
+},
+{
+  "model": "budget.budget",
+  "pk": 561,
+  "fields": {
+    "account": 340,
+    "amount": "123",
+    "spent": "800",
+    "available": "-677",
+    "year": 2019,
+    "month": 10
+  }
+},
+{
+  "model": "budget.budget",
+  "pk": 562,
+  "fields": {
+    "account": 335,
+    "amount": "0",
+    "spent": "4300",
+    "available": "-4300",
+    "year": 2019,
+    "month": 10
+  }
+},
+{
+  "model": "budget.budget",
+  "pk": 563,
+  "fields": {
+    "account": 333,
+    "amount": "231",
+    "spent": "505",
+    "available": "-274",
+    "year": 2019,
+    "month": 10
+  }
+},
+{
+  "model": "budget.budget",
+  "pk": 564,
+  "fields": {
+    "account": 339,
+    "amount": "0",
+    "spent": "2100",
+    "available": "-2100",
+    "year": 2019,
+    "month": 10
+  }
+},
+{
+  "model": "budget.budget",
+  "pk": 565,
+  "fields": {
+    "account": 337,
+    "amount": "0",
+    "spent": "250",
+    "available": "-250",
+    "year": 2019,
+    "month": 10
+  }
+},
+{
+  "model": "budget.budget",
+  "pk": 566,
+  "fields": {
+    "account": 338,
+    "amount": "0",
+    "spent": "9423",
+    "available": "-9423",
+    "year": 2019,
+    "month": 10
+  }
+},
+{
+  "model": "budget.budget",
+  "pk": 567,
+  "fields": {
+    "account": 352,
+    "amount": "0",
+    "spent": "14300",
+    "available": "-14300",
+    "year": 2019,
+    "month": 10
+  }
+},
+{
+  "model": "budget.budget",
+  "pk": 568,
+  "fields": {
+    "account": 395,
+    "amount": "0",
+    "spent": "5500",
+    "available": "-5500",
+    "year": 2019,
+    "month": 10
+  }
+},
+{
+  "model": "budget.budget",
+  "pk": 569,
+  "fields": {
+    "account": 336,
+    "amount": "123",
+    "spent": "250",
+    "available": "-127",
+    "year": 2019,
+    "month": 10
+  }
+},
+{
+  "model": "budget.budget",
+  "pk": 570,
+  "fields": {
+    "account": 351,
+    "amount": "0",
+    "spent": "923",
+    "available": "-923",
+    "year": 2019,
+    "month": 10
+  }
+},
+{
+  "model": "budget.budget",
+  "pk": 571,
+  "fields": {
+    "account": 334,
+    "amount": "22",
+    "spent": "3200",
+    "available": "-3178",
+    "year": 2019,
+    "month": 10
+  }
+},
+{
+  "model": "budget.budget",
+  "pk": 572,
+  "fields": {
+    "account": 341,
+    "amount": "0",
+    "spent": "6100",
+    "available": "-6100",
+    "year": 2019,
+    "month": 10
+  }
+},
+{
+  "model": "budget.budget",
+  "pk": 573,
+  "fields": {
+    "account": 362,
+    "amount": "0",
+    "spent": "0",
+    "available": "0",
+    "year": 2019,
+    "month": 10
+  }
+},
+{
   "model": "budget.application",
   "pk": 1,
   "fields": {
@@ -13,10 +1118,11 @@
     "manager": [
       "test_manager"
     ],
-    "submitted": null,
+    "submitted": "2019-10-15",
     "account": null,
     "budget": null,
-    "approval": null
+    "approval": null,
+    "status": 200
   }
 },
 {
@@ -33,10 +1139,1187 @@
     "manager": [
       "test_manager"
     ],
-    "submitted": null,
+    "submitted": "2019-10-15",
     "account": null,
     "budget": null,
-    "approval": null
+    "approval": null,
+    "status": 100
+  }
+},
+{
+  "model": "budget.application",
+  "pk": 3,
+  "fields": {
+    "date": "2019-10-24",
+    "amount": "12",
+    "title": "Konkurs Moniuszkowski",
+    "description": "aaaa",
+    "requester": [
+      "js@bravelabs.pl"
+    ],
+    "manager": [
+      "test_manager"
+    ],
+    "submitted": "2019-10-17",
+    "account": null,
+    "budget": null,
+    "approval": null,
+    "status": 100
+  }
+},
+{
+  "model": "budget.application",
+  "pk": 7,
+  "fields": {
+    "date": "2019-10-06",
+    "amount": "105",
+    "title": "Focus New Edition",
+    "description": "Zestaw nauczyciela dla\r\n Romualda Kufla\r\nGra\u017cyny Kozi\u0144skiej \r\nUrszuli W\u00f3jcockiej",
+    "requester": [
+      "Grazyna.a@niepodam.pl"
+    ],
+    "manager": [
+      "izabela.a@niepodam.pl"
+    ],
+    "submitted": "2019-10-15",
+    "account": 338,
+    "budget": 566,
+    "approval": null,
+    "status": 100
+  }
+},
+{
+  "model": "budget.application",
+  "pk": 8,
+  "fields": {
+    "date": "2019-10-07",
+    "amount": "70",
+    "title": "Bukiet oraz przysmak dentystyczny dla psa",
+    "description": "W zwi\u0105zku z wizyt\u0105 Marcina Pa\u0142asza - autora ksi\u0105\u017cki \"Spos\u00f3b na Elfa\" - opowiadaj\u0105cej o losach autora i jego czworonoga, prosz\u0119 o zakup bukietu kwiat\u00f3w oraz przysmaku denstycznego dla psa. Spotkanie odb\u0119dzie si\u0119 7 pa\u017adziernika o godz. 10.20 w sali gimnastyczne SSP nr 13. Bior\u0105 w nim udzia\u0142 uczniowie kl. II-III.\r\nDzi\u0119kuj\u0119,\r\nEwa Walawender-Plewniak",
+    "requester": [
+      "Ewa.a@niepodam.pl"
+    ],
+    "manager": [
+      "anna.a@niepodam.pl"
+    ],
+    "submitted": "2019-10-15",
+    "account": 338,
+    "budget": 566,
+    "approval": null,
+    "status": 100
+  }
+},
+{
+  "model": "budget.application",
+  "pk": 9,
+  "fields": {
+    "date": "2019-10-08",
+    "amount": "150",
+    "title": "Bilety - przejazdy na zawody z dzie\u0107mi",
+    "description": "Bilety - przejazdy na zawody z dzie\u0107mi",
+    "requester": [
+      "katarzyna.a@niepodam.pl"
+    ],
+    "manager": [
+      "agnieszka.a@niepodam.pl"
+    ],
+    "submitted": "2019-10-15",
+    "account": 333,
+    "budget": 563,
+    "approval": null,
+    "status": 100
+  }
+},
+{
+  "model": "budget.application",
+  "pk": 11,
+  "fields": {
+    "date": "2019-10-09",
+    "amount": "150",
+    "title": "Spotkania Ma\u0142ego Samorz\u0105du",
+    "description": "herbata, mi\u0119ta, mi\u00f3d, cukier, serwetki, talerze papierowe, s\u0142odkie przek\u0105ski",
+    "requester": [
+      "Weronika.a@niepodam.pl"
+    ],
+    "manager": [
+      "anna.a@niepodam.pl"
+    ],
+    "submitted": "2019-10-15",
+    "account": 338,
+    "budget": 566,
+    "approval": null,
+    "status": 100
+  }
+},
+{
+  "model": "budget.application",
+  "pk": 12,
+  "fields": {
+    "date": "2019-10-10",
+    "amount": "170",
+    "title": "Pierniczki na Dzie\u0144 Nauczyciela od Samorz\u0105du Uczniowskiego",
+    "description": "Sk\u0142adniki potrzebne do upieczenia i ozdobienia pierniczk\u00f3w, kt\u00f3re b\u0119d\u0105 prezentem dla nauczycieli:\r\n\r\n- talerzyki papierowe prostok\u0105tne 70 szt.\r\n- papier do pieczenia\r\n- 5 opakowa\u0144 r\u0119kaw\u00f3w do pieczenia (do zapakowania)\r\n- wst\u0105\u017cka cienka\r\n- r\u0119kawiczki jednorazowe 100 szt.\r\n- ozdoby do dekorowania pierniczk\u00f3w: lukry, posypki, pisaki itp.\r\n- 2 kg m\u0105ki\r\n- 2 margaryny\r\n- 2 szkl. cukru pudru\r\n- olej (ma\u0142y)\r\n- amoniak\r\n- \u015bmietana 12% (du\u017ca)\r\n- soda\r\n- 12 jajek\r\n- 2 opakowania przyprawy do piernika (np. prymat)\r\n- kakao (ma\u0142e)\r\n- 4 szkl. miodu",
+    "requester": [
+      "aneta.a@niepodam.pl"
+    ],
+    "manager": [
+      "anna.a@niepodam.pl"
+    ],
+    "submitted": "2019-10-15",
+    "account": 333,
+    "budget": 563,
+    "approval": null,
+    "status": 100
+  }
+},
+{
+  "model": "budget.application",
+  "pk": 13,
+  "fields": {
+    "date": "2019-10-30",
+    "amount": "700",
+    "title": "Konserwatorzy",
+    "description": "Bie\u017c\u0105ce zapotrzebowania konserwator\u00f3w wynikaj\u0105ce z eksploatacji budynk\u00f3w.",
+    "requester": [
+      "agnieszka.a@niepodam.pl"
+    ],
+    "manager": [
+      "renata.a@niepodam.pl"
+    ],
+    "submitted": "2019-10-15",
+    "account": 339,
+    "budget": 564,
+    "approval": null,
+    "status": 100
+  }
+},
+{
+  "model": "budget.application",
+  "pk": 14,
+  "fields": {
+    "date": "2019-10-04",
+    "amount": "930",
+    "title": "KSI\u0104\u017bKI Z FUNDUSZU NARODOWEGO PROGRAMU ROZWOJU CZYTELNICTWA",
+    "description": "Zam\u00f3wienie ksi\u0105\u017cek do biblioteki - c.d. z dotacji Narodowego Programu Rozwoju Czytelnictwa:\r\n\r\n1. Diuna. Bitwa pod Corrinem -Brian Herbert - 39 z\u0142 poczytaj.pl\r\n2. Skrzyd\u0142a ognia. Zaginiona sukcesorka. Ksi\u0119ga 2 - Sutherland - 21,48  poczytaj.pl\r\n3. Skrzyd\u0142a ognia Ukryte kr\u00f3lestwo. Ksi\u0119ga 3 T. Sutherland - 21,48\r\n4. Skrzyd\u0142a ognia. Mroczny sekret. Ksi\u0119ga 4. T.Sutherland - 21,48\r\n5. Skrzyd\u0142a ognia. Przebudzenie pe\u0142ni. T. 6 - 21,48\r\n6. Wojenna Odyseja Antka Srebrnego. W matni. T. 9.  - 11,88 - poczytaj.pl\r\n7. Alicja w Krainie Czar\u00f3w - L. Caroll - 2 sztuki 16,12x2=32,24 - poczytaj.pl\r\n8. Dziewczynka z parku - B. Kosmowska - 5 szt. - 17, 46x5=87,30\r\n9. Odyseja Antka Srebrnego - Przemarsz przez piek\u0142o `44 - T. 10 - 10,88\r\n10.By\u0142 sobie pies - B. Cameron - 25,28\r\n11.  By\u0142 sobie szczeniak 1. Ellie - 16,00\r\n12. Wilcze tropy cz. 4. Zapora - 10,88\r\n13. Magicy -  Pattric  Neil - 25,24\r\n14 Nazywam si\u0119 Albert Einstein - 13,00x3=39\r\n15. Nazywam si\u0119 Fryderyk Chopin - 12,43x2=24,86\r\n16. Nazywam si\u0119 Miko\u0142aj Kopernik - 12,43x3-37,29\r\n17.Nazywam si\u0119 Pablo Picasso - 12,43\r\n18. Nazywam si\u0119 William Szekspir 12,43\r\n19. Nazywam si\u0119 Maria Sk\u0142odowska-Curie 12,43x4=49,72\r\n20. Nazywam si\u0119 Vincent van Gogh 12,43\r\n21. Nazywam si\u0119 Wolfgang Amadeusz Mozart 12,43\r\n22. Nazywam si\u0119 Matka Teresa z Kalkuty 12,43\r\n23. Lolek - A. Wajrak - 20,07x2=40,14\r\n24. Start. Design dla nastolatk\u00f3w -Chip Kidd - 34,30\r\n25.Miasteczko Perfect - Helena Duggan - 18,70\r\n26. K\u0142opoty z Perfect - H. Duggan - 18,70\r\n27. Banda Czarnej Frotte - Justyna Bednarek - 27,12\r\n28. O krakowskich psach i kleparskich kotach - B. Tylicka - 27,10x4=108,40\r\n29. Nieko\u0144cz\u0105ca si\u0119 historia - Michael Ende - 28,85x2\r\n30. Sherlock, Lupin i ja - Irene Adler - 18,79x2 =38",
+    "requester": [
+      "agnieszka.a@niepodam.pl"
+    ],
+    "manager": [
+      "anna.a@niepodam.pl"
+    ],
+    "submitted": "2019-10-15",
+    "account": 338,
+    "budget": 566,
+    "approval": null,
+    "status": 100
+  }
+},
+{
+  "model": "budget.application",
+  "pk": 15,
+  "fields": {
+    "date": "2019-10-11",
+    "amount": "50",
+    "title": "Papier kancelaryjny",
+    "description": "Uprzejmie prosz\u0119 o zakupienie przynajmniej jednej ryzy papieru kancelaryjnego w linie, kt\u00f3ry jest potrzebny wszystkim polonistkom do przeprowadzania sprawdzian\u00f3w i wypracowa\u0144 klasowych.\r\nDzi\u0119kuj\u0119,\r\nEdyta Bor\u00f3wka.",
+    "requester": [
+      "edyta.a@niepodam.pl"
+    ],
+    "manager": [
+      "izabela.a@niepodam.pl"
+    ],
+    "submitted": "2019-10-15",
+    "account": null,
+    "budget": null,
+    "approval": true,
+    "status": 100
+  }
+},
+{
+  "model": "budget.application",
+  "pk": 16,
+  "fields": {
+    "date": "2019-10-11",
+    "amount": "50",
+    "title": "Papier kancelaryjny",
+    "description": "Uprzejmie prosz\u0119 o zakupienie przynajmniej jednej ryzy papieru kancelaryjnego w linie, kt\u00f3ry jest potrzebny wszystkim polonistkom do przeprowadzania sprawdzian\u00f3w i wypracowa\u0144 klasowych.\r\nDzi\u0119kuj\u0119,\r\nEdyta Bor\u00f3wka.",
+    "requester": [
+      "edyta.a@niepodam.pl"
+    ],
+    "manager": [
+      "izabela.a@niepodam.pl"
+    ],
+    "submitted": "2019-10-15",
+    "account": 338,
+    "budget": 566,
+    "approval": null,
+    "status": 100
+  }
+},
+{
+  "model": "budget.application",
+  "pk": 17,
+  "fields": {
+    "date": "2019-10-04",
+    "amount": "930",
+    "title": "warsztaty edukacyjne w  MA",
+    "description": "Warsztaty edukacyjne w MA",
+    "requester": [
+      "anna.a@niepodam.pl"
+    ],
+    "manager": [
+      "agnieszka.a@niepodam.pl"
+    ],
+    "submitted": "2019-10-15",
+    "account": null,
+    "budget": null,
+    "approval": false,
+    "status": 100
+  }
+},
+{
+  "model": "budget.application",
+  "pk": 20,
+  "fields": {
+    "date": "2019-10-12",
+    "amount": "302",
+    "title": "Domena PSPO.edu.pl na 7 lat",
+    "description": "W tytule przelewu prosz\u0119 wpisa\u0107 informacj\u0119:\r\n                            \r\n                                \"zam\u00f3wienie 114724375\"\r\n                            .\r\n                        \r\n\r\nKwota przelewu: 301.26 PLN\r\n\r\nProsz\u0119 zleci\u0107 dyspozycj\u0119 przelewu na rachunek bankowy: \r\n\r\n                            OVH Sp. z o.o.\r\n\r\n                            mBank S.A.\r\n\r\n                            75 1140 1140 0000 2151 6000 1002",
+    "requester": [
+      "js@pspo.pl"
+    ],
+    "manager": [
+      "renata.a@niepodam.pl"
+    ],
+    "submitted": "2019-10-15",
+    "account": 356,
+    "budget": 560,
+    "approval": true,
+    "status": 100
+  }
+},
+{
+  "model": "budget.application",
+  "pk": 21,
+  "fields": {
+    "date": "2019-10-07",
+    "amount": "2300",
+    "title": "\u015brodki czysto\u015bci bud.13",
+    "description": "\u015brodki czysto\u015bci bud.13",
+    "requester": [
+      "katarzyna.a@niepodam.pl"
+    ],
+    "manager": [
+      "agnieszka.a@niepodam.pl"
+    ],
+    "submitted": "2019-10-07",
+    "account": 335,
+    "budget": 562,
+    "approval": true,
+    "status": 100
+  }
+},
+{
+  "model": "budget.application",
+  "pk": 22,
+  "fields": {
+    "date": "2019-10-07",
+    "amount": "2000",
+    "title": "\u015brodki czysto\u015bci bud.18",
+    "description": "\u015brodki czysto\u015bci bud.18",
+    "requester": [
+      "katarzyna.a@niepodam.pl"
+    ],
+    "manager": [
+      "agnieszka.a@niepodam.pl"
+    ],
+    "submitted": "2019-10-07",
+    "account": 335,
+    "budget": 562,
+    "approval": true,
+    "status": 100
+  }
+},
+{
+  "model": "budget.application",
+  "pk": 23,
+  "fields": {
+    "date": "2019-10-14",
+    "amount": "550",
+    "title": "IT",
+    "description": "Swich do sekretariatu do bud.13 (stary wymaga wymiany) 2 kable DP\r\nZapotrzebowanie zg\u0142oszone przez AML-IT.",
+    "requester": [
+      "agnieszka.a@niepodam.pl"
+    ],
+    "manager": [
+      "renata.a@niepodam.pl"
+    ],
+    "submitted": "2019-10-15",
+    "account": 337,
+    "budget": 565,
+    "approval": null,
+    "status": 100
+  }
+},
+{
+  "model": "budget.application",
+  "pk": 24,
+  "fields": {
+    "date": "2019-10-07",
+    "amount": "405",
+    "title": "toner xerokopiarka sekret.bud.18",
+    "description": "toner xerokopiarka sekret.bud.18",
+    "requester": [
+      "katarzyna.a@niepodam.pl"
+    ],
+    "manager": [
+      "agnieszka.a@niepodam.pl"
+    ],
+    "submitted": "2019-10-07",
+    "account": 333,
+    "budget": 563,
+    "approval": true,
+    "status": 100
+  }
+},
+{
+  "model": "budget.application",
+  "pk": 25,
+  "fields": {
+    "date": "2019-10-14",
+    "amount": "800",
+    "title": "Zam\u00f3wienie do gabinetu med",
+    "description": "Materia\u0142y opatrunkowe, leki.",
+    "requester": [
+      "pielegniarka@niepodam.pl"
+    ],
+    "manager": [
+      "agnieszka.a@niepodam.pl"
+    ],
+    "submitted": "2019-10-15",
+    "account": 340,
+    "budget": 561,
+    "approval": true,
+    "status": 100
+  }
+},
+{
+  "model": "budget.application",
+  "pk": 26,
+  "fields": {
+    "date": "2019-10-07",
+    "amount": "55",
+    "title": "oznakowanie \"miejsce zbi\u00f3rki do ewakuacji\" oraz \"zakaz parkowania\"",
+    "description": "oznakowanie \"miejsce zbi\u00f3rki do ewakuacji\" oraz \"zakaz parkowania\" - Balaton",
+    "requester": [
+      "katarzyna.a@niepodam.pl"
+    ],
+    "manager": [
+      "agnieszka.a@niepodam.pl"
+    ],
+    "submitted": "2019-10-07",
+    "account": 333,
+    "budget": 563,
+    "approval": null,
+    "status": 100
+  }
+},
+{
+  "model": "budget.application",
+  "pk": 27,
+  "fields": {
+    "date": "2019-10-07",
+    "amount": "150",
+    "title": "Pa\u017adziernik - mi\u0119dzynarodowy miesi\u0105c bibliotek szkolnych",
+    "description": "Dzie\u0144 dobry,\r\nprosz\u0119 o zaliczk\u0119 na zakup (mog\u0119 sama zakupi\u0107, sprawdzi\u0142am ceny) materia\u0142\u00f3w, zwi\u0105zanych w wi\u0119kszo\u015bci z mi\u0119dzynarodowym miesi\u0105cem bibliotek szkolnych (pa\u017adziernik).\r\nChc\u0119 powt\u00f3rzy\u0107 akcj\u0119 z zesz\u0142ego roku przynoszenia przez m\u0142odzie\u017c ksi\u0105\u017cek do biblioteki (w przyniesion\u0105 ksi\u0105\u017ck\u0119 wbijana piecz\u0105tka, w zamian paczka cukierk\u00f3w).\r\nPotrzebne:\r\n1. Piecz\u0105tka, pisane w dw\u00f3ch rz\u0119dach, zielony tusz:\r\n\"Ksi\u0105\u017cka ufundowana\r\nprzez ................................\"\r\n(koszt oko\u0142o 45z\u0142)\r\n2. Woreczki przezroczyste celofanowe na cukierki w ilo\u015bci oko\u0142o 100szt\r\n(75szt za 26z\u0142)\r\n3. Sznurek lub rafia do zawi\u0105zywania woreczk\u00f3w\r\nok. 4 z\u0142\r\n4. Cukierki na wag\u0119\r\nok. 30z\u0142 za 1 kg\r\nOpr\u00f3cz tego zgin\u0119\u0142y mi dwa zegary z biblioteki pod moj\u0105 nieobecno\u015b\u0107, po konsultacjiz panem konserwatorem, poprosz\u0119 o bud\u017cet na zakup w zapasie 5 szt. dla szko\u0142y\r\n(najta\u0144szy ikeowy za 8z\u0142 x 5=40z\u0142)\r\nhttps://www.ikea.com/pl/pl/p/stomma-zegar-bialy-00374136/\r\nDzi\u0119kuj\u0119.\r\nNatalia \u015awider-Szymczak, biblioteka",
+    "requester": [
+      "natalia.a@niepodam.pl"
+    ],
+    "manager": [
+      "izabela.a@niepodam.pl"
+    ],
+    "submitted": "2019-10-15",
+    "account": null,
+    "budget": null,
+    "approval": false,
+    "status": 100
+  }
+},
+{
+  "model": "budget.application",
+  "pk": 28,
+  "fields": {
+    "date": "2019-10-14",
+    "amount": "1400",
+    "title": "14.10",
+    "description": "Dzie\u0144 Edukacji Narodowej\r\nPocz\u0119stunek",
+    "requester": [
+      "agnieszka.a@niepodam.pl"
+    ],
+    "manager": [
+      "renata.a@niepodam.pl"
+    ],
+    "submitted": "2019-10-15",
+    "account": 338,
+    "budget": 566,
+    "approval": null,
+    "status": 100
+  }
+},
+{
+  "model": "budget.application",
+  "pk": 29,
+  "fields": {
+    "date": "2019-10-07",
+    "amount": "2500",
+    "title": "\u015brodki czysto\u015bci Balaton",
+    "description": "\u015brodki czysto\u015bci Balaton",
+    "requester": [
+      "katarzyna.a@niepodam.pl"
+    ],
+    "manager": [
+      "agnieszka.a@niepodam.pl"
+    ],
+    "submitted": "2019-10-07",
+    "account": 335,
+    "budget": 562,
+    "approval": null,
+    "status": 100
+  }
+},
+{
+  "model": "budget.application",
+  "pk": 30,
+  "fields": {
+    "date": "2019-10-14",
+    "amount": "120",
+    "title": "Spotkania Ma\u0142ego Samorz\u0105du Uczniowskiego",
+    "description": "2x dzbanek - termos do parzenia herbaty\r\nhttps://allegro.pl/oferta/termos-dzbanek-2l-konferencyjny-kawa-herbata-tadar-7589680743\r\n\r\ndzbanek na wod\u0119\r\nhttps://allegro.pl/oferta/dzbanek-do-napojow-szklany-florina-classic-1-5-l-7480254340",
+    "requester": [
+      "Weronika.a@niepodam.pl"
+    ],
+    "manager": [
+      "anna.a@niepodam.pl"
+    ],
+    "submitted": "2019-10-15",
+    "account": 333,
+    "budget": 563,
+    "approval": null,
+    "status": 100
+  }
+},
+{
+  "model": "budget.application",
+  "pk": 31,
+  "fields": {
+    "date": "2019-10-15",
+    "amount": "769",
+    "title": "Tarcze szkolne",
+    "description": "Tarcze szkolne do wr\u0119czenia uczniom klas 1 liceum podczas \u015blubowania.",
+    "requester": [
+      "izabela.a@niepodam.pl"
+    ],
+    "manager": [
+      "renata.a@niepodam.pl"
+    ],
+    "submitted": "2019-10-15",
+    "account": 338,
+    "budget": 566,
+    "approval": null,
+    "status": 100
+  }
+},
+{
+  "model": "budget.application",
+  "pk": 32,
+  "fields": {
+    "date": "2019-10-15",
+    "amount": "100",
+    "title": "Zam\u00f3wnie g\u0142o\u015bnik\u00f3w",
+    "description": "Poprosz\u0119 o g\u0142o\u015bniki do komputera do klasy 4c  (sala nr 16) w SSP, budynek nr 13. W sali nie mamy obecnie \u017cadnych g\u0142o\u015bnik\u00f3w.",
+    "requester": [
+      "Beata.a@niepodam.pl"
+    ],
+    "manager": [
+      "anna.a@niepodam.pl"
+    ],
+    "submitted": "2019-10-15",
+    "account": 338,
+    "budget": 566,
+    "approval": true,
+    "status": 100
+  }
+},
+{
+  "model": "budget.application",
+  "pk": 33,
+  "fields": {
+    "date": "2019-10-25",
+    "amount": "12000",
+    "title": "prace budowlano-remontowe",
+    "description": "Przestawienie ogrodzenia przy budynku nr 13 tak aby wyj\u015bcie z terenu przy szkole nie wypada\u0142o bezpo\u015brednio na uliczki, na kt\u00f3rych jest ruch samochodowy. Powstanie tzw. strefa bezpiecze\u0144stwa. \r\nDyrektor szko\u0142y jest zobowi\u0105zany do zapewnienia bezpiecznego wyj\u015bcia z terenu szko\u0142y.",
+    "requester": [
+      "agnieszka.a@niepodam.pl"
+    ],
+    "manager": [
+      "renata.a@niepodam.pl"
+    ],
+    "submitted": "2019-10-15",
+    "account": 352,
+    "budget": 567,
+    "approval": true,
+    "status": 100
+  }
+},
+{
+  "model": "budget.application",
+  "pk": 34,
+  "fields": {
+    "date": "2019-10-15",
+    "amount": "170",
+    "title": "nagrody w konkursie plastyczno-literackim pt.,,Nasi Patroni- pami\u0119tamy o Was\"",
+    "description": "Prosz\u0119 o zakup o\u015bmiu ksi\u0105\u017cek pt. ,,Fajna ferajna\" Moniki Kowaleczko-Szumowskiej na Czytam.pl,cena 18,68 za sztuk\u0119.",
+    "requester": [
+      "karolina.a@niepodam.pl"
+    ],
+    "manager": [
+      "anna.a@niepodam.pl"
+    ],
+    "submitted": "2019-10-15",
+    "account": 338,
+    "budget": 566,
+    "approval": true,
+    "status": 100
+  }
+},
+{
+  "model": "budget.application",
+  "pk": 35,
+  "fields": {
+    "date": "2019-10-16",
+    "amount": "20",
+    "title": "Pisaki do tablicy sucho\u015bcieralnej",
+    "description": "Pisaki do tablicy sucho\u015bcieralnej",
+    "requester": [
+      "paulina.a@niepodam.pl"
+    ],
+    "manager": [
+      "izabela.a@niepodam.pl"
+    ],
+    "submitted": "2019-10-15",
+    "account": 338,
+    "budget": 566,
+    "approval": true,
+    "status": 100
+  }
+},
+{
+  "model": "budget.application",
+  "pk": 36,
+  "fields": {
+    "date": "2019-10-16",
+    "amount": "737",
+    "title": "og\u0142osznie",
+    "description": "Pracuj.pl, og\u0142oszenie w sprawie nauczyciela matematyki.\r\nPilne i b.wa\u017cne.",
+    "requester": [
+      "agnieszka.a@niepodam.pl"
+    ],
+    "manager": [
+      "renata.a@niepodam.pl"
+    ],
+    "submitted": "2019-10-15",
+    "account": 356,
+    "budget": 560,
+    "approval": true,
+    "status": 100
+  }
+},
+{
+  "model": "budget.application",
+  "pk": 37,
+  "fields": {
+    "date": "2019-10-17",
+    "amount": "732",
+    "title": "Warsztaty edukacyjne \"Kochajmy pszczo\u0142y\"",
+    "description": "Warsztaty w ramach projektu ekologicznego  \u201eMamo, Tato\u2026 b\u0105d\u017amy eko\u201d - \u015awiatowy Tydzie\u0144 zwierz\u0105t - World Animal Week  - \u201eKochajmy pszczo\u0142y \u2013 fantastyczny \u015bwiat pszcz\u00f3\u0142\u201d /warsztaty we wszystkich grupach maj\u0105ce na celu pokazanie dzieciom jak wielk\u0105 rol\u0119 w \u017cyciu cz\u0142owieka odgrywaj\u0105 pszczo\u0142y/. Termin warsztat\u00f3w: 10.10.br.\r\nPodany koszt - brutto",
+    "requester": [
+      "anna.a@niepodam.pl"
+    ],
+    "manager": [
+      "agnieszka.a@niepodam.pl"
+    ],
+    "submitted": "2019-10-15",
+    "account": 338,
+    "budget": 566,
+    "approval": true,
+    "status": 100
+  }
+},
+{
+  "model": "budget.application",
+  "pk": 38,
+  "fields": {
+    "date": "2019-10-16",
+    "amount": "240",
+    "title": "Podr\u0119czniki do gramatyki z j. angielskiego",
+    "description": "Materia\u0142y z j. angielskiego do biblioteki dla nauczycieli:\r\nIt's Grammar Time 1 podr\u0119cznik, zestaw test\u00f3w i booklet (1 szt.)\r\nIt's Grammar Time 2 podr\u0119cznik, zestaw test\u00f3w i booklet (1 szt.)\r\nIt's Grammar Time 3 podr\u0119cznik, zestaw test\u00f3w i booklet (1 szt.)\r\nIt's Grammar Time 4 podr\u0119cznik, zestaw test\u00f3w i booklet (1 szt.)",
+    "requester": [
+      "aneta.a@niepodam.pl"
+    ],
+    "manager": [
+      "anna.a@niepodam.pl"
+    ],
+    "submitted": "2019-10-15",
+    "account": 338,
+    "budget": 566,
+    "approval": true,
+    "status": 100
+  }
+},
+{
+  "model": "budget.application",
+  "pk": 39,
+  "fields": {
+    "date": "2019-10-09",
+    "amount": "7971",
+    "title": "Lista ksi\u0105\u017cek do zakupu w ramach NPRCz",
+    "description": "Cena po rabacie -15% w znajomej ksi\u0119garni = 7970,44 z\u0142\r\nZapytam najpierw znajomej z ksi\u0119garni, na ile faktur mog\u0142aby to rozbi\u0107, \u017ceby \u0142atwiej mi by\u0142o potem wprowadza\u0107 naraz jedn\u0105 faktur\u0119.\r\n\r\nTYTU\u0141\tCENA\tSZTUKI\tKOSZT\t\r\nMa\u0142y Ksi\u0105\u017c\u0119 - Antoine de Saint-Exup\u00e9ry \u2013 wersja polska\t     11,00 z\u0142 \t9 szt\t                        99,00 z\u0142 \t\r\nLittle Prince - wersja angielska\t     13,90 z\u0142 \t1 szt\t                        13,90 z\u0142 \t\r\nEl Principito - wersja hiszpa\u0144ska\t     51,00 z\u0142 \t1 szt\t                        51,00 z\u0142 \t\r\nAdam Mickiewicz - Ballady i romanse\t       6,36 z\u0142 \t2 szt\t                        12,72 z\u0142 \t\r\nAdam Mickiewicz - Dziady\t     22,00 z\u0142 \t10 szt\t                     220,00 z\u0142 \t\r\nAdam Mickiewicz - Pan Tadeusz\t     18,00 z\u0142 \t4 szt\t                        72,00 z\u0142 \t\r\nAdam Mickiewicz - Pan Tadeusz Wydawca: G&P z ilustracjami Szancera\t     39,90 z\u0142 \t1 szt\t                        39,90 z\u0142 \t\r\nAdam Mickiewicz - Pan Tadeusz Wydawca: media Rodzina z ilustracjami Wilkonia\t   119,00 z\u0142 \t1 szt\t                     119,00 z\u0142 \t\r\nSyzyfowe prace - Stefan \u017beromski\t     12,00 z\u0142 \t5 szt\t                        60,00 z\u0142 \t\r\nSi\u0142aczka - Stefan \u017beromski\t       9,00 z\u0142 \t2 szt\t                        18,00 z\u0142 \t\r\nQuo Vadis - Henryk Sienkiewicz\t     18,90 z\u0142 \t7 szt\t                     132,30 z\u0142 \t\r\nLatarnik - Henryk Sienkiewicz\t     18,90 z\u0142 \t6 szt\t                     113,40 z\u0142 \t\r\nWyb\u00f3r fraszek pie\u015bni i tren\u00f3w - Jan Kochanowski\t     10,00 z\u0142 \t8 szt\t                        80,00 z\u0142 \t\r\nfraszki Jana Sztaudyngera\t     34,90 z\u0142 \t1 szt\t                        34,90 z\u0142 \t\r\nZemsta - Aleksander Fredro\t     13,90 z\u0142 \t1 szt\t                        13,90 z\u0142 \t\r\n\u017bona modna - Ignacy Krasicki\t       7,90 z\u0142 \t2 szt\t                        15,80 z\u0142 \t\r\nT\u0119dy i ow\u0119dy - Melchior Wa\u0144kowicz\t     23,90 z\u0142 \t1 szt\t                        23,90 z\u0142 \t\r\nKrzy\u017cacy - Henryk Sienkiewicz\t     26,90 z\u0142 \t2 szt\t                        53,80 z\u0142 \t\r\nOskar i Pani R\u00f3\u017ca - \u00c9ric-Emmanuel Schmitt\t     18,90 z\u0142 \t9 szt\t                     170,10 z\u0142 \t\r\nDziecko Noego - Eric-Emmanuel Schmitt\t     22,00 z\u0142 \t1 szt\t                        22,00 z\u0142 \t\r\nWspomnienia wojenne 22 IX 1939 - 5 IV 1945  - Karolina Lanckoro\u0144ska\t     35,00 z\u0142 \t1 szt\t                        35,00 z\u0142 \t\r\nStowarzyszenie Umar\u0142ych Poet\u00f3w - Nancy H. Kleinbaum\t     23,90 z\u0142 \t2 szt\t                        47,80 z\u0142 \t\r\nBuszuj\u0105cy w zbo\u017cu - Jerome David Salinger\t     29,90 z\u0142 \t3 szt\t                        89,70 z\u0142 \t\r\nFolwark zwierz\u0119cy - George Orwell\t     15,00 z\u0142 \t3 szt\t                        45,00 z\u0142 \t\r\nPrzepowiednia D\u017cokera \u2013 J. Gaarder\t     29,90 z\u0142 \t1 szt\t                        29,90 z\u0142 \t\r\nHistoria filozofii po g\u00f3ralsku \u2013 ks. J\u00f3zef Tischner\t     39,90 z\u0142 \t1 szt\t                        39,90 z\u0142 \t\r\nRestauracja na ko\u0144cu wszech\u015bwiata - Douglas Adams\t     55,00 z\u0142 \t1 szt\t                        55,00 z\u0142 \t\r\nCzarnoksi\u0119\u017cnik z Archipelagu - Ursula Le Guin \t     69,90 z\u0142 \t10 szt\t                     699,00 z\u0142 \t\r\nRok 1984 - George Orwell\t     32,90 z\u0142 \t3 szt\t                        98,70 z\u0142 \t\r\nMadame - A. Libera \t     49,00 z\u0142 \t2 szt\t                        98,00 z\u0142 \t\r\nSklepy cynamonowe - B. Schulz\t     13,00 z\u0142 \t14 szt\t                     182,00 z\u0142 \t\r\nKordian - S\u0142owacki\t     15,00 z\u0142 \t8 szt\t                     120,00 z\u0142 \t\r\nCierpienia m\u0142odego Wertera - J.W. Goethe\t       7,00 z\u0142 \t3 szt\t                        21,00 z\u0142 \t\r\nGranica - Z. Na\u0142kowska\t     20,00 z\u0142 \t10 szt\t                     200,00 z\u0142 \t\r\nMorderstwo w Orient Expresie - A. Christie\t     24,90 z\u0142 \t10 szt\t                     249,00 z\u0142 \t\r\nMitologia \u2013 J. Parandowski\t     42,00 z\u0142 \t14 szt\t                     588,00 z\u0142 \t\r\nAntygona - Sofokles\t     14,00 z\u0142 \t11 szt                     154,00 z\u0142 \t\r\nMakbet - W. Szekspir\t       7,00 z\u0142 \t5 szt\t                        35,00 z\u0142 \t\r\nHamlet - W. Szekspir\t     11,00 z\u0142 \t3 szt\t                        33,00 z\u0142 \t\r\nSk\u0105piec - Molier\t     13,50 z\u0142 \t7 szt\t                        94,50 z\u0142 \t\r\nPotop - H. Sienkiewicz\t     60,00 z\u0142 \t8 szt\t                     480,00 z\u0142 \t\r\nD\u017cuma - A. Camus\t     29,00 z\u0142 \t15 szt\t                     435,00 z\u0142 \t\r\nKatedra - J. Dukaj\t     19,90 z\u0142 \t15 szt\t                     298,50 z\u0142 \t\r\nKr\u00f3l Edyp - Sofokles\t       9,00 z\u0142 \t10 szt\t                        90,00 z\u0142 \t\r\nSolaris - S. Lem\t     34,90 z\u0142 \t14 szt\t                     488,60 z\u0142 \t\r\nMistrz i Ma\u0142gorzata - M. Bu\u0142hakow\t     36,90 z\u0142 \t13 szt\t                     479,70 z\u0142 \t\r\nPodr\u00f3\u017ce z Herodotem - R. Kapu\u015bci\u0144ski\t     42,00 z\u0142 \t3 szt\t                     126,00 z\u0142 \t\r\nOpowie\u015b\u0107 wigilijna - Ch. Dickens\t     13,00 z\u0142 \t11 szt\t                     143,00 z\u0142 \t\r\nGra na wielu b\u0119benkach - O. Tokarczuk\t     39,90 z\u0142 \t1 szt\t                        39,90 z\u0142 \t\r\nHej, zagrajcie siarczy\u015bcie! Opowie\u015b\u0107 o Stanis\u0142awie Moniuszce (rok 2019 rok Moniuszki) - Izabella Kleba\u0144ska\t     26,90 z\u0142 \t1 szt\t                        26,90 z\u0142 \t\r\nDuma i Uprzedzenie - Jane Austen\t     19,90 z\u0142 \t1 szt\t                        19,90 z\u0142 \t\r\nCzarnobyl. Instrukcje przetrwania - Kate Brown\t     54,90 z\u0142 \t1 szt\t                        54,90 z\u0142 \t\r\nKraina Chich\u00f3w - Jonathan Caroll\t     32,90 z\u0142 \t1 szt\t                        32,90 z\u0142 \t\r\nDiuna - Frank Herbert\t     59,90 z\u0142 \t1 szt\t                        59,90 z\u0142 \t\r\nGra o tron. Pie\u015b\u0144 lodu i ognia. Tom 1 - George R. R. Martin\t     49,00 z\u0142 \t1 szt\t                        49,00 z\u0142 \t\r\nS\u0142ownik symboli - W. Kopali\u0144ski\t     63,00 z\u0142 \t1 szt\t                        63,00 z\u0142 \t\r\nThorgal. Zdradzona czarodziejka. Tom 1 - Jean Van Hamme\t     29,99 z\u0142 \t1 szt\t                        29,99 z\u0142 \t\r\nSzklany tron. Tom 1 - Maas Sarah\t     36,90 z\u0142 \t1 szt\t                        36,90 z\u0142 \t\r\nSz\u00f3stka wron. Tom 1 - Bardugo Leigh\t     39,00 z\u0142 \t1 szt\t                        39,00 z\u0142 \t\r\nSzklany klosz - Sylwia Plath\t     39,90 z\u0142 \t1 szt\t                        39,90 z\u0142 \t\r\nJak przesta\u0107 si\u0119 martwi\u0107 i zacz\u0105\u0107 \u017cy\u0107 - Dave Carnegie\t     34,90 z\u0142 \t1 szt\t                        34,90 z\u0142 \t\r\nKomiks. Opowiadanie obrazem. Od narracji do znaku - Bartosz Kurc\t     34,90 z\u0142 \t1 szt\t                        34,90 z\u0142 \t\r\nRewolucje. Tom 1-4. Integral - Mateusz Skutnik\t   126,00 z\u0142 \t1 szt\t                     126,00 z\u0142 \t\r\nAntresolka profesorka Nerwosolka - Tadeusz Baranowski\t     59,99 z\u0142 \t1 szt\t                        59,99 z\u0142 \t\r\n90 najwa\u017cniejszych ksi\u0105\u017cek dla ludzi, kt\u00f3rzy nie maj\u0105 czasu czyta\u0107 - Henrik Lange\t     24,90 z\u0142 \t1 szt\t                        24,90 z\u0142 \t\r\nHilda i ptasia parada - Luke Pearson\t     45,00 z\u0142 \t1 szt\t                        45,00 z\u0142 \t\r\nPrzez las - Emily Carroll\t     49,90 z\u0142 \t1 szt\t                        49,90 z\u0142 \t\r\nPersepolis - Marjane Satrapi\t     89,99 z\u0142 \t1 szt\t                        89,99 z\u0142 \t\r\nNowy Jork. \u017bycie w wielkim mie\u015bcie - Will Eisner\t     89,00 z\u0142 \t1 szt\t                        89,00 z\u0142 \t\r\nSandman. Preludia i Nokturny - Nail Gaiman\t     80,00 z\u0142 \t1 szt\t                        80,00 z\u0142 \t\r\nStephen King - Zielona Mila\t     34,90 z\u0142 \t1 szt\t                        34,90 z\u0142 \t\r\nSztuka cenniejsza ni\u017c z\u0142oto - J. Bia\u0142ostocki\t   149,90 z\u0142 \t1 szt                     149,90 z\u0142 \t\r\nHarry Potter. Pakiet 7 ksi\u0105\u017cek - J. K. Rowling\t   289,00 z\u0142 \t1 szt\t                     289,00 z\u0142 \t\r\nBajki nie tylko chi\u0144skie - Kr\u00f3licki Zbigniew\t     34,90 z\u0142 \t1 szt\t                        34,90 z\u0142 \t\r\n13 bajek z kr\u00f3lestwa Lailonii dla du\u017cych i ma\u0142ych - Leszek Ko\u0142akowski\t     59,90 z\u0142 \t1 szt\t                        59,90 z\u0142 \t\r\nBajki filozoficzne. \u015awiat mitologii - Piquemal Michel\t     26,00 z\u0142 \t1 szt\t                        26,00 z\u0142 \t\r\nBajki filozoficzne - Piquemal Michel\t     26,00 z\u0142 \t1 szt\t                        26,00 z\u0142 \t\r\nFizjologia cz\u0142owieka w zarysie - W.Z. Traczyk - Wyd. Lekarskie PZWL \t   108,90 z\u0142 \t1 szt\t                     108,90 z\u0142 \t\r\nAtlas anatomiczny z plakatami, opr. Zbiorowe, Wyd. Literat 2016\t     19,90 z\u0142 \t1 szt\t                        19,90 z\u0142 \t\r\nAlicja w Krainie Czar\u00f3w. Po drugiej stronie lustra (z ilustracjami Johna Tenniela) -  Lewis Carroll\t     23,90 z\u0142 \t1 szt\t                        23,90 z\u0142 \t\r\nCalvin i Hobbes - Bill Watterson\t     30,00 z\u0142 \t1 szt\t                        30,00 z\u0142 \t\r\nNi\u0107 Ariadny. Mity i labirynty - Jan Bajtlik\t     59,90 z\u0142 \t1 szt\t                        59,90 z\u0142 \t\r\nOpowie\u015bci galicyjskie - A. Stasiuk\t     34,90 z\u0142 \t1 szt\t                        34,90 z\u0142 \t\r\nBoska komedia - D. Alighieri\t     18,00 z\u0142 \t2 szt\t                        36,00 z\u0142 \t\r\nNie-boska komedia - Z. Krasi\u0144ski\t     14,00 z\u0142 \t2 szt\t                        28,00 z\u0142 \t\r\nGloria Victis - E. Orzeszkowa\t       4,00 z\u0142 \t2 szt\t                          8,00 z\u0142 \t\r\nZd\u0105\u017cy\u0107 przed Panem Bogiem - H. Krall\t     26,90 z\u0142 \t2 szt\t                        53,80 z\u0142 \t\r\nTango - S. Mro\u017cek\t     22,00 z\u0142 \t2 szt                        44,00 z\u0142 \t\r\nW kraju niewiernych - J. Dukaj\t     54,90 z\u0142 \t1 szt\t                        54,90 z\u0142 \t\r\nAntygona w Nowym Jorku - J. G\u0142owacki\t     33,00 z\u0142 \t1 szt\t                        33,00 z\u0142 \t\r\nWyb\u00f3r wierszy - A. Asnyk\t     15,00 z\u0142 \t1 szt\t                        15,00 z\u0142 \t\r\nBeniowski - J. S\u0142owacki\t     15,00 z\u0142 \t2 szt\t                        30,00 z\u0142 \t\r\nHeban - R. Kapu\u015bci\u0144ski\t     45,90 z\u0142 \t2 szt\t                        91,80 z\u0142 \t\r\nOkularnik - K. Bonda\t     44,90 z\u0142 \t1 szt\t                        44,90 z\u0142 \t\r\nLampiony - K. Bonda\t     41,90 z\u0142 \t1 szt\t                        41,90 z\u0142 \t\r\nCzerwony paj\u0105k - K. Bonda\t     49,90 z\u0142 \t1 szt                      49,90 z\u0142 \t\r\nSUMA\t \t \t       9 376,99 z\u0142 \t\r\nPO RABACIE -15% = 7970,44 z\u0142",
+    "requester": [
+      "natalia.a@niepodam.pl"
+    ],
+    "manager": [
+      "izabela.a@niepodam.pl"
+    ],
+    "submitted": "2019-10-15",
+    "account": 338,
+    "budget": 566,
+    "approval": true,
+    "status": 100
+  }
+},
+{
+  "model": "budget.application",
+  "pk": 40,
+  "fields": {
+    "date": "2019-10-14",
+    "amount": "350",
+    "title": "Wysposa\u017cenie",
+    "description": "Mikrofal\u00f3wka do pokoju socjalnego nauczycieli w budynku nr 18. Stary sprz\u0119t - zepsuty.",
+    "requester": [
+      "agnieszka.a@niepodam.pl"
+    ],
+    "manager": [
+      "renata.a@niepodam.pl"
+    ],
+    "submitted": "2019-10-15",
+    "account": 395,
+    "budget": 568,
+    "approval": null,
+    "status": 100
+  }
+},
+{
+  "model": "budget.application",
+  "pk": 41,
+  "fields": {
+    "date": "2019-10-16",
+    "amount": "600",
+    "title": "wyposa\u017cenie",
+    "description": "Suszarki do w\u0142os\u00f3w, 6 szt. \r\nWyposa\u017cenie zaplecza basenowego.\r\nKonieczno\u015b\u0107 uzupe\u0142nienia brak\u00f3w.",
+    "requester": [
+      "agnieszka.a@niepodam.pl"
+    ],
+    "manager": [
+      "renata.a@niepodam.pl"
+    ],
+    "submitted": "2019-10-15",
+    "account": 395,
+    "budget": 568,
+    "approval": null,
+    "status": 100
+  }
+},
+{
+  "model": "budget.application",
+  "pk": 42,
+  "fields": {
+    "date": "2019-10-30",
+    "amount": "5500",
+    "title": "IT",
+    "description": "Serwer do kopii zapasowej. Zakup rekomendowany przez AML-IT.",
+    "requester": [
+      "agnieszka.a@niepodam.pl"
+    ],
+    "manager": [
+      "renata.a@niepodam.pl"
+    ],
+    "submitted": "2019-10-15",
+    "account": 395,
+    "budget": 568,
+    "approval": true,
+    "status": 100
+  }
+},
+{
+  "model": "budget.application",
+  "pk": 43,
+  "fields": {
+    "date": "2019-10-10",
+    "amount": "100",
+    "title": "torba na laptopa - Zarz\u0105d",
+    "description": "torba na laptopa - Zarz\u0105d",
+    "requester": [
+      "katarzyna.a@niepodam.pl"
+    ],
+    "manager": [
+      "agnieszka.a@niepodam.pl"
+    ],
+    "submitted": "2019-10-15",
+    "account": 333,
+    "budget": 563,
+    "approval": true,
+    "status": 100
+  }
+},
+{
+  "model": "budget.application",
+  "pk": 44,
+  "fields": {
+    "date": "2019-10-10",
+    "amount": "150",
+    "title": "materia\u0142y biurowe sekret.b.18, motylki",
+    "description": "materia\u0142y biurowe sekret.b.18, motylki",
+    "requester": [
+      "katarzyna.a@niepodam.pl"
+    ],
+    "manager": [
+      "agnieszka.a@niepodam.pl"
+    ],
+    "submitted": "2019-10-15",
+    "account": 337,
+    "budget": 565,
+    "approval": true,
+    "status": 100
+  }
+},
+{
+  "model": "budget.application",
+  "pk": 45,
+  "fields": {
+    "date": "2019-10-17",
+    "amount": "250",
+    "title": "art.spo\u017cywcze sekret.admin.",
+    "description": "art.spo\u017cywcze sekret.admin.",
+    "requester": [
+      "katarzyna.a@niepodam.pl"
+    ],
+    "manager": [
+      "agnieszka.a@niepodam.pl"
+    ],
+    "submitted": "2019-10-15",
+    "account": 336,
+    "budget": 569,
+    "approval": true,
+    "status": 100
+  }
+},
+{
+  "model": "budget.application",
+  "pk": 46,
+  "fields": {
+    "date": "2019-10-17",
+    "amount": "220",
+    "title": "Szkolenie \"Integracja sensoryczna w przedszkolu\"",
+    "description": "Szkolenie \"Integracja sensoryczna na co dzie\u0144 w przedszkolu i szkole\" /2 osoby/. Jest akceptacja Pani R. \u017bbikowskiej",
+    "requester": [
+      "anna.a@niepodam.pl"
+    ],
+    "manager": [
+      "agnieszka.a@niepodam.pl"
+    ],
+    "submitted": "2019-10-15",
+    "account": 362,
+    "budget": 573,
+    "approval": null,
+    "status": 100
+  }
+},
+{
+  "model": "budget.application",
+  "pk": 47,
+  "fields": {
+    "date": "2019-10-15",
+    "amount": "480",
+    "title": "Szkolenie \"Trener postaw emocjonalnych u dzieci i m\u0142odzie\u017cy\"",
+    "description": "Dwudniowe szkolenie \"Trener postaw emocjonalnych u dzieci i m\u0142odzie\u017cy\" /1-os./ - w nawi\u0105zaniu do wcze\u015bniejszej rozmowy jest akceptacja pani R. \u017bbikowskiej.",
+    "requester": [
+      "anna.a@niepodam.pl"
+    ],
+    "manager": [
+      "agnieszka.a@niepodam.pl"
+    ],
+    "submitted": "2019-10-15",
+    "account": 362,
+    "budget": 573,
+    "approval": null,
+    "status": 100
+  }
+},
+{
+  "model": "budget.application",
+  "pk": 48,
+  "fields": {
+    "date": "2019-10-14",
+    "amount": "923",
+    "title": "Warsztaty edukacyjne o chwastach /w ramach projektu eko/",
+    "description": "Warsztaty edukacyjne \"Chwasty lecz\u0105\" w ramach projektu edukacyjnego \"Mamo, tato... b\u0105d\u017amy eko\" /zosta\u0142y przeprowadzone we wrze\u015bniu/. Sprawa wcze\u015bniej om\u00f3wiona ju\u017c z Pani\u0105 R. \u017bbikowsk\u0105.",
+    "requester": [
+      "anna.a@niepodam.pl"
+    ],
+    "manager": [
+      "agnieszka.a@niepodam.pl"
+    ],
+    "submitted": "2019-10-15",
+    "account": 351,
+    "budget": 570,
+    "approval": true,
+    "status": 100
+  }
+},
+{
+  "model": "budget.application",
+  "pk": 49,
+  "fields": {
+    "date": "2019-10-18",
+    "amount": "650",
+    "title": "Termoregulator do pieca - Balaton 8",
+    "description": "Termoregulator do pieca - Balaton 8",
+    "requester": [
+      "katarzyna.a@niepodam.pl"
+    ],
+    "manager": [
+      "agnieszka.a@niepodam.pl"
+    ],
+    "submitted": "2019-10-15",
+    "account": 339,
+    "budget": 564,
+    "approval": true,
+    "status": 100
+  }
+},
+{
+  "model": "budget.application",
+  "pk": 50,
+  "fields": {
+    "date": "2019-10-21",
+    "amount": "100",
+    "title": "artyku\u0142y biurowe",
+    "description": "ma\u0142e koperty C6 - 50 szt\r\nta\u015bma klej\u0105ca - 5 szt\r\nno\u017cyczki du\u017ce (20 cm) - 2 szt\r\ndyspenser do ta\u015bmy klej\u0105cej - 1 szt",
+    "requester": [
+      "sekretariat@niepodam.pl"
+    ],
+    "manager": [
+      "izabela.a@niepodam.pl"
+    ],
+    "submitted": "2019-10-15",
+    "account": 337,
+    "budget": 565,
+    "approval": true,
+    "status": 100
+  }
+},
+{
+  "model": "budget.application",
+  "pk": 51,
+  "fields": {
+    "date": "2019-10-28",
+    "amount": "3200",
+    "title": "Eksploatacja budynk\u00f3w",
+    "description": "Uzupe\u0142nienie (w uk\u0142adzie by\u0142a minimalna ilo\u015b\u0107) czynnika w uk\u0142adzie CT central wentylacyjnych w bud.13 oraz monta\u017c pompy obiegowej zapewniaj\u0105cej r\u00f3wnomierne podawanie czynnika do obu system\u00f3w.",
+    "requester": [
+      "agnieszka.a@niepodam.pl"
+    ],
+    "manager": [
+      "renata.a@niepodam.pl"
+    ],
+    "submitted": "2019-10-15",
+    "account": 334,
+    "budget": 571,
+    "approval": true,
+    "status": 100
+  }
+},
+{
+  "model": "budget.application",
+  "pk": 52,
+  "fields": {
+    "date": "2019-10-18",
+    "amount": "2300",
+    "title": "prace budowlano-remontowe",
+    "description": "Wykonanie prac wyko\u0144czeniowych wynikaj\u0105cych z przeprowadzonych we wrze\u015bniu monta\u017cy 3 sztuk drzwi, monta\u017c prog\u00f3w, lakierowanie blatu drewnianego w \u0142azience, silokonowanie luster.",
+    "requester": [
+      "agnieszka.a@niepodam.pl"
+    ],
+    "manager": [
+      "renata.a@niepodam.pl"
+    ],
+    "submitted": "2019-10-15",
+    "account": 352,
+    "budget": 567,
+    "approval": true,
+    "status": 100
+  }
+},
+{
+  "model": "budget.application",
+  "pk": 53,
+  "fields": {
+    "date": "2019-10-15",
+    "amount": "100",
+    "title": "\"Dzie\u0144 wegetarianina\" zgodnie z kalendarzem Eko - projekt \"Mamo, tato... b\u0105d\u017amy eko.../",
+    "description": "\"Dzie\u0144 wegetarianina\" obchodzony zgodnie z kalendarzem eko-projektu \"Mamo, tato... b\u0105d\u017amy eko...\"\r\nZakup produkt\u00f3w spo\u017cywczych potrzebnych do przeprowadzenia zaj\u0119\u0107 z dzie\u0107mi we wszystkich grupach wiekowych. Zaj\u0119cia maj\u0105ce na celu przybli\u017cenie poj\u0119cia diety wegetaria\u0144skiej, poznanie produkt\u00f3w zast\u0119pczych dla mleka, mi\u0119sa itp.",
+    "requester": [
+      "anna.a@niepodam.pl"
+    ],
+    "manager": [
+      "renata.a@niepodam.pl"
+    ],
+    "submitted": "2019-10-15",
+    "account": 338,
+    "budget": 566,
+    "approval": true,
+    "status": 100
+  }
+},
+{
+  "model": "budget.application",
+  "pk": 54,
+  "fields": {
+    "date": "2019-10-30",
+    "amount": "4500",
+    "title": "Wysposa\u017cenie",
+    "description": "Zmywarko-wyparzarka do kuchni w bud.13.\r\nKonieczno\u015b\u0107 wymiany starego sprz\u0119tu ze wzgl\u0119du na nieop\u0142acalne dalsze naprawy.",
+    "requester": [
+      "agnieszka.a@niepodam.pl"
+    ],
+    "manager": [
+      "renata.a@niepodam.pl"
+    ],
+    "submitted": "2019-10-15",
+    "account": 341,
+    "budget": 572,
+    "approval": true,
+    "status": 100
+  }
+},
+{
+  "model": "budget.application",
+  "pk": 55,
+  "fields": {
+    "date": "2019-10-21",
+    "amount": "90",
+    "title": "Zaj\u0119cia w ramach projektu \"Motylki w Europie\"",
+    "description": "Zaj\u0119cia prowadzone s\u0105 we wszystkich grupach, maj\u0105ce na celu przybli\u017cenie kultury Francji. W ramach tego projektu dzieci poznaj\u0105 charakterystyczne dla tego kraju smako\u0142yki. Zakup produkt\u00f3w spo\u017cywczych niezb\u0119dnych do degustacji.",
+    "requester": [
+      "anna.a@niepodam.pl"
+    ],
+    "manager": [
+      "renata.a@niepodam.pl"
+    ],
+    "submitted": "2019-10-15",
+    "account": 338,
+    "budget": 566,
+    "approval": true,
+    "status": 100
+  }
+},
+{
+  "model": "budget.application",
+  "pk": 56,
+  "fields": {
+    "date": "2019-10-30",
+    "amount": "1600",
+    "title": "Wysposa\u017cenie",
+    "description": "10 szt. krzese\u0142 uczniowskich.\r\nUzupe\u0142nienie w klasach w budynku nr 18.",
+    "requester": [
+      "agnieszka.a@niepodam.pl"
+    ],
+    "manager": [
+      "renata.a@niepodam.pl"
+    ],
+    "submitted": "2019-10-15",
+    "account": 341,
+    "budget": 572,
+    "approval": true,
+    "status": 100
+  }
+},
+{
+  "model": "budget.application",
+  "pk": 57,
+  "fields": {
+    "date": "2019-10-14",
+    "amount": "1450",
+    "title": "S\u0142upki stra\u017cackie",
+    "description": "6 szt. s\u0142upk\u00f3w stra\u017cackich. Konieczno\u015b\u0107 zabezpieczenia terenu przy bud.13 po modernizacji ogrodzenia.",
+    "requester": [
+      "agnieszka.a@niepodam.pl"
+    ],
+    "manager": [
+      "renata.a@niepodam.pl"
+    ],
+    "submitted": "2019-10-15",
+    "account": 339,
+    "budget": 564,
+    "approval": true,
+    "status": 100
+  }
+},
+{
+  "model": "budget.application",
+  "pk": 58,
+  "fields": {
+    "date": "2019-10-30",
+    "amount": "190",
+    "title": "IT",
+    "description": "G\u0142o\u015bniki do klasy bud.18",
+    "requester": [
+      "agnieszka.a@niepodam.pl"
+    ],
+    "manager": [
+      "renata.a@niepodam.pl"
+    ],
+    "submitted": "2019-10-15",
+    "account": null,
+    "budget": null,
+    "approval": true,
+    "status": 100
+  }
+},
+{
+  "model": "budget.application",
+  "pk": 59,
+  "fields": {
+    "date": "2019-10-22",
+    "amount": "2350",
+    "title": "Tonery do sekretariatu komplet do wszystkich drukarek",
+    "description": "- Hp LaserJEt P1006 - x4\r\n- HP ProX451dw - komplet\r\n- Canon IR2520UFRII LT - x4",
+    "requester": [
+      "sekretariat@niepodam.pl"
+    ],
+    "manager": [
+      "izabela.a@niepodam.pl"
+    ],
+    "submitted": "2019-10-15",
+    "account": 337,
+    "budget": 565,
+    "approval": null,
+    "status": 100
+  }
+},
+{
+  "model": "budget.application",
+  "pk": 60,
+  "fields": {
+    "date": "2019-10-17",
+    "amount": "980",
+    "title": "Konferencja Edukacji Kreatywnej z udzia\u0142em Sir Kena Robinsona",
+    "description": "Udzia\u0142 w Konferencji Edukacji Kreatywnej z udzia\u0142em Sir Kena Robinsona - p.Ludwicka i p.Fa\u0142dowska",
+    "requester": [
+      "katarzyna.a@niepodam.pl"
+    ],
+    "manager": [
+      "renata.a@niepodam.pl"
+    ],
+    "submitted": "2019-10-17",
+    "account": null,
+    "budget": null,
+    "approval": null,
+    "status": 100
+  }
+},
+{
+  "model": "budget.application",
+  "pk": 61,
+  "fields": {
+    "date": "2019-10-23",
+    "amount": "670",
+    "title": "naprawa pieca",
+    "description": "Przegl\u0105d i naprawa pieca w budynku przedszkola. Balaton 8a",
+    "requester": [
+      "agnieszka.a@niepodam.pl"
+    ],
+    "manager": [
+      "renata.a@niepodam.pl"
+    ],
+    "submitted": "2019-10-17",
+    "account": null,
+    "budget": null,
+    "approval": null,
+    "status": 100
+  }
+},
+{
+  "model": "budget.application",
+  "pk": 62,
+  "fields": {
+    "date": "2019-10-18",
+    "amount": "800",
+    "title": "Szkolenie",
+    "description": "Udzia\u0142 w szkoleniu dotycz\u0105cym rozliczania dotacji o\u015bwiatowej w plac\u00f3wkach niepublicznych dla g\u0142\u00f3wnej ksi\u0119gowej pani Doroty \u0141yko.",
+    "requester": [
+      "agnieszka.a@niepodam.pl"
+    ],
+    "manager": [
+      "renata.a@niepodam.pl"
+    ],
+    "submitted": "2019-10-17",
+    "account": null,
+    "budget": null,
+    "approval": null,
+    "status": 100
+  }
+},
+{
+  "model": "budget.application",
+  "pk": 63,
+  "fields": {
+    "date": "2019-10-20",
+    "amount": "150",
+    "title": "Zapotrzebowanie na warsztaty - k\u00f3\u0142ko Komiksowy \u015bwiat oraz warsztaty dla klas w ramach Narodowego Programu Rozwoju Czytelnictwa",
+    "description": "pastele suche 3-4 opakowania kredek\r\npastele olejne 1 opakowanie\r\nw\u0119giel do rysowania - dla ok. 10 os\u00f3b\r\nkarteczki samoprzylepne  - 3 bloczki\r\n5 teczek zwyk\u0142ych\r\nkoszulki A 4\r\nfolia do laminowania\r\nwycinarka do serduszek jak najwi\u0119kszych (przypomina dziurkacz)\r\nplastelinki do mocowania kartek - na wystawy - pilne\r\nplastelina - 4-5 opakowa\u0144\r\nkartki papieru A3 - 100 stron",
+    "requester": [
+      "agnieszka.a@niepodam.pl"
+    ],
+    "manager": [
+      "anna.a@niepodam.pl"
+    ],
+    "submitted": "2019-10-17",
+    "account": null,
+    "budget": null,
+    "approval": null,
+    "status": 100
+  }
+},
+{
+  "model": "budget.application",
+  "pk": 64,
+  "fields": {
+    "date": "2019-10-30",
+    "amount": "1500",
+    "title": "Ma\u0142y sprz\u0119t AGD",
+    "description": "Zakup ma\u0142ego sprz\u0119tu AGD do sali kulinarnej.",
+    "requester": [
+      "anna.a@niepodam.pl"
+    ],
+    "manager": [
+      "renata.a@niepodam.pl"
+    ],
+    "submitted": "2019-10-17",
+    "account": null,
+    "budget": null,
+    "approval": null,
+    "status": 100
   }
 },
 {
@@ -93,6 +2376,1770 @@
     "kind": 200,
     "approval": true,
     "notes": ""
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 11,
+  "fields": {
+    "user": [
+      "anna.a@niepodam.pl"
+    ],
+    "application": 12,
+    "ts": "2019-10-04T12:01:05.720Z",
+    "kind": 100,
+    "approval": null,
+    "notes": "Akceptuj\u0119"
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 12,
+  "fields": {
+    "user": [
+      "anna.a@niepodam.pl"
+    ],
+    "application": 11,
+    "ts": "2019-10-04T12:02:00.136Z",
+    "kind": 100,
+    "approval": null,
+    "notes": "Akceptuj\u0119"
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 13,
+  "fields": {
+    "user": [
+      "anna.a@niepodam.pl"
+    ],
+    "application": 8,
+    "ts": "2019-10-04T12:03:39.292Z",
+    "kind": 100,
+    "approval": null,
+    "notes": "Akceptuj\u0119"
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 14,
+  "fields": {
+    "user": [
+      "anna.a@niepodam.pl"
+    ],
+    "application": 14,
+    "ts": "2019-10-04T12:04:42.607Z",
+    "kind": 100,
+    "approval": null,
+    "notes": "Akceptuj\u0119"
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 20,
+  "fields": {
+    "user": [
+      "renata.a@niepodam.pl"
+    ],
+    "application": 20,
+    "ts": "2019-10-06T15:36:27.789Z",
+    "kind": 1000,
+    "approval": true,
+    "notes": ""
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 21,
+  "fields": {
+    "user": [
+      "renata.a@niepodam.pl"
+    ],
+    "application": 13,
+    "ts": "2019-10-07T06:03:03.247Z",
+    "kind": 1000,
+    "approval": null,
+    "notes": ""
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 22,
+  "fields": {
+    "user": [
+      "renata.a@niepodam.pl"
+    ],
+    "application": 16,
+    "ts": "2019-10-07T06:03:11.787Z",
+    "kind": 1000,
+    "approval": null,
+    "notes": ""
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 23,
+  "fields": {
+    "user": [
+      "agnieszka.a@niepodam.pl"
+    ],
+    "application": 17,
+    "ts": "2019-10-07T08:03:42.044Z",
+    "kind": 100,
+    "approval": true,
+    "notes": ""
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 24,
+  "fields": {
+    "user": [
+      "andrzej.a@niepodam.pl"
+    ],
+    "application": 22,
+    "ts": "2019-10-07T10:08:14.788Z",
+    "kind": 1000,
+    "approval": true,
+    "notes": ""
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 25,
+  "fields": {
+    "user": [
+      "agnieszka.a@niepodam.pl"
+    ],
+    "application": 25,
+    "ts": "2019-10-07T10:08:53.123Z",
+    "kind": 100,
+    "approval": true,
+    "notes": ""
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 26,
+  "fields": {
+    "user": [
+      "andrzej.a@niepodam.pl"
+    ],
+    "application": 21,
+    "ts": "2019-10-07T10:09:14.506Z",
+    "kind": 1000,
+    "approval": true,
+    "notes": ""
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 27,
+  "fields": {
+    "user": [
+      "andrzej.a@niepodam.pl"
+    ],
+    "application": 24,
+    "ts": "2019-10-07T10:10:04.341Z",
+    "kind": 1000,
+    "approval": true,
+    "notes": ""
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 28,
+  "fields": {
+    "user": [
+      "agnieszka.a@niepodam.pl"
+    ],
+    "application": 22,
+    "ts": "2019-10-07T10:14:37.695Z",
+    "kind": 100,
+    "approval": true,
+    "notes": ""
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 29,
+  "fields": {
+    "user": [
+      "agnieszka.a@niepodam.pl"
+    ],
+    "application": 21,
+    "ts": "2019-10-07T10:15:23.192Z",
+    "kind": 100,
+    "approval": true,
+    "notes": ""
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 30,
+  "fields": {
+    "user": [
+      "agnieszka.a@niepodam.pl"
+    ],
+    "application": 24,
+    "ts": "2019-10-07T10:16:18.594Z",
+    "kind": 100,
+    "approval": true,
+    "notes": ""
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 31,
+  "fields": {
+    "user": [
+      "izabela.a@niepodam.pl"
+    ],
+    "application": 27,
+    "ts": "2019-10-07T12:43:09.429Z",
+    "kind": 100,
+    "approval": true,
+    "notes": "Akceptuj\u0119."
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 32,
+  "fields": {
+    "user": [
+      "renata.a@niepodam.pl"
+    ],
+    "application": 28,
+    "ts": "2019-10-07T15:39:01.967Z",
+    "kind": 1000,
+    "approval": null,
+    "notes": ""
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 33,
+  "fields": {
+    "user": [
+      "renata.a@niepodam.pl"
+    ],
+    "application": 23,
+    "ts": "2019-10-07T15:39:14.357Z",
+    "kind": 1000,
+    "approval": null,
+    "notes": ""
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 34,
+  "fields": {
+    "user": [
+      "renata.a@niepodam.pl"
+    ],
+    "application": 25,
+    "ts": "2019-10-07T15:39:25.602Z",
+    "kind": 1000,
+    "approval": true,
+    "notes": ""
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 35,
+  "fields": {
+    "user": [
+      "renata.a@niepodam.pl"
+    ],
+    "application": 30,
+    "ts": "2019-10-07T15:39:43.256Z",
+    "kind": 1000,
+    "approval": null,
+    "notes": ""
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 36,
+  "fields": {
+    "user": [
+      "renata.a@niepodam.pl"
+    ],
+    "application": 15,
+    "ts": "2019-10-07T15:39:51.064Z",
+    "kind": 1000,
+    "approval": true,
+    "notes": ""
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 37,
+  "fields": {
+    "user": [
+      "renata.a@niepodam.pl"
+    ],
+    "application": 12,
+    "ts": "2019-10-07T15:39:58.617Z",
+    "kind": 1000,
+    "approval": null,
+    "notes": ""
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 38,
+  "fields": {
+    "user": [
+      "renata.a@niepodam.pl"
+    ],
+    "application": 11,
+    "ts": "2019-10-07T15:40:11.434Z",
+    "kind": 1000,
+    "approval": null,
+    "notes": ""
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 39,
+  "fields": {
+    "user": [
+      "renata.a@niepodam.pl"
+    ],
+    "application": 9,
+    "ts": "2019-10-07T15:40:18.363Z",
+    "kind": 1000,
+    "approval": null,
+    "notes": ""
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 40,
+  "fields": {
+    "user": [
+      "renata.a@niepodam.pl"
+    ],
+    "application": 8,
+    "ts": "2019-10-07T15:40:40.037Z",
+    "kind": 1000,
+    "approval": null,
+    "notes": ""
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 41,
+  "fields": {
+    "user": [
+      "renata.a@niepodam.pl"
+    ],
+    "application": 26,
+    "ts": "2019-10-07T15:40:47.996Z",
+    "kind": 1000,
+    "approval": null,
+    "notes": ""
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 42,
+  "fields": {
+    "user": [
+      "renata.a@niepodam.pl"
+    ],
+    "application": 27,
+    "ts": "2019-10-07T15:41:04.157Z",
+    "kind": 1000,
+    "approval": false,
+    "notes": ""
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 43,
+  "fields": {
+    "user": [
+      "renata.a@niepodam.pl"
+    ],
+    "application": 29,
+    "ts": "2019-10-07T15:41:10.517Z",
+    "kind": 1000,
+    "approval": null,
+    "notes": ""
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 44,
+  "fields": {
+    "user": [
+      "renata.a@niepodam.pl"
+    ],
+    "application": 7,
+    "ts": "2019-10-07T15:41:22.840Z",
+    "kind": 1000,
+    "approval": null,
+    "notes": ""
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 45,
+  "fields": {
+    "user": [
+      "renata.a@niepodam.pl"
+    ],
+    "application": 14,
+    "ts": "2019-10-07T15:41:42.418Z",
+    "kind": 1000,
+    "approval": null,
+    "notes": ""
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 46,
+  "fields": {
+    "user": [
+      "renata.a@niepodam.pl"
+    ],
+    "application": 17,
+    "ts": "2019-10-07T15:43:53.342Z",
+    "kind": 1000,
+    "approval": false,
+    "notes": "z czego te warsztaty i dla kogo"
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 47,
+  "fields": {
+    "user": [
+      "dorota.a@niepodam.pl"
+    ],
+    "application": 25,
+    "ts": "2019-10-08T07:01:40.846Z",
+    "kind": 200,
+    "approval": true,
+    "notes": ""
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 48,
+  "fields": {
+    "user": [
+      "dorota.a@niepodam.pl"
+    ],
+    "application": 13,
+    "ts": "2019-10-08T07:42:16.163Z",
+    "kind": 200,
+    "approval": true,
+    "notes": ""
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 49,
+  "fields": {
+    "user": [
+      "dorota.a@niepodam.pl"
+    ],
+    "application": 30,
+    "ts": "2019-10-08T07:44:53.611Z",
+    "kind": 200,
+    "approval": true,
+    "notes": ""
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 50,
+  "fields": {
+    "user": [
+      "dorota.a@niepodam.pl"
+    ],
+    "application": 23,
+    "ts": "2019-10-08T07:44:58.840Z",
+    "kind": 200,
+    "approval": true,
+    "notes": ""
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 51,
+  "fields": {
+    "user": [
+      "dorota.a@niepodam.pl"
+    ],
+    "application": 14,
+    "ts": "2019-10-08T07:47:26.658Z",
+    "kind": 200,
+    "approval": true,
+    "notes": ""
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 52,
+  "fields": {
+    "user": [
+      "renata.a@niepodam.pl"
+    ],
+    "application": 31,
+    "ts": "2019-10-08T11:22:33.480Z",
+    "kind": 1000,
+    "approval": null,
+    "notes": ""
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 53,
+  "fields": {
+    "user": [
+      "renata.a@niepodam.pl"
+    ],
+    "application": 32,
+    "ts": "2019-10-08T11:22:50.769Z",
+    "kind": 1000,
+    "approval": true,
+    "notes": ""
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 54,
+  "fields": {
+    "user": [
+      "anna.a@niepodam.pl"
+    ],
+    "application": 34,
+    "ts": "2019-10-08T13:01:12.853Z",
+    "kind": 100,
+    "approval": true,
+    "notes": "Akceptuj\u0119"
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 55,
+  "fields": {
+    "user": [
+      "dorota.a@niepodam.pl"
+    ],
+    "application": 33,
+    "ts": "2019-10-09T07:35:04.258Z",
+    "kind": 200,
+    "approval": true,
+    "notes": ""
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 56,
+  "fields": {
+    "user": [
+      "dorota.a@niepodam.pl"
+    ],
+    "application": 31,
+    "ts": "2019-10-09T07:35:26.635Z",
+    "kind": 200,
+    "approval": true,
+    "notes": ""
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 57,
+  "fields": {
+    "user": [
+      "dorota.a@niepodam.pl"
+    ],
+    "application": 32,
+    "ts": "2019-10-09T07:35:45.724Z",
+    "kind": 200,
+    "approval": true,
+    "notes": ""
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 58,
+  "fields": {
+    "user": [
+      "dorota.a@niepodam.pl"
+    ],
+    "application": 34,
+    "ts": "2019-10-09T07:55:37.111Z",
+    "kind": 200,
+    "approval": true,
+    "notes": ""
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 59,
+  "fields": {
+    "user": [
+      "dorota.a@niepodam.pl"
+    ],
+    "application": 28,
+    "ts": "2019-10-09T07:56:15.501Z",
+    "kind": 200,
+    "approval": true,
+    "notes": ""
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 60,
+  "fields": {
+    "user": [
+      "dorota.a@niepodam.pl"
+    ],
+    "application": 20,
+    "ts": "2019-10-09T08:04:59.865Z",
+    "kind": 200,
+    "approval": true,
+    "notes": ""
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 61,
+  "fields": {
+    "user": [
+      "dorota.a@niepodam.pl"
+    ],
+    "application": 16,
+    "ts": "2019-10-09T08:05:36.768Z",
+    "kind": 200,
+    "approval": true,
+    "notes": ""
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 62,
+  "fields": {
+    "user": [
+      "dorota.a@niepodam.pl"
+    ],
+    "application": 35,
+    "ts": "2019-10-09T08:05:52.094Z",
+    "kind": 200,
+    "approval": true,
+    "notes": ""
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 63,
+  "fields": {
+    "user": [
+      "dorota.a@niepodam.pl"
+    ],
+    "application": 15,
+    "ts": "2019-10-09T08:05:57.479Z",
+    "kind": 200,
+    "approval": true,
+    "notes": ""
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 64,
+  "fields": {
+    "user": [
+      "dorota.a@niepodam.pl"
+    ],
+    "application": 12,
+    "ts": "2019-10-09T08:06:43.522Z",
+    "kind": 200,
+    "approval": true,
+    "notes": ""
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 65,
+  "fields": {
+    "user": [
+      "dorota.a@niepodam.pl"
+    ],
+    "application": 11,
+    "ts": "2019-10-09T08:06:59.130Z",
+    "kind": 200,
+    "approval": true,
+    "notes": ""
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 66,
+  "fields": {
+    "user": [
+      "dorota.a@niepodam.pl"
+    ],
+    "application": 9,
+    "ts": "2019-10-09T08:07:17.262Z",
+    "kind": 200,
+    "approval": true,
+    "notes": ""
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 67,
+  "fields": {
+    "user": [
+      "dorota.a@niepodam.pl"
+    ],
+    "application": 8,
+    "ts": "2019-10-09T08:07:42.565Z",
+    "kind": 200,
+    "approval": true,
+    "notes": ""
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 68,
+  "fields": {
+    "user": [
+      "dorota.a@niepodam.pl"
+    ],
+    "application": 24,
+    "ts": "2019-10-09T08:08:24.220Z",
+    "kind": 200,
+    "approval": true,
+    "notes": ""
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 69,
+  "fields": {
+    "user": [
+      "dorota.a@niepodam.pl"
+    ],
+    "application": 22,
+    "ts": "2019-10-09T08:08:37.304Z",
+    "kind": 200,
+    "approval": true,
+    "notes": ""
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 70,
+  "fields": {
+    "user": [
+      "dorota.a@niepodam.pl"
+    ],
+    "application": 21,
+    "ts": "2019-10-09T08:08:49.636Z",
+    "kind": 200,
+    "approval": true,
+    "notes": ""
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 71,
+  "fields": {
+    "user": [
+      "dorota.a@niepodam.pl"
+    ],
+    "application": 29,
+    "ts": "2019-10-09T08:09:18.745Z",
+    "kind": 200,
+    "approval": true,
+    "notes": ""
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 72,
+  "fields": {
+    "user": [
+      "dorota.a@niepodam.pl"
+    ],
+    "application": 26,
+    "ts": "2019-10-09T08:09:36.428Z",
+    "kind": 200,
+    "approval": true,
+    "notes": ""
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 73,
+  "fields": {
+    "user": [
+      "dorota.a@niepodam.pl"
+    ],
+    "application": 7,
+    "ts": "2019-10-09T08:10:39.361Z",
+    "kind": 200,
+    "approval": true,
+    "notes": ""
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 74,
+  "fields": {
+    "user": [
+      "agnieszka.a@niepodam.pl"
+    ],
+    "application": 9,
+    "ts": "2019-10-09T08:34:49.350Z",
+    "kind": 100,
+    "approval": true,
+    "notes": ""
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 75,
+  "fields": {
+    "user": [
+      "agnieszka.a@niepodam.pl"
+    ],
+    "application": 29,
+    "ts": "2019-10-09T08:35:25.031Z",
+    "kind": 100,
+    "approval": true,
+    "notes": ""
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 76,
+  "fields": {
+    "user": [
+      "agnieszka.a@niepodam.pl"
+    ],
+    "application": 26,
+    "ts": "2019-10-09T08:36:04.924Z",
+    "kind": 100,
+    "approval": true,
+    "notes": ""
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 77,
+  "fields": {
+    "user": [
+      "izabela.a@niepodam.pl"
+    ],
+    "application": 35,
+    "ts": "2019-10-09T09:42:03.962Z",
+    "kind": 100,
+    "approval": true,
+    "notes": "Akceptuj\u0119, ale kto to jest pani Dorota \u0141yko?"
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 78,
+  "fields": {
+    "user": [
+      "izabela.a@niepodam.pl"
+    ],
+    "application": 7,
+    "ts": "2019-10-09T09:42:36.307Z",
+    "kind": 100,
+    "approval": true,
+    "notes": ""
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 79,
+  "fields": {
+    "user": [
+      "izabela.a@niepodam.pl"
+    ],
+    "application": 16,
+    "ts": "2019-10-09T09:43:05.885Z",
+    "kind": 100,
+    "approval": true,
+    "notes": ""
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 80,
+  "fields": {
+    "user": [
+      "agnieszka.a@niepodam.pl"
+    ],
+    "application": 37,
+    "ts": "2019-10-09T10:33:24.576Z",
+    "kind": 100,
+    "approval": true,
+    "notes": ""
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 81,
+  "fields": {
+    "user": [
+      "dorota.a@niepodam.pl"
+    ],
+    "application": 37,
+    "ts": "2019-10-09T11:04:11.225Z",
+    "kind": 200,
+    "approval": true,
+    "notes": ""
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 82,
+  "fields": {
+    "user": [
+      "dorota.a@niepodam.pl"
+    ],
+    "application": 36,
+    "ts": "2019-10-09T11:04:59.050Z",
+    "kind": 200,
+    "approval": true,
+    "notes": ""
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 83,
+  "fields": {
+    "user": [
+      "anna.a@niepodam.pl"
+    ],
+    "application": 38,
+    "ts": "2019-10-09T12:44:21.950Z",
+    "kind": 100,
+    "approval": true,
+    "notes": "Akceptuj\u0119. Ksi\u0105\u017ck\u0119 zamawiamy na moj\u0105 pro\u015bb\u0119. Potrzebna do indywidualizacji nauczania j. angielskiego."
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 84,
+  "fields": {
+    "user": [
+      "renata.a@niepodam.pl"
+    ],
+    "application": 41,
+    "ts": "2019-10-09T13:57:32.425Z",
+    "kind": 1000,
+    "approval": null,
+    "notes": ""
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 85,
+  "fields": {
+    "user": [
+      "renata.a@niepodam.pl"
+    ],
+    "application": 40,
+    "ts": "2019-10-09T13:58:03.621Z",
+    "kind": 1000,
+    "approval": null,
+    "notes": ""
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 86,
+  "fields": {
+    "user": [
+      "renata.a@niepodam.pl"
+    ],
+    "application": 36,
+    "ts": "2019-10-09T13:58:41.536Z",
+    "kind": 1000,
+    "approval": true,
+    "notes": ""
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 87,
+  "fields": {
+    "user": [
+      "renata.a@niepodam.pl"
+    ],
+    "application": 37,
+    "ts": "2019-10-09T13:59:14.983Z",
+    "kind": 1000,
+    "approval": true,
+    "notes": ""
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 88,
+  "fields": {
+    "user": [
+      "renata.a@niepodam.pl"
+    ],
+    "application": 35,
+    "ts": "2019-10-09T14:00:14.989Z",
+    "kind": 1000,
+    "approval": true,
+    "notes": ""
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 89,
+  "fields": {
+    "user": [
+      "dorota.a@niepodam.pl"
+    ],
+    "application": 39,
+    "ts": "2019-10-10T06:16:56.052Z",
+    "kind": 200,
+    "approval": true,
+    "notes": ""
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 90,
+  "fields": {
+    "user": [
+      "dorota.a@niepodam.pl"
+    ],
+    "application": 40,
+    "ts": "2019-10-10T06:17:36.878Z",
+    "kind": 200,
+    "approval": true,
+    "notes": ""
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 91,
+  "fields": {
+    "user": [
+      "dorota.a@niepodam.pl"
+    ],
+    "application": 38,
+    "ts": "2019-10-10T06:18:50.522Z",
+    "kind": 200,
+    "approval": true,
+    "notes": ""
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 92,
+  "fields": {
+    "user": [
+      "dorota.a@niepodam.pl"
+    ],
+    "application": 41,
+    "ts": "2019-10-10T06:19:19.657Z",
+    "kind": 200,
+    "approval": true,
+    "notes": ""
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 93,
+  "fields": {
+    "user": [
+      "agnieszka.a@niepodam.pl"
+    ],
+    "application": 43,
+    "ts": "2019-10-10T08:48:02.172Z",
+    "kind": 100,
+    "approval": true,
+    "notes": ""
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 94,
+  "fields": {
+    "user": [
+      "agnieszka.a@niepodam.pl"
+    ],
+    "application": 44,
+    "ts": "2019-10-10T08:48:42.327Z",
+    "kind": 100,
+    "approval": true,
+    "notes": ""
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 95,
+  "fields": {
+    "user": [
+      "agnieszka.a@niepodam.pl"
+    ],
+    "application": 45,
+    "ts": "2019-10-10T08:49:22.077Z",
+    "kind": 100,
+    "approval": true,
+    "notes": ""
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 96,
+  "fields": {
+    "user": [
+      "dorota.a@niepodam.pl"
+    ],
+    "application": 42,
+    "ts": "2019-10-10T11:36:28.060Z",
+    "kind": 200,
+    "approval": true,
+    "notes": ""
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 97,
+  "fields": {
+    "user": [
+      "dorota.a@niepodam.pl"
+    ],
+    "application": 45,
+    "ts": "2019-10-10T11:36:45.070Z",
+    "kind": 200,
+    "approval": true,
+    "notes": ""
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 98,
+  "fields": {
+    "user": [
+      "dorota.a@niepodam.pl"
+    ],
+    "application": 43,
+    "ts": "2019-10-10T11:37:07.946Z",
+    "kind": 200,
+    "approval": true,
+    "notes": ""
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 99,
+  "fields": {
+    "user": [
+      "dorota.a@niepodam.pl"
+    ],
+    "application": 44,
+    "ts": "2019-10-10T11:37:41.303Z",
+    "kind": 200,
+    "approval": true,
+    "notes": ""
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 100,
+  "fields": {
+    "user": [
+      "agnieszka.a@niepodam.pl"
+    ],
+    "application": 46,
+    "ts": "2019-10-10T13:07:59.143Z",
+    "kind": 100,
+    "approval": null,
+    "notes": ""
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 101,
+  "fields": {
+    "user": [
+      "agnieszka.a@niepodam.pl"
+    ],
+    "application": 48,
+    "ts": "2019-10-10T13:14:34.440Z",
+    "kind": 100,
+    "approval": false,
+    "notes": ""
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 102,
+  "fields": {
+    "user": [
+      "andrzej.a@niepodam.pl"
+    ],
+    "application": 44,
+    "ts": "2019-10-10T15:02:50.003Z",
+    "kind": 1000,
+    "approval": true,
+    "notes": ""
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 103,
+  "fields": {
+    "user": [
+      "renata.a@niepodam.pl"
+    ],
+    "application": 42,
+    "ts": "2019-10-10T15:03:08.897Z",
+    "kind": 1000,
+    "approval": true,
+    "notes": ""
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 104,
+  "fields": {
+    "user": [
+      "renata.a@niepodam.pl"
+    ],
+    "application": 45,
+    "ts": "2019-10-10T15:03:43.163Z",
+    "kind": 1000,
+    "approval": true,
+    "notes": ""
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 105,
+  "fields": {
+    "user": [
+      "andrzej.a@niepodam.pl"
+    ],
+    "application": 33,
+    "ts": "2019-10-11T14:31:37.683Z",
+    "kind": 1000,
+    "approval": true,
+    "notes": ""
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 106,
+  "fields": {
+    "user": [
+      "andrzej.a@niepodam.pl"
+    ],
+    "application": 49,
+    "ts": "2019-10-11T14:32:06.157Z",
+    "kind": 1000,
+    "approval": true,
+    "notes": ""
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 107,
+  "fields": {
+    "user": [
+      "andrzej.a@niepodam.pl"
+    ],
+    "application": 46,
+    "ts": "2019-10-11T14:32:19.151Z",
+    "kind": 1000,
+    "approval": null,
+    "notes": ""
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 108,
+  "fields": {
+    "user": [
+      "andrzej.a@niepodam.pl"
+    ],
+    "application": 38,
+    "ts": "2019-10-11T14:32:31.393Z",
+    "kind": 1000,
+    "approval": true,
+    "notes": ""
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 109,
+  "fields": {
+    "user": [
+      "andrzej.a@niepodam.pl"
+    ],
+    "application": 47,
+    "ts": "2019-10-11T14:32:41.733Z",
+    "kind": 1000,
+    "approval": null,
+    "notes": ""
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 110,
+  "fields": {
+    "user": [
+      "andrzej.a@niepodam.pl"
+    ],
+    "application": 34,
+    "ts": "2019-10-11T14:32:53.876Z",
+    "kind": 1000,
+    "approval": true,
+    "notes": ""
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 111,
+  "fields": {
+    "user": [
+      "andrzej.a@niepodam.pl"
+    ],
+    "application": 48,
+    "ts": "2019-10-11T14:33:24.914Z",
+    "kind": 1000,
+    "approval": true,
+    "notes": ""
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 112,
+  "fields": {
+    "user": [
+      "andrzej.a@niepodam.pl"
+    ],
+    "application": 43,
+    "ts": "2019-10-11T14:33:43.729Z",
+    "kind": 1000,
+    "approval": true,
+    "notes": ""
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 113,
+  "fields": {
+    "user": [
+      "andrzej.a@niepodam.pl"
+    ],
+    "application": 39,
+    "ts": "2019-10-11T14:35:06.313Z",
+    "kind": 1000,
+    "approval": true,
+    "notes": "Prosz\u0119 list\u0119 ksi\u0105\u017cek nast\u0119pnym razem przes\u0142a\u0107 w pliku w za\u0142\u0105czniku, a nie w polu Opis."
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 114,
+  "fields": {
+    "user": [
+      "agnieszka.a@niepodam.pl"
+    ],
+    "application": 49,
+    "ts": "2019-10-14T09:25:54.691Z",
+    "kind": 100,
+    "approval": true,
+    "notes": ""
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 115,
+  "fields": {
+    "user": [
+      "izabela.a@niepodam.pl"
+    ],
+    "application": 50,
+    "ts": "2019-10-14T11:56:37.084Z",
+    "kind": 100,
+    "approval": true,
+    "notes": ""
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 116,
+  "fields": {
+    "user": [
+      "dorota.a@niepodam.pl"
+    ],
+    "application": 50,
+    "ts": "2019-10-15T06:48:33.842Z",
+    "kind": 200,
+    "approval": true,
+    "notes": ""
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 117,
+  "fields": {
+    "user": [
+      "dorota.a@niepodam.pl"
+    ],
+    "application": 54,
+    "ts": "2019-10-15T06:48:44.867Z",
+    "kind": 200,
+    "approval": true,
+    "notes": ""
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 118,
+  "fields": {
+    "user": [
+      "dorota.a@niepodam.pl"
+    ],
+    "application": 56,
+    "ts": "2019-10-15T06:48:53.259Z",
+    "kind": 200,
+    "approval": true,
+    "notes": ""
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 119,
+  "fields": {
+    "user": [
+      "dorota.a@niepodam.pl"
+    ],
+    "application": 51,
+    "ts": "2019-10-15T06:48:59.241Z",
+    "kind": 200,
+    "approval": true,
+    "notes": ""
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 120,
+  "fields": {
+    "user": [
+      "dorota.a@niepodam.pl"
+    ],
+    "application": 55,
+    "ts": "2019-10-15T06:49:19.685Z",
+    "kind": 200,
+    "approval": true,
+    "notes": ""
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 121,
+  "fields": {
+    "user": [
+      "dorota.a@niepodam.pl"
+    ],
+    "application": 49,
+    "ts": "2019-10-15T06:49:30.736Z",
+    "kind": 200,
+    "approval": true,
+    "notes": ""
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 122,
+  "fields": {
+    "user": [
+      "dorota.a@niepodam.pl"
+    ],
+    "application": 52,
+    "ts": "2019-10-15T06:49:37.271Z",
+    "kind": 200,
+    "approval": true,
+    "notes": ""
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 123,
+  "fields": {
+    "user": [
+      "dorota.a@niepodam.pl"
+    ],
+    "application": 46,
+    "ts": "2019-10-15T06:51:00.528Z",
+    "kind": 200,
+    "approval": true,
+    "notes": ""
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 124,
+  "fields": {
+    "user": [
+      "dorota.a@niepodam.pl"
+    ],
+    "application": 47,
+    "ts": "2019-10-15T06:51:35.047Z",
+    "kind": 200,
+    "approval": true,
+    "notes": ""
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 125,
+  "fields": {
+    "user": [
+      "dorota.a@niepodam.pl"
+    ],
+    "application": 53,
+    "ts": "2019-10-15T06:52:02.554Z",
+    "kind": 200,
+    "approval": true,
+    "notes": ""
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 126,
+  "fields": {
+    "user": [
+      "dorota.a@niepodam.pl"
+    ],
+    "application": 57,
+    "ts": "2019-10-15T06:52:56.507Z",
+    "kind": 200,
+    "approval": true,
+    "notes": ""
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 127,
+  "fields": {
+    "user": [
+      "renata.a@niepodam.pl"
+    ],
+    "application": 51,
+    "ts": "2019-10-15T07:25:33.171Z",
+    "kind": 1000,
+    "approval": true,
+    "notes": ""
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 128,
+  "fields": {
+    "user": [
+      "renata.a@niepodam.pl"
+    ],
+    "application": 54,
+    "ts": "2019-10-15T07:25:49.527Z",
+    "kind": 1000,
+    "approval": true,
+    "notes": ""
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 129,
+  "fields": {
+    "user": [
+      "renata.a@niepodam.pl"
+    ],
+    "application": 56,
+    "ts": "2019-10-15T07:26:03.201Z",
+    "kind": 1000,
+    "approval": true,
+    "notes": ""
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 130,
+  "fields": {
+    "user": [
+      "renata.a@niepodam.pl"
+    ],
+    "application": 50,
+    "ts": "2019-10-15T07:26:11.667Z",
+    "kind": 1000,
+    "approval": true,
+    "notes": ""
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 131,
+  "fields": {
+    "user": [
+      "renata.a@niepodam.pl"
+    ],
+    "application": 55,
+    "ts": "2019-10-15T07:26:23.224Z",
+    "kind": 1000,
+    "approval": true,
+    "notes": ""
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 132,
+  "fields": {
+    "user": [
+      "renata.a@niepodam.pl"
+    ],
+    "application": 52,
+    "ts": "2019-10-15T07:26:39.248Z",
+    "kind": 1000,
+    "approval": true,
+    "notes": ""
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 133,
+  "fields": {
+    "user": [
+      "renata.a@niepodam.pl"
+    ],
+    "application": 53,
+    "ts": "2019-10-15T07:26:45.578Z",
+    "kind": 1000,
+    "approval": true,
+    "notes": ""
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 134,
+  "fields": {
+    "user": [
+      "renata.a@niepodam.pl"
+    ],
+    "application": 57,
+    "ts": "2019-10-15T07:26:51.564Z",
+    "kind": 1000,
+    "approval": true,
+    "notes": ""
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 135,
+  "fields": {
+    "user": [
+      "renata.a@niepodam.pl"
+    ],
+    "application": 58,
+    "ts": "2019-10-15T19:19:21.659Z",
+    "kind": 1000,
+    "approval": true,
+    "notes": ""
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 136,
+  "fields": {
+    "user": [
+      "renata.a@niepodam.pl"
+    ],
+    "application": 59,
+    "ts": "2019-10-15T19:19:48.636Z",
+    "kind": 1000,
+    "approval": null,
+    "notes": ""
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 137,
+  "fields": {
+    "user": [
+      "dorota.a@niepodam.pl"
+    ],
+    "application": 59,
+    "ts": "2019-10-17T06:45:33.167Z",
+    "kind": 200,
+    "approval": true,
+    "notes": ""
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 138,
+  "fields": {
+    "user": [
+      "dorota.a@niepodam.pl"
+    ],
+    "application": 58,
+    "ts": "2019-10-17T06:45:42.749Z",
+    "kind": 200,
+    "approval": true,
+    "notes": ""
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 139,
+  "fields": {
+    "user": [
+      "dorota.a@niepodam.pl"
+    ],
+    "application": 48,
+    "ts": "2019-10-17T06:46:01.326Z",
+    "kind": 200,
+    "approval": true,
+    "notes": ""
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 140,
+  "fields": {
+    "user": [
+      "izabela.a@niepodam.pl"
+    ],
+    "application": 59,
+    "ts": "2019-10-17T07:04:32.199Z",
+    "kind": 100,
+    "approval": true,
+    "notes": ""
+  }
+},
+{
+  "model": "budget.decision",
+  "pk": 141,
+  "fields": {
+    "user": [
+      "anna.a@niepodam.pl"
+    ],
+    "application": 63,
+    "ts": "2019-10-17T12:01:05.089Z",
+    "kind": 100,
+    "approval": true,
+    "notes": "Akceptuj\u0119"
   }
 }
 ]

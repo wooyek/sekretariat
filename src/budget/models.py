@@ -62,6 +62,16 @@ class Account(BaseModel):
     def get_absolute_url(self):
         return resolve_url("budget:AccountDetail", self.pk)
 
+    @classmethod
+    def by_full_no(cls, full_no):
+        group_no, account_no = full_no.split('-')
+        group_no, account_no = int(group_no), int(account_no)
+        default_group_name = "Account group {}".format(group_no)
+        group, created = AccountGroup.objects.get_or_create(number=group_no, defaults={'name': default_group_name, 'description': default_group_name})
+        default_account_name = "Account {}".format(account_no)
+        account, created = cls.objects.get_or_create(group=group, number=account_no, defaults={'name': default_account_name, 'description': default_account_name})
+        return account
+
 
 class Budget(BaseModel):
     account = models.ForeignKey(Account, on_delete=models.CASCADE)
@@ -82,6 +92,10 @@ class Budget(BaseModel):
 
     def get_absolute_url(self):
         return resolve_url("budget:BudgetDetail", self.pk)
+
+    @property
+    def account_full_no(self):
+        return self.account.full_no
 
     def save(self, force_insert=False, force_update=False, using=None, update_fields=None):
         self.available = self.amount - self.spent

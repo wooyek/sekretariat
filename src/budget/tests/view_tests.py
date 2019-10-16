@@ -108,7 +108,7 @@ class ListViewTests(object):
 @pytest.mark.parametrize(
     "factory", LIST_FACTORIES
 )
-class CreateViewTests(object):
+class CreateViewTest(object):
 
     def test_anonymous(self, factory):
         model_name = factory._meta.model.__name__
@@ -116,11 +116,17 @@ class CreateViewTests(object):
         response = test.Client().get(url)
         assert response.status_code == 302
 
-    def test_get(self, factory, admin_client):
+    def test_forbidden(self, factory, admin_client):
         model_name = factory._meta.model.__name__
         url = resolve_url("budget:{}Create".format(model_name))
         response = admin_client.get(url)
         assert response.status_code == 403
+
+    def test_get(self, factory, team_client):
+        model_name = factory._meta.model.__name__
+        url = resolve_url("budget:{}Create".format(model_name))
+        response = team_client.get(url)
+        assert response.status_code == 200
 
 
 # noinspection PyUnusedLocal,PyMethodMayBeStatic,PyProtectedMember
@@ -128,7 +134,7 @@ class CreateViewTests(object):
 @pytest.mark.parametrize(
     "factory", LIST_FACTORIES
 )
-class UpdateViewTests(object):
+class UpdateViewTest(object):
 
     def test_anonymous(self, factory):
         item = factory()
@@ -137,12 +143,19 @@ class UpdateViewTests(object):
         response = test.Client().get(url)
         assert response.status_code == 302
 
-    def test_get(self, factory, admin_client):
+    def test_forbidden(self, factory, admin_client):
         item = factory()
         model_name = factory._meta.model.__name__
         url = resolve_url("budget:{}Update".format(model_name), item.pk)
         response = admin_client.get(url)
         assert response.status_code == 403
+
+    def test_get(self, factory, team_client):
+        item = factory()
+        model_name = factory._meta.model.__name__
+        url = resolve_url("budget:{}Update".format(model_name), item.pk)
+        response = team_client.get(url)
+        assert response.status_code == 200
 
 
 @pytest.mark.django_db

@@ -7,8 +7,8 @@ import pendulum
 import pytest
 from mock import patch
 
-from .. import models
 from . import factories
+from .. import models
 
 log = logging.getLogger(__name__)
 
@@ -111,3 +111,40 @@ class ApplicationTest(object):
         factories.DecisionFactory(kind=models.DecisionKind.accountant, application__date=pendulum.today())
         item = models.Application.get_next_waiting_application(kind=models.DecisionKind.accountant)
         assert item is None
+
+
+# noinspection PyMethodMayBeStatic
+@pytest.mark.django_db
+class AccountTest(object):
+    @pytest.mark.parametrize(
+        "full_no", ["400-21", "4-22", "2-22"]
+    )
+    def test_by_full_no(self, full_no):
+        acccount = models.Account.by_full_no(full_no)
+        assert acccount is not None
+        assert acccount.full_no == full_no
+
+    @pytest.mark.parametrize(
+        "full_no", ["0400-21", "500-1", "200-001", ]
+    )
+    def test_by_full_no2(self, full_no):
+        acccount = models.Account.by_full_no(full_no)
+        assert acccount is not None
+        assert acccount.full_no != full_no
+
+    @pytest.mark.parametrize(
+        "full_no", ["-21", "2-", "2", ]
+    )
+    def test_by_full_no_value_error(self, full_no):
+        with pytest.raises(ValueError):
+            models.Account.by_full_no(full_no)
+
+    def test_by_full_no_not_create(self):
+        item = factories.AccountFactory()
+        account = models.Account.by_full_no(item.full_no)
+        assert account == item
+
+    def test_by_full_no_not_create_group(self):
+        item = factories.AccountGroupFactory()
+        account = models.Account.by_full_no("{}-123".format(item.number))
+        assert account.group == item
