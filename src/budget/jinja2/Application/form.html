@@ -1,6 +1,6 @@
 {% extends "base/dialog.html" %}
 {% from "bootstrap/forms/horizontal.html" import render_form with context %}
-{% block page_title %}Zapotrzebowanie: {{ object.title }}{% endblock %}
+{% block page_title %}Zapotrzebowanie: {% if object %}{{ object.title }}{% endif %}{% endblock %}
 {% block content %}
   {{ render_form(form, submit_text=_("Zapisz zmiany")) }}
 {% endblock %}
