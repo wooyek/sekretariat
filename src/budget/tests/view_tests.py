@@ -155,11 +155,11 @@ class UpdateViewTest(object):
         model_name = factory._meta.model.__name__
         url = resolve_url("budget:{}Update".format(model_name), item.pk)
         response = team_client.get(url)
-        assert response.status_code == 200
+        assert response.status_code == 403
 
 
 @pytest.mark.django_db
-class ExpenditureCreateViewTests(object):
+class ExpenditureCreateViewTest(object):
 
     def test_post(self, team_client, manager):
         item = factories.ApplicationFactory(manager=manager)
@@ -173,7 +173,7 @@ class ExpenditureCreateViewTests(object):
 
 # noinspection PyMethodMayBeStatic
 @pytest.mark.django_db
-class ApplicationAccountViewTests(object):
+class ApplicationAccountViewTest(object):
     def test_get(self, team_user):
         item = factories.ApplicationFactory(requester=team_user)
         url = resolve_url("budget:ApplicationAccount", item.pk)
@@ -372,7 +372,7 @@ class ApplicationStatusViewTest(object):
 
 # noinspection PyMethodMayBeStatic
 @pytest.mark.django_db
-class ApplicationListUserTests(object):
+class ApplicationListUserTest(object):
 
     def test_redirect_to_user_list(self, team_user):
         url = resolve_url("budget:ApplicationList")
@@ -455,7 +455,7 @@ class ApplicationDetailTest(object):
 
 # noinspection PyMethodMayBeStatic
 @pytest.mark.django_db
-class DecisionUpdateViewTests(object):
+class DecisionUpdateViewTest(object):
     def test_anonymous(self, client):
         item = factories.DecisionFactory()
         url = resolve_url("budget:DecisionUpdate", item.pk, int(models.DecisionKind.control))
