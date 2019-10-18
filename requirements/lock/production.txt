@@ -67,7 +67,7 @@ odfpy==1.4.0              # via tablib
 openpyxl==3.0.0           # via tablib
 pendulum==2.0.5
 pillow==6.2.0             # via django-avatar
-# pip==19.3
+# pip==19.3.1
 #    pip-compile --output-file=requirements/lock/production.txt requirements/production.txt
 pkgconfig==1.5.1          # via xmlsec
 psycopg2-binary==2.8.3
@@ -86,7 +86,7 @@ raven==6.10.0
 regex==2019.8.19          # via dateparser
 requests==2.22.0
 requests-oauthlib==1.2.0  # via social-auth-core
-sentry-sdk==0.12.3
+sentry-sdk==0.13.0
 # setuptools==41.4.0        # via markdown
 six==1.12.0               # via django-appconf, isodate, python-dateutil, social-auth-app-django, social-auth-core
 snaptime==0.2.4           # via maya
