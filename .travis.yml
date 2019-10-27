@@ -1,5 +1,7 @@
 language: python
 sudo: false
+services:
+  - postgresql
 
 python:
     - "3.7"
@@ -44,7 +46,7 @@ matrix:
       - python: "2.7"
       - python: "3.4"
       - python: "3.5"
-      - python: "3.7" 
+      - python: "3.7"
       - env: DJANGO=1.8
       - env: DJANGO=1.9
       - env: DJANGO=1.10
@@ -67,6 +69,9 @@ install:
   - tox --version
   - git --version
   - inv --version
+
+before_script:
+  - bin/database_create.sh
 
 script:
   - tox
