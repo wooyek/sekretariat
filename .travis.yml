@@ -59,7 +59,7 @@ before_install:
   - uname -a
   - lsb_release -a
   - sudo apt-get install -y git-flow python-enchant libxmlsec1-dev
-  - export DATABASE_URL=psql://localhost:5432/travis-db
+  - export DATABASE_URL=psql://localhost:5432/travisdb
 
 install:
   - pip install -r requirements/development.txt coveralls tox-travis
@@ -72,7 +72,7 @@ install:
   - inv --version
 
 before_script:
-  - psql -c "CREATE DATABASE travis-db;" -U postgres
+  - psql -c 'create database travisdb;' -U postgres
 
 script:
   - tox
