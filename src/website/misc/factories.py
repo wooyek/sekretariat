@@ -12,14 +12,15 @@ import factory
 import faker
 from django.contrib.auth import get_user_model
 
-fake = faker.Faker()
 log = logging.getLogger(__name__)
+
+fake = faker.Faker()
 
 
 class UserFactory(factory.DjangoModelFactory):
     first_name = factory.Faker('first_name')
     last_name = factory.Faker('last_name')
-    email = factory.Faker('email')
+    email = factory.LazyAttribute(lambda obj: '%s@niepodam.pl' % obj.username)
     username = factory.Sequence(lambda n: fake.user_name() + str(n))
     is_staff = False
     is_active = True

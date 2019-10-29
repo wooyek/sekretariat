@@ -116,6 +116,20 @@ class UserTestCase(TestCase, AssertionsMx):
         self.client.force_login(self.user, settings.AUTHENTICATION_BACKENDS[0])
 
 
+def staff_client():
+    staff = UserFactory.create(is_superuser=False, is_staff=True)
+    client = django.test.Client()
+    client.force_login(staff, settings.AUTHENTICATION_BACKENDS[0])
+    return client
+
+
+def authenticated_client(user=None):
+    user = user or UserFactory.create(is_superuser=False, is_staff=False)
+    client = django.test.Client()
+    client.force_login(user, settings.AUTHENTICATION_BACKENDS[0])
+    return client
+
+
 class KeepDbTestRunner(DiscoverRunner):
     def __init__(self, **kwargs):
         kwargs['keepdb'] = True

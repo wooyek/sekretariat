@@ -95,23 +95,53 @@ class ApplicationTest(object):
         decision = factories.DecisionFactory(kind=kind, approval=approval)
         assert decision.application.can_update() == ok
 
-    def test_next(self):
-        factories.DecisionFactory(kind=models.DecisionKind.accountant, application__date=pendulum.today())
-        decision = factories.DecisionFactory(kind=models.DecisionKind.manager, application__date=pendulum.yesterday())
-        item = models.Application.get_next_waiting_application(kind=models.DecisionKind.accountant)
+    def test_next(self, accountant):
+        account = factories.AccountFactory()
+        factories.DecisionFactory(kind=models.DecisionKind.accountant, application__date=pendulum.today(), application__account=account)
+        decision = factories.DecisionFactory(kind=models.DecisionKind.manager, application__date=pendulum.yesterday(), application__account=account)
+        item = models.Application.get_next_waiting_application(accountant)
         assert item == decision.application
 
-    def test_next2(self):
-        factories.DecisionFactory(kind=models.DecisionKind.accountant, application__date=pendulum.today())
-        decision = factories.DecisionFactory(kind=models.DecisionKind.accountant, approval=None, application__date=pendulum.yesterday())
-        item = models.Application.get_next_waiting_application(kind=models.DecisionKind.accountant)
+    def test_next2(self, accountant):
+        account = factories.AccountFactory()
+        factories.DecisionFactory(kind=models.DecisionKind.accountant, application__date=pendulum.today(), application__account=account)
+        decision = factories.DecisionFactory(
+            kind=models.DecisionKind.accountant, approval=None, application__date=pendulum.yesterday(),
+            application__account=account
+        )
+        item = models.Application.get_next_waiting_application(accountant)
         assert item == decision.application
 
-    def test_no_next(self):
-        factories.DecisionFactory(kind=models.DecisionKind.accountant, application__date=pendulum.today())
-        item = models.Application.get_next_waiting_application(kind=models.DecisionKind.accountant)
+    def test_no_next(self, accountant):
+        account = factories.AccountFactory()
+        factories.DecisionFactory(kind=models.DecisionKind.accountant, application__date=pendulum.today(), application__account=account)
+        item = models.Application.get_next_waiting_application(accountant)
         assert item is None
 
+    def test_no_next_without_account(self, control):
+        factories.DecisionFactory(kind=models.DecisionKind.manager)
+        item = models.Application.get_next_waiting_application(control)
+        assert item is None
+
+    def test_awaiting_decision_manager(self, manager):
+        item = factories.ApplicationFactory(manager=manager)
+        assert models.Application.awaiting_decision(item.manager).first() == item
+
+    def test_awaiting_decision_manager_empty(self, manager):
+        item = factories.DecisionFactory(application__manager=manager, approval=None).application
+        assert models.Application.awaiting_decision(item.manager).first() == item
+
+    def test_awaiting_decision_manager_other(self, manager):
+        item = factories.DecisionFactory(
+            application__manager=manager, approval=None, kind=models.DecisionKind.accountant
+        ).application
+        assert models.Application.awaiting_decision(item.manager).first() == item
+
+    def test_awaiting_decision_manager_existing(self, manager):
+        item = factories.DecisionFactory(
+            application__manager=manager, approval=True, kind=models.DecisionKind.manager
+        ).application
+        assert models.Application.awaiting_decision(item.manager).first() == None
 
 # noinspection PyMethodMayBeStatic
 @pytest.mark.django_db
@@ -148,3 +178,4 @@ class AccountTest(object):
         item = factories.AccountGroupFactory()
         account = models.Account.by_full_no("{}-123".format(item.number))
         assert account.group == item
+

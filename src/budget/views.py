@@ -181,12 +181,12 @@ class ApplicationDetail(AbstractAuthorizedView, DetailView):
             return super(ApplicationDetail, self).handle_forbidden()
 
     def get_decision_kind(self):
+        if self.request.user == self.object.manager:
+            return models.DecisionKind.manager
         if self.request.user.groups.filter(name=settings.BUDGET_CONTROL_GROUP).exists():
             return models.DecisionKind.control
         if self.request.user.groups.filter(name=settings.BUDGET_ACCOUNTANTS_GROUP).exists():
             return models.DecisionKind.accountant
-        if self.request.user == self.object.manager:
-            return models.DecisionKind.manager
 
     def to_decision(self, decision, kind):
         if decision:
@@ -324,7 +324,7 @@ class DecisionBase(AbstractAuthorizedView):
         return super().get_context_data(**kwargs)
 
     def get_success_url(self):
-        next = models.Application.get_next_waiting_application(self.kind)
+        next = models.Application.get_next_waiting_application(self.request.user)
         if next is None:
             msg = 'Nie ma więcej decyzji do podjęcia.'
             messages.success(self.request, msg)

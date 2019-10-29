@@ -10,7 +10,7 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.models import Group
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
-from django.db.models import Q, Sum, signals
+from django.db.models import Q, Sum, signals, Exists, OuterRef
 from django.dispatch import receiver
 from django.shortcuts import resolve_url
 from django.utils.functional import SimpleLazyObject, cached_property
@@ -228,7 +228,7 @@ class Application(BaseModel):
 
     def send_to_group(self, kind):
         users = self.get_users(kind)
-        assert users
+        assert users, "No users to send notifications to for kind: {}".format(str(kind))
         for user in users:
             self.send_approval_request(user)
 
@@ -263,8 +263,43 @@ class Application(BaseModel):
         send_mail_template(template, ctx, subject, to=user.email)
 
     @classmethod
-    def get_next_waiting_application(cls, kind):
-        return cls.objects.all().exclude(decisions__kind=kind, decisions__approval__isnull=False).order_by("-date").first()
+    def get_next_waiting_application(cls, user):
+        return cls.awaiting_decision(user).order_by("-date").first()
+
+
+    @classmethod
+    def awaiting_decision(cls, user):
+        q = cls.objects.all().filter(approval__isnull=True)
+
+        f = []
+        if user.groups.filter(name=settings.BUDGET_MANAGERS_GROUP).exists():
+            manager_decision_exists = Decision.objects.filter(kind=DecisionKind.manager, approval__isnull=False, application=OuterRef('pk'))
+            q = q.annotate(manager_decision_exists=Exists(manager_decision_exists))
+            # f = Q(manager=user, decisions__kind=DecisionKind.manager, decisions__approval__isnull=True) | \
+            f.append(Q(manager=user, manager_decision_exists=False))
+
+        if user.groups.filter(name=settings.BUDGET_ACCOUNTANTS_GROUP).exists():
+            accountant_decision_exists = Decision.objects.filter(kind=DecisionKind.accountant, approval__isnull=False, application=OuterRef('pk'))
+            q = q.annotate(accountant_decision_exists=Exists(accountant_decision_exists))
+            # f = Q(manager=user, decisions__kind=DecisionKind.manager, decisions__approval__isnull=True) | \
+            f.append(Q(accountant_decision_exists=False))
+
+        if user.groups.filter(name=settings.BUDGET_CONTROL_GROUP).exists():
+            control_decision_exists = Decision.objects.filter(kind=DecisionKind.control, approval__isnull=False, application=OuterRef('pk'))
+            q = q.annotate(control_decision_exists=Exists(control_decision_exists))
+            # f = Q(manager=user, decisions__kind=DecisionKind.manager, decisions__approval__isnull=True) | \
+            f.append(Q(control_decision_exists=False, account__isnull=False))
+
+        return q.filter(*f)
+
+        # if user.groups.filter(name=settings.BUDGET_ACCOUNTANTS_GROUP).exists():
+        #     kinds.append(DecisionKind.accountant)
+        # if user.groups.filter(name=settings.BUDGET_CONTROL_GROUP).exists():
+        #     kinds.append(DecisionKind.control)
+        # return q.exclude(
+        #     Q(decisions__kind__in=kinds, decisions__approval__isnull=False) |
+        #     Q(account__isnull=True)
+        # )
 
 
 class DecisionKind(ChoicesIntEnum):
