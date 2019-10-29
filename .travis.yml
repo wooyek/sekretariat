@@ -79,7 +79,7 @@ script:
 
 jobs:
   include:
-    - stage: make
+    - stage: tooling
       python: "3.6"
       script:
           - which python
@@ -87,9 +87,10 @@ jobs:
           - pwd
           - ls -la
           - inv
+          - inv db
           - inv bump
-          - inv lint
-          - inv test
+          - inv isort
+          - inv check
           - inv tox
           - inv coverage
           - inv dist
@@ -97,7 +98,7 @@ jobs:
           - inv docs
           - inv pip-compile
           # Lint again after docs generation
-          - inv lint
+          - inv check
           - inv clean
 
 after_success:
