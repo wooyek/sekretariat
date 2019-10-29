@@ -19,7 +19,10 @@
             </tr>
           {% endfor %}
           <tr>
-            <th scope="row">{{ object.get_field_name('budget') }}</th>
+            <th scope="row">
+                {{ object.get_field_name('budget') }}
+              <i class="far fa-fw fa-question-circle" title="{% trans %}Whats left in the budget after spending the requested amount.{% endtrans %}"></i>
+            </th>
             <td>
               {% if object.budget %}
                 {% if perms.budget.view_budget %}

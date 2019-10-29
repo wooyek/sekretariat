@@ -130,6 +130,12 @@ class ApplicationStatus(ChoicesIntEnum):
 _('Open'), _('Placed'), _('Completed')
 
 
+class DecisionKind(ChoicesIntEnum):
+    manager = 100
+    accountant = 200,
+    control = 1000,
+
+
 class Application(BaseModel):
     date = models.DateField(_('date'), help_text=_('Approximate payment due date that will determine the monthly budget.'))
     amount = models.DecimalField(_('amount'), decimal_places=0, max_digits=6, help_text=_('What is the total cost?'))
@@ -154,6 +160,7 @@ class Application(BaseModel):
     #     get_user_model(), on_delete=models.PROTECT, null=True, blank=True,
     #     related_name='+', limit_choices_to=Q(groups__name='Controllers')
     # )
+    awaiting = models.PositiveSmallIntegerField(_('awaiting decision'), choices=DecisionKind.choices(), null=True, blank=True)
     approval = models.NullBooleanField(_('approval'))
     status = models.PositiveSmallIntegerField(
         _('application status'), help_text=_("Processing status for procurement"),
@@ -300,12 +307,6 @@ class Application(BaseModel):
         #     Q(decisions__kind__in=kinds, decisions__approval__isnull=False) |
         #     Q(account__isnull=True)
         # )
-
-
-class DecisionKind(ChoicesIntEnum):
-    manager = 100
-    accountant = 200,
-    control = 1000,
 
 
 class Decision(BaseModel):

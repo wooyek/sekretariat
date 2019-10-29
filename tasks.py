@@ -199,9 +199,9 @@ def sync_master(ctx):
 @task()
 def bump(ctx, minor=False):
     """Increment version number"""
-    if minor: 
+    if minor:
         ctx.run("bumpversion minor --allow-dirty --no-tag")
-    else:	
+    else:
         ctx.run("bumpversion patch --allow-dirty --no-tag")
     import re
     version_file = ROOT_DIR / "src" / "website" / "__init__.py"
@@ -243,9 +243,10 @@ def assets(ctx):
     Collect and build website assets
     """
     ctx.run("gulp")
-    ctx.run("python manage.py collectstatic --noinput")  # in some cases assets build requires static to be updated
-    ctx.run("python manage.py assets build")
-    ctx.run("python manage.py collectstatic --noinput")  # update static with compressed assets
+    env = {'DEBUG': 'True'}  # This ensures development static paths are usd for collection and compression
+    ctx.run("python manage.py collectstatic --noinput", env=env)  # in some cases assets build requires static to be updated
+    ctx.run("python manage.py assets build", env=env)
+    ctx.run("python manage.py collectstatic --noinput", env=env)  # update static with compressed assets
     ctx.run("git add --all static assets", warn=True)
     ctx.run('git commit -m "Build assets"', warn=True)
 
