@@ -7,8 +7,8 @@ import pendulum
 import pytest
 from mock import patch
 
-from .. import models
 from . import factories
+from .. import models
 
 log = logging.getLogger(__name__)
 
@@ -143,6 +143,7 @@ class ApplicationTest(object):
         ).application
         assert models.Application.awaiting_decision(item.manager).first() == None
 
+
 # noinspection PyMethodMayBeStatic
 @pytest.mark.django_db
 class AccountTest(object):
@@ -178,4 +179,3 @@ class AccountTest(object):
         item = factories.AccountGroupFactory()
         account = models.Account.by_full_no("{}-123".format(item.number))
         assert account.group == item
-

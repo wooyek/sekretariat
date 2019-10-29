@@ -10,7 +10,7 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.models import Group
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
-from django.db.models import Q, Sum, signals, Exists, OuterRef
+from django.db.models import Exists, OuterRef, Q, Sum, signals
 from django.dispatch import receiver
 from django.shortcuts import resolve_url
 from django.utils.functional import SimpleLazyObject, cached_property
@@ -69,7 +69,8 @@ class Account(BaseModel):
         default_group_name = "Account group {}".format(group_no)
         group, created = AccountGroup.objects.get_or_create(number=group_no, defaults={'name': default_group_name, 'description': default_group_name})
         default_account_name = "Account {}".format(account_no)
-        account, created = cls.objects.get_or_create(group=group, number=account_no, defaults={'name': default_account_name, 'description': default_account_name})
+        account, created = cls.objects.get_or_create(group=group, number=account_no,
+                                                     defaults={'name': default_account_name, 'description': default_account_name})
         return account
 
 
@@ -272,7 +273,6 @@ class Application(BaseModel):
     @classmethod
     def get_next_waiting_application(cls, user):
         return cls.awaiting_decision(user).order_by("-date").first()
-
 
     @classmethod
     def awaiting_decision(cls, user):
