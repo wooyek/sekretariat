@@ -16,6 +16,13 @@ sudo -u postgres -E sh -c 'dropdb ${DATABASE_NAME}'
 echo "------> Dropping database ${DATABASE_TEST_NAME}"
 sudo -u postgres -E sh -c 'dropdb ${DATABASE_TEST_NAME}'
 
+# Drop test databases used in parallel tests
+for i in {0..7}
+  do
+    echo "------> Dropping database ${DATABASE_TEST_NAME}_gw$i"
+    sudo -u postgres -E sh -c "dropdb ${DATABASE_TEST_NAME}_gw$i"
+  done
+
 echo "------> Creating database ${DATABASE_NAME}"
 sudo -u postgres -E sh -c 'createdb ${DATABASE_NAME}'
 
