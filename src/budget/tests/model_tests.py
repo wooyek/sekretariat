@@ -7,8 +7,8 @@ import pendulum
 import pytest
 from mock import patch
 
-from . import factories
 from .. import models
+from . import factories
 
 log = logging.getLogger(__name__)
 
@@ -141,7 +141,7 @@ class ApplicationTest(object):
         item = factories.DecisionFactory(
             application__manager=manager, approval=True, kind=models.DecisionKind.manager
         ).application
-        assert models.Application.awaiting_decision(item.manager).first() == None
+        assert models.Application.awaiting_decision(item.manager).first() is None
 
 
 # noinspection PyMethodMayBeStatic
