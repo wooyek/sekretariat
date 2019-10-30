@@ -172,7 +172,7 @@ class Application(BaseModel):
     class Meta:
         verbose_name = _('application')
         verbose_name_plural = _('applications')
-        ordering = '-date', 'amount',
+        ordering = '-submitted', 'date',
         permissions = (
             ('change_application_status', _("Can change the application status")),
         )
