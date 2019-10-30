@@ -57,11 +57,17 @@
               </a>
             </td>
             <td>{{ item.amount }}</td>
-            <td>{{ item.requester.last_name }} {{ item.requester.first_name.0 }}.</td>
+            <td>
+              <a href="?requester={{ item.requester_id }}">
+                {{ item.requester.last_name }} {{ item.requester.first_name.0 }}.
+              </a>
+            </td>
             <td>{{ item.submitted|datetimeformat("YYYY-MM-dd") }}</td>
             <td>
                 {% if item.manager %}
-                    {{ item.manager.last_name }} {{ item.manager.first_name.0 }}.
+                  <a href="?manager={{ item.manager_id }}">
+                      {{ item.manager.last_name }} {{ item.manager.first_name.0 }}.
+                  </a>
                 {% endif %}
             </td>
             <td>

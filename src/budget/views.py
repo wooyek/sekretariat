@@ -183,7 +183,7 @@ class ApplicationList(PermissionRequiredView, FilterViewMixin, PaginationMixin, 
 
     def get_queryset(self):
         queryset = super().get_queryset()
-        return queryset.prefetch_related('decisions', 'requester', 'manager', 'account', 'account__group')
+        return queryset.prefetch_related('decisions', 'requester', 'manager', 'account', 'account__group', 'decisions', 'decisions__user')
 
 
 class ApplicationDetail(AbstractAuthorizedView, DetailView):
