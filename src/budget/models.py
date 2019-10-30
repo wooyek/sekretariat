@@ -11,7 +11,7 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.models import Group
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
-from django.db.models import Exists, OuterRef, Q, Sum, signals
+from django.db.models import Q, Sum, signals
 from django.dispatch import receiver
 from django.shortcuts import resolve_url
 from django.utils.functional import SimpleLazyObject, cached_property
@@ -294,7 +294,6 @@ class Application(BaseModel):
 
         f = reduce(lambda x, y: x | y, f)
         return q.filter(f)
-
 
     def setup_awaiting_kind(self):
         last_decision = self.decisions.order_by('-kind').filter(approval__isnull=False).first()
