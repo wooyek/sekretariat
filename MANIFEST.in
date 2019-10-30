@@ -99,6 +99,7 @@ recursive-include etc *.key
 recursive-include theme *.js
 recursive-include theme *.md
 recursive-include theme *.scss
+recursive-include theme *.png
 recursive-include profile.d *.sh
 
 exclude assets/compressed/.webassets-cache
