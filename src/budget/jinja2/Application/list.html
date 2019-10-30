@@ -3,12 +3,37 @@
 {% block main %}
   <div class="container-fluid">
     <h1 class="text-center mt-3 mb-4">{% trans %}Expenditures{% endtrans %}</h1>
-    <p>
-      <a href="{{ url('budget:ApplicationCreate') }}" class="btn btn-secondary">{% trans %}Create{% endtrans %}</a>
-      <a href="?approval=true" class="btn btn-secondary">{% trans %}Approved{% endtrans %}</a>
-      <a href="{{ url('budget:ApplicationListApprovals', user.pk) }}" class="btn btn-secondary">{% trans %}To approve{% endtrans %}</a>
-    </p>
+
     <div class="card">
+      <div class="card-header">
+        <ul class="nav nav-tabs card-header-tabs">
+            {% with target=url('budget:ApplicationCreate') %}
+              <li role="presentation" class="nav-item">
+                <a href="{{ target }}" class="nav-link {% is_active target %}">{% trans %}Create{% endtrans %}</a>
+              </li>
+            {% endwith %}
+            {% with target=url('budget:ApplicationList') %}
+              <li role="presentation" class="nav-item">
+                <a href="{{ target }}" class="nav-link {% is_active target %}">{% trans %}Wszystkie{% endtrans %}</a>
+              </li>
+            {% endwith %}
+            {% with target=url('budget:ApplicationListUser', user.pk) %}
+              <li role="presentation" class="nav-item">
+                <a href="{{ target }}" class="nav-link {% is_active target %}">{% trans %}Moje zapotrzebowania{% endtrans %}</a>
+              </li>
+            {% endwith %}
+            {% with target= '?approval=true' %}
+              <li role="presentation" class="nav-item">
+                <a href="{{ target }}" class="nav-link {% is_active target %}">{% trans %}Approved{% endtrans %}</a>
+              </li>
+            {% endwith %}
+            {% with target=url('budget:ApplicationListApprovals', user.pk) %}
+              <li role="presentation" class="nav-item">
+                <a href="{{ target }}" class="nav-link {% is_active target %}">{% trans %}To approve{% endtrans %}</a>
+              </li>
+            {% endwith %}
+        </ul>
+      </div>
       <table class="table table-striped table-hover mb-0">
         <thead>
         <tr>
@@ -28,40 +53,40 @@
             <th scope="row" rowspan="1">{{ item.pk }}</th>
             <td>
               <a href="{{ url("budget:ApplicationDetail", item.pk) }}">
-                {{ item.date|datetimeformat("YYYY-MM-dd") }}
+                  {{ item.date|datetimeformat("YYYY-MM-dd") }}
               </a>
             </td>
             <td>{{ item.amount }}</td>
             <td>{{ item.requester.last_name }} {{ item.requester.first_name.0 }}.</td>
             <td>{{ item.submitted|datetimeformat("YYYY-MM-dd") }}</td>
             <td>
-              {% if item.manager %}
-                {{ item.manager.last_name }} {{ item.manager.first_name.0 }}.
-              {% endif %}
+                {% if item.manager %}
+                    {{ item.manager.last_name }} {{ item.manager.first_name.0 }}.
+                {% endif %}
             </td>
             <td>
-              {% if item.account %}
-              <span title="{{ item.account|default("-", True) }}">{{ item.account.full_no }}</span>
+                {% if item.account %}
+                  <span title="{{ item.account|default("-", True) }}">{{ item.account.full_no }}</span>
                 {% else %}
-                -
-              {% endif %}
+                  -
+                {% endif %}
             </td>
             <td>
-              {% for kind, name in decision_kinds %}
-                {% with approval = item.get_decision(kind).approval %}
-                  <span title="{{ name }}">
+                {% for kind, name in decision_kinds %}
+                    {% with approval = item.get_decision(kind).approval %}
+                      <span title="{{ name }}">
                   {% include "Application/approval.html" %}
                   </span>
+                    {% endwith %}
+                {% endfor %}
+                {% with approval = item.approval %}
+                    {% include "Application/approval.html" %}
                 {% endwith %}
-              {% endfor %}
-              {% with approval = item.approval %}
-                {% include "Application/approval.html" %}
-              {% endwith %}
-                <a href="{{ url("budget:ApplicationStatus", item.pk) }}" class="">
-                {% with status = item.status %}
-                    {% include "Application/status.html" %}
-                {% endwith %}
-                </a>
+              <a href="{{ url("budget:ApplicationStatus", item.pk) }}" class="">
+                  {% with status = item.status %}
+                      {% include "Application/status.html" %}
+                  {% endwith %}
+              </a>
             </td>
             <td>
             </td>
@@ -70,7 +95,7 @@
             <td></td>
             <td colspan="20">{{ item.title }}</td>
           </tr>
-{#
+            {#
           <tr>
             <td>{{ item.description }}</td>
           </tr>
@@ -80,7 +105,7 @@
       </table>
 
       <div class="w-100 mt-3">
-        {% include "bootstrap/pagination.html" %}
+          {% include "bootstrap/pagination.html" %}
       </div>
 
     </div>
