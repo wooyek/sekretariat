@@ -6,7 +6,7 @@
     <p>
       <a href="{{ url('budget:ApplicationCreate') }}" class="btn btn-secondary">{% trans %}Create{% endtrans %}</a>
       <a href="?approval=true" class="btn btn-secondary">{% trans %}Approved{% endtrans %}</a>
-
+      <a href="{{ url('budget:ApplicationListApprovals', user.pk) }}" class="btn btn-secondary">{% trans %}To approve{% endtrans %}</a>
     </p>
     <div class="card">
       <table class="table table-striped table-hover mb-0">

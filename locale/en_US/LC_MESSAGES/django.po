@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2019-10-14 15:59+0200\n"
+"POT-Creation-Date: 2019-10-30 09:42+0100\n"
 "PO-Revision-Date: 2016-10-11 17:27+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en_US\n"
@@ -53,7 +53,7 @@ msgstr ""
 msgid "<p>Your password was changed.</p>"
 msgstr ""
 
-#: src/budget/jinja2/Application/list.html:22
+#: src/budget/jinja2/Application/list.html:21
 msgid "Account"
 msgstr ""
 
@@ -73,7 +73,7 @@ msgstr ""
 msgid "Admin"
 msgstr ""
 
-#: src/budget/jinja2/Application/list.html:18
+#: src/budget/jinja2/Application/list.html:17
 msgid "Amount"
 msgstr ""
 
@@ -90,11 +90,11 @@ msgstr ""
 msgid "Anuluj termin"
 msgstr ""
 
-#: src/budget/jinja2/Application/list.html:23
+#: src/budget/jinja2/Application/list.html:22
 msgid "Approval"
 msgstr ""
 
-#: src/budget/jinja2/Application/detail.html:65
+#: src/budget/jinja2/Application/detail.html:62
 msgid "Approvals"
 msgstr ""
 
@@ -102,11 +102,11 @@ msgstr ""
 msgid "Approve"
 msgstr ""
 
-#: src/budget/jinja2/Application/list.html:8 src/budget/models.py:234
+#: src/budget/jinja2/Application/list.html:8 src/budget/models.py:268
 msgid "Approved"
 msgstr ""
 
-#: src/budget/models.py:116
+#: src/budget/models.py:142
 msgid "Approximate payment due date that will determine the monthly budget."
 msgstr ""
 
@@ -135,6 +135,10 @@ msgstr ""
 msgid "Budget"
 msgstr ""
 
+#: src/budget/models.py:177
+msgid "Can change the application status"
+msgstr ""
+
 #: jinja2/bootstrap/forms/horizontal.html:343
 #: jinja2/django_registration/password_change_form.html:13
 #: jinja2/django_registration/password_reset_confirm.html:18
@@ -144,11 +148,11 @@ msgstr ""
 msgid "Cancel"
 msgstr ""
 
-#: src/budget/jinja2/Application/detail.html:51
+#: src/budget/jinja2/Application/detail.html:48
 msgid "Change account"
 msgstr ""
 
-#: src/budget/jinja2/Application/detail.html:36
+#: src/budget/jinja2/Application/detail.html:33
 msgid "Change account or date"
 msgstr ""
 
@@ -165,7 +169,7 @@ msgstr ""
 msgid "Close"
 msgstr ""
 
-#: src/budget/models.py:112
+#: src/budget/models.py:132
 msgid "Completed"
 msgstr ""
 
@@ -185,7 +189,7 @@ msgstr ""
 msgid "Date"
 msgstr ""
 
-#: src/budget/jinja2/Application/detail.html:86
+#: src/budget/jinja2/Application/detail.html:83
 msgid "Decision making is disabled until an account is set"
 msgstr ""
 
@@ -274,7 +278,7 @@ msgstr ""
 msgid "Logout"
 msgstr ""
 
-#: src/budget/jinja2/Application/list.html:21
+#: src/budget/jinja2/Application/list.html:20
 msgid "Manager"
 msgstr ""
 
@@ -290,7 +294,7 @@ msgstr ""
 msgid "Oops! An error occurred"
 msgstr ""
 
-#: src/budget/models.py:112
+#: src/budget/models.py:132
 msgid "Open"
 msgstr ""
 
@@ -322,7 +326,7 @@ msgstr ""
 msgid "Password reset sent"
 msgstr ""
 
-#: src/budget/models.py:112
+#: src/budget/models.py:132
 msgid "Placed"
 msgstr ""
 
@@ -334,7 +338,7 @@ msgstr ""
 msgid "Please correct validation errors"
 msgstr ""
 
-#: src/budget/models.py:119
+#: src/budget/models.py:145
 msgid "Please describe and justify this expenditure."
 msgstr ""
 
@@ -352,7 +356,7 @@ msgstr ""
 msgid "Please go to the following page and choose a new password:"
 msgstr ""
 
-#: src/budget/models.py:131 src/budget/models.py:134
+#: src/budget/models.py:157 src/budget/models.py:160
 msgid "Please select a budget that need to be decreased"
 msgstr ""
 
@@ -376,7 +380,7 @@ msgstr ""
 msgid "Privacy Policy"
 msgstr ""
 
-#: src/budget/models.py:141
+#: src/budget/models.py:168
 msgid "Processing status for procurement"
 msgstr ""
 
@@ -393,11 +397,11 @@ msgstr ""
 msgid "Reject"
 msgstr ""
 
-#: src/budget/models.py:234
+#: src/budget/models.py:268
 msgid "Rejected"
 msgstr ""
 
-#: src/budget/jinja2/Application/list.html:19
+#: src/budget/jinja2/Application/list.html:18
 msgid "Requester"
 msgstr ""
 
@@ -413,7 +417,7 @@ msgstr ""
 msgid "Sekretariat"
 msgstr ""
 
-#: src/budget/jinja2/Application/detail.html:53
+#: src/budget/jinja2/Application/detail.html:50
 msgid "Set account"
 msgstr ""
 
@@ -421,7 +425,7 @@ msgstr ""
 msgid "Set new password"
 msgstr ""
 
-#: src/budget/models.py:118
+#: src/budget/models.py:144
 msgid "Short distinguishing name for this expenditure"
 msgstr ""
 
@@ -445,7 +449,7 @@ msgstr ""
 msgid "Student"
 msgstr ""
 
-#: src/budget/jinja2/Application/list.html:20
+#: src/budget/jinja2/Application/list.html:19
 msgid "Submitted"
 msgstr ""
 
@@ -474,8 +478,8 @@ msgstr ""
 msgid "This is required field"
 msgstr ""
 
-#: src/budget/jinja2/Application/list.html:17
-msgid "Title"
+#: src/budget/jinja2/Application/list.html:9
+msgid "To approve"
 msgstr ""
 
 #: jinja2/django_opt_out/OptOut/success.html:8
@@ -498,8 +502,12 @@ msgstr ""
 msgid "Welcome! Please sign in."
 msgstr ""
 
-#: src/budget/models.py:117
+#: src/budget/models.py:143
 msgid "What is the total cost?"
+msgstr ""
+
+#: src/budget/jinja2/Application/detail.html:24
+msgid "Whats left in the budget after spending the requested amount."
 msgstr ""
 
 #: jinja2/django_opt_out/OptOut/removed.html:5
@@ -553,67 +561,71 @@ msgstr ""
 msgid "Zarezerwuj termin"
 msgstr ""
 
-#: src/budget/models.py:51 src/budget/models.py:130
+#: src/budget/models.py:52 src/budget/models.py:156
 msgid "account"
 msgstr ""
 
-#: src/budget/models.py:32
+#: src/budget/models.py:33
 msgid "account group"
 msgstr ""
 
-#: src/budget/models.py:33
+#: src/budget/models.py:34
 msgid "account groups"
 msgstr ""
 
-#: src/budget/models.py:52
+#: src/budget/models.py:53
 msgid "accounts"
 msgstr ""
 
-#: src/budget/models.py:64 src/budget/models.py:117
+#: src/budget/models.py:80 src/budget/models.py:143
 msgid "amount"
 msgstr ""
 
-#: src/budget/models.py:146
+#: src/budget/models.py:173
 msgid "application"
 msgstr ""
 
-#: src/budget/models.py:147
+#: src/budget/models.py:168
+msgid "application status"
+msgstr ""
+
+#: src/budget/models.py:174
 msgid "applications"
 msgstr ""
 
-#: src/budget/models.py:139 src/budget/models.py:259
+#: src/budget/models.py:166 src/budget/models.py:318
 msgid "approval"
 msgstr ""
 
-#: src/budget/models.py:141
-msgid "approval status"
-msgstr ""
-
-#: src/budget/models.py:258
+#: src/budget/models.py:317
 msgid "approval step"
 msgstr ""
 
-#: src/budget/models.py:71 src/budget/models.py:133
+#: src/budget/models.py:165
+msgid "awaiting decision"
+msgstr ""
+
+#: src/budget/models.py:87 src/budget/models.py:159
 msgid "budget"
 msgstr ""
 
-#: src/budget/models.py:72
+#: src/budget/models.py:88
 msgid "budgets"
 msgstr ""
 
-#: src/budget/models.py:116
+#: src/budget/models.py:142
 msgid "date"
 msgstr ""
 
-#: src/budget/models.py:263
+#: src/budget/models.py:322
 msgid "decision"
 msgstr ""
 
-#: src/budget/models.py:264
+#: src/budget/models.py:323
 msgid "decisions"
 msgstr ""
 
-#: src/budget/models.py:29 src/budget/models.py:48 src/budget/models.py:119
+#: src/budget/models.py:30 src/budget/models.py:49 src/budget/models.py:145
 msgid "description"
 msgstr ""
 
@@ -625,35 +637,35 @@ msgstr ""
 msgid "event start"
 msgstr ""
 
-#: src/budget/models.py:46
+#: src/budget/models.py:47
 msgid "group"
 msgstr ""
 
-#: src/budget/models.py:122
+#: src/budget/models.py:148
 msgid "manager"
 msgstr ""
 
-#: src/budget/models.py:66
+#: src/budget/models.py:82
 msgid "money available"
 msgstr ""
 
-#: src/budget/models.py:65
+#: src/budget/models.py:81
 msgid "money spent"
 msgstr ""
 
-#: src/budget/models.py:68
+#: src/budget/models.py:84
 msgid "month"
 msgstr ""
 
-#: src/budget/models.py:27 src/budget/models.py:44 src/sekretariat/forms.py:34
+#: src/budget/models.py:28 src/budget/models.py:45 src/sekretariat/forms.py:34
 msgid "name"
 msgstr ""
 
-#: src/budget/models.py:260
+#: src/budget/models.py:319
 msgid "notes"
 msgstr ""
 
-#: src/budget/models.py:28 src/budget/models.py:47
+#: src/budget/models.py:29 src/budget/models.py:48
 msgid "number"
 msgstr ""
 
@@ -669,7 +681,7 @@ msgstr ""
 msgid "open office slot"
 msgstr ""
 
-#: src/budget/models.py:120
+#: src/budget/models.py:146
 msgid "requester"
 msgstr ""
 
@@ -677,7 +689,7 @@ msgstr ""
 msgid "student name"
 msgstr ""
 
-#: src/budget/models.py:124
+#: src/budget/models.py:150
 msgid "submission date"
 msgstr ""
 
@@ -685,11 +697,11 @@ msgstr ""
 msgid "this week"
 msgstr ""
 
-#: src/budget/models.py:257
+#: src/budget/models.py:316
 msgid "time stamp"
 msgstr ""
 
-#: src/budget/models.py:118 src/sekretariat/models.py:66
+#: src/budget/models.py:144 src/sekretariat/models.py:66
 msgid "title"
 msgstr ""
 
@@ -701,7 +713,7 @@ msgstr ""
 msgid "tomorrow"
 msgstr ""
 
-#: src/budget/models.py:67
+#: src/budget/models.py:83
 msgid "year"
 msgstr ""
 
@@ -719,11 +731,11 @@ msgstr ""
 msgid "{start:%Y-%m-%d %H:%M} Termin anulowany"
 msgstr ""
 
-#: src/budget/models.py:197
+#: src/budget/models.py:231
 msgid "{status}: {title}"
 msgstr ""
 
-#: src/budget/models.py:223
+#: src/budget/models.py:257
 msgid "{title} - expenditure for {amount} requires approval"
 msgstr ""
 
@@ -770,5 +782,11 @@ msgstr ""
 #~ msgstr ""
 
 #~ msgid "placed"
+#~ msgstr ""
+
+#~ msgid "Title"
+#~ msgstr ""
+
+#~ msgid "approval status"
 #~ msgstr ""
 

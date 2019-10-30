@@ -185,6 +185,9 @@ class Application(BaseModel):
         return resolve_url("budget:ApplicationDetail", self.pk)
 
     def save(self, force_insert=False, force_update=False, using=None, update_fields=None):
+        if self.pk is None and self.awaiting is None:
+            self.awaiting = DecisionKind.manager
+
         if self.account:
             budget = Budget.objects.filter(year=self.date.year, month=self.date.month, account=self.account).first()
             if not budget:
@@ -344,3 +347,11 @@ def application_update(sender, instance=None, **kwargs):
     if instance.budget_id is None:
         return
     instance.budget.update_available()
+
+
+# noinspection PyUnusedLocal
+@receiver(signals.post_save, sender=Decision)
+def application_update(sender, instance=None, **kwargs):
+    application = instance.application
+    application.setup_awaiting_kind()
+    application.save()

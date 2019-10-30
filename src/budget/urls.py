@@ -10,6 +10,7 @@ urlpatterns = [
     path('budget/<int:pk>/', v.BudgetDetail.as_view(), name='BudgetDetail'),
     path('expenditure/', v.ApplicationList.as_view(), name='ApplicationList'),
     path('expenditure/user/<int:pk>/', v.ApplicationListUser.as_view(), name='ApplicationListUser'),
+    path('expenditure/approvals/<int:pk>/', v.ApplicationListApprovals.as_view(), name='ApplicationListApprovals'),
     path('expenditure/create', v.ApplicationCreate.as_view(), name='ApplicationCreate'),
     path('expenditure/<int:pk>/update', v.ApplicationUpdate.as_view(), name='ApplicationUpdate'),
     path('expenditure/<int:pk>/account', v.ApplicationAccount.as_view(), name='ApplicationAccount'),
