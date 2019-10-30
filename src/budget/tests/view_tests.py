@@ -600,6 +600,7 @@ class DecisionCreateViewTests(object):
 
     def test_success_url_update_next(self, accountant):
         item = factories.DecisionFactory(kind=models.DecisionKind.accountant, approval=None, application__account=factories.AccountFactory())
+        factories.DecisionFactory(kind=models.DecisionKind.manager, application=item.application)
         view = views.DecisionBase()
         view.request = MagicMock(HttpRequest())
         view.request._messages = MagicMock()

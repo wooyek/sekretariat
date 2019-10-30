@@ -1,5 +1,5 @@
 # coding=utf-8
-# Copyright (c) 2018 Janusz Skonieczny
+# Copyright (c) 2019 Janusz Skonieczny
 
 import logging
 
@@ -28,18 +28,22 @@ class AdminTests(object):
     def test_changelist(self, factory, admin_client):
         factory()
         url = resolve_url(admin_urlname(factory._meta.model._meta, 'changelist'))
-        admin_client.get(url)
+        response = admin_client.get(url)
+        assert response.status_code == 200
 
     def test_change(self, factory, admin_client):
         item = factory()
         url = resolve_url(admin_urlname(factory._meta.model._meta, 'change'), item.pk)
-        admin_client.get(url)
+        response = admin_client.get(url)
+        assert response.status_code == 200
 
     def test_add(self, factory, admin_client):
         url = resolve_url(admin_urlname(factory._meta.model._meta, 'add'))
-        admin_client.get(url)
+        response = admin_client.get(url)
+        assert response.status_code == 200
 
     def test_delete(self, factory, admin_client):
         item = factory()
         url = resolve_url(admin_urlname(factory._meta.model._meta, 'delete'), item.pk)
-        admin_client.get(url)
+        response = admin_client.get(url)
+        assert response.status_code == 200

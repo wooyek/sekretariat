@@ -109,6 +109,7 @@ class ApplicationTest(object):
             kind=models.DecisionKind.accountant, approval=None, application__date=pendulum.yesterday(),
             application__account=account
         )
+        factories.DecisionFactory(kind=models.DecisionKind.manager, application=decision.application)
         item = models.Application.get_next_waiting_application(accountant)
         assert item == decision.application
 

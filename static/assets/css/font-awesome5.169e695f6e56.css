@@ -8903,8 +8903,8 @@ readers do not read off random characters that represent icons */
   font-style: normal;
   font-weight: normal;
   font-display: auto;
-  src: url("../webfonts/fa-brands-400.6fa7434ed84b.eot");
-  src: url("../webfonts/fa-brands-400.6fa7434ed84b.eot?#iefix") format("embedded-opentype"), url("../webfonts/fa-brands-400.cfa1eb9401f9.woff2") format("woff2"), url("../webfonts/fa-brands-400.a94c97ae7d90.woff") format("woff"), url("../webfonts/fa-brands-400.0d37e867715b.ttf") format("truetype"), url("../webfonts/fa-brands-400.cf8137d345fb.svg#fontawesome") format("svg"); }
+  src: url("../webfonts/fa-brands-400.6c1d3d52c395.eot");
+  src: url("../webfonts/fa-brands-400.6c1d3d52c395.eot?#iefix") format("embedded-opentype"), url("../webfonts/fa-brands-400.10591474ee3e.woff2") format("woff2"), url("../webfonts/fa-brands-400.34804e7fc669.woff") format("woff"), url("../webfonts/fa-brands-400.3848279e1aaa.ttf") format("truetype"), url("../webfonts/fa-brands-400.f74b8457fd9c.svg#fontawesome") format("svg"); }
 
 /* line 20, node_modules/@fortawesome/fontawesome-pro/scss/brands.scss */
 .fab {
@@ -8919,8 +8919,8 @@ readers do not read off random characters that represent icons */
   font-style: normal;
   font-weight: 300;
   font-display: auto;
-  src: url("../webfonts/fa-light-300.2626ea387360.eot");
-  src: url("../webfonts/fa-light-300.2626ea387360.eot?#iefix") format("embedded-opentype"), url("../webfonts/fa-light-300.133b6087a9cb.woff2") format("woff2"), url("../webfonts/fa-light-300.086ab29ed910.woff") format("woff"), url("../webfonts/fa-light-300.5708aa3afde9.ttf") format("truetype"), url("../webfonts/fa-light-300.c1dc37c47455.svg#fontawesome") format("svg"); }
+  src: url("../webfonts/fa-light-300.8389adab18bf.eot");
+  src: url("../webfonts/fa-light-300.8389adab18bf.eot?#iefix") format("embedded-opentype"), url("../webfonts/fa-light-300.9ccb65771eac.woff2") format("woff2"), url("../webfonts/fa-light-300.d8f8190b5270.woff") format("woff"), url("../webfonts/fa-light-300.d58496a41fd0.ttf") format("truetype"), url("../webfonts/fa-light-300.8ca375165a44.svg#fontawesome") format("svg"); }
 
 /* line 20, node_modules/@fortawesome/fontawesome-pro/scss/light.scss */
 .fal {
@@ -8936,8 +8936,8 @@ readers do not read off random characters that represent icons */
   font-style: normal;
   font-weight: 400;
   font-display: auto;
-  src: url("../webfonts/fa-regular-400.49585be028d1.eot");
-  src: url("../webfonts/fa-regular-400.49585be028d1.eot?#iefix") format("embedded-opentype"), url("../webfonts/fa-regular-400.5e0880da30da.woff2") format("woff2"), url("../webfonts/fa-regular-400.de636d1a035e.woff") format("woff"), url("../webfonts/fa-regular-400.9bb9bf9eaecd.ttf") format("truetype"), url("../webfonts/fa-regular-400.b4b44ae7eebc.svg#fontawesome") format("svg"); }
+  src: url("../webfonts/fa-regular-400.71f36b6cf34c.eot");
+  src: url("../webfonts/fa-regular-400.71f36b6cf34c.eot?#iefix") format("embedded-opentype"), url("../webfonts/fa-regular-400.126e3505907e.woff2") format("woff2"), url("../webfonts/fa-regular-400.7b842c9527b5.woff") format("woff"), url("../webfonts/fa-regular-400.6d74740ab590.ttf") format("truetype"), url("../webfonts/fa-regular-400.d74dfd84ad08.svg#fontawesome") format("svg"); }
 
 /* line 20, node_modules/@fortawesome/fontawesome-pro/scss/regular.scss */
 .far {
@@ -8953,8 +8953,8 @@ readers do not read off random characters that represent icons */
   font-style: normal;
   font-weight: 900;
   font-display: auto;
-  src: url("../webfonts/fa-solid-900.c251229a9fe8.eot");
-  src: url("../webfonts/fa-solid-900.c251229a9fe8.eot?#iefix") format("embedded-opentype"), url("../webfonts/fa-solid-900.9f25a06f1eae.woff2") format("woff2"), url("../webfonts/fa-solid-900.52b4305f4121.woff") format("woff"), url("../webfonts/fa-solid-900.ef88392f3412.ttf") format("truetype"), url("../webfonts/fa-solid-900.d7b5dc7420e4.svg#fontawesome") format("svg"); }
+  src: url("../webfonts/fa-solid-900.228fa19ba40f.eot");
+  src: url("../webfonts/fa-solid-900.228fa19ba40f.eot?#iefix") format("embedded-opentype"), url("../webfonts/fa-solid-900.dbe8505cf4eb.woff2") format("woff2"), url("../webfonts/fa-solid-900.e4506c4b61b8.woff") format("woff"), url("../webfonts/fa-solid-900.ba0b120fe013.ttf") format("truetype"), url("../webfonts/fa-solid-900.5eef26d6096e.svg#fontawesome") format("svg"); }
 
 /* line 20, node_modules/@fortawesome/fontawesome-pro/scss/solid.scss */
 .fa,

@@ -11,7 +11,7 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.models import Group
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
-from django.db.models import Exists, OuterRef, Q, Sum, signals
+from django.db.models import Q, Sum, signals
 from django.dispatch import receiver
 from django.shortcuts import resolve_url
 from django.utils.functional import SimpleLazyObject, cached_property
@@ -185,6 +185,9 @@ class Application(BaseModel):
         return resolve_url("budget:ApplicationDetail", self.pk)
 
     def save(self, force_insert=False, force_update=False, using=None, update_fields=None):
+        if self.pk is None and self.awaiting is None:
+            self.awaiting = DecisionKind.manager
+
         if self.account:
             budget = Budget.objects.filter(year=self.date.year, month=self.date.month, account=self.account).first()
             if not budget:
@@ -292,7 +295,6 @@ class Application(BaseModel):
         f = reduce(lambda x, y: x | y, f)
         return q.filter(f)
 
-
     def setup_awaiting_kind(self):
         last_decision = self.decisions.order_by('-kind').filter(approval__isnull=False).first()
         if last_decision is None:
@@ -344,3 +346,11 @@ def application_update(sender, instance=None, **kwargs):
     if instance.budget_id is None:
         return
     instance.budget.update_available()
+
+
+# noinspection PyUnusedLocal
+@receiver(signals.post_save, sender=Decision)
+def decision_create(sender, instance=None, **kwargs):
+    application = instance.application
+    application.setup_awaiting_kind()
+    application.save()

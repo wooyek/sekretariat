@@ -5,6 +5,7 @@ import django_filters
 import reversion
 from django.conf import settings
 from django.contrib import messages
+from django.contrib.auth import get_user_model
 from django.core.exceptions import ImproperlyConfigured
 from django.db import transaction
 from django.db.models import Q
@@ -134,9 +135,32 @@ class ApplicationListUser(AbstractAuthorizedView, FilterViewMixin, PaginationMix
         queryset = super().get_queryset().filter(Q(requester_id=self.kwargs['pk']) | Q(manager_id=self.kwargs['pk']))
         return queryset
 
-    # def get_context_data(self, *, object_list=None, **kwargs):
-    #     kwargs['filter'] = ApplicationFilter(self.request.GET, queryset=models.Application.objects.all())
-    #     return super().get_context_data(object_list=object_list, **kwargs)
+
+class ApplicationListApprovals(AbstractAuthorizedView, FilterViewMixin, PaginationMixin, ListView):
+    model = models.Application
+    paginate_by = 25
+
+    # noinspection PyAttributeOutsideInit
+    def is_authorized(self, *args, **kwargs):
+        user = self.request.user
+        pk = self.kwargs['pk']
+        if user.pk != pk and not user.is_staff:
+            return False
+
+        self.kinds = []
+        groups = get_user_model().objects.get(pk=pk).groups
+
+        if groups.filter(name=settings.BUDGET_MANAGERS_GROUP).exists():
+            self.kinds.append(models.DecisionKind.manager)
+        if groups.filter(name=settings.BUDGET_ACCOUNTANTS_GROUP).exists():
+            self.kinds.append(models.DecisionKind.accountant)
+        if groups.filter(name=settings.BUDGET_CONTROL_GROUP).exists():
+            self.kinds.append(models.DecisionKind.control)
+
+        return len(self.kinds) > 0
+
+    def get_queryset(self):
+        return super().get_queryset().filter(awaiting__in=self.kinds)
 
 
 class ApplicationList(PermissionRequiredView, FilterViewMixin, PaginationMixin, ListView):
@@ -206,7 +230,6 @@ class ApplicationCreate(TeamRequiredMixin, CreateView):
 
     def form_valid(self, form):
         form.instance.requester = self.request.user
-        form.instance.setup_awaiting_kind()
         with reversion.create_revision():
             valid = super().form_valid(form)
             reversion.set_user(self.request.user)
@@ -313,13 +336,10 @@ class DecisionBase(AbstractAuthorizedView):
         if self.kind == models.DecisionKind.control:
             application.approval = form.instance.approval
 
-        application.setup_awaiting_kind()
-
         with transaction.atomic():
             try:
                 return super().form_valid(form)
             finally:
-                application.save()
                 application.send_notifications()
 
     def get_context_data(self, **kwargs):
