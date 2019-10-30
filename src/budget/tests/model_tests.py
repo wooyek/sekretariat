@@ -143,6 +143,27 @@ class ApplicationTest(object):
         ).application
         assert models.Application.awaiting_decision(item.manager).first() is None
 
+    def test_setup_awaiting_decision_accountant(self, manager):
+        item = factories.DecisionFactory(
+            application__manager=manager, approval=True, kind=models.DecisionKind.manager
+        ).application
+        item.setup_awaiting_kind()
+        assert item.awaiting == models.DecisionKind.accountant
+
+    def test_setup_awaiting_decision_control(self, accountant):
+        item = factories.DecisionFactory(
+            application__manager=accountant, approval=True, kind=models.DecisionKind.accountant
+        ).application
+        item.setup_awaiting_kind()
+        assert item.awaiting == models.DecisionKind.control
+
+    def test_setup_awaiting_decision_none(self, control):
+        item = factories.DecisionFactory(
+            application__manager=control, approval=True, kind=models.DecisionKind.control
+        ).application
+        item.setup_awaiting_kind()
+        assert item.awaiting is None
+
 
 # noinspection PyMethodMayBeStatic
 @pytest.mark.django_db

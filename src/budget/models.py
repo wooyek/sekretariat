@@ -4,6 +4,7 @@
 import logging
 from collections import OrderedDict
 from datetime import datetime
+from functools import reduce
 
 from django.conf import settings
 from django.contrib.auth import get_user_model
@@ -280,33 +281,30 @@ class Application(BaseModel):
 
         f = []
         if user.groups.filter(name=settings.BUDGET_MANAGERS_GROUP).exists():
-            manager_decision_exists = Decision.objects.filter(kind=DecisionKind.manager, approval__isnull=False, application=OuterRef('pk'))
-            q = q.annotate(manager_decision_exists=Exists(manager_decision_exists))
-            # f = Q(manager=user, decisions__kind=DecisionKind.manager, decisions__approval__isnull=True) | \
-            f.append(Q(manager=user, manager_decision_exists=False))
+            f.append(Q(manager=user, awaiting=DecisionKind.manager))
 
         if user.groups.filter(name=settings.BUDGET_ACCOUNTANTS_GROUP).exists():
-            accountant_decision_exists = Decision.objects.filter(kind=DecisionKind.accountant, approval__isnull=False, application=OuterRef('pk'))
-            q = q.annotate(accountant_decision_exists=Exists(accountant_decision_exists))
-            # f = Q(manager=user, decisions__kind=DecisionKind.manager, decisions__approval__isnull=True) | \
-            f.append(Q(accountant_decision_exists=False))
+            f.append(Q(awaiting=DecisionKind.accountant))
 
         if user.groups.filter(name=settings.BUDGET_CONTROL_GROUP).exists():
-            control_decision_exists = Decision.objects.filter(kind=DecisionKind.control, approval__isnull=False, application=OuterRef('pk'))
-            q = q.annotate(control_decision_exists=Exists(control_decision_exists))
-            # f = Q(manager=user, decisions__kind=DecisionKind.manager, decisions__approval__isnull=True) | \
-            f.append(Q(control_decision_exists=False, account__isnull=False))
+            f.append(Q(awaiting=DecisionKind.control, account__isnull=False))
 
-        return q.filter(*f)
+        f = reduce(lambda x, y: x | y, f)
+        return q.filter(f)
 
-        # if user.groups.filter(name=settings.BUDGET_ACCOUNTANTS_GROUP).exists():
-        #     kinds.append(DecisionKind.accountant)
-        # if user.groups.filter(name=settings.BUDGET_CONTROL_GROUP).exists():
-        #     kinds.append(DecisionKind.control)
-        # return q.exclude(
-        #     Q(decisions__kind__in=kinds, decisions__approval__isnull=False) |
-        #     Q(account__isnull=True)
-        # )
+
+    def setup_awaiting_kind(self):
+        last_decision = self.decisions.order_by('-kind').filter(approval__isnull=False).first()
+        if last_decision is None:
+            self.awaiting = DecisionKind.manager
+            return
+
+        kinds = DecisionKind.values()
+        i = kinds.index(last_decision.kind)
+        try:
+            self.awaiting = kinds[i + 1]
+        except IndexError:
+            self.awaiting = None
 
 
 class Decision(BaseModel):

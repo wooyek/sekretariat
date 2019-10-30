@@ -206,6 +206,7 @@ class ApplicationCreate(TeamRequiredMixin, CreateView):
 
     def form_valid(self, form):
         form.instance.requester = self.request.user
+        form.instance.setup_awaiting_kind()
         with reversion.create_revision():
             valid = super().form_valid(form)
             reversion.set_user(self.request.user)
@@ -311,6 +312,8 @@ class DecisionBase(AbstractAuthorizedView):
 
         if self.kind == models.DecisionKind.control:
             application.approval = form.instance.approval
+
+        application.setup_awaiting_kind()
 
         with transaction.atomic():
             try:

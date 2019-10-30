@@ -159,7 +159,7 @@ class UpdateViewTest(object):
 
 
 @pytest.mark.django_db
-class ExpenditureCreateViewTest(object):
+class ApplicationCreateViewTest(object):
 
     def test_post(self, team_client, manager):
         item = factories.ApplicationFactory(manager=manager)
@@ -169,6 +169,7 @@ class ExpenditureCreateViewTest(object):
         response = team_client.post(url, data=data)
         assert_no_form_errors(response)
         assert response.status_code == 302
+        assert models.DecisionKind.manager == models.Application.objects.exclude(pk=item.pk).first().awaiting
 
 
 # noinspection PyMethodMayBeStatic
