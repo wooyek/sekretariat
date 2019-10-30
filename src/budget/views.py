@@ -145,7 +145,7 @@ class ApplicationListApprovals(AbstractAuthorizedView, FilterViewMixin, Paginati
         user = self.request.user
         pk = self.kwargs['pk']
         if user.pk != pk and not user.is_staff:
-            return  False
+            return False
 
         self.kinds = []
         groups = get_user_model().objects.get(pk=pk).groups

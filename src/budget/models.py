@@ -350,7 +350,7 @@ def application_update(sender, instance=None, **kwargs):
 
 # noinspection PyUnusedLocal
 @receiver(signals.post_save, sender=Decision)
-def application_update(sender, instance=None, **kwargs):
+def decision_create(sender, instance=None, **kwargs):
     application = instance.application
     application.setup_awaiting_kind()
     application.save()
