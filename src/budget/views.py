@@ -165,7 +165,7 @@ class ApplicationListApprovals(AbstractAuthorizedView, FilterViewMixin, Paginati
 
 class ApplicationList(PermissionRequiredView, FilterViewMixin, PaginationMixin, ListView):
     model = models.Application
-    ordering = '-submitted', 'date'
+    ordering = '-pk', '-submitted', '-date'
     paginate_by = 25
     permission_required = 'budget.view_application'
 
