@@ -41,10 +41,10 @@
         <thead>
         <tr>
           <th scope="col">#</th>
-          <th scope="col">{% trans %}Date{% endtrans %}</th>
+          <th scope="col">{% trans %}Submitted{% endtrans %}</th>
           <th scope="col">{% trans %}Amount{% endtrans %}</th>
           <th scope="col">{% trans %}Requester{% endtrans %}</th>
-          <th scope="col">{% trans %}Submitted{% endtrans %}</th>
+          <th scope="col">{% trans %}Date{% endtrans %}</th>
           <th scope="col">{% trans %}Manager{% endtrans %}</th>
           <th scope="col">{% trans %}Account{% endtrans %}</th>
           <th scope="col">{% trans %}Approval{% endtrans %}</th>
@@ -57,7 +57,7 @@
             <th scope="row" rowspan="1">{{ item.pk }}</th>
             <td>
               <a href="{{ url("budget:ApplicationDetail", item.pk) }}">
-                  {{ item.date|datetimeformat("YYYY-MM-dd") }}
+                  {{ item.submitted|datetimeformat("YYYY-MM-dd") }}
               </a>
             </td>
             <td>{{ item.amount }}</td>
@@ -66,7 +66,7 @@
                 {{ item.requester.last_name }} {{ item.requester.first_name.0 }}.
               </a>
             </td>
-            <td>{{ item.submitted|datetimeformat("YYYY-MM-dd") }}</td>
+            <td>{{ item.date|datetimeformat("YYYY-MM-dd") }}</td>
             <td>
                 {% if item.manager %}
                   <a href="?manager={{ item.manager_id }}">
