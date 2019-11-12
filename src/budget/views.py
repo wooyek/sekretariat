@@ -280,7 +280,6 @@ class ApplicationUpdateBase(AbstractAuthorizedView, UpdateView):
             valid = super().form_valid(form)
             reversion.set_user(self.request.user)
             reversion.set_comment("Application updated")
-        form.instance.send_notifications()
         users = form.instance.send_notifications()
         users = ", ".join((user.get_full_name() for user in users))
         msg = 'Zapotrzebowanie "{}" zostało zaktualizowane. Wysłano powiadomienia do: {}'.format(self.object.title, users)
