@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2019-10-30 09:42+0100\n"
+"POT-Creation-Date: 2019-11-12 11:05+0100\n"
 "PO-Revision-Date: 2016-10-11 17:27+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en_US\n"
@@ -53,7 +53,7 @@ msgstr ""
 msgid "<p>Your password was changed.</p>"
 msgstr ""
 
-#: src/budget/jinja2/Application/list.html:21
+#: src/budget/jinja2/Application/list.html:46
 msgid "Account"
 msgstr ""
 
@@ -73,7 +73,7 @@ msgstr ""
 msgid "Admin"
 msgstr ""
 
-#: src/budget/jinja2/Application/list.html:17
+#: src/budget/jinja2/Application/list.html:42
 msgid "Amount"
 msgstr ""
 
@@ -90,7 +90,7 @@ msgstr ""
 msgid "Anuluj termin"
 msgstr ""
 
-#: src/budget/jinja2/Application/list.html:22
+#: src/budget/jinja2/Application/list.html:47
 msgid "Approval"
 msgstr ""
 
@@ -102,7 +102,7 @@ msgstr ""
 msgid "Approve"
 msgstr ""
 
-#: src/budget/jinja2/Application/list.html:8 src/budget/models.py:268
+#: src/budget/jinja2/Application/list.html:27 src/budget/models.py:268
 msgid "Approved"
 msgstr ""
 
@@ -181,11 +181,11 @@ msgstr ""
 msgid "Contact"
 msgstr ""
 
-#: jinja2/home.html:14 src/budget/jinja2/Application/list.html:7
+#: jinja2/home.html:14 src/budget/jinja2/Application/list.html:12
 msgid "Create"
 msgstr ""
 
-#: src/budget/jinja2/Application/list.html:16
+#: src/budget/jinja2/Application/list.html:41
 msgid "Date"
 msgstr ""
 
@@ -278,8 +278,12 @@ msgstr ""
 msgid "Logout"
 msgstr ""
 
-#: src/budget/jinja2/Application/list.html:20
+#: src/budget/jinja2/Application/list.html:45
 msgid "Manager"
+msgstr ""
+
+#: src/budget/jinja2/Application/list.html:22
+msgid "Moje zapotrzebowania"
 msgstr ""
 
 #: jinja2/bootstrap/pagination.html:22
@@ -401,12 +405,16 @@ msgstr ""
 msgid "Rejected"
 msgstr ""
 
-#: src/budget/jinja2/Application/list.html:18
+#: src/budget/jinja2/Application/list.html:43
 msgid "Requester"
 msgstr ""
 
 #: jinja2/django_registration/password_reset_form.html:15
 msgid "Reset my password"
+msgstr ""
+
+#: src/budget/jinja2/Application/form.html:5
+msgid "Save and send"
 msgstr ""
 
 #: src/website/misc/admin.py:45
@@ -449,7 +457,7 @@ msgstr ""
 msgid "Student"
 msgstr ""
 
-#: src/budget/jinja2/Application/list.html:19
+#: src/budget/jinja2/Application/list.html:44
 msgid "Submitted"
 msgstr ""
 
@@ -478,7 +486,7 @@ msgstr ""
 msgid "This is required field"
 msgstr ""
 
-#: src/budget/jinja2/Application/list.html:9
+#: src/budget/jinja2/Application/list.html:32
 msgid "To approve"
 msgstr ""
 
@@ -508,6 +516,10 @@ msgstr ""
 
 #: src/budget/jinja2/Application/detail.html:24
 msgid "Whats left in the budget after spending the requested amount."
+msgstr ""
+
+#: src/budget/jinja2/Application/list.html:17
+msgid "Wszystkie"
 msgstr ""
 
 #: jinja2/django_opt_out/OptOut/removed.html:5
@@ -552,7 +564,6 @@ msgid "Your username, in case you've forgotten:"
 msgstr ""
 
 #: src/budget/jinja2/Application/account.html:5
-#: src/budget/jinja2/Application/form.html:5
 #: src/sekretariat/jinja2/OpenOfficeGroup/form.html:5
 msgid "Zapisz zmiany"
 msgstr ""
@@ -593,11 +604,11 @@ msgstr ""
 msgid "applications"
 msgstr ""
 
-#: src/budget/models.py:166 src/budget/models.py:318
+#: src/budget/models.py:166 src/budget/models.py:317
 msgid "approval"
 msgstr ""
 
-#: src/budget/models.py:317
+#: src/budget/models.py:316
 msgid "approval step"
 msgstr ""
 
@@ -617,11 +628,11 @@ msgstr ""
 msgid "date"
 msgstr ""
 
-#: src/budget/models.py:322
+#: src/budget/models.py:321
 msgid "decision"
 msgstr ""
 
-#: src/budget/models.py:323
+#: src/budget/models.py:322
 msgid "decisions"
 msgstr ""
 
@@ -661,7 +672,7 @@ msgstr ""
 msgid "name"
 msgstr ""
 
-#: src/budget/models.py:319
+#: src/budget/models.py:318
 msgid "notes"
 msgstr ""
 
@@ -697,7 +708,7 @@ msgstr ""
 msgid "this week"
 msgstr ""
 
-#: src/budget/models.py:316
+#: src/budget/models.py:315
 msgid "time stamp"
 msgstr ""
 

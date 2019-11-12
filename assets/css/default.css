@@ -75,6 +75,10 @@ body .watermark {
   font-size: 12px;
   line-height: 1.42857; }
 
+/* line 1, theme/styles/components/_table.scss */
+tr.odd {
+  background-color: rgba(0, 0, 0, 0.05); }
+
 /* line 1, theme/styles/components/_debug.scss */
 body .watermark-left {
   left: -5px;
