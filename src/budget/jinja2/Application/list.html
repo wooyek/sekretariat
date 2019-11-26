@@ -74,11 +74,13 @@
             <td>
                 {% for kind, name in decision_kinds %}
                     {% with decision = item.get_decision(kind) %}
-                  <span title="{{ decision.user.last_name }} {{ decision.user.first_name}} - {{ name }}">
-                    {% with approval = decision.approval %}
-                      {% include "Application/approval.html" %}
-                    {% endwith %}
-                  </span>
+                      {% if decision %}
+                        <span title="{{ decision.user.last_name }} {{ decision.user.first_name}} - {{ name }}">
+                          {% with approval = decision.approval %}
+                            {% include "Application/approval.html" %}
+                          {% endwith %}
+                        </span>
+                      {% endif %}
                     {% endwith %}
                 {% endfor %}
                 {% with approval = item.approval %}
