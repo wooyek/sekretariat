@@ -97,13 +97,23 @@ class PermissionRequiredView(AbstractAuthorizedView):
 
 
 class ApplicationFilter(django_filters.FilterSet):
+    # title = django_filters.CharFilter(lookup_expr='iexact')
+    # description = django_filters.CharFilter(lookup_expr='iexact')
+    status = django_filters.ChoiceFilter(choices=models.ApplicationStatus.choices())
+
     class Meta:
         model = models.Application
-        fields = ['approval', ]  # 'decisions__approval']
-        # fields = {
-        #     'approval': ['isnull', ],
-        #     'decisions__approval': ['exact', 'year__gt'],
-        # }
+        # fields = ['approval', ]  # 'decisions__approval']
+        fields = {
+            'title': ['search', ],
+            'description': ['search', ],
+            # 'status': ['', ],
+            'requester__last_name': ['search', ],
+            # 'requester__first_name': ['iexact', ],
+            'amount': ['lt', 'gt'],
+            'approval': ['isnull', ],
+            'decisions__approval': ['exact', 'isnull'],
+        }
 
 
 class FilterViewMixin(FilterMixin, ContextMixin):
@@ -126,6 +136,7 @@ class FilterViewMixin(FilterMixin, ContextMixin):
 class ApplicationListUser(AbstractAuthorizedView, FilterViewMixin, PaginationMixin, ListView):
     model = models.Application
     paginate_by = 25
+    filterset_class = ApplicationFilter
 
     def is_authorized(self, *args, **kwargs):
         user = self.request.user
@@ -139,6 +150,7 @@ class ApplicationListUser(AbstractAuthorizedView, FilterViewMixin, PaginationMix
 class ApplicationListApprovals(AbstractAuthorizedView, FilterViewMixin, PaginationMixin, ListView):
     model = models.Application
     paginate_by = 25
+    filterset_class = ApplicationFilter
 
     # noinspection PyAttributeOutsideInit
     def is_authorized(self, *args, **kwargs):
@@ -168,6 +180,7 @@ class ApplicationList(PermissionRequiredView, FilterViewMixin, PaginationMixin, 
     ordering = '-pk', '-submitted', '-date'
     paginate_by = 25
     permission_required = 'budget.view_application'
+    filterset_class = ApplicationFilter
 
     def is_authorized(self, *args, **kwargs):
         return is_operations(self.request.user)
@@ -183,7 +196,7 @@ class ApplicationList(PermissionRequiredView, FilterViewMixin, PaginationMixin, 
 
     def get_queryset(self):
         queryset = super().get_queryset()
-        return queryset.prefetch_related('decisions', 'requester', 'manager', 'account', 'account__group')
+        return queryset.prefetch_related('decisions', 'requester', 'manager', 'account', 'account__group', 'decisions', 'decisions__user')
 
 
 class ApplicationDetail(AbstractAuthorizedView, DetailView):
@@ -234,8 +247,9 @@ class ApplicationCreate(TeamRequiredMixin, CreateView):
             valid = super().form_valid(form)
             reversion.set_user(self.request.user)
             reversion.set_comment("Application created")
-        form.instance.send_notifications()
-        msg = 'Zapotrzebowanie "{}" zostało zapisane.'.format(self.object.title)
+        users = form.instance.send_notifications()
+        users = ", ".join((user.get_full_name() for user in users))
+        msg = 'Zapotrzebowanie "{}" zostało zapisane. Wysłano powiadomienia do: {}'.format(self.object.title, users)
         messages.success(self.request, msg)
         return valid
 
@@ -266,8 +280,9 @@ class ApplicationUpdateBase(AbstractAuthorizedView, UpdateView):
             valid = super().form_valid(form)
             reversion.set_user(self.request.user)
             reversion.set_comment("Application updated")
-        form.instance.send_notifications()
-        msg = 'Zapotrzebowanie "{}" zostało zaktualizowane.'.format(self.object.title)
+        users = form.instance.send_notifications()
+        users = ", ".join((user.get_full_name() for user in users))
+        msg = 'Zapotrzebowanie "{}" zostało zaktualizowane. Wysłano powiadomienia do: {}'.format(self.object.title, users)
         messages.success(self.request, msg)
         return valid
 

@@ -2,6 +2,6 @@
 {% from "bootstrap/forms/horizontal.html" import render_form with context %}
 {% block page_title %}Zapotrzebowanie: {% if object %}{{ object.title }}{% endif %}{% endblock %}
 {% block content %}
-  {{ render_form(form, submit_text=_("Zapisz zmiany")) }}
+  {{ render_form(form, submit_text=_("Save and send")) }}
 {% endblock %}
 

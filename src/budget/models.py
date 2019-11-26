@@ -231,18 +231,18 @@ class Application(BaseModel):
             subject = _("{status}: {title}")
             template = "Application/email/approval_result.html"
             self.send_notification(self.requester, subject, template)
-            return
+            return [self.requester]
 
         for kind in WORKFLOW:
             if not self.get_decision(kind):
-                self.send_to_group(kind)
-                break
+                return self.send_to_group(kind)
 
     def send_to_group(self, kind):
         users = self.get_users(kind)
         assert users, "No users to send notifications to for kind: {}".format(str(kind))
         for user in users:
             self.send_approval_request(user)
+        return users
 
     def get_users(self, kind):
         if kind == DecisionKind.manager:
