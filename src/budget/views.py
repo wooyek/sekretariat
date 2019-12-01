@@ -231,6 +231,10 @@ class ApplicationDetail(AbstractAuthorizedView, DetailView):
         else:
             return redirect('budget:DecisionCreate', self.object.pk, kind)
 
+    def get_object(self, queryset=None):
+        if 'pk' not in self.kwargs and 'pk' in self.request.GET:
+            self.kwargs['pk'] = self.request.GET['pk']
+        return super(ApplicationDetail, self).get_object(queryset)
 
 class ApplicationCreate(TeamRequiredMixin, CreateView):
     model = models.Application

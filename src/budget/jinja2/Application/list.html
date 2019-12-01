@@ -33,7 +33,20 @@
           </li>
         {% endwith %}
           <li role="presentation" class="nav-item">
-            <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#filter-modal">{% trans %}Search{% endtrans %}</button>
+            <button type="button" class="btn btn-secondary mr-3" data-toggle="modal" data-target="#filter-modal">{% trans %}Search{% endtrans %}</button>
+          </li>
+          <li role="presentation" class="nav-item">
+            <form method="GET" action="{{ url('budget:ApplicationDetail2') }}">
+              <div class="input-group mb-3">
+                <input type="text" maxlength="4" name="pk" class="form-control" placeholder="{% trans %}000{% endtrans %}" style="width: 5em"
+                       aria-label="{% trans %}Expenditure no{% endtrans %}" aria-describedby="view-expenditure">
+                <div class="input-group-append">
+                  <button class="btn btn-secondary" type="button" id="view-expenditure">
+                    <i class="fal fa-1x fa-eye"></i>
+                  </button>
+                </div>
+              </div>
+            </form>
           </li>
     </ul>
     <div class="card">
