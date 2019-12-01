@@ -236,6 +236,7 @@ class ApplicationDetail(AbstractAuthorizedView, DetailView):
             self.kwargs['pk'] = self.request.GET['pk']
         return super(ApplicationDetail, self).get_object(queryset)
 
+
 class ApplicationCreate(TeamRequiredMixin, CreateView):
     model = models.Application
     fields = 'amount', 'date', 'title', 'description', 'manager',
