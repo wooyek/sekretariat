@@ -29,6 +29,7 @@ def add_application():
     permission, created = Permission.objects.get_or_create(codename='add_application', content_type=content_type)
     return permission
 
+
 # noinspection PyUnusedLocal
 @pytest.fixture
 def change_application_status():
@@ -38,6 +39,7 @@ def change_application_status():
     from django.contrib.auth.models import Permission
     permission, created = Permission.objects.get_or_create(codename='change_application_status', content_type=content_type)
     return permission
+
 
 # noinspection PyUnusedLocal
 @pytest.fixture
@@ -51,11 +53,23 @@ def view_budget():
 
 
 @pytest.fixture
-def team_user(add_application):
+def team_group(add_application):
+    group, new = Group.objects.get_or_create(name=settings.BUDGET_TEAM_GROUP)
+    group.permissions.add(add_application)
+    return group
+
+
+@pytest.fixture
+def manager_group(add_application):
+    group, new = Group.objects.get_or_create(name=settings.BUDGET_MANAGERS_GROUP)
+    group.permissions.add(add_application)
+    return group
+
+
+@pytest.fixture
+def team_user(team_group):
     user = UserFactory.create(is_superuser=False, is_staff=False)
-    team, new = Group.objects.get_or_create(name=settings.BUDGET_TEAM_GROUP)
-    team.permissions.add(add_application)
-    team.user_set.add(user)
+    team_group.user_set.add(user)
     return user
 
 
@@ -106,11 +120,10 @@ def control_client(control):
 
 
 @pytest.fixture
-def manager(add_application):
+def manager(manager_group, team_group):
     user = UserFactory.create(is_superuser=False, is_staff=False)
-    team, new = Group.objects.get_or_create(name=settings.BUDGET_MANAGERS_GROUP)
-    team.permissions.add(add_application)
-    team.user_set.add(user)
+    manager_group.user_set.add(user)
+    team_group.user_set.add(user)
     return user
 
 
