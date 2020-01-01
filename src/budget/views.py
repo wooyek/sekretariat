@@ -205,7 +205,8 @@ class ApplicationDetail(AbstractAuthorizedView, DetailView):
     def is_authorized(self, *args, **kwargs):
         # noinspection PyAttributeOutsideInit
         self.object = self.get_object()
-        return self.request.user == self.object.requester
+        user = self.request.user
+        return user == self.object.requester and user != self.object.manager
 
     def handle_forbidden(self):
 
@@ -247,16 +248,34 @@ class ApplicationCreate(TeamRequiredMixin, CreateView):
         }
 
     def form_valid(self, form):
-        form.instance.requester = self.request.user
+        instance = form.instance
+        instance.requester = self.request.user
         with reversion.create_revision():
             valid = super().form_valid(form)
             reversion.set_user(self.request.user)
             reversion.set_comment("Application created")
-        users = form.instance.send_notifications()
+
+        self.setup_default_decision(instance)
+
+        users = instance.send_notifications()
         users = ", ".join((user.get_full_name() for user in users))
         msg = 'Zapotrzebowanie "{}" zostało zapisane. Wysłano powiadomienia do: {}'.format(self.object.title, users)
         messages.success(self.request, msg)
         return valid
+
+    def setup_default_decision(self, instance):
+        if instance.requester == instance.manager:
+            with reversion.create_revision():
+                instance.decisions.get_or_create(
+                    kind=models.DecisionKind.manager,
+                    defaults={
+                        'user': instance.requester,
+                        'notes': 'auto',
+                        'approval': True,
+                    }
+                )
+                reversion.set_user(self.request.user)
+                reversion.set_comment("Default manager decision")
 
 
 class ApplicationUpdateBase(AbstractAuthorizedView, UpdateView):

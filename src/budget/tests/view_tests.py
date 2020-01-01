@@ -158,6 +158,7 @@ class UpdateViewTest(object):
         assert response.status_code == 403
 
 
+# noinspection PyMethodMayBeStatic
 @pytest.mark.django_db
 class ApplicationCreateViewTest(object):
 
@@ -170,6 +171,21 @@ class ApplicationCreateViewTest(object):
         assert_no_form_errors(response)
         assert response.status_code == 302
         assert models.DecisionKind.manager == models.Application.objects.exclude(pk=item.pk).first().awaiting
+
+    def test_manager(self, manager, accountant):
+        item = factories.ApplicationFactory(manager=manager)
+        url = resolve_url("budget:ApplicationCreate")
+        data = model_to_request_data_dict(item)
+        data['manager'] = item.manager_id
+        response = get_client(manager).post(url, data=data)
+        assert_no_form_errors(response)
+        assert response.status_code == 302
+        application = models.Application.objects.exclude(pk=item.pk).first()
+        assert models.DecisionKind.accountant == application.awaiting
+        assert application.decisions.count() == 1
+        decision = application.decisions.first()
+        assert decision.user == manager
+        assert decision.approval == True
 
 
 # noinspection PyMethodMayBeStatic
