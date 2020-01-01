@@ -86,6 +86,7 @@ setup(
     version=version,
     description="""Aplikacja pomagająca w organizacji pracy sektretariat szkoły""",
     long_description=readme + '\n\n' + history,
+    long_description_content_type='text/x-rst',
     author="Janusz Skonieczny",
     author_email='js+pypi@bravelabs.pl',
     url='https://github.com/wooyek/sekretariat',
