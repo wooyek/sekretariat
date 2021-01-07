@@ -56,7 +56,7 @@ isoweek==1.3.3
 jdcal==1.4.1              # via openpyxl
 jinja2==2.10.3            # via jinja2-highlight
 jinja2-highlight==0.6.1
-lxml==4.4.2               # via xmlsec
+lxml==4.6.2               # via xmlsec
 markdown==3.1.1
 markuppy==1.14            # via tablib
 markupsafe==1.1.1         # via jinja2
