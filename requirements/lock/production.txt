@@ -81,7 +81,7 @@ python-dotenv==0.10.3
 python-stdnum==1.12       # via django-localflavor
 pytz==2019.3
 pytzdata==2019.3          # via pendulum
-pyyaml==5.2               # via tablib
+pyyaml==5.4               # via tablib
 raven==6.10.0
 regex==2019.12.20         # via dateparser
 requests==2.22.0
