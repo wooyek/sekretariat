@@ -38,7 +38,7 @@ django-opt-out[sparkpost]==0.9.6
 django-pascal-templates==0.8.13
 django-powerbank==0.4.2
 django-pure-pagination==0.3.0
-django-registration==3.0.1
+django-registration==3.1.2
 djangorestframework==3.11.0
 djangorestframework-jsonapi==3.0.0
 django-reversion==3.0.5
