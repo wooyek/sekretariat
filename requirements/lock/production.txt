@@ -16,7 +16,7 @@ dateparser==0.7.2         # via maya
 defusedxml==0.6.0         # via odfpy, python3-openid, python3-saml, social-auth-core
 diff-match-patch==20181111  # via django-import-export
 dinja2==0.1.0
-django==2.2.9 ; python_version >= "3.5"
+django==2.2.27 ; python_version >= "3.5"
 django2-babel==0.6.3
 django-admin-ordering==0.12.0
 django-admin-relation-links==0.2.4
