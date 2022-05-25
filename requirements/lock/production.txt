@@ -73,7 +73,7 @@ pkgconfig==1.5.1          # via xmlsec
 psycopg2-binary==2.8.4
 pycountry==19.8.18
 pygments==2.5.2           # via jinja2-highlight
-pyjwt==1.7.1              # via social-auth-core
+pyjwt==2.4.0              # via social-auth-core
 python3-openid==3.1.0     # via social-auth-core
 python3-saml==1.9.0
 python-dateutil==2.8.1    # via dateparser, pendulum, snaptime
