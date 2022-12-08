@@ -4,7 +4,7 @@
 #
 #
 babel==2.8.0              # via django-babel, django2-babel
-certifi==2019.11.28       # via requests, sentry-sdk
+certifi==2022.12.7       # via requests, sentry-sdk
 chardet==3.0.4            # via requests
 click==7.0
 click-log==0.3.2
